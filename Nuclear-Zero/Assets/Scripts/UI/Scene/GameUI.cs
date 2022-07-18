@@ -14,7 +14,6 @@ public class GameUI : SceneUI
     private int count = 2;
 
     public bool GameOver { get; private set; }
-    //private Joystick joystick;
     private PlayerController player;
     private GameUIItemButton[] itemButtons;
 
@@ -30,7 +29,6 @@ public class GameUI : SceneUI
     {
         Bind<Image>(typeof(Images));
 
-        Utils.FindChild<Joystick>(this.gameObject).Init();
         player = Utils.FindObjectOfType<PlayerController>();
 
         itemButtons = GetComponentsInChildren<GameUIItemButton>();

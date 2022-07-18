@@ -6,7 +6,7 @@ public class DashEnemyController : EnemyController
 {
     public float speed;
 
-    protected override void Init()
+    public override void Init()
     {
         base.Init();
     }

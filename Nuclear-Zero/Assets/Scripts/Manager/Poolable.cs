@@ -5,7 +5,7 @@ using UnityEngine;
 public class Poolable : MonoBehaviour
 {
     public bool IsUsing;
-    [SerializeField] private int timer = 10;
+    [SerializeField] private float timer = 10;
 
     public void Init()
     {

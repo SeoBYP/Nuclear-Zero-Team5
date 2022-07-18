@@ -10,7 +10,7 @@ public class CheckPlayer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            enemyController.DoShot();
+            //enemyController.DoShot();
         }
     }
 }

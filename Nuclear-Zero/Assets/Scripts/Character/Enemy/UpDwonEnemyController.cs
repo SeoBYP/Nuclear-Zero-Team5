@@ -6,7 +6,7 @@ public class UpDwonEnemyController : EnemyController
 {
     public float speed;
     public float _yIndex;
-    protected override void Init()
+    public override void Init()
     {
         base.Init();
     }

@@ -9,12 +9,7 @@ public class EnemyController : MonoBehaviour, IUpdate
 
     public static bool IsStart { get; set; } = false;
 
-    private void Start()
-    {
-        Init();
-    }
-
-    protected virtual void Init()
+    public virtual void Init()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         //animationController = GetComponentInChildren<EnemyAnimationController>();

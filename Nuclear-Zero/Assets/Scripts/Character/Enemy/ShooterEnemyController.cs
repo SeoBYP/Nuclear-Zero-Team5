@@ -4,19 +4,43 @@ using UnityEngine;
 
 public class ShooterEnemyController : EnemyController
 {
-    protected override void Init()
+    public float timer;
+
+    private bool _isshoting = false;
+
+    private float nextShotTime = 3f;
+    private float prevTime = 0;
+    public override void Init()
     {
         base.Init();
+        _isshoting = true;
+        StartCoroutine(Shoting());
     }
 
     protected override void Run()
     {
-
+       // Shoting();
     }
 
-    public void DoShot()
+    IEnumerator Shoting()
     {
-        //animationController.PlayEnemyShoot();
-        ResourcesManager.Instance.Instantiate("Weapon/Arrow").transform.position = transform.position;
+        while (_isshoting)
+        {
+            ResourcesManager.Instance.Instantiate("Weapon/Arrow").transform.position = transform.position;
+
+            yield return YieldInstructionCache.WaitForSeconds(timer);
+        }
     }
+
+    //private void Shoting()
+    //{
+    //    float elapsedTime = Time.deltaTime - prevTime;
+    //    if(elapsedTime > nextShotTime)
+    //    {
+    //        print("SHoting");
+    //        ResourcesManager.Instance.Instantiate("Weapon/Arrow").transform.position = transform.position;
+    //        prevTime = Time.time;
+    //    }
+    //}
+
 }

@@ -25,9 +25,10 @@ public class GameManager : Managers<GameManager>//,IUpdate
     {
         GameScene.Start();
 
-        _joystick = Utils.FindObjectOfType<Joystick>(true);
         _player = Utils.FindObjectOfType<PlayerController>(true);
         _map = Utils.FindObjectOfType<MapController>(false);
+
+        InitGameObjects();
 
         EnemyController.IsStart = true;
         IsStart = true;
@@ -50,6 +51,16 @@ public class GameManager : Managers<GameManager>//,IUpdate
         UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
         ClearGameObjects();
     }
+
+    public void InitGameObjects()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject go in enemies)
+        {
+            go.GetComponent<EnemyController>().Init();
+        }
+    }
+
 
     public void ClearGameObjects()
     {

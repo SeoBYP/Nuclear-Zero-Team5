@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsUsing: 0
-  timer: 5
+  timer: 1.5
 --- !u!114 &5616636446939277621
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -59,7 +59,7 @@ public class LobbyUI : SceneUI
 
     private void OnPlay(PointerEventData data)
     {
-        UIManager.Instance.ShowSceneUi<StageUI>();
+        UIManager.Instance.ShowPopupUi<StagePopupUI>();
         //SceneManagerEx.Instance.LoadScene(Scene.Stage);
     }
     private void OnMenu(PointerEventData data)

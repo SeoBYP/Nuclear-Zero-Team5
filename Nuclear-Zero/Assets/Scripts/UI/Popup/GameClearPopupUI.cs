@@ -46,6 +46,6 @@ public class GameClearPopupUI : PopupUI
 
     private void OnExit(PointerEventData data)
     {
-        SceneManagerEx.Instance.ReLoadScene(Scene.Stage);
+        SceneManagerEx.Instance.ReLoadScene(Scene.Lobby);
     }
 }

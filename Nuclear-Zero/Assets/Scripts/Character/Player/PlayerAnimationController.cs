@@ -8,7 +8,7 @@ public class PlayerAnimationController : MonoBehaviour
     SpriteRenderer _sprite;
     public void Init()
     {
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
     }
 

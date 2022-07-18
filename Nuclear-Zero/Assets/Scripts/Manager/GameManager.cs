@@ -40,6 +40,7 @@ public class GameManager : Managers<GameManager>//,IUpdate
         IsClear = true;
         EnemyController.IsStart = false;
         UIManager.Instance.ShowPopupUi<GameClearPopupUI>();
+        ClearGameObjects();
     }
 
     public void GameOver()
@@ -47,6 +48,16 @@ public class GameManager : Managers<GameManager>//,IUpdate
         IsGameOver = true;
         EnemyController.IsStart = false;
         UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
+        ClearGameObjects();
+    }
+
+    public void ClearGameObjects()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject go in enemies)
+        {
+            go.GetComponent<EnemyController>().Clear();
+        }
     }
 
     private void Update()

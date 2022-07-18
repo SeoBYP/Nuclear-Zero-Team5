@@ -38,7 +38,7 @@ public class GameOverPopupUI : PopupUI
 
     private void OnExit(PointerEventData data)
     {
-        SceneManagerEx.Instance.LoadScene(Scene.Lobby);
+        SceneManagerEx.Instance.LoadScene(Scene.Stage);
     }
 
     private void OnReplay(PointerEventData data)

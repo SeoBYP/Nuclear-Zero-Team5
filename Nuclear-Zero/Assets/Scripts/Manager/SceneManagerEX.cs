@@ -7,6 +7,7 @@ public enum Scene
 {
     Title,
     Lobby,
+    Stage,
     Game,
 }
 class SceneManagerEx : Managers<SceneManagerEx>

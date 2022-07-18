@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
             return;
         if ((IsCollisionButtom && IsMoveDown) || (IsCollisionTop && IsMoveUp))
         {
-            animationController.PlayRightWalk();
+            //animationController.PlayRightWalk();
             return;
         }
             
@@ -64,14 +64,14 @@ public class PlayerController : MonoBehaviour
         IsMoveUp = true;
         IsMoveDown = false;
         targetPos = new Vector2(transform.position.x, transform.position.y + Xincrement);
-        animationController.PlayUpWalk();
+        //animationController.PlayUpWalk();
     }
     private void goDown()
     {
         IsMoveUp = false;
         IsMoveDown = true;
         targetPos = new Vector2(transform.position.x, transform.position.y - Xincrement);
-        animationController.PlayDownWalk();
+        //animationController.PlayDownWalk();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

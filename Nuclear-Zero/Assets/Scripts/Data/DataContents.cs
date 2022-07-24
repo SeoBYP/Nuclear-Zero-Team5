@@ -13,12 +13,12 @@ public class DataContents
     {
         TextAsset asset = Resources.Load<TextAsset>(path);
         string[] rows = asset.text.Split('\n');
-        rows[0] = rows[0].Replace("\r", "");
+        //rows[0] = rows[0].Replace("\r", "");
         string[] subjects = rows[0].Split(',');
 
         for(int i = 1; i < rows.Length; i++)
         {
-            rows[i] = rows[i].Replace("\r", "");
+           // rows[i] = rows[i].Replace("\r", "");
             string[] cols = rows[i].Split(',');
 
             int tableindex = 0;

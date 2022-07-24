@@ -9,11 +9,12 @@ public class MoveBlock1 : BlockController
     private bool _isTransition;
     public float _speed = 5f;
     private float _xIndex;
+    public float X_Move;
     protected override void Init()
     {
         base.Init();
-        _leftTargetPos = transform.position + new Vector3(10f, 0, 0);
-        _rightTargetPos = transform.position + new Vector3(-10f, 0, 0);
+        _leftTargetPos = transform.position + new Vector3(X_Move, 0, 0);
+        _rightTargetPos = transform.position + new Vector3(-X_Move, 0, 0);
         _isTransition = false;
         _xIndex = 1f;
         StartCoroutine(MoveTarget());

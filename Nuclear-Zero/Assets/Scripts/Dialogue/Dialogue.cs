@@ -11,14 +11,24 @@ using UnityEngine;
 //  5, 미ㅏㄴㅇ런ㅁ아러, 6, 7,8
 
 [System.Serializable] // 구조체가 인스펙터 창에 보이게 하기 위한 작업
-public struct TalkData
+public class TalkData
 {
     public int Index;
     public string name;
-    public string[] contexts;
+    public string contexts;
     public int Anser1;
     public int Anser2;
     public int Anser3;
+
+    public TalkData(int index,string name,string contexts,int anser1,int anser2,int anser3)
+    {
+        Index = index;
+        this.name = name;
+        this.contexts = contexts;
+        Anser1 = anser1;
+        Anser1 = anser1;
+        Anser1 = anser1;
+    }
 }
 
 
@@ -27,5 +37,12 @@ public class Dialogue
 {
     public int ID;
     public string EventName;
-    public TalkData[] dialgoues;
+    public List<TalkData> datas = new List<TalkData>();
+
+    public void SetTalkData(TalkData talk)
+    {
+
+        datas.Add(talk);
+    }
 }
+

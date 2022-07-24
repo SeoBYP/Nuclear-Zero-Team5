@@ -10,7 +10,7 @@ public class InteractionController : MonoBehaviour
     private void Start()
     {
         //interactionEvent = GetComponent<InteractionEvent>();
-        DataManager.Instance.LoadText(Define.TextType.Chapter1);
+        
         //ShowText();
     }
 
@@ -21,12 +21,12 @@ public class InteractionController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (count >= text.Length)
-                return;
-            print(text[count]);
-            count++;
-        }
+        //if (Input.GetKeyDown(KeyCode.Mouse0))
+        //{
+        //    if (count >= text.Length)
+        //        return;
+        //    print(text[count]);
+        //    count++;
+        //}
     }
 }

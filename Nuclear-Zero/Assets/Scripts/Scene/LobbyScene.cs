@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static Define;
 public class LobbyScene : BaseScene
 {
     protected override void Init()
@@ -9,16 +9,7 @@ public class LobbyScene : BaseScene
         base.Init();
         UIManager.Instance.ShowSceneUi<LobbyUI>();
         UIManager.Instance.FadeIn();
-
-        //StartCoroutine(Initialize());
-    }
-
-    IEnumerator Initialize()
-    {
-
-        yield return YieldInstructionCache.WaitForSeconds(1.1f);
-        //UIManager.Instance.Get<FadePopupUI>().ClosePopupUI();
-        //UIManager.Instance.ShowSceneUi<LobbyUI>();
+        //DataManager.Instance.LoadText(TextType.Chapter1);
     }
 
     public override void Clear()

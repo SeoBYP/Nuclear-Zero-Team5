@@ -6,13 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Grounded")]
     private bool Grounded;
-    private float GroundedOffset = 2.1f;
-    private Vector2 GroundedSize = new Vector2(0.2f, 0.2f);
+    private float GroundedOffset = 2f;
+    private Vector2 GroundedSize = new Vector2(1.5f, 0.2f);
     public LayerMask GroundLayer;
 
     [Header("PlayerJump")]
     private float JumpHeight = 10f;
-    private float Gravity = -70;
+    private float Gravity = -100;
     private float JumpTimeout = 0.5f;
     private float _jumpTimeoutDelta;
     private float _verticalVelocity;
@@ -118,10 +118,19 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGrounded()
     {
-        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
-        Grounded = Physics2D.OverlapBox(spherePosition, GroundedSize, GroundLayer);
+        Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
+        Grounded = Physics2D.OverlapBox(boxPosition, GroundedSize,LayerMask.NameToLayer("Floor") >> 1);
         animationController.IsGrounded(Grounded);
+        //print(Grounded);
+        //Debug.DrawLine(transform.position,boxPosition, Color.red);
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
+    //    Gizmos.DrawWireCube(boxPosition, GroundedSize);
+    //    Gizmos.color = Color.red;
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -141,6 +150,7 @@ public class PlayerController : MonoBehaviour
     {
         print("Dead");
         GameManager.Instance.IsGameOver = true;
+        UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
     }
 
     public void TakeDamage()

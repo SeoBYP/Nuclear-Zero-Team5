@@ -7,7 +7,7 @@ using static Define;
 public class DataManager : Managers<DataManager>
 {
     public static Dictionary<TableType, DataContents> TableDic = new Dictionary<TableType, DataContents>();
-    public static Dictionary<TextType, Dialogue> DialogueDic = new Dictionary<TextType, Dialogue>();
+    public static Dictionary<TextType, Dialogue[]> DialogueDic = new Dictionary<TextType, Dialogue[]>();
 
     public static bool isFinish = false;
 
@@ -28,6 +28,7 @@ public class DataManager : Managers<DataManager>
             //}
             DataContents lowBase = new DataContents();
             lowBase.LoadData("Data/" + tableType.ToString());
+
             TableDic.Add(tableType, lowBase);
         }
     }
@@ -35,49 +36,44 @@ public class DataManager : Managers<DataManager>
     public void LoadText(TextType textType)
     {
         string path = "Data/" + textType.ToString();
-        if (!DialogueDic.ContainsKey(textType))
-        {
-            Dialogue dialogues = Parse(path);
-
-            //for (int i = 0; i < dialogues.Length; i++)
-            //{
-            //    DialogueDic.Add(textType, dialogues[i]);
-            //}
-            isFinish = true;
-        }
+        DialogueDic.Add(textType, Parse(path));
     }
 
-    public Dialogue Parse(string _CSVFileName)
+    public Dialogue[] Parse(string _CSVFileName)
     {
-        print(_CSVFileName);
-        List<Dialogue> dialogueList = new List<Dialogue>();
         TextAsset csvData = Resources.Load<TextAsset>(_CSVFileName);
+        List<Dialogue> dialogues = new List<Dialogue>();
 
-        string[] data = csvData.text.Split(new char[] { '\n' });
-        for (int i = 1; i < data.Length;)
+        string[] rows = csvData.text.Split('\n');
+        //string[] subject = rows[0].Split(',');
+        do
         {
-            string[] row = data[i].Split(new char[] { ',' });
+            for (int i = 1; i < rows.Length; i++)
+            {
+                Dialogue dialogue = new Dialogue();
+                string[] cols = rows[i].Split(',');
 
-            Dialogue dialogue = new Dialogue();
-            dialogue.EventName = row[1];
-            List<TalkData> contextList = new List<TalkData>();
-            //do
-            //{
-            //    print(dialogue.EventName);
-            //    //string temp = row[2];
-            //    //var contenxt = temp.Replace('&', ',');
-            //    //contextList.Add(contenxt);
-            //    //if (++i < data.Length)
-            //    //    row = data[i].Split(new char[] { ',' });
-            //    //else
-            //    //    break;
-            //} while (row[0].ToString() == "");
-            //dialogue.contexts = contextList.ToArray();
+                int tableindex = 0;
+                int.TryParse(cols[0], out tableindex);
+                dialogue.ID = tableindex;
+                dialogue.EventName = cols[1];
 
-            dialogueList.Add(dialogue);
+                int index = 0;
+                int.TryParse(cols[2], out index);
+                int anser1 = 0;
+                int anser2 = 0;
+                int anser3 = 0;
+                int.TryParse(cols[5], out anser1);
+                int.TryParse(cols[6], out anser2);
+                int.TryParse(cols[7], out anser3);
+                TalkData datas = new TalkData(index, cols[3], cols[4], anser1, anser2, anser3);
+                dialogue.SetTalkData(datas);
 
-        }
-        return null;//dialogueList.ToArray();
+                dialogues.Add(dialogue);
+            }
+        } while (rows[0] == "");
+ 
+        return dialogues.ToArray();//dialogueList.ToArray();
     }
 
     public static int ToInter(TableType tableType, int tableIndex,string subject)

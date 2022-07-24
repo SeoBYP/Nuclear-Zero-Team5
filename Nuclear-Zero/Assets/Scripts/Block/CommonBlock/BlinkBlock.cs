@@ -14,6 +14,8 @@ public class BlinkBlock : BlockController
     private SpriteRenderer _sprite;
     private bool IsActive = true;
 
+    public float BlinkTime;
+
     protected override void Init()
     {
         base.Init();
@@ -26,9 +28,9 @@ public class BlinkBlock : BlockController
     {
         while (true)
         {
-            yield return YieldInstructionCache.WaitForSeconds(2f);
+            yield return YieldInstructionCache.WaitForSeconds(BlinkTime);
             SetDeActiveColor();
-            yield return YieldInstructionCache.WaitForSeconds(2f);
+            yield return YieldInstructionCache.WaitForSeconds(BlinkTime);
             SetActiveColor();
         }
     }

@@ -85,6 +85,6 @@ public class GameManager : Managers<GameManager>//,IUpdate
         
 
         _player.Move(_joystick.Direction);
-        _map.MapMove();
+        //_map.MapMove();
     }
 }

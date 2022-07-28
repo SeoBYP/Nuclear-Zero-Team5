@@ -6,7 +6,6 @@ public class GameManager : Managers<GameManager>//,IUpdate
 {
     private Joystick _joystick;
     private PlayerController _player;
-    private MapController _map;
 
     public bool IsClear { get; set; }
     public bool IsGameOver { get; set; }
@@ -18,16 +17,15 @@ public class GameManager : Managers<GameManager>//,IUpdate
         IsClear = false;
         IsGameOver = false;
         IsStart = false;
-        _map = Utils.FindObjectOfType<MapController>(false);
     }
 
     public void GameStart()
     {
         UIManager.Instance.ShowSceneUi<GameUI>();
         _player = Utils.FindObjectOfType<PlayerController>(true);
-        _map = Utils.FindObjectOfType<MapController>(false);
         _joystick = Utils.FindObjectOfType<Joystick>(false);
-        InitGameObjects();
+        //_player.Init();
+        //InitGameObjects();
 
         EnemyController.IsStart = true;
         IsStart = true;
@@ -51,19 +49,15 @@ public class GameManager : Managers<GameManager>//,IUpdate
         ClearGameObjects();
     }
 
-    public void InitGameObjects()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject go in enemies)
-        {
-            go.GetComponent<EnemyController>().Init();
-        }
-        //GameObject[] projectiles = GameObject.FindGameObjectsWithTag("Weapon");
-        //foreach(GameObject go in projectiles)
-        //{
-        //    go.GetComponent<Projectil>().Init();
-        //}
-    }
+    //public void InitGameObjects()
+    //{
+    //    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    //    foreach (GameObject go in enemies)
+    //    {
+    //        go.GetComponent<EnemyController>().Init();
+    //    }
+        
+    //}
 
 
     public void ClearGameObjects()
@@ -81,9 +75,6 @@ public class GameManager : Managers<GameManager>//,IUpdate
             return;
         if (IsClear || IsGameOver)
             return;
-
-        
-
         _player.Move(_joystick.Direction);
         //_map.MapMove();
     }

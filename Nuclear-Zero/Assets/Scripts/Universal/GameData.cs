@@ -4,9 +4,13 @@ using UnityEngine;
 using static Define;
 public class GameData
 {
-    public static Chapter playerCurChapter = Chapter.Chapter2;
-    public static Stage playerCurStage = Stage.Stage1_4;
+    public static Chapter playerCurChapter = Chapter.Chapter4;
+    public static Stage playerCurStage = Stage.Stage4_2;
 
-    public static int playerStars = 12;
+    public static string dialogueObjectName = string.Empty;
+
+    public static bool IsLookPrologue = false;
+
+    public static int playerStars = 40;
 
 }

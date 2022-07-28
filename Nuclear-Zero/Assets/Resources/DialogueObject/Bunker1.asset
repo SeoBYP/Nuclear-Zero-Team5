@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1971a8373978b4fcdbe605df5399bc39, type: 3}
+  m_Name: Bunker1
+  m_EditorClassIdentifier: 
+  talkData:
+  - dialogues: "\uB51C\uB7F0\uC774 \uC0B4\uB358 \uC9C0\uC5ED\uC758 \uC6D0\uC790\uB825
+      \uBC1C\uC804\uC18C\uAC00 \uC190\uC0C1\uB418\uC5B4 \uBC29\uC0AC\uB2A5\uC774
+      \uC720\uCD9C\uB418\uC5C8\uB2E4\uB294 \uAE30\uC0AC\uB97C \uC811\uD55C\uB2E4."
+    sprite: {fileID: 0}
+    charactername: 
+  - dialogues: "\uB808\uC774\uB098\uAC00 \uAC71\uC815\uB418\uB294\uAD70. \uAC58 \uC544\uC9C1
+      \uC5B4\uB824\uC11C \uAC1C\uC870\uB3C4 \uBABB \uBC1B\uC558\uB294\uB370\u2026\u2026."
+    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    charactername: "\uB51C\uB7F0"
+  - dialogues: "\uC774\uC0AC\uB97C \uD574\uC57C \uD560 \uC218\uB3C4 \uC788\uACA0\uC5B4."
+    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    charactername: "\uB51C\uB7F0"
+  responses: []

@@ -15,6 +15,7 @@ public class MoveBlock1 : BlockController
         base.Init();
         _leftTargetPos = transform.position + new Vector3(X_Move, 0, 0);
         _rightTargetPos = transform.position + new Vector3(-X_Move, 0, 0);
+        print($"_leftTargetPos : {_leftTargetPos}, _rightTargetPos:{_rightTargetPos}");
         _isTransition = false;
         _xIndex = 1f;
         StartCoroutine(MoveTarget());
@@ -41,12 +42,12 @@ public class MoveBlock1 : BlockController
     private void Update()
     {
         Move();
-        if (Vector2.Distance(transform.position, _leftTargetPos) < 0.1f)
+        if (Vector2.Distance(transform.position, _leftTargetPos) <= 0.5f)
         {
             _isTransition = true;
             _xIndex *= -1;
         }
-        else if (Vector2.Distance(transform.position, _rightTargetPos) < 0.1f)
+        else if (Vector2.Distance(transform.position, _rightTargetPos) <= 0.5f)
         {
             _isTransition = true;
             _xIndex *= -1;

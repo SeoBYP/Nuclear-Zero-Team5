@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3430793969155769095}
   m_Layer: 6
   m_Name: BlinkBlock
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,3 +152,4 @@ MonoBehaviour:
   _collider2D: {fileID: 3430793969155769094}
   _trriger2D: {fileID: 3430793969155769113}
   BlinkTime: 2
+  StartTime: 0

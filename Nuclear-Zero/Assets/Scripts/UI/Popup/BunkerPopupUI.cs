@@ -30,7 +30,7 @@ public class BunkerPopupUI : PopupUI
 
         BindEvent(GetGameObject((int)GameObjects.TargetObject), OnTargeted, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Close).gameObject, OnClose, UIEvents.Click);
-        UIManager.Instance.ShowPopupUi<TalkTextPopupUI>();
+        UIManager.Instance.ShowPopupUi<DialoguePopupUI>();
     }
 
     private void OnTargeted(PointerEventData data)

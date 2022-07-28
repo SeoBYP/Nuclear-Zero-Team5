@@ -18,5 +18,5 @@ public class DashEnemy : EnemyController
         transform.position = curPos + targetPos;
     }
 
-    protected override void Damaged() { _player.TakeDamage(); }
+    public override void Damaged() { _player.TakeDamage(); }
 }

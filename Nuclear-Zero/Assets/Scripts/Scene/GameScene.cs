@@ -9,17 +9,11 @@ public class GameScene : BaseScene
     {
         base.Init();
         UIManager.Instance.ShowPopupUi<TutorialPopupUI>();
+        if(GameData.dialogueObjectName != string.Empty)
+        {
+            UIManager.Instance.ShowPopupUi<DialoguePopupUI>();
+        }
         UIManager.Instance.FadeIn();
-        //MapManager.Instance.LoadMap(Define.Map.Map1_1);
-        //StartCoroutine(Initialize());
-    }
-
-    IEnumerator Initialize()
-    {
-        UIManager.Instance.FadeIn();
-        yield return YieldInstructionCache.WaitForSeconds(1.1f);
-        //UIManager.Instance.Get<FadePopupUI>().ClosePopupUI();
-
     }
 
     public override void Clear()

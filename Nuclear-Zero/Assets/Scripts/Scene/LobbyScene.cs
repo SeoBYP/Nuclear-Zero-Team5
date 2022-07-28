@@ -8,7 +8,12 @@ public class LobbyScene : BaseScene
     {
         base.Init();
         UIManager.Instance.ShowSceneUi<LobbyUI>();
+        if(GameData.IsLookPrologue == false)
+        {
+            UIManager.Instance.ShowPopupUi<ProloguePopupUI>();
+        }
         UIManager.Instance.FadeIn();
+        
         //DataManager.Instance.LoadText(TextType.Chapter1);
     }
 

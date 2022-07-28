@@ -17,5 +17,5 @@ public class WalkEnemy : EnemyController
         Vector2 targetPos = Vector2.left * xIndex * speed * Time.deltaTime;
         transform.position = curPos + targetPos;
     }
-    protected override void Damaged() { _player.TakeDamage(); }
+    public override void Damaged() { _player.TakeDamage(); }
 }

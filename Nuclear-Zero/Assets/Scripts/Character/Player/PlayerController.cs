@@ -38,10 +38,16 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
 
+    private void Start()
+    {
+        Init();
+    }
+
     public void Init()
     {
         IsMapLaftCollision = false;
         IsMapRightCollision = false;
+        Hited = false;
         _jumpTimeoutDelta = JumpTimeout;
 
         animationController = GetComponentInChildren<PlayerAnimationController>();
@@ -58,7 +64,10 @@ public class PlayerController : MonoBehaviour
         if (GameManager.Instance.IsStart == false)
             return;
         if (GameManager.Instance.IsClear || GameManager.Instance.IsGameOver)
+        {
+            _rigidbody2D.velocity = Vector2.zero;
             return;
+        }
         _aniStateInfo = _animator.GetCurrentAnimatorStateInfo(0);
         CheckGrounded();
         Jump();
@@ -142,13 +151,11 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     #endregion
 
     #region PlayerDamaged
     public void Dead()
     {
-        print("Dead");
         GameManager.Instance.IsGameOver = true;
         UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
     }
@@ -167,10 +174,10 @@ public class PlayerController : MonoBehaviour
             print("Shield");
             return;
         }
-        print("TakeDamage");
+        Handheld.Vibrate();
         gameUI.DeleteHeart();
         Hited = true;
-        //animationController.Hited();
+        animationController.Hited();
         StartCoroutine(DontActive());
     }
 

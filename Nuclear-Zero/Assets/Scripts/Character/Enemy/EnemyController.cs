@@ -14,13 +14,7 @@ public class EnemyController : MonoBehaviour, IUpdate
         Dead,
     }
 
-    //[Header("Grounded")]
-    //protected bool Grounded;
-    //private float GroundedOffset = 3f;
-    //private Vector2 GroundedSize = new Vector2(0.2f, 0.2f);
-    //[SerializeField] private LayerMask CheckLayer;
-
-    protected BoxCollider2D _collider2D;
+    //protected BoxCollider2D _collider2D;
     protected EnemyState _state;
     protected float xIndex = 1;
     protected PlayerController _player;
@@ -29,28 +23,41 @@ public class EnemyController : MonoBehaviour, IUpdate
 
     public static bool IsStart { get; set; } = false;
 
+    private void Start()
+    {
+        Init();
+    }
+
     public virtual void Init()
     {
-        //_rigidbody2D = GetComponent<Rigidbody2D>();
-        _collider2D = GetComponent<BoxCollider2D>();
-        _state = EnemyState.Idle;
-        //animationController = GetComponentInChildren<EnemyAnimationController>();
-        //if (animationController != null)
-        //    animationController.Init();
         UpdateManager.Instance.Listener(this);
     }
 
     protected virtual void Run()
     {
-        //CheckGrounded();
+
     }
 
+    private void Update()
+    {
+        if (GameManager.Instance.IsStart == false)
+            return;
+        if (GameManager.Instance.IsClear || GameManager.Instance.IsGameOver)
+        {
+            return;
+        }
+        Run();
+    }
 
     public void OnUpdate()
     {
-        if (IsStart == false)
-            return;
-        Run();
+        //if (GameManager.Instance.IsStart == false)
+        //    return;
+        //if (GameManager.Instance.IsClear || GameManager.Instance.IsGameOver)
+        //{
+        //    return;
+        //}
+        //Run();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,14 +67,16 @@ public class EnemyController : MonoBehaviour, IUpdate
             if (_player == null)
             {
                 _player = collision.gameObject.GetComponent<PlayerController>();
+                Damaged();
             }
-            Damaged();
+            else
+                Damaged();
         }
     }
 
-    protected virtual void Damaged()
+    public virtual void Damaged()
     {
-
+        
     }
 
     //private void CheckGrounded()

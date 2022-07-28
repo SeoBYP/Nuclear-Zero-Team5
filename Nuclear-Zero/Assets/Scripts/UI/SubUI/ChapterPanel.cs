@@ -85,7 +85,7 @@ public class ChapterPanel : SubUI
 
     private void OnClickStageBtn(string stageText)
     {
-        UIManager.Instance.ShowPopupUi<StageCharacterSelectPopupUI>().SetSeleteStageText(stageText);
+        UIManager.Instance.ShowPopupUi<StageSelectPopupUI>().SetSeleteStageText(stageText);
     }
 
     private void OnErrorStageBtn(string stageError)
@@ -99,35 +99,50 @@ public class ChapterPanel : SubUI
         {
             case Chapter.Chapter1:
                 {
-                    if (GameData.playerStars > 0 && GameData.playerStars % 12 == 0)
+                    if (GameData.playerStars >= 12)
+                    {
                         StartCoroutine(ShowBunkerPopupUI());
+                        GameData.dialogueObjectName = "Bunker1";
+                    }
                     else
                         UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
                 }
                 break;
             case Chapter.Chapter2:
                 {
-                    if (GameData.playerStars % 24 == 0)
+                    if (GameData.playerStars >= 24)
+                    {
                         StartCoroutine(ShowBunkerPopupUI());
+                        GameData.dialogueObjectName = "Bunker2";
+                    }
                     else
                         UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
                 }
                 break;
             case Chapter.Chapter3:
                 {
-                    if (GameData.playerStars % 36 == 0)
+                    if (GameData.playerStars >= 36)
+                    {
                         StartCoroutine(ShowBunkerPopupUI());
+                        GameData.dialogueObjectName = "Bunker3";
+                    }
                     else
                         UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
                 }
                 break;
             case Chapter.Chapter4:
                 {
-                    if (GameData.playerStars % 48 == 0)
+                    if (GameData.playerStars >= 48)
+                    {
                         StartCoroutine(ShowBunkerPopupUI());
+                        GameData.dialogueObjectName = "Bunker4";
+                    }
                     else
                         UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
                 }
+                break;
+            default:
+                GameData.dialogueObjectName = string.Empty;
                 break;
         }
     }

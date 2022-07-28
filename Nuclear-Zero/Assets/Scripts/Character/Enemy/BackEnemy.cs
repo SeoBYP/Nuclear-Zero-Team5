@@ -22,5 +22,9 @@ public class BackEnemy : EnemyController
         Vector2 targetPos = Vector2.right * xIndex * speed * Time.deltaTime;
         transform.position = curPos + targetPos;
     }
-    protected override void Damaged() { _player.Dead(); }
+    public override void Damaged()
+    {
+
+        _player.Dead();
+    }
 }

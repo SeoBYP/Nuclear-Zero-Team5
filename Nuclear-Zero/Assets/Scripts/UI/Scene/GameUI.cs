@@ -8,7 +8,7 @@ public class GameUI : SceneUI
 {
     enum Buttons
     {
-        Jump,
+        Pause,
     }
 
     private int count;
@@ -26,13 +26,13 @@ public class GameUI : SceneUI
 
     private void Binds()
     {
-        //Bind<Button>(typeof(Buttons));
+        Bind<Button>(typeof(Buttons));
         InitPlayerHearts();
         player = Utils.FindObjectOfType<PlayerController>();
         joystick = GetComponentInChildren<Joystick>();
         if (joystick != null)
             joystick.Init();
-        //BindEvent(GetButton((int)Buttons.Jump).gameObject, OnJump, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.Pause).gameObject, OnPause, UIEvents.Click);
     }
 
     private void InitPlayerHearts()
@@ -46,10 +46,10 @@ public class GameUI : SceneUI
         count = hearts.Length - 1;
     }
 
-    //private void OnJump(PointerEventData data)
-    //{
-    //    player.Jump();//ref IsClicked);
-    //}
+    private void OnPause(PointerEventData data)
+    {
+        print("일시정지");
+    }
 
     public void DeleteHeart()
     {

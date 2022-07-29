@@ -989,7 +989,7 @@ GameObject:
   - component: {fileID: 2316535896630831419}
   - component: {fileID: 1026919287790371122}
   m_Layer: 5
-  m_Name: Stage3
+  m_Name: Stage2-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1513,7 +1513,7 @@ GameObject:
   - component: {fileID: 5490630795569007838}
   - component: {fileID: 8287752256400965994}
   m_Layer: 5
-  m_Name: Stage3
+  m_Name: Stage3-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2047,7 +2047,7 @@ GameObject:
   - component: {fileID: 676838636362092529}
   - component: {fileID: 682155681665034786}
   m_Layer: 5
-  m_Name: Stage4
+  m_Name: Stage1-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2181,7 +2181,7 @@ GameObject:
   - component: {fileID: 6131639095688685946}
   - component: {fileID: 1035037742178378356}
   m_Layer: 5
-  m_Name: Stage2
+  m_Name: Stage1-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2985,7 +2985,7 @@ GameObject:
   - component: {fileID: 465202224753570598}
   - component: {fileID: 1321033346947028077}
   m_Layer: 5
-  m_Name: Stage4
+  m_Name: Stage2-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3269,7 +3269,7 @@ GameObject:
   - component: {fileID: 2544608313528425292}
   - component: {fileID: 2644485330159934164}
   m_Layer: 5
-  m_Name: Stage4
+  m_Name: Stage4-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4847,7 +4847,7 @@ GameObject:
   - component: {fileID: 7922573310248545280}
   - component: {fileID: 2061703807785764312}
   m_Layer: 5
-  m_Name: Stage1
+  m_Name: Stage4-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5110,7 +5110,7 @@ GameObject:
   - component: {fileID: 3600522420198297580}
   - component: {fileID: 1646924463173635517}
   m_Layer: 5
-  m_Name: Stage4
+  m_Name: Stage3-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6144,7 +6144,7 @@ GameObject:
   - component: {fileID: 3362122715724829450}
   - component: {fileID: 1094147260579038204}
   m_Layer: 5
-  m_Name: Stage3
+  m_Name: Stage1-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8722,8 +8722,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4752303464203801529}
   m_HandleRect: {fileID: 4752303464203801528}
   m_Direction: 0
-  m_Value: 0.5
-  m_Size: 0.24999999
+  m_Value: 0.50000006
+  m_Size: 0.25
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9171,7 +9171,7 @@ GameObject:
   - component: {fileID: 3318937605069802213}
   - component: {fileID: 8130525246147171753}
   m_Layer: 5
-  m_Name: Stage2
+  m_Name: Stage3-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10695,7 +10695,7 @@ GameObject:
   - component: {fileID: 5196708249975232677}
   - component: {fileID: 219257587423980257}
   m_Layer: 5
-  m_Name: Stage3
+  m_Name: Stage4-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10954,7 +10954,7 @@ GameObject:
   - component: {fileID: 3500059843644660362}
   - component: {fileID: 6034084748024603217}
   m_Layer: 5
-  m_Name: Stage1
+  m_Name: Stage1-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12113,7 +12113,7 @@ GameObject:
   - component: {fileID: 996504331627023711}
   - component: {fileID: 1835252875571284020}
   m_Layer: 5
-  m_Name: Stage1
+  m_Name: Stage2-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13447,7 +13447,7 @@ GameObject:
   - component: {fileID: 7934898783467318905}
   - component: {fileID: 6438240585316460352}
   m_Layer: 5
-  m_Name: Stage2
+  m_Name: Stage4-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13896,7 +13896,7 @@ GameObject:
   - component: {fileID: 6718739278904215081}
   - component: {fileID: 8950307981948759470}
   m_Layer: 5
-  m_Name: Stage2
+  m_Name: Stage2-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15115,7 +15115,7 @@ GameObject:
   - component: {fileID: 5227668155762831793}
   - component: {fileID: 8771039572944410513}
   m_Layer: 5
-  m_Name: Stage1
+  m_Name: Stage3-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

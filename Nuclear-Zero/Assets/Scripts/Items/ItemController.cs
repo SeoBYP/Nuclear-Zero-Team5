@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    //ㅇㅏㄴ녀ㅇ하세요
     SpriteRenderer _sprite;
     private void Start()
+    {
+        Init();
+    }
+
+    public virtual void Init()
     {
         _sprite = GetComponent<SpriteRenderer>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -21,10 +25,8 @@ public class ItemController : MonoBehaviour
 
     private void ItemDestroy()
     {
-        // ???????????? ???????? ???? ????
         SetItemInfo();
 
-        //???????????? ???????? ???? ???????? ????????.
         Destroy(this.gameObject);
     }
 

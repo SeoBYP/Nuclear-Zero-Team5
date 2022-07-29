@@ -150,6 +150,18 @@ public class PlayerController : MonoBehaviour
                 _verticalVelocity = transform.position.y;
             }
         }
+        if (collision.gameObject.CompareTag("Border"))
+        {
+            switch (collision.gameObject.name)
+            {
+                case "Right":
+                    GameManager.Instance.GameClear();
+                    break;
+                case "Button":
+                    GameManager.Instance.GameOver();
+                    break;
+            }
+        }
     }
     #endregion
 
@@ -206,6 +218,7 @@ public class PlayerController : MonoBehaviour
         speed = value;
         yield return YieldInstructionCache.WaitForSeconds(fastTime);
         speed = temp;
+        yield break;
     }
 
     public void SetSlow(float value)
@@ -219,6 +232,7 @@ public class PlayerController : MonoBehaviour
         speed = value;
         yield return YieldInstructionCache.WaitForSeconds(slowTime);
         speed = temp;
+        yield break;
     }
 
     public void Jump(float jumpPower)

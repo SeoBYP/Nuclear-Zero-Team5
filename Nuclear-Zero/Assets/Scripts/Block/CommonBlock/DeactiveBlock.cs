@@ -25,16 +25,16 @@ public class DeactiveBlock : BlockController
         start = curColor;
         end = curColorAlpha;
         elapsed = 0;
-        StartCoroutine(ResetColor());
+        //StartCoroutine(ResetColor());
     }
 
-    IEnumerator ResetColor()
-    {
-        yield return YieldInstructionCache.WaitForSeconds(3f);
-        _collider2D.enabled = true;
-        _trriger2D.enabled = true;
-        _sprite.color = curColor;
-    }
+    //IEnumerator ResetColor()
+    //{
+    //    yield return YieldInstructionCache.WaitForSeconds(3f);
+    //    _collider2D.enabled = true;
+    //    _trriger2D.enabled = true;
+    //    _sprite.color = curColor;
+    //}
 
     void Update()
     {

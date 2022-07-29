@@ -1,0 +1,133 @@
+{
+    "PlayerInfo": {
+        "Gold": 1000,
+        "DialogueObjectName": "",
+        "LookPrologue": false,
+        "PlayerStars": 0,
+        "SelectStage": 0,
+        "PlayerChapters": [
+            {
+                "ChapterIndex" : 1,
+                "ChapterName": "Chapter1",
+                "ChapterStory": false,
+                "BunkerStory": false
+            },
+            {
+                "ChapterIndex": 2,
+                "ChapterName": "Chapter2",
+                "ChapterStory": false,
+                "BunkerStory": false
+            },
+            {
+                "ChapterIndex": 3,
+                "ChapterName": "Chapter3",
+                "ChapterStory": false,
+                "BunkerStory": false
+            },
+            {
+                "ChapterIndex": 4,
+                "ChapterName": "Chapter4",
+                "ChapterStory": false,
+                "BunkerStory": false
+            }
+        ],
+        "Stages": [
+            {
+                "StageIndex": 1,
+                "StageName": "Stage1-1",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 2,
+                "StageName": "Stage1-2",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 3,
+                "StageName": "Stage1-3",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 4,
+                "StageName": "Stage1-4",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 5,
+                "StageName": "Stage2-1",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 6,
+                "StageName": "Stage2-2",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 7,
+                "StageName": "Stage2-3",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 8,
+                "StageName": "Stage2-4",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 9,
+                "StageName": "Stage3-1",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 10,
+                "StageName": "Stage3-2",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 11,
+                "StageName": "Stage3-3",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 12,
+                "StageName": "Stage3-4",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 13,
+                "StageName": "Stage4-1",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 14,
+                "StageName": "Stage4-2",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 15,
+                "StageName": "Stage4-3",
+                "ResultStar": 0,
+                "Cleared": false
+            },
+            {
+                "StageIndex": 16,
+                "StageName": "Stage4-4",
+                "ResultStar": 0,
+                "Cleared": false
+            }
+        ]
+    }
+}

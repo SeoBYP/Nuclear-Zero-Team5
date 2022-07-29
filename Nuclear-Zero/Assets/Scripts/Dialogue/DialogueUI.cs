@@ -38,7 +38,7 @@ public class DialogueUI : SubUI
         CloseDialogueBox();
         if(dialogueObjectName == string.Empty)
         {
-            dialogueObjectName = GameData.dialogueObjectName;
+            dialogueObjectName = DataManager.Instance.playerInfo.DialogueObjectName;
         }
         dialogueObject = ResourcesManager.Instance.Load<DialogueObject>("DialogueObject/" + dialogueObjectName);
         ShowDialogue(dialogueObject);

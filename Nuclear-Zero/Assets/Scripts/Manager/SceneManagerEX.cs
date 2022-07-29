@@ -56,11 +56,13 @@ public abstract class BaseScene : MonoBehaviour
 
     private void Awake()
     {
-        Screen.SetResolution(1920,1080, false);
+        //Screen.SetResolution(1900,900, false);
+        DataManager.Instance.LoadPlayerInfo("PlayerInfomation");
     }
 
     protected virtual void Init()
     {
+
         Object obj = GameObject.FindObjectOfType(typeof(EventSystem));
         if (obj == null)
             ResourcesManager.Instance.Instantiate("EventSystem").name = "@EventSystem";

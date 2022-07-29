@@ -9,7 +9,7 @@ public class GameScene : BaseScene
     {
         base.Init();
         UIManager.Instance.ShowPopupUi<TutorialPopupUI>();
-        if(GameData.dialogueObjectName != string.Empty)
+        if(DataManager.Instance.playerInfo.DialogueObjectName != string.Empty)
         {
             UIManager.Instance.ShowPopupUi<DialoguePopupUI>();
         }

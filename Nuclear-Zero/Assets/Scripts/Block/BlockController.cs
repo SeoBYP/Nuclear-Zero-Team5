@@ -27,6 +27,22 @@ public class BlockController : MonoBehaviour
         OnSteped();
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (_player == null)
+                _player = collision.gameObject.GetComponent<PlayerController>();
+            OnExited();
+        }
+            
+    }
+
+    public virtual void OnExited()
+    {
+
+    }
+
     public virtual void OnSteped()
     {
 

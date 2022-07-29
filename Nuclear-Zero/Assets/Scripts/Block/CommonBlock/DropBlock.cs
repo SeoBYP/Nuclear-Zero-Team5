@@ -4,57 +4,38 @@ using UnityEngine;
 
 public class DropBlock : BlockController
 {
-    private Vector2 _downTargetPos;
-    private Vector2 _curPos;
-    private bool _isMoveDown;
+    [SerializeField] private Transform _downTargetPos;
     public float _speed = 30f;
-    private float _yIndex;
+    public bool _IsMove;
     protected override void Init()
     {
         base.Init();
-        _curPos = transform.position;
-        _downTargetPos = transform.position + new Vector3(0, -30f, 0);
-        _isMoveDown = false;
-        _yIndex = 0;
-        _speed = 0;
     }
 
     public override void OnSteped()
     {
         base.OnSteped();
-        _isMoveDown = true;
-        _yIndex = -1;
-        _speed = 30f;
+        _collider2D.isTrigger = true;
+        _player.TakeDamage();
     }
 
-    private void Move()
+    public override void OnExited()
     {
-        Vector2 curPos = transform.position;
-        Vector2 moveDir = Vector2.up * _yIndex * _speed * Time.deltaTime;
-        transform.position = curPos + moveDir;
+        base.OnExited();
+        _collider2D.isTrigger = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (_isMoveDown)
+        if (_IsMove)
         {
-            Move();
-            if (Vector2.Distance(transform.position, _downTargetPos) < 0.1f)
+            transform.position = Vector2.MoveTowards(transform.position, _downTargetPos.position, Time.deltaTime * _speed);
+            if(Vector2.Distance(transform.position, _downTargetPos.position) < 0.05f)
             {
-                _isMoveDown = false;
-                _speed = 15f;
-                _yIndex = 1;
+                _IsMove = false;
             }
         }
-        else
-        {
-            Move();
-            if (Vector2.Distance(transform.position, _curPos) < 0.1f)
-            {
-                _speed = 0;
-                _yIndex = 0;
-            }
-        }
+        
     }
 
 }

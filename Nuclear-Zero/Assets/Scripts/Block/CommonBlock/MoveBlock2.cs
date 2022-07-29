@@ -4,52 +4,42 @@ using UnityEngine;
 
 public class MoveBlock2 : BlockController
 {
-    private Vector2 _upTargetPos;
-    private Vector2 _downTargetPos;
-    private bool _isTransition;
-    public float _speed = 5f;
-    private float _yIndex;
-    public float Y_Move;
+    [SerializeField] private Transform _startPos;
+    [SerializeField] private Transform _endPos;
+    private Transform _desPos;
+    public float _speed;
+
     protected override void Init()
     {
         base.Init();
-        _upTargetPos = transform.position + new Vector3(0, Y_Move, 0);
-        _downTargetPos = transform.position + new Vector3(0, -Y_Move, 0);
-        _isTransition = false;
-        _yIndex = 1f;
-        StartCoroutine(MoveTarget());
+        transform.position = _startPos.position;
+        _desPos = _endPos;
     }
 
-    IEnumerator MoveTarget()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        while (true)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            if (_isTransition)
-                _isTransition = false;
-            yield return YieldInstructionCache.WaitForSeconds(1);
+            collision.transform.SetParent(transform);
         }
     }
 
-    private void Move()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        Vector2 curPos = transform.position;
-        Vector2 moveDir = Vector2.up * _yIndex * _speed * Time.deltaTime;
-        transform.position = curPos + moveDir;
-
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+        }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        Move();
-        if (Vector2.Distance(transform.position, _upTargetPos) < 0.1f)
+        transform.position = Vector2.MoveTowards(transform.position, _desPos.position, Time.deltaTime * _speed);
+
+        if (Vector2.Distance(transform.position, _desPos.position) < 0.05f)
         {
-            _isTransition = true;
-            _yIndex *= -1;
-        }
-        else if (Vector2.Distance(transform.position, _downTargetPos) < 0.1f)
-        {
-            _isTransition = true;
-            _yIndex *= -1;
+            if (_desPos == _endPos) _desPos = _startPos;
+            else _desPos = _endPos;
         }
     }
 }

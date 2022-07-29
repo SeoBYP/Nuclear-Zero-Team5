@@ -4,53 +4,42 @@ using UnityEngine;
 
 public class MoveBlock1 : BlockController
 {
-    private Vector2 _leftTargetPos;
-    private Vector2 _rightTargetPos;
-    private bool _isTransition;
-    public float _speed = 5f;
-    private float _xIndex;
-    public float X_Move;
+    [SerializeField] private Transform _startPos;
+    [SerializeField] private Transform _endPos;
+    private Transform _desPos;
+    public float _speed;
+
     protected override void Init()
     {
         base.Init();
-        _leftTargetPos = transform.position + new Vector3(X_Move, 0, 0);
-        _rightTargetPos = transform.position + new Vector3(-X_Move, 0, 0);
-        print($"_leftTargetPos : {_leftTargetPos}, _rightTargetPos:{_rightTargetPos}");
-        _isTransition = false;
-        _xIndex = 1f;
-        StartCoroutine(MoveTarget());
+        transform.position = _startPos.position;
+        _desPos = _endPos;
     }
 
-    IEnumerator MoveTarget()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        while (true)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            if (_isTransition)
-                _isTransition = false;
-            yield return YieldInstructionCache.WaitForSeconds(1);
+            collision.transform.SetParent(transform);
         }
     }
 
-    private void Move()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        Vector2 curPos = transform.position;
-        Vector2 moveDir = Vector2.left * _xIndex * _speed * Time.deltaTime;
-        transform.position = curPos + moveDir;
-
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+        }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        Move();
-        if (Vector2.Distance(transform.position, _leftTargetPos) <= 0.5f)
+        transform.position = Vector2.MoveTowards(transform.position, _desPos.position, Time.deltaTime * _speed);
+
+        if(Vector2.Distance(transform.position,_desPos.position) < 0.05f)
         {
-            _isTransition = true;
-            _xIndex *= -1;
-        }
-        else if (Vector2.Distance(transform.position, _rightTargetPos) <= 0.5f)
-        {
-            _isTransition = true;
-            _xIndex *= -1;
+            if (_desPos == _endPos) _desPos = _startPos;
+            else _desPos = _endPos;
         }
     }
 }

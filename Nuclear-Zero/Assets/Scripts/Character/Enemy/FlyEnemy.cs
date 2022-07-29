@@ -15,7 +15,9 @@ public class FlyEnemy : EnemyController
     private float _speed = 1;
     public float DeActiveTime = 3;
     public float _shotTime;
+    public float AttackRange;
 
+    private bool _IsAttack;
     private bool IsMoveDown;
     private bool IsMoveUp;
     private bool IsFollow;
@@ -28,15 +30,28 @@ public class FlyEnemy : EnemyController
         _targetPos = _player.transform.position + _Offset;
         StartCoroutine(SetTarget());
         StartCoroutine(DeActiveTimer());
+        _IsAttack = false;
         IsMoveDown = true;
     }
 
     protected override void Run()
     {
         base.Run();
-        Move();
-        FollowPlayer();
-        Shot();
+        CheckPlayer();
+        if (_IsAttack)
+        {
+            Move();
+            FollowPlayer();
+            Shot();
+        }
+    }
+
+    private void CheckPlayer()
+    {
+        if (Vector2.Distance(transform.position, _player.transform.position) < AttackRange)
+        {
+            _IsAttack = true;
+        }
     }
 
     IEnumerator SetTarget()
@@ -83,7 +98,7 @@ public class FlyEnemy : EnemyController
     {
         if (IsMoveDown)
         {
-            transform.position = Vector2.Lerp(transform.position, _targetPos, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _targetPos, speed * Time.deltaTime);
             if (Vector2.Distance(transform.position, _targetPos) < 0.1f)
             {
                 IsMoveDown = false;
@@ -93,11 +108,12 @@ public class FlyEnemy : EnemyController
         }
         if (IsMoveUp)
         {
-            transform.position = Vector2.Lerp(transform.position, _startPos, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _startPos, speed * Time.deltaTime);
             if (Vector2.Distance(transform.position, _startPos) < 0.1f)
             {
                 IsMoveUp = false;
                 IsFollow = false;
+                _IsAttack = false;
             }
         }
     }

@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour, IUpdate
     public virtual void Init()
     {
         UpdateManager.Instance.Listener(this);
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     protected virtual void Run()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
+    //ㅇㅏㄴ녀ㅇ하세요
     SpriteRenderer _sprite;
     private void Start()
     {

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class FlyEnemy : EnemyController
 {
-    public Vector3 _Offset;
+    public Vector3 _TargetOffset;
+    public Vector3 _ReturnOffset;
     private Vector2 dir;
-
     private Vector2 _targetPos;
     private Vector2 _startPos;
+
+    private Transform endPos;
 
     private float elapsed = 0;
 
@@ -27,9 +29,8 @@ public class FlyEnemy : EnemyController
     {
         base.Init();
         _player = Utils.FindObjectOfType<PlayerController>();
-        _targetPos = _player.transform.position + _Offset;
+        //_targetPos = _player.transform.position + _Offset;
         StartCoroutine(SetTarget());
-        StartCoroutine(DeActiveTimer());
         _IsAttack = false;
         IsMoveDown = true;
     }
@@ -98,12 +99,13 @@ public class FlyEnemy : EnemyController
     {
         if (IsMoveDown)
         {
+            _targetPos = _player.transform.position + _TargetOffset;
             transform.position = Vector2.MoveTowards(transform.position, _targetPos, speed * Time.deltaTime);
             if (Vector2.Distance(transform.position, _targetPos) < 0.1f)
             {
                 IsMoveDown = false;
                 IsFollow = true;
-                
+                StartCoroutine(DeActiveTimer());
             }                
         }
         if (IsMoveUp)
@@ -122,9 +124,9 @@ public class FlyEnemy : EnemyController
     {
         if (IsFollow)
         {
-            Vector3 playerPos = _player.transform.position + _Offset;
+            Vector3 playerPos = _player.transform.position + _TargetOffset;
             transform.position = playerPos;
-            _startPos = transform.position + _Offset;
+            _startPos = transform.position + _ReturnOffset;
         }
     }
 }

@@ -40,41 +40,32 @@ public class StageSelectPopupUI : PopupUI
         BindEvent(GetGameObject((int)GameObjects.BackGround), OnClosePopup, UIEvents.Click);
     }
 
-    public void SetSeleteStageText(string texts)
+    public void SetSeleteStageText(string texts,int stageindex)
     {
         GetText((int)Texts.SelectStageText).text = texts;
-        SetPlayerSelectStage(texts);
+        SetPlayerSelectStage(stageindex);
     }
 
-    private void SetPlayerSelectStage(string stage)
+    private void SetPlayerSelectStage(int stageIndex)
     {
-        switch (stage)
+        switch (stageIndex)
         {
-            case "Stage1-1":
-                GameData.dialogueObjectName = "Chapter1";
-                print(GameData.dialogueObjectName);
+            case 1:
+                DataManager.Instance.playerInfo.DialogueObjectName = "Chapter1";
                 break;
-            case "Stage2-1":
-                GameData.dialogueObjectName = "Chapter2";
-                print(GameData.dialogueObjectName);
+            case 5:
+                DataManager.Instance.playerInfo.DialogueObjectName = "Chapter2";
                 break;
-            case "Stage3-1":
-                GameData.dialogueObjectName = "Chapter3";
-                print(GameData.dialogueObjectName);
+            case 9:
+                DataManager.Instance.playerInfo.DialogueObjectName = "Chapter3";
                 break;
-            case "Stage4-1":
-                GameData.dialogueObjectName = "Chapter4";
-                print(GameData.dialogueObjectName);
+            case 13:
+                DataManager.Instance.playerInfo.DialogueObjectName = "Chapter4";
                 break;
             default:
-                GameData.dialogueObjectName = string.Empty;
+                DataManager.Instance.playerInfo.DialogueObjectName = string.Empty;
                 break;
         }
-    }
-
-    private string StageToString(Stage stage)
-    {
-        return stage.ToString();
     }
 
     private void OnClosePopup(PointerEventData data)

@@ -10,13 +10,15 @@ public class GameManager : Managers<GameManager>//,IUpdate
     public bool IsClear { get; set; }
     public bool IsGameOver { get; set; }
     public bool IsStart { get; set; }
-    public static bool IsGetItem { get; set; } = false; 
+
+    private bool IsPause;
     public override void Init()
     {
         base.Init();
         IsClear = false;
         IsGameOver = false;
         IsStart = false;
+        IsPause = false;
     }
 
     public void GameStart()
@@ -49,6 +51,20 @@ public class GameManager : Managers<GameManager>//,IUpdate
         ClearGameObjects();
     }
 
+    public void GamePuase()
+    {
+        if (IsPause == false)
+        {
+            Time.timeScale = 0;
+            IsPause = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            IsPause = false;
+        }
+    }
+
     //public void InitGameObjects()
     //{
     //    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -56,7 +72,7 @@ public class GameManager : Managers<GameManager>//,IUpdate
     //    {
     //        go.GetComponent<EnemyController>().Init();
     //    }
-        
+
     //}
 
 

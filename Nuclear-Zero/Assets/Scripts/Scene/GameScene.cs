@@ -8,12 +8,22 @@ public class GameScene : BaseScene
     protected override void Init()
     {
         base.Init();
-        UIManager.Instance.ShowPopupUi<TutorialPopupUI>();
-        if(DataManager.Instance.playerInfo.DialogueObjectName != string.Empty)
-        {
-            UIManager.Instance.ShowPopupUi<DialoguePopupUI>();
-        }
+        GameManager.Instance.GameStart();
+        ShowDialoguePopup();
         UIManager.Instance.FadeIn();
+    }
+
+    private void ShowDialoguePopup()
+    {
+        if (DataManager.Instance.playerInfo.DialogueObjectName != string.Empty)
+        {
+            int curchapterIndex = DataManager.Instance.playerInfo.SelectChapter;
+            if (DataManager.Instance.playerInfo.GetPlayerChapter(curchapterIndex).ChapterStory == false)
+            {
+                UIManager.Instance.ShowPopupUi<DialoguePopupUI>();
+                DataManager.Instance.playerInfo.GetPlayerChapter(curchapterIndex).ChapterStory = true;
+            }
+        }
     }
 
     public override void Clear()

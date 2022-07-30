@@ -32,6 +32,6 @@ public class ItemController : MonoBehaviour
 
     protected virtual void SetItemInfo()
     {
-        //UIManager.Instance.Get<GameUI>().SetItemButtons();
+        
     }
 }

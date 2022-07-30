@@ -4,34 +4,52 @@
         "DialogueObjectName": "",
         "LookPrologue": false,
         "PlayerStars": 0,
-        "SelectStage": 0,
+        "SelectStage": 1,
+        "ClearStage":1,
+        "SelectChapter" : 1,
         "PlayerChapters": [
             {
                 "ChapterIndex" : 1,
                 "ChapterName": "Chapter1",
+                "BunkerItem1" : false,
+                "BunkerItem2" : false,
+                "BunkerItem3" : false,
+                "BunkerItem4" : false,
                 "ChapterStory": false,
                 "BunkerStory": false
             },
             {
                 "ChapterIndex": 2,
                 "ChapterName": "Chapter2",
+                "BunkerItem1" : false,
+                "BunkerItem2" : false,
+                "BunkerItem3" : false,
+                "BunkerItem4" : false,
                 "ChapterStory": false,
                 "BunkerStory": false
             },
             {
                 "ChapterIndex": 3,
                 "ChapterName": "Chapter3",
+                "BunkerItem1" : false,
+                "BunkerItem2" : false,
+                "BunkerItem3" : false,
+                "BunkerItem4" : false,
                 "ChapterStory": false,
                 "BunkerStory": false
             },
             {
                 "ChapterIndex": 4,
                 "ChapterName": "Chapter4",
+                "BunkerItem1" : false,
+                "BunkerItem2" : false,
+                "BunkerItem3" : false,
+                "BunkerItem4" : false,
                 "ChapterStory": false,
                 "BunkerStory": false
             }
         ],
-        "Stages": [
+        "PlayerStages": [
             {
                 "StageIndex": 1,
                 "StageName": "Stage1-1",

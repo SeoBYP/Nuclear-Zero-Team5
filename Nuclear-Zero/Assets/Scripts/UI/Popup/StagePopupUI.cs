@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using static Define;
 public class StagePopupUI : PopupUI
 {
-    enum Stages
+    enum StageBtns
     {
         Stage1_1,
         Stage1_2,
@@ -26,6 +26,14 @@ public class StagePopupUI : PopupUI
         Stage4_4,
     }
 
+    enum Chapters
+    {
+        Chapter1,
+        Chapter2,
+        Chapter3,
+        Chapter4,
+    }
+
     enum Buttons
     {
         Close,
@@ -40,14 +48,51 @@ public class StagePopupUI : PopupUI
 
     private void Binds()
     {
-        //Bind<ChapterPanel>(typeof(Chapters));
-        //Bind<Button>(typeof(Buttons));
-        //for(int i = 0; i <= (int)Chapters.Chapter4; i++)
-        //{
-        //    Get<ChapterPanel>(i).Init();
-        //}
+        Bind<StageBtn>(typeof(StageBtns));
+        Bind<Button>(typeof(Buttons));
+        Bind<ChapterPanel>(typeof(Chapters));
+
         BindEvent(GetButton((int)Buttons.Close).gameObject, OnClose, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Tutorial).gameObject, OnTutorial, UIEvents.Click);
+        SetChapterPanel();
+        SetStageBtn();
+    }
+
+    private void SetStageBtn()
+    {
+        for (int i = 0; i < DataManager.Instance.playerInfo.Stages.Count; i++)
+        {
+            StageBtn stage = Get<StageBtn>(i);
+            PlayerStages stages = DataManager.Instance.playerInfo.GetPlayerStages(stage.StageIndex);
+            stage.Init();
+            // 클리어한 스테이지까지만 체크박스와 별 이미지가 나오도록 처리합니다.
+            if (stage.StageIndex < DataManager.Instance.playerInfo.ClearStage)
+                stage.SetButtonInfo(stages, OnClickStageBtn);
+            // 현재 플레이할 스테이지라면 버튼의 기능만 활성화합니다.
+            else if (stage.StageIndex == DataManager.Instance.playerInfo.ClearStage)
+                stage.SetButtonInfo(stages, OnClickStageBtn);
+            else
+                stage.SetButtonInfo(stages, OnErrorStageBtn);
+        }
+    }
+
+    private void SetChapterPanel()
+    {
+        for(int i = 0; i <= (int)Chapters.Chapter4; i++)
+        {
+            Get<ChapterPanel>(i).Init();
+        }
+    }
+
+
+    private void OnClickStageBtn(string stageText,int stageIndex)
+    {
+        UIManager.Instance.ShowPopupUi<StageSelectPopupUI>().SetSeleteStageText(stageText, stageIndex);
+    }
+
+    private void OnErrorStageBtn(string stageError, int stageIndex)
+    {
+        UIManager.Instance.ShowPopupUi<StageErrorPopupUI>();
     }
 
     private void OnClose(PointerEventData data)

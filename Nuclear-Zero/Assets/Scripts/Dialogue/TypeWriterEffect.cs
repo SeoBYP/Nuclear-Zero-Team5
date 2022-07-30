@@ -52,7 +52,7 @@ public class TypeWriterEffect : MonoBehaviour
 
                 if(IsPunctuation(textToType[i],out float waitTime) && !isLast && !IsPunctuation(textToType[i + 1],out _))
                 {
-                    yield return new WaitForSeconds(waitTime);
+                    yield return YieldInstructionCache.WaitForSeconds(waitTime);
                 }
             }
 

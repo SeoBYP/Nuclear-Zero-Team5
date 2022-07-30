@@ -7,13 +7,12 @@ using static Define;
 
 public class BunkerPopupUI : PopupUI
 {
-    enum GameObjects
-    {
-        TargetObject,
-    }
-
     enum Buttons
     {
+        BunkerItem1,
+        BunkerItem2,
+        BunkerItem3,
+        BunkerItem4,
         Close,
     }
 
@@ -25,18 +24,60 @@ public class BunkerPopupUI : PopupUI
 
     private void Binds()
     {
-        Bind<GameObject>(typeof(GameObjects));
+        //Bind<GameObject>(typeof(Buttons));
         Bind<Button>(typeof(Buttons));
 
-        BindEvent(GetGameObject((int)GameObjects.TargetObject), OnTargeted, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.BunkerItem1).gameObject, OnBunkerItem1, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.BunkerItem2).gameObject, OnBunkerItem2, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.BunkerItem3).gameObject, OnBunkerItem3, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.BunkerItem4).gameObject, OnBunkerItem4, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Close).gameObject, OnClose, UIEvents.Click);
-        UIManager.Instance.ShowPopupUi<DialoguePopupUI>();
     }
 
-    private void OnTargeted(PointerEventData data)
+    public void ShowDialoguePopup(int chapterIndex)
     {
-        UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
-        GameManager.IsGetItem = true;
+        if (DataManager.Instance.playerInfo.GetPlayerChapter(chapterIndex).BunkerStory == false)
+        {
+            UIManager.Instance.ShowPopupUi<DialoguePopupUI>();
+            DataManager.Instance.playerInfo.GetPlayerChapter(chapterIndex).BunkerStory = true;
+        }
+    }
+
+    private void OnBunkerItem1(PointerEventData data)
+    {
+        int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
+        if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem1 == false)
+        {
+            UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
+            DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem1 = true;
+        }
+    }
+    private void OnBunkerItem2(PointerEventData data)
+    {
+        int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
+        if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem2 == false)
+        {
+            UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
+            DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem2 = true;
+        }
+    }
+    private void OnBunkerItem3(PointerEventData data)
+    {
+        int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
+        if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem3 == false)
+        {
+            UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
+            DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem3 = true;
+        }
+    }
+    private void OnBunkerItem4(PointerEventData data)
+    {
+        int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
+        if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem4 == false)
+        {
+            UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
+            DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem4 = true;
+        }
     }
 
     public void OnExit()
@@ -46,7 +87,8 @@ public class BunkerPopupUI : PopupUI
 
     private void OnClose(PointerEventData data)
     {
-        if(GameManager.IsGetItem == false)
+        int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
+        if (DataManager.Instance.playerInfo.FindAllChapterItems(curChapterIndex) == false)
         {
             UIManager.Instance.ShowPopupUi<BunkerExitPopupUI>();
             return;

@@ -14,9 +14,9 @@ public class MapManager : Managers<MapManager>
         }
     }
 
-    public void LoadMap(Stage stage)
+    public void LoadMap(string stageName)
     {
-        GameObject go = ResourcesManager.Instance.Instantiate($"Map/{stage.ToString()}");
+        GameObject go = ResourcesManager.Instance.Instantiate($"Map/{stageName}");
         go.transform.parent = _root;
         MapController mapcontroller = go.GetOrAddComponent<MapController>();
         mapcontroller.speed = 30;

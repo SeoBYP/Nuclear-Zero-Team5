@@ -11,13 +11,23 @@ public class GameUI : SceneUI
         Pause,
     }
 
-    private int count;
+    enum Texts
+    {
+        StarCount,
+        CoinCount,
+    }
+
+    private int heartcount;
+    private int starcount = 0;
+    private int coincount = 0;
+
+    public int CoinCount { get { return coincount; } }
+    public int StarCount { get { return starcount; } }
 
     public bool GameOver { get; private set; }
     private PlayerController player;
     private List<PlayerHeart> playerHearts = new List<PlayerHeart>();
     private Joystick joystick;
-
     public override void Init()
     {
         base.Init();
@@ -26,13 +36,20 @@ public class GameUI : SceneUI
 
     private void Binds()
     {
+        starcount = 0;
+        coincount = 0;
+
         Bind<Button>(typeof(Buttons));
+        Bind<Text>(typeof(Texts));
         InitPlayerHearts();
         player = Utils.FindObjectOfType<PlayerController>();
         joystick = GetComponentInChildren<Joystick>();
         if (joystick != null)
             joystick.Init();
         BindEvent(GetButton((int)Buttons.Pause).gameObject, OnPause, UIEvents.Click);
+
+        GetText((int)Texts.CoinCount).text = coincount.ToString();
+        GetText((int)Texts.StarCount).text = starcount.ToString();
     }
 
     private void InitPlayerHearts()
@@ -43,36 +60,48 @@ public class GameUI : SceneUI
             hearts[i].Init();
             playerHearts.Add(hearts[i]);
         }
-        count = hearts.Length - 1;
+        heartcount = hearts.Length - 1;
     }
 
     private void OnPause(PointerEventData data)
     {
-        print("일시정지");
+        UIManager.Instance.ShowPopupUi<PausePopupUI>();
+        GameManager.Instance.GamePuase();
     }
 
     public void DeleteHeart()
     {
-        if ((count <= 0) == false)
+        if ((heartcount <= 0) == false)
         {
-            playerHearts[count].SetGrayHeart();
-            count--;
+            playerHearts[heartcount].SetGrayHeart();
+            heartcount--;
         }
        else
         {
-            playerHearts[count].SetGrayHeart();
+            playerHearts[heartcount].SetGrayHeart();
             Utils.FindObjectOfType<PlayerController>().Dead();
             //UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
         }
     }
     public void AddHeart()
     {
-        count++;
-        if (count > 2)
+        heartcount++;
+        if (heartcount > 2)
         {
-            count = 2;
+            heartcount = 2;
             return;
         }
-        playerHearts[count].SetLifeHeart();
+        playerHearts[heartcount].SetLifeHeart();
+    }
+
+    public void SetStar()
+    {
+        starcount++;
+        GetText((int)Texts.StarCount).text = starcount.ToString();
+    }
+    public void SetCoin()
+    {
+        coincount++;
+        GetText((int)Texts.CoinCount).text = coincount.ToString();
     }
 }

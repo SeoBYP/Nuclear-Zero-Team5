@@ -11,6 +11,6 @@ public class Star : ItemController
 
     protected override void SetItemInfo()
     {
-        base.SetItemInfo();
+        UIManager.Instance.Get<GameUI>().SetStar();
     }
 }

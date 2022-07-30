@@ -39,11 +39,6 @@ public class DataContents
         }
     }
 
-    public void LoadText()
-    {
-
-    }
-
     public int ToInter(int tableIndex,string subject)
     {
         int data = 0;

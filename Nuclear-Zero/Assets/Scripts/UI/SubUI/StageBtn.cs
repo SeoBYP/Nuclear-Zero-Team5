@@ -9,10 +9,11 @@ public class StageBtn : SubUI
 {
     List<ResultStar> stars = new List<ResultStar>();
 
+    [SerializeField] private int _stageIndex;
+    public int StageIndex { get { return _stageIndex; } }
     private Button _button;
-    private Chapter _chapter;
-    private Action<string> onClick;
-    private int _stageCount;
+    private Action<string,int> onClick;
+    private PlayerStages _curentStatge;
     public override void Init()
     {
         base.Init();
@@ -41,40 +42,31 @@ public class StageBtn : SubUI
     {
         if (onClick != null)
         {
-            onClick($"Stage{(int)_chapter + 1}-{_stageCount}");
+            DataManager.Instance.playerInfo.SelectStage = _curentStatge.StageIndex;
+            onClick(_curentStatge.StageName,_stageIndex);
         }
     }
 
-    public void SetButtonInfo(Chapter chapter,int stageCount,bool clear, Action<string> eventFunc, bool currently = false)
+    public void SetButtonInfo(PlayerStages stages,Action<string,int> eventFunc)
     {
+        _curentStatge = stages;
         onClick = eventFunc;
-        _chapter = chapter;
-        _stageCount = stageCount + 1;
-        if (clear)
+        if (_curentStatge.Cleared)
         {
-            SetActiveStar(3);
-        }
-        else
-        {
-            if (currently)
-            {
-                SetActiveStar(0);
-            }
+            SetActiveStar();
         }
     }
-
-    private void SetActiveStar(int count)
+    
+    private void SetActiveStar()
     {
-        for (int i = 0; i < stars.Count; i++)
+        foreach(ResultStar star in stars)
         {
-            if(i < count)
-            {
-                stars[i].SetShineStar();
-            }
-            else
-            {
-                stars[i].SetDeShineStar();
-            }
+            star.SetDeShineStar();
+        }
+
+        for (int i = 0; i < _curentStatge.ResultStar; i++)
+        {
+            stars[i].SetShineStar();
         }
     }
 }

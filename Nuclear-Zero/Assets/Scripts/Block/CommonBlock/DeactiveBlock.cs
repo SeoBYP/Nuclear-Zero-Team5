@@ -38,9 +38,6 @@ public class DeactiveBlock : BlockController
 
     void Update()
     {
-        if (isUpdate == false)
-            return;
-
         elapsed += Time.deltaTime / speed;
         elapsed = Mathf.Clamp01(elapsed);
         Color color = Color.Lerp(start, end, elapsed);

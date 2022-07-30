@@ -19,6 +19,11 @@ public class LobbyUI : SceneUI
         Story,
     }
 
+    enum Texts
+    {
+        GoldText,
+    }
+
     private bool _isOpenMenu;
 
     private Animation ShopAni;
@@ -36,11 +41,11 @@ public class LobbyUI : SceneUI
     private void Binds()
     {
         Bind<Button>(typeof(Buttons));
-
+        Bind<Text>(typeof(Texts));
         SetButtons();
 
         _isOpenMenu = false;
-
+        SetPlayerGoldText();
         BindEvent(GetButton((int)Buttons.Play).gameObject, OnPlay, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Menu).gameObject, OnMenu, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Tutorial).gameObject, OnTutorial, UIEvents.Click);
@@ -50,6 +55,11 @@ public class LobbyUI : SceneUI
         BindEvent(GetButton((int)Buttons.Information).gameObject, OnInfomation, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Character).gameObject, OnCharacter, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Story).gameObject, OnStory, UIEvents.Click);
+    }
+
+    private void SetPlayerGoldText()
+    {
+        GetText((int)Texts.GoldText).text = DataManager.Instance.playerInfo.Gold.ToString();
     }
 
     private void SetButtons()

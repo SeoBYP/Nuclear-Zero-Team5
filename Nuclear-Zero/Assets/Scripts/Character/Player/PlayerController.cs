@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [Header("Grounded")]
     private bool Grounded;
     private float GroundedOffset = 2f;
-    private Vector2 GroundedSize = new Vector2(2f, 0.2f);
+    private Vector2 GroundedSize = new Vector2(1.9f, 0.2f);
     public LayerMask GroundLayer;
 
     [Header("PlayerJump")]
@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
         }
         _aniStateInfo = _animator.GetCurrentAnimatorStateInfo(0);
         CheckGrounded();
+        //CheckFloor();
         Jump();
     }
     #region PlayerMovement
@@ -86,14 +87,14 @@ public class PlayerController : MonoBehaviour
             _flipX = true;
         }
 
-        if(_rigidbody2D.IsTouchingLayers(LayerMask.NameToLayer("Floor") >> 1))
-        {
-            print("Touch");
-        }
-
         dir.x *= speed;
         dir.y = _verticalVelocity;
         _rigidbody2D.velocity = dir;
+
+        
+
+        //print("velocity : " + _rigidbody2D.velocity.x);
+
         if (dir.x != 0)
             animationController.PlayerRun(true, _flipX);
         else
@@ -132,16 +133,26 @@ public class PlayerController : MonoBehaviour
         Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
         Grounded = Physics2D.OverlapBox(boxPosition, GroundedSize,LayerMask.NameToLayer("Floor") >> 1);
         animationController.IsGrounded(Grounded);
-        //print(Grounded);
-        //Debug.DrawLine(transform.position,boxPosition, Color.red);
+        print(Grounded);
     }
 
-    private void OnDrawGizmos()
-    {
-        Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
-        Gizmos.DrawWireCube(boxPosition, GroundedSize);
-        Gizmos.color = Color.red;
-    }
+    //private void CheckFloor()
+    //{
+    //    //Vector2.
+    //    RaycastHit2D[] hit2D = Physics2D.RaycastAll(transform.position, transform.forward,2, LayerMask.NameToLayer("Floor"));
+    //    Debug.DrawRay(transform.position, transform.forward, Color.red,2);
+    //    foreach(RaycastHit2D hit in hit2D)
+    //    {
+
+    //    }
+    //}
+
+    //private void OnDrawGizmos()
+    //{
+    //    Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
+    //    Gizmos.DrawWireCube(boxPosition, GroundedSize);
+    //    Gizmos.color = Color.red;
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

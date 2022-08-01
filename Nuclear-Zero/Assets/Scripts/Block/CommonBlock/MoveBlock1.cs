@@ -25,16 +25,6 @@ public class MoveBlock1 : BlockController
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            return;
-            //_trriger2D.enabled = false;
-            //collision.transform.SetParent(transform);
-        }
-    }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -43,11 +33,6 @@ public class MoveBlock1 : BlockController
             collision.transform.SetParent(null);
         }
     }
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-        
-    //}
 
     private void FixedUpdate()
     {

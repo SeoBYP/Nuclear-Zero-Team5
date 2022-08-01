@@ -15,6 +15,7 @@ public class DeactiveBlock : BlockController
     protected override void Init()
     {
         base.Init();
+        isUpdate = false;
         _sprite = GetComponent<SpriteRenderer>();
         curColor = _sprite.color;
     }
@@ -38,19 +39,22 @@ public class DeactiveBlock : BlockController
 
     void Update()
     {
-        elapsed += Time.deltaTime / speed;
-        elapsed = Mathf.Clamp01(elapsed);
-        Color color = Color.Lerp(start, end, elapsed);
-        _sprite.color = color;
-        if (elapsed >= 1.0f)
+        if (isUpdate)
         {
-            if (color.Equals(curColorAlpha))
+            elapsed += Time.deltaTime / speed;
+            elapsed = Mathf.Clamp01(elapsed);
+            Color color = Color.Lerp(start, end, elapsed);
+            _sprite.color = color;
+            if (elapsed >= 1.0f)
             {
-                //StartCoroutine(ResetColor());
-                _collider2D.enabled = false;
-                _trriger2D.enabled = false;
+                if (color.Equals(curColorAlpha))
+                {
+                    //StartCoroutine(ResetColor());
+                    _collider2D.enabled = false;
+                    _trriger2D.enabled = false;
+                }
+                isUpdate = false;
             }
-            isUpdate = false;
         }
     }
 }

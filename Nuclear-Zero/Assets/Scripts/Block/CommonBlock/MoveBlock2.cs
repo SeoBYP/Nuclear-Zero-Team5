@@ -20,14 +20,16 @@ public class MoveBlock2 : BlockController
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            _trriger2D.enabled = false;
             collision.transform.SetParent(transform);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            _trriger2D.enabled = true;
             collision.transform.SetParent(null);
         }
     }

@@ -68,6 +68,8 @@ public class PlayerInfo
     public int SelectStage;
     public int ClearStage;
     public int SelectChapter;
+    public float BGMSound;
+    public float EffectSound;
     public List<PlayerChapter> PlayerChapters;
     public List<PlayerStages> Stages;
     public PlayerInfo(string text)
@@ -80,6 +82,8 @@ public class PlayerInfo
         SelectStage = data["PlayerInfo"]["SelectStage"].ToObject<int>();
         ClearStage = data["PlayerInfo"]["ClearStage"].ToObject<int>();
         SelectChapter = data["PlayerInfo"]["SelectChapter"].ToObject<int>();
+        BGMSound = data["PlayerInfo"]["BGMSound"].ToObject<float>();
+        EffectSound = data["PlayerInfo"]["EffectSound"].ToObject<float>();
         MatchCollection match = Regex.Matches(text, "ChapterName");
         if (match.Count != 0)
         {
@@ -159,6 +163,22 @@ public class PlayerInfo
         foreach(PlayerStages stage in Stages)
         {
             PlayerStars += stage.ResultStar;
+        }
+    }
+
+    public void ShowEnding()
+    {
+        if(PlayerStars < 30)
+        {
+            UIManager.Instance.ShowPopupUi<BadEndingPopupUI>();
+        }
+        else if(PlayerStars < 48 && PlayerStars >= 30)
+        {
+            UIManager.Instance.ShowPopupUi<NormalEndingPopupUI>();
+        }
+        else
+        {
+            UIManager.Instance.ShowPopupUi<HappyEndingPopupUI>();
         }
     }
 

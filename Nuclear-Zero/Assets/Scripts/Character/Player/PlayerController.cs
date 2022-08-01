@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [Header("Grounded")]
     private bool Grounded;
     private float GroundedOffset = 2f;
-    private Vector2 GroundedSize = new Vector2(1.5f, 0.2f);
+    private Vector2 GroundedSize = new Vector2(2f, 0.2f);
     public LayerMask GroundLayer;
 
     [Header("PlayerJump")]
@@ -86,8 +86,10 @@ public class PlayerController : MonoBehaviour
             _flipX = true;
         }
 
-        if ((IsMapLaftCollision && dir.x < 0) || (IsMapRightCollision && dir.x > 0))
-            dir.x = 0;
+        if(_rigidbody2D.IsTouchingLayers(LayerMask.NameToLayer("Floor") >> 1))
+        {
+            print("Touch");
+        }
 
         dir.x *= speed;
         dir.y = _verticalVelocity;
@@ -134,12 +136,12 @@ public class PlayerController : MonoBehaviour
         //Debug.DrawLine(transform.position,boxPosition, Color.red);
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
-    //    Gizmos.DrawWireCube(boxPosition, GroundedSize);
-    //    Gizmos.color = Color.red;
-    //}
+    private void OnDrawGizmos()
+    {
+        Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
+        Gizmos.DrawWireCube(boxPosition, GroundedSize);
+        Gizmos.color = Color.red;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -166,10 +168,15 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region PlayerDamaged
+    private bool _isDead;
     public void Dead()
     {
-        GameManager.Instance.IsGameOver = true;
-        UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
+        if (!_isDead)
+        {
+            _isDead = true;
+            GameManager.Instance.IsGameOver = true;
+            UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
+        }
     }
 
     public void TakeDamage()
@@ -206,40 +213,59 @@ public class PlayerController : MonoBehaviour
     {
         _shieldCount++;
     }
-
+    private bool _isfast = false;
     public void SetFast(float value)
     {
-        StartCoroutine(Fast(value));
+        if(_isfast == false)
+        {
+            StartCoroutine(Fast(value));
+            _isfast = true;
+        }
     }
     [SerializeField] private float fastTime;
     IEnumerator Fast(float value)
     {
-        float temp = speed;
+        float temp = 0;
+        temp = speed;
         speed = value;
         yield return YieldInstructionCache.WaitForSeconds(fastTime);
-        speed = temp;
+        if (temp != 0)
+            speed = temp;
+        _isfast = false;
         yield break;
     }
 
     public void SetSlow(float value)
     {
-        StartCoroutine(Slow(value));
+        if(_isSlow == false)
+        {
+            StartCoroutine(Slow(value));
+            _isSlow = true;
+        }
+
     }
     [SerializeField] private float slowTime;
+    private bool _isSlow;
     IEnumerator Slow(float value)
     {
-        float temp = speed;
+        float temp = 0;
+        temp = speed;
         speed = value;
         yield return YieldInstructionCache.WaitForSeconds(slowTime);
-        speed = temp;
+        if(temp != 0)
+            speed = temp;
+        _isSlow = false;
         yield break;
     }
 
     public void Jump(float jumpPower)
     {
-        JumpHeight = jumpPower;
-        isJumped = true;
-        Jump();
+        if(isJumped == false)
+        {
+            JumpHeight = jumpPower;
+            isJumped = true;
+            Jump();
+        }
     }
     #endregion
 }

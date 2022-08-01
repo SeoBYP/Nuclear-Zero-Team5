@@ -24,7 +24,6 @@ public class BackEnemy : EnemyController
     }
     public override void Damaged()
     {
-
         _player.Dead();
     }
 }

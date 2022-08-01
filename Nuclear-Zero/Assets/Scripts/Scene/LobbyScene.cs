@@ -8,7 +8,8 @@ public class LobbyScene : BaseScene
     {
         base.Init();
         UIManager.Instance.ShowSceneUi<LobbyUI>();
-        if(DataManager.Instance.playerInfo.LookPrologue == false)
+        UIManager.Instance.ShowPopupUi<NormalEndingPopupUI>();
+        if (DataManager.Instance.playerInfo.LookPrologue == false)
         {
             UIManager.Instance.ShowPopupUi<ProloguePopupUI>();
             DataManager.Instance.playerInfo.LookPrologue = true;

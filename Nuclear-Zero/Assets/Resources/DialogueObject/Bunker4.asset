@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1971a8373978b4fcdbe605df5399bc39, type: 3}
   m_Name: Bunker4
   m_EditorClassIdentifier: 
-  talkData:
-  - dialogues: "\uC120\uD0DD\uC9C0"
-    sprite: {fileID: 0}
-    charactername: 
+  talkData: []
   responses:
   - responseText: 
     dialogueObject: {fileID: 0}

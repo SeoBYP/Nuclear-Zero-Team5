@@ -12,10 +12,15 @@ public class DialogueUI : SubUI
     [SerializeField] private Image _characterIcon1;
     [SerializeField] private Image _characterIcon2;
 
+    [SerializeField] private Image EndingImages;
+    [SerializeField] private Text EndingText;
+
+    private Text temp;
     private DialogueObject dialogueObject;
     private TypeWriterEffect typeWriterEffect;
     private ResponseHandler responseHandler;
     private PopupUI popupUI;
+    [SerializeField] private bool _dontSkip; 
 
     public override void Init()
     {
@@ -34,7 +39,11 @@ public class DialogueUI : SubUI
 
         if (_characterIcon2 != null)
             _characterIcon2.gameObject.SetActive(false);
-
+        if (EndingImages != null || EndingText != null)
+        {
+            EndingImages.gameObject.SetActive(false);
+            EndingText.gameObject.SetActive(false);
+        }
         CloseDialogueBox();
         if(dialogueObjectName == string.Empty)
         {
@@ -52,18 +61,40 @@ public class DialogueUI : SubUI
 
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
     {
+        temp = null;
         for (int i = 0; i < dialogueObject.Data.Length; i++)
         {
-            string dialogue = dialogueObject.Data[i].Dialogue;
-
-            if (dialogueObject.Data[i].CharacterName == "Prologue")
+            
+            if (dialogueObject.Data[i].CharacterName == "Ending")
+            {
+                Sprite sprite = dialogueObject.Data[i].Sprite;
+                if(temp == null)
+                    temp = textLabel;
+                textLabel = EndingText;
+                SetEnding(sprite);
+            }
+            else if (dialogueObject.Data[i].CharacterName == "Prologue")
                 SetPrologueSprite(dialogueObject.Data[i].Sprite);
             else
             {
+                dialogueBox.SetActive(true);
+                if (temp != null)
+                {
+                    textLabel = temp;
+                }
+                if (EndingImages != null || EndingText != null)
+                {
+                    EndingImages.gameObject.SetActive(false);
+                    EndingText.gameObject.SetActive(false);
+                }
                 SetCharacterNameText(dialogueObject.Data[i].CharacterName);
                 SetCharacterSprite(dialogueObject.Data[i].Sprite);
             }
-
+            string dialogue = dialogueObject.Data[i].Dialogue;
+            if(dialogue.Contains("인간을 말살하라"))
+                textLabel.color = Color.red;
+            else
+                textLabel.color = Color.white;
             yield return RunTypingEffect(dialogue);
 
             textLabel.text = dialogue;
@@ -91,6 +122,7 @@ public class DialogueUI : SubUI
 
     private void SetCharacterNameText(string charactername)
     {
+        
         if (_characterName1 == null && _characterName1 == null)
         {
             return;
@@ -139,6 +171,7 @@ public class DialogueUI : SubUI
 
     private void SetPrologueSprite(Sprite sprite)
     {
+        dialogueBox.SetActive(true);
         if (_characterIcon1 == null && _characterIcon2 == null)
             return;
         if (sprite == null)
@@ -153,6 +186,34 @@ public class DialogueUI : SubUI
         }
     }
 
+    private void SetEnding(Sprite sprite)
+    {
+        if (_characterIcon1 == null && _characterIcon2 == null)
+            return;
+        if (_characterName1 == null && _characterName1 == null)
+        {
+            return;
+        }
+        if(EndingImages != null || EndingText != null)
+        {
+            EndingImages.gameObject.SetActive(true);
+            EndingText.gameObject.SetActive(true);
+        }
+        dialogueBox.SetActive(false);
+        if (sprite == null)
+        {
+            EndingImages.color = new Color(0, 0, 0, 0.5f);
+            EndingImages.sprite = sprite;
+        }
+            
+        else
+        {
+            EndingImages.color = new Color(1, 1, 1, 1);
+            EndingImages.sprite = sprite;
+        }
+
+    }
+
     private IEnumerator RunTypingEffect(string dialogue)
     {
         typeWriterEffect.Run(dialogue, textLabel);
@@ -160,10 +221,12 @@ public class DialogueUI : SubUI
         while (typeWriterEffect.IsRunning)
         {
             yield return null;
-
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (_dontSkip == false)
             {
-                typeWriterEffect.Stop();
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    typeWriterEffect.Stop();
+                }
             }
         }
 

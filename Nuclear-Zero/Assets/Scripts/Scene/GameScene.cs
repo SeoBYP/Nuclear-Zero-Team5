@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GameScene : BaseScene
 {
-
     protected override void Init()
     {
         base.Init();
-        GameManager.Instance.GameStart();
-        ShowDialoguePopup();
+        GameManager.Instance.LoadGameMap();
         UIManager.Instance.FadeIn();
+        ShowDialoguePopup();
+        UIManager.Instance.ShowPopupUi<GamePlayPopupUI>();
     }
 
     private void ShowDialoguePopup()

@@ -17,8 +17,8 @@ class GameAudioManager : Managers<GameAudioManager>, IUpdate
 
     public override void Init()
     {
-        BGMSound = 0.5f;//DataManager.Instance.GetPlayer(1).PlayerInfo.BGMSound;
-        EffectSound = 0.5f;//DataManager.Instance.GetPlayer(1).PlayerInfo.EffectSound;
+        BGMSound = DataManager.Instance.playerInfo.BGMSound;
+        EffectSound = DataManager.Instance.playerInfo.BGMSound;
         _backGround = gameObject.GetOrAddComponent<AudioSource>();
         _backGround.spatialBlend = 0;
         _backGround.volume = 1.0f;

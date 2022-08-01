@@ -19,9 +19,6 @@ public class EnemyController : MonoBehaviour, IUpdate
     protected PlayerController _player;
 
     [SerializeField] protected float speed;
-
-    public static bool IsStart { get; set; } = false;
-
     private void Start()
     {
         Init();

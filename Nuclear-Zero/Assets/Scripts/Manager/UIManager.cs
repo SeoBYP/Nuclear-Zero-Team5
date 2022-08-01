@@ -9,7 +9,7 @@ public enum UIList
 
 public class UIManager : Managers<UIManager>
 {
-    static int _order = 10;
+    static int _order = -10;
     //Dictionary<UIList, BaseUI> UIDic = new Dictionary<UIList, BaseUI>();
     SceneUI _sceneUI = null;
     Stack<PopupUI> _popupStack = new Stack<PopupUI>();
@@ -152,6 +152,18 @@ public class UIManager : Managers<UIManager>
     {
         while (_popupStack.Count > 0)
             ClosePopupUI();
+    }
+
+    public void SetUIActive(bool state)
+    {
+        _sceneUI.gameObject.SetActive(state);
+        foreach(PopupUI popup in _popupStack.ToArray())
+        {
+            if(popup != null)
+            {
+                popup.gameObject.SetActive(state);
+            }
+        }
     }
 
     public void Clear()

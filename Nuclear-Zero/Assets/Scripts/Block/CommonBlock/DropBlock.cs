@@ -15,14 +15,15 @@ public class DropBlock : BlockController
     public override void OnSteped()
     {
         base.OnSteped();
-        _collider2D.isTrigger = true;
+        _collider2D.enabled = false;
         _player.TakeDamage();
     }
 
     public override void OnExited()
     {
         base.OnExited();
-        _collider2D.isTrigger = false;
+        _collider2D.enabled = true;
+
     }
 
     private void FixedUpdate()
@@ -32,6 +33,7 @@ public class DropBlock : BlockController
             transform.position = Vector2.MoveTowards(transform.position, _downTargetPos.position, Time.deltaTime * _speed);
             if(Vector2.Distance(transform.position, _downTargetPos.position) < 0.05f)
             {
+                _trriger2D.enabled = false;
                 _IsMove = false;
             }
         }

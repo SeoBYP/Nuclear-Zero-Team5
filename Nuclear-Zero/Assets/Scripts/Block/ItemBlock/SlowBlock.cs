@@ -22,6 +22,7 @@ public class SlowBlock : BlockController
         if (_player != null)
         {
             _player.SetFast(speed);
+            print("Player Slow");
         }
     }
 }

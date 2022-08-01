@@ -16,21 +16,38 @@ public class MoveBlock1 : BlockController
         _desPos = _endPos;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            _trriger2D.enabled = false;
+            collision.transform.SetParent(transform);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(transform);
+            return;
+            //_trriger2D.enabled = false;
+            //collision.transform.SetParent(transform);
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
+            _trriger2D.enabled = true;
             collision.transform.SetParent(null);
         }
     }
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+        
+    //}
 
     private void FixedUpdate()
     {

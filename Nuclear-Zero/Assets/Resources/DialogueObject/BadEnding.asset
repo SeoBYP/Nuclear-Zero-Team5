@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1971a8373978b4fcdbe605df5399bc39, type: 3}
+  m_Name: BadEnding
+  m_EditorClassIdentifier: 
+  talkData:
+  - dialogues: "\uACA8\uC6B0 \uCE58\uB8CC\uC81C\uB97C \uCC3E\uC558\uAD70, \uBE68\uB9AC
+      \uAC00\uC838\uB2E4 \uC918\uC57C\uACA0\uC5B4."
+    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    charactername: "\uB51C\uB7F0"
+  - dialogues: "\uB51C\uB7F0, \uB300\uB2E8\uD788 \uACE0\uC0DD\uC774 \uB9CE\uC558\uAD70.\n\uADF8\uAC8C
+      \uCE58\uB8CC\uC81C\uC778\uAC00? \uD55C\uBC88 \uC918\uBCF4\uAC8C."
+    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    charactername: "\uD53C\uC2A4\uBA54\uC774\uCEE4 \uC758\uC7A5"
+  - dialogues: "\uC5EC\uAE30 \uC788\uC2B5\uB2C8\uB2E4."
+    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    charactername: "\uB51C\uB7F0"
+  - dialogues: "\uADF8\uB798, \uB51C\uB7F0, \uC218\uACE0\uD588\uB2E4. \uB108\uC758
+      \uB178\uB825\uC740\u2026\u2026."
+    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    charactername: "\uD53C\uC2A4\uBA54\uC774\uCEE4 \uC758\uC7A5"
+  - dialogues: "\uADF8 \uC21C\uAC04 \uB51C\uB7F0\uC758 \uB208\uC55E\uC774 \uAC80\uC740\uC0C9\uC73C\uB85C
+      \uBB3C\uB4E4\uC5C8\uB2E4.\n\uAC11\uC790\uAE30 \uC5B4\uB514\uC120\uAC00 \uB4E4\uB824\uC624\uB294
+      \uBAA9\uC18C\uB9AC."
+    sprite: {fileID: 0}
+    charactername: Ending
+  - dialogues: "\uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C.
+      \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C.
+      \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. "
+    sprite: {fileID: 0}
+    charactername: Ending
+  - dialogues: "\uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C.
+      \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C.
+      \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C.
+      \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C.
+      \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. "
+    sprite: {fileID: 0}
+    charactername: Ending
+  - dialogues: "\uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C.
+      \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C.
+      \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C.
+      \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C.
+      \uC778\uAC04\uC744 \uB9D0\uC0B4\uD558\uB77C. "
+    sprite: {fileID: 0}
+    charactername: Ending
+  - dialogues: "\uB51C\uB7F0\uC740 \uD544\uC0AC\uC801\uC73C\uB85C \uC800\uD56D\uD588\uC73C\uB098,
+      \uC11C\uC11C\uD788 \uBBF8\uCCD0\uAC00\uAE30 \uC2DC\uC791\uD588\uACE0,\n\uC624\uB79C
+      \uC2DC\uAC04\uC774 \uD750\uB978 \uB4A4 \uB208\uC744 \uB5B4\uB2E4."
+    sprite: {fileID: 0}
+    charactername: Ending
+  - dialogues: "\uC138\uC0C1\uC740 \uC628\uD1B5 \uCCA0\uB85C \uB4A4\uB36E\uC600\uACE0,
+      \uC778\uAC04\uC758 \uD754\uC801\uC740 \uB354 \uC774\uC0C1 \uCC3E\uC544\uBCFC
+      \uC218 \uC5C6\uC5C8\uB2E4.\n\uC790\uC2E0\uC758 \uAC1C\uC778 \uC5F0\uB77D\uD568\uC5D0
+      \uB4E4\uC5B4\uC640 \uC788\uB294 \uB9C8\uC9C0\uB9C9 \uBB38\uC790\uAC00 \uBCF4\uC600\uB2E4."
+    sprite: {fileID: 0}
+    charactername: Ending
+  - dialogues: "\uC624\uBE60, \uC5B4\uB514 \uC788\uC5B4? \uB098 \uB108\uBB34 \uBB34\uC11C\uC6CC\u2026\u2026."
+    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    charactername: "\uB808\uC774\uB098"
+  - dialogues: "\uB51C\uB7F0\uC740 \uC808\uB9DD\uC5D0 \uBE60\uC84C\uACE0, \uB9C8\uC9C0\uB9C9
+      \uB0A8\uC740 \uD798\uC73C\uB85C \uC790\uC2E0\uC758 \uB3D9\uB825\uAE30\uAD00\uC744
+      \uD30C\uAD34\uD588\uB2E4."
+    sprite: {fileID: 0}
+    charactername: Ending
+  - dialogues: "\uACB0\uAD6D \uC778\uB958\uB294 \uAE30\uACC4\uC81C\uAD6D\uC5D0 \uD328\uBC30\uD558\uC5EC
+      \uBA78\uB9DD\uD588\uB2E4."
+    sprite: {fileID: 0}
+    charactername: Ending
+  - dialogues: "- The End -(\uBC30\uB4DC\uC5D4\uB529)"
+    sprite: {fileID: 21300000, guid: 4fa6cd5bcd01e48e5971ce914f6f7597, type: 3}
+    charactername: Ending
+  responses: []

@@ -26,10 +26,7 @@ public class GameManager : Managers<GameManager>//,IUpdate
         UIManager.Instance.ShowSceneUi<GameUI>();
         _player = Utils.FindObjectOfType<PlayerController>(true);
         _joystick = Utils.FindObjectOfType<Joystick>(false);
-        //_player.Init();
-        //InitGameObjects();
 
-        EnemyController.IsStart = true;
         IsStart = true;
         IsClear = false;
         IsGameOver = false;
@@ -38,7 +35,6 @@ public class GameManager : Managers<GameManager>//,IUpdate
     public void GameClear()
     {
         IsClear = true;
-        EnemyController.IsStart = false;
         UIManager.Instance.ShowPopupUi<GameClearPopupUI>();
         ClearGameObjects();
     }
@@ -46,7 +42,6 @@ public class GameManager : Managers<GameManager>//,IUpdate
     public void GameOver()
     {
         IsGameOver = true;
-        EnemyController.IsStart = false;
         UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
         ClearGameObjects();
     }
@@ -63,6 +58,13 @@ public class GameManager : Managers<GameManager>//,IUpdate
             Time.timeScale = 1;
             IsPause = false;
         }
+    }
+
+    public void LoadGameMap()
+    {
+        int selectStage = DataManager.Instance.playerInfo.SelectStage;
+        string stageName = DataManager.Instance.playerInfo.GetPlayerStages(selectStage).StageName;
+        //ResourcesManager.Instance.Instantiate($"Map/Stages/Stage1-2");
     }
 
     //public void InitGameObjects()

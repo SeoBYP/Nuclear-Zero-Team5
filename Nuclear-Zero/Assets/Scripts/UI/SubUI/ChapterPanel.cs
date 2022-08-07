@@ -21,7 +21,7 @@ public class ChapterPanel : SubUI
     }
 
     //private PlayerChapter curentChapter;
-    public int curChapterIndex;
+    [SerializeField] private int curChapterIndex;
     private void Binds()
     {
         //Bind<StageBtn>(typeof(StageBtns));

@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Floor
   - Block
+  - Goal
   layers:
   - Default
   - TransparentFX

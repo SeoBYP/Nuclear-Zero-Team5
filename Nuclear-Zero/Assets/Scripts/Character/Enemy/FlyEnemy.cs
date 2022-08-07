@@ -11,7 +11,7 @@ public class FlyEnemy : EnemyController
     private Vector2 _startPos;
 
     private Transform endPos;
-
+    private Animation _flyanimation;
     private float elapsed = 0;
 
     private float _speed = 1;
@@ -29,6 +29,9 @@ public class FlyEnemy : EnemyController
     {
         base.Init();
         _player = Utils.FindObjectOfType<PlayerController>();
+        _flyanimation = GetComponentInChildren<Animation>();
+        if (_flyanimation != null)
+            _flyanimation.Play();
         //_targetPos = _player.transform.position + _Offset;
         StartCoroutine(SetTarget());
         _IsAttack = false;

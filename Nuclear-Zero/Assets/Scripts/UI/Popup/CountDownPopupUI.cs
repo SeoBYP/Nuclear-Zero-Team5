@@ -46,7 +46,7 @@ public class CountDownPopupUI : PopupUI
             GetImage((int)Images.BackGround).color = new Color(0, 0, 0, _fade);
             if (_countdown < 1)
             {
-                GameManager.Instance.GamePuase();
+                GameManager.Instance.GamePause();
                 ClosePopupUI();
                 break;
             }

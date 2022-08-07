@@ -144,8 +144,11 @@ public class UIManager : Managers<UIManager>
             return;
 
         PopupUI popup = _popupStack.Pop();
-        ResourcesManager.Instance.Destroy(popup.gameObject);
-        popup = null;
+        if(popup != null)
+        {
+            ResourcesManager.Instance.Destroy(popup.gameObject);
+            popup = null;
+        }
     }
 
     public void CloseAllPopupUI()

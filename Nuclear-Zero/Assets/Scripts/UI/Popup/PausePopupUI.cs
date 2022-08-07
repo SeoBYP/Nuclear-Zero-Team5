@@ -9,6 +9,7 @@ public class PausePopupUI : PopupUI
     enum Buttons
     {
         Replay,
+        Exit,
     }
 
     public override void Init()
@@ -22,6 +23,16 @@ public class PausePopupUI : PopupUI
         Bind<Button>(typeof(Buttons));
 
         BindEvent(GetButton((int)Buttons.Replay).gameObject, OnReplay, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.Exit).gameObject, OnExit, UIEvents.Click);
+    }
+
+    private void OnExit(PointerEventData data)
+    {
+        //print("OnExit");
+        GameManager.Instance.GamePause();
+        ClosePopupUI();
+        //SceneManagerEx.Instance.ReLoadScene(Scene.Lobby);
+        SceneManagerEx.Instance.LoadScene(Scene.Lobby);
     }
 
     private void OnReplay(PointerEventData data)

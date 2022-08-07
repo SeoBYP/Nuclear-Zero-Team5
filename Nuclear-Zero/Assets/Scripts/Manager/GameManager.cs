@@ -15,6 +15,11 @@ public class GameManager : Managers<GameManager>//,IUpdate
     public override void Init()
     {
         base.Init();
+        GameReset();
+    }
+
+    public void GameReset()
+    {
         IsClear = false;
         IsGameOver = false;
         IsStart = false;
@@ -26,6 +31,8 @@ public class GameManager : Managers<GameManager>//,IUpdate
         UIManager.Instance.ShowSceneUi<GameUI>();
         _player = Utils.FindObjectOfType<PlayerController>(true);
         _joystick = Utils.FindObjectOfType<Joystick>(false);
+
+        _player.SetDefaultGoalDistance();
 
         IsStart = true;
         IsClear = false;
@@ -45,8 +52,8 @@ public class GameManager : Managers<GameManager>//,IUpdate
         UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
         ClearGameObjects();
     }
-
-    public void GamePuase()
+    
+    public void GamePause()
     {
         if (IsPause == false)
         {
@@ -64,7 +71,11 @@ public class GameManager : Managers<GameManager>//,IUpdate
     {
         int selectStage = DataManager.Instance.playerInfo.SelectStage;
         string stageName = DataManager.Instance.playerInfo.GetPlayerStages(selectStage).StageName;
-        //ResourcesManager.Instance.Instantiate($"Map/Stages/Stage1-2");
+        GameObject go = ResourcesManager.Instance.Instantiate($"Map/Stages/{stageName}");
+        if (go == null)
+        {
+            go = ResourcesManager.Instance.Instantiate($"Map/Stages/Default");
+        }
     }
 
     //public void InitGameObjects()

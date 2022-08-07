@@ -10,10 +10,15 @@ public class JumpBlock : BlockController
         base.Init();
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        SetJump();
+    }
+
     public override void OnSteped()
     {
         base.OnSteped();
-        SetJump();
+        //SetJump();
     }
 
     private void SetJump()

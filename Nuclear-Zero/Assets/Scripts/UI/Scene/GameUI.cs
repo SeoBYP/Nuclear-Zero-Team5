@@ -16,6 +16,11 @@ public class GameUI : SceneUI
         StarCount,
         CoinCount,
     }
+    enum Sliders
+    {
+        GameGoal,
+        BackEnemyPos,
+    }
 
     private int heartcount;
     private int starcount = 0;
@@ -41,6 +46,8 @@ public class GameUI : SceneUI
 
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
+        Bind<Slider>(typeof(Sliders));
+
         InitPlayerHearts();
         player = Utils.FindObjectOfType<PlayerController>();
         joystick = GetComponentInChildren<Joystick>();
@@ -66,9 +73,9 @@ public class GameUI : SceneUI
     private void OnPause(PointerEventData data)
     {
         UIManager.Instance.ShowPopupUi<PausePopupUI>();
-        GameManager.Instance.GamePuase();
+        GameManager.Instance.GamePause();
     }
-
+    #region PlayerHP
     public void DeleteHeart()
     {
         if ((heartcount <= 0) == false)
@@ -104,4 +111,25 @@ public class GameUI : SceneUI
         coincount++;
         GetText((int)Texts.CoinCount).text = coincount.ToString();
     }
+    #endregion
+
+    #region PlayerProgressBar
+    private Slider playerSlider;
+    public void SetPlayerProGressBar(float distance)
+    {
+        if (playerSlider == null)
+            playerSlider = Get<Slider>((int)Sliders.GameGoal);
+        playerSlider.value = distance;
+    }
+
+    private Slider _backEnemySlider;
+    public void SetBackEnemyProGressBar(float distance)
+    {
+        if (_backEnemySlider == null)
+            _backEnemySlider = Get<Slider>((int)Sliders.BackEnemyPos);
+        _backEnemySlider.value = distance;
+    }
+
+    #endregion
+
 }

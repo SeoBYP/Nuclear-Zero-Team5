@@ -21,7 +21,7 @@ public class SettingPopupUI : PopupUI
         VibrationHandle,
         Close,
     }
-    private bool IsOn = false;
+    private bool _isOnVibration = false;
 
     private Slider _bgmSlider;
     private Slider _effectSlider;
@@ -37,7 +37,7 @@ public class SettingPopupUI : PopupUI
 
     private void Binds()
     {
-        IsOn = false;
+        _isOnVibration = true;
         Bind<Slider>(typeof(Sliders));
         Bind<Button>(typeof(Buttons));
         Bind<GameObject>(typeof(GameObjects));
@@ -82,21 +82,24 @@ public class SettingPopupUI : PopupUI
         }
         GameAudioManager.Instance.SetEffectSound(_effectSlider.value);
     }
-        private void OnClose(PointerEventData data)
+    private void OnClose(PointerEventData data)
     {
+        GameAudioManager.Instance.SaveSounds();
         ClosePopupUI();
     }
     private void OnVibrationHandle(PointerEventData data)
     {
-        if (IsOn)
+        if (_isOnVibration)
         {
             _vibrationAni.Play(_vibrationOff);
-            IsOn = false;
+            _isOnVibration = false;
+            GameAudioManager.Instance.IsOnVibration(_isOnVibration);
         }
         else
         {
             _vibrationAni.Play(_vibrationOn);
-            IsOn = true;
+            _isOnVibration = true;
+            GameAudioManager.Instance.IsOnVibration(_isOnVibration);
         }
     }
 }

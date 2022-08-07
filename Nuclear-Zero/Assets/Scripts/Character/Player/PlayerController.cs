@@ -11,20 +11,17 @@ public class PlayerController : MonoBehaviour
     public LayerMask GroundLayer;
 
     [Header("PlayerJump")]
-    private float JumpHeight = 10f;
+    private float JumpHeight = 8f;
     private float Gravity = -100;
     private float JumpTimeout = 0.5f;
     private float _jumpTimeoutDelta;
     private float _verticalVelocity;
     private float _terminalVelocity = 53.0f;
 
-    private bool IsMapLaftCollision = false;
-    private bool IsMapRightCollision = false;
     private bool Hited = false;
     private bool _flipX = false;
 
     public float Timer = 3;
-    //public float linearDrag = 4f;
 
     private PlayerAnimationController animationController;
     private Rigidbody2D _rigidbody2D;
@@ -34,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private JoyButton joyButton;
     private bool isJumped = false;
 
-    private int _shieldCount = 0;
+    [SerializeField] private SpriteRenderer _radersprite;
 
     public float speed;
 
@@ -45,11 +42,9 @@ public class PlayerController : MonoBehaviour
 
     public void Init()
     {
-        IsMapLaftCollision = false;
-        IsMapRightCollision = false;
         Hited = false;
         _jumpTimeoutDelta = JumpTimeout;
-
+        _shieldprite.gameObject.SetActive(false);
         animationController = GetComponentInChildren<PlayerAnimationController>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
@@ -57,6 +52,7 @@ public class PlayerController : MonoBehaviour
             animationController.Init();
         gameUI = UIManager.Instance.Get<GameUI>();
         joyButton = Utils.FindObjectOfType<JoyButton>();
+        SetRaderSprite();
     }
 
     private void Update()
@@ -72,6 +68,7 @@ public class PlayerController : MonoBehaviour
         CheckGrounded();
         //CheckFloor();
         Jump();
+        SetGoalDistance();
     }
     #region PlayerMovement
     public void Move(Vector2 dir)
@@ -114,7 +111,7 @@ public class PlayerController : MonoBehaviour
                 _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
                 animationController.PlayerJump();
-                JumpHeight = 10;
+                JumpHeight = 8f;
                 isJumped = false;
             }
             if (_jumpTimeoutDelta >= 0.0f)
@@ -133,19 +130,8 @@ public class PlayerController : MonoBehaviour
         Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
         Grounded = Physics2D.OverlapBox(boxPosition, GroundedSize,LayerMask.NameToLayer("Floor") >> 1);
         animationController.IsGrounded(Grounded);
-        print(Grounded);
+        //print(Grounded);
     }
-
-    //private void CheckFloor()
-    //{
-    //    //Vector2.
-    //    RaycastHit2D[] hit2D = Physics2D.RaycastAll(transform.position, transform.forward,2, LayerMask.NameToLayer("Floor"));
-    //    Debug.DrawRay(transform.position, transform.forward, Color.red,2);
-    //    foreach(RaycastHit2D hit in hit2D)
-    //    {
-
-    //    }
-    //}
 
     //private void OnDrawGizmos()
     //{
@@ -180,6 +166,8 @@ public class PlayerController : MonoBehaviour
 
     #region PlayerDamaged
     private bool _isDead;
+    private bool _isShield = false;
+    [SerializeField] private SpriteRenderer _shieldprite;
     public void Dead()
     {
         if (!_isDead)
@@ -198,17 +186,25 @@ public class PlayerController : MonoBehaviour
         }
         if (Hited == true)
             return;
-        if (_shieldCount >= 1)
+        if (_isShield)
         {
-            _shieldCount--;
-            print("Shield");
+            _isShield = false;
+            _shieldprite.gameObject.SetActive(false);
             return;
         }
-        Handheld.Vibrate();
+        GameAudioManager.Instance.SetVibration();
         gameUI.DeleteHeart();
+        SetKnownBack();
         Hited = true;
         animationController.Hited();
         StartCoroutine(DontActive());
+    }
+
+    private void SetKnownBack()
+    {
+        Vector3 targetPos = transform.position - Vector3.left;
+        _rigidbody2D.AddForce(targetPos * 5);
+        print("SetKnownBack");
     }
 
     IEnumerator DontActive()
@@ -222,7 +218,13 @@ public class PlayerController : MonoBehaviour
     #region BlockEffects
     public void Shieded()
     {
-        _shieldCount++;
+        if (_isShield == false)
+        {
+            _isShield = true;
+            GameAudioManager.Instance.Play2DSound("Shield");
+            _shieldprite.gameObject.SetActive(true);
+        }
+        print("SHiled");
     }
     private bool _isfast = false;
     public void SetFast(float value)
@@ -279,4 +281,38 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
+    private GameObject _goal;
+    private float _defaultDistance;
+    public void SetDefaultGoalDistance()
+    {
+        if (_goal == null)
+            _goal = GameObject.FindGameObjectWithTag("Goal");
+        _defaultDistance = Vector2.Distance(transform.position, _goal.transform.position);
+
+    }
+
+    private void SetGoalDistance()
+    {
+        if (_goal == null)
+            _goal = GameObject.FindGameObjectWithTag("Goal");
+        if(gameUI == null)
+            gameUI = UIManager.Instance.Get<GameUI>();
+        float curdistance = Vector2.Distance(transform.position, _goal.transform.position);
+
+        float value = 1 - (curdistance / _defaultDistance);
+        if(value != 0 && gameUI != null)
+        {
+            gameUI.SetPlayerProGressBar(value);
+        }
+    }
+
+    private void SetRaderSprite()
+    {
+        _radersprite.gameObject.SetActive(true);
+        if (_radersprite)
+        {
+            
+        }
+    }
+
 }

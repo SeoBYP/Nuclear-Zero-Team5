@@ -14,6 +14,7 @@ class GameAudioManager : Managers<GameAudioManager>, IUpdate
 
     public float BGMSound { get; private set; }
     public float EffectSound { get; private set; }
+    private bool _IsVibration = true;
 
     public override void Init()
     {
@@ -23,6 +24,8 @@ class GameAudioManager : Managers<GameAudioManager>, IUpdate
         _backGround.spatialBlend = 0;
         _backGround.volume = 1.0f;
         _backGround.playOnAwake = false;
+        _IsVibration = true;
+        LoadSound();
 
         UpdateManager.Instance.Listener(this);
     }
@@ -110,7 +113,18 @@ class GameAudioManager : Managers<GameAudioManager>, IUpdate
             value = 0;
         EffectSound = value;
     }
-    public void SaveSounds() { }//DataManager.Instance.GetPlayer(1).PlayerInfo.SetSounds(BGMSound, EffectSound); }
+    public void SaveSounds() {DataManager.Instance.playerInfo.SetSoundSetting(BGMSound, EffectSound); }
+
+    public void IsOnVibration(bool state) { _IsVibration = state; }
+
+    public void SetVibration()
+    {
+        if (_IsVibration)
+        {
+            print("SetVibration");
+            Handheld.Vibrate();
+        }
+    }
 
     public void OnUpdate()
     {

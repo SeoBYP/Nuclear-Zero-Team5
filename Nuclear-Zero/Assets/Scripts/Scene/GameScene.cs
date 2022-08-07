@@ -8,9 +8,31 @@ public class GameScene : BaseScene
     {
         base.Init();
         GameManager.Instance.LoadGameMap();
+        SetGameStageBGM();
         UIManager.Instance.FadeIn();
-        ShowDialoguePopup();
         UIManager.Instance.ShowPopupUi<GamePlayPopupUI>();
+        ShowDialoguePopup();
+
+    }
+
+    private void SetGameStageBGM()
+    {
+        int chapterindex = DataManager.Instance.playerInfo.SelectChapter;
+        switch (chapterindex)
+        {
+            case 1:
+                GameAudioManager.Instance.PlayBackGround("Chapter1BGM");
+                break;
+            case 2:
+                GameAudioManager.Instance.PlayBackGround("Chapter2BGM");
+                break;
+            case 3:
+                GameAudioManager.Instance.PlayBackGround("Chapter3BGM");
+                break;
+            case 4:
+                GameAudioManager.Instance.PlayBackGround("Chapter4BGM");
+                break;
+        }
     }
 
     private void ShowDialoguePopup()
@@ -29,5 +51,6 @@ public class GameScene : BaseScene
     public override void Clear()
     {
         
+        UIManager.Instance.Clear();
     }
 }

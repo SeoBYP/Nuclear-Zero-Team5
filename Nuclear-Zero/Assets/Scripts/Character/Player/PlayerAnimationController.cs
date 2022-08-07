@@ -14,6 +14,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void Hited()
     {
+        CameraController.ShouldShake = true;
         _sprite.color = Color.red;
     }
 
@@ -35,6 +36,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void PlayerJump()
     {
+        GameAudioManager.Instance.Play2DSound("Jump");
         _animator.SetTrigger("DoJump");
     }
 

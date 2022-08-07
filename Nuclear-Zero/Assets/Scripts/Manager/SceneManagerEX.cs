@@ -16,11 +16,14 @@ class SceneManagerEx : Managers<SceneManagerEx>
     public void LoadScene(Scene scene)
     {
         //SceneManager.LoadScene(GetSceneName(scene));
+        //SceneManager.LoadScene(GetSceneName(scene));
+        GameManager.Instance.GameReset();
         StartCoroutine(GameScene(scene));
     }
 
     public void ReLoadScene(Scene scene)
     {
+        CurrentScene.Clear();
         SceneManager.LoadScene(GetSceneName(scene));
     }
 
@@ -51,18 +54,18 @@ public abstract class BaseScene : MonoBehaviour
     private void Start()
     {
         //UIManager.Instance.FadeIn();
+        DataManager.Instance.SavePlayerInfo();
         Init();
     }
 
     private void Awake()
     {
         //Screen.SetResolution(1900,900, false);
-        DataManager.Instance.LoadPlayerInfo("PlayerInfomation");
+        DataManager.Instance.LoadPlayerInfo();
     }
 
     protected virtual void Init()
     {
-
         Object obj = GameObject.FindObjectOfType(typeof(EventSystem));
         if (obj == null)
             ResourcesManager.Instance.Instantiate("EventSystem").name = "@EventSystem";

@@ -29,9 +29,9 @@ public class GameClearPopupUI : PopupUI
         BindEvent(GetButton((int)Buttons.NextStage).gameObject, OnNextStage, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Exit).gameObject, OnExit, UIEvents.Click);
         FindResultStars();
-        // 다음 스테이지가 있다면 스테이지 이동 버튼을 활성화시키고,
-        // 다음 스테이지가 없다면 스테이지 이동 버튼을 비활성화시킵니다.
-        if (DataManager.Instance.playerInfo.SelectStage < DataManager.Instance.playerInfo.Stages.Count)
+        // ???? ?????????? ?????? ???????? ???? ?????? ????????????,
+        // ???? ?????????? ?????? ???????? ???? ?????? ????????????????.
+        if (DataManager.Instance.playerInfo.SelectStage < DataManager.Instance.playerInfo.PlayerStages.Count)
             GetButton((int)Buttons.NextStage).gameObject.SetActive(true);
         else
             GetButton((int)Buttons.NextStage).gameObject.SetActive(false);
@@ -58,13 +58,13 @@ public class GameClearPopupUI : PopupUI
 
     private void OnNextStage(PointerEventData data)
     {
-        //선택한 스테이지의 인덱스값을 증가시킵니다.
+        GameManager.Instance.GameReset();
         ++DataManager.Instance.playerInfo.SelectStage;
         SceneManagerEx.Instance.ReLoadScene(Scene.Game);
     }
 
     private void OnExit(PointerEventData data)
     {
-        SceneManagerEx.Instance.ReLoadScene(Scene.Lobby);
+        SceneManagerEx.Instance.LoadScene(Scene.Lobby);
     }
 }

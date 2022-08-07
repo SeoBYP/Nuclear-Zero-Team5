@@ -12,6 +12,11 @@ public class GamePlayPopupUI : PopupUI
         Play,
     }
 
+    enum Texts
+    {
+        StageText,
+    }
+
     public override void Init()
     {
         base.Init();
@@ -21,13 +26,25 @@ public class GamePlayPopupUI : PopupUI
     private void Binds()
     {
         Bind<Button>(typeof(Buttons));
-
+        Bind<Text>(typeof(Texts));
         BindEvent(GetButton((int)Buttons.Play).gameObject, OnPlay, UIEvents.Click);
+        SetStageName();
+    }
+
+    private void SetStageName()
+    {
+        int selectStage = DataManager.Instance.playerInfo.SelectStage;
+        string stageName = DataManager.Instance.playerInfo.GetPlayerStages(selectStage).StageName;
+        GetText((int)Texts.StageText).text = stageName;
     }
 
     private void OnPlay(PointerEventData data)
     {
-        GameManager.Instance.GameStart();
-        ClosePopupUI();
+        if(GameManager.Instance.IsStart == false)
+        {
+            GameManager.Instance.GameStart();
+            ClosePopupUI();
+        }
+
     }
 }

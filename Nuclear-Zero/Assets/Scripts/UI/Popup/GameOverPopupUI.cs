@@ -43,6 +43,7 @@ public class GameOverPopupUI : PopupUI
 
     private void OnReplay(PointerEventData data)
     {
+        GameManager.Instance.GameReset();
         SceneManagerEx.Instance.ReLoadScene(Scene.Game);
     }
 }

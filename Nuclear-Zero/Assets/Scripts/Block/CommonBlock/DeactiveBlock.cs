@@ -12,6 +12,7 @@ public class DeactiveBlock : BlockController
     private Color start;
     private Color end;
     private SpriteRenderer _sprite;
+    private bool _isChanged = false;
     protected override void Init()
     {
         base.Init();
@@ -22,6 +23,8 @@ public class DeactiveBlock : BlockController
     public override void OnSteped()
     {
         base.OnSteped();
+        if (_isChanged)
+            return;
         isUpdate = true;
         start = curColor;
         end = curColorAlpha;
@@ -41,6 +44,7 @@ public class DeactiveBlock : BlockController
     {
         if (isUpdate)
         {
+            _isChanged = true;
             elapsed += Time.deltaTime / speed;
             elapsed = Mathf.Clamp01(elapsed);
             Color color = Color.Lerp(start, end, elapsed);

@@ -16,6 +16,14 @@ public class BunkerPopupUI : PopupUI
         Close,
     }
 
+    enum GameObjects
+    {
+        Bunker1,
+        Bunker2,
+        Bunker3,
+        Bunker4,
+    }
+
     public override void Init()
     {
         base.Init();
@@ -24,7 +32,8 @@ public class BunkerPopupUI : PopupUI
 
     private void Binds()
     {
-        //Bind<GameObject>(typeof(Buttons));
+        Bind<GameObject>(typeof(GameObjects));
+        SetChapterBunker();
         Bind<Button>(typeof(Buttons));
 
         BindEvent(GetButton((int)Buttons.BunkerItem1).gameObject, OnBunkerItem1, UIEvents.Click);
@@ -32,6 +41,30 @@ public class BunkerPopupUI : PopupUI
         BindEvent(GetButton((int)Buttons.BunkerItem3).gameObject, OnBunkerItem3, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.BunkerItem4).gameObject, OnBunkerItem4, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Close).gameObject, OnClose, UIEvents.Click);
+    }
+
+    private void SetChapterBunker()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            GetGameObject(i).SetActive(false);
+        }
+        int chapterIndex = DataManager.Instance.playerInfo.SelectChapter - 1;
+        switch(chapterIndex)
+        {
+            case (int)GameObjects.Bunker1:
+                GetGameObject(chapterIndex).SetActive(true);
+                break;
+            case (int)GameObjects.Bunker2:
+                GetGameObject(chapterIndex).SetActive(true);
+                break;
+            case (int)GameObjects.Bunker3:
+                GetGameObject(chapterIndex).SetActive(true);
+                break;
+            case (int)GameObjects.Bunker4:
+                GetGameObject(chapterIndex).SetActive(true);
+                break;
+        }
     }
 
     public void ShowDialoguePopup(int chapterIndex)

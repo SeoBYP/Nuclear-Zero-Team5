@@ -148,6 +148,6 @@ public class LobbyUI : SceneUI
     }
     private void OnStory(PointerEventData data)
     {
-        print("OnStory");
+        UIManager.Instance.ShowPopupUi<ReplayScenarioPopupUI>();
     }
 }

@@ -21,6 +21,7 @@ public class GetItemPopupUI : PopupUI
     {
         base.Init();
         Binds();
+        GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
     }
 
     private void Binds()
@@ -34,7 +35,7 @@ public class GetItemPopupUI : PopupUI
 
     private void OnADButton(PointerEventData data)
     {
-        print("여기서 광고를 시청하면 된다.");
+        GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
     }
     private void OnClose(PointerEventData data)
     {

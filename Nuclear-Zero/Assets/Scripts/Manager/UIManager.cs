@@ -173,5 +173,6 @@ public class UIManager : Managers<UIManager>
     {
         CloseAllPopupUI();
         _sceneUI = null;
+        _order = -10;
     }
 }

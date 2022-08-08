@@ -10,6 +10,12 @@ public class GameClearPopupUI : PopupUI
     {
         NextStage,
         Exit,
+        ADButton,
+    }
+
+    enum Texts
+    {
+        RewardCoinText,
     }
 
     private ResultStar[] resultStars;
@@ -18,16 +24,18 @@ public class GameClearPopupUI : PopupUI
     {
         base.Init();
         Binds();
+        GoogleMobileAdsManager.Instance.RequestAndLoadRewardedInterstitialAd();
     }
 
     private void Binds()
     {
         Bind<Button>(typeof(Buttons));
-
+        Bind<Text>(typeof(Texts));
         SetPlayerStageClear();
 
         BindEvent(GetButton((int)Buttons.NextStage).gameObject, OnNextStage, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Exit).gameObject, OnExit, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.ADButton).gameObject, OnADButtons, UIEvents.Click);
         FindResultStars();
         // ???? ?????????? ?????? ???????? ???? ?????? ????????????,
         // ???? ?????????? ?????? ???????? ???? ?????? ????????????????.
@@ -43,6 +51,7 @@ public class GameClearPopupUI : PopupUI
         GameUI gameUI = UIManager.Instance.Get<GameUI>();
         int star = gameUI.StarCount;
         int coin = gameUI.CoinCount;
+        GetText((int)Texts.RewardCoinText).text = coin.ToString();
         DataManager.Instance.playerInfo.SetClearStage(stageIndex,star,coin);
     }
 
@@ -54,6 +63,11 @@ public class GameClearPopupUI : PopupUI
             resultStars[i].Init();
             resultStars[i].SetShineStar();
         }
+    }
+
+    private void OnADButtons(PointerEventData data)
+    {
+        GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
     }
 
     private void OnNextStage(PointerEventData data)

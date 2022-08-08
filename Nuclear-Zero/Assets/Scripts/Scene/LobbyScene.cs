@@ -9,7 +9,7 @@ public class LobbyScene : BaseScene
         base.Init();
         UIManager.Instance.ShowSceneUi<LobbyUI>();
         GameAudioManager.Instance.PlayBackGround("LobbyBGM");
-        //UIManager.Instance.ShowPopupUi<NormalEndingPopupUI>();
+        //UIManager.Instance.ShowPopupUi<BadEndingPopupUI>();
         if (DataManager.Instance.playerInfo.LookPrologue == false)
         {
             UIManager.Instance.ShowPopupUi<ProloguePopupUI>();
@@ -26,6 +26,6 @@ public class LobbyScene : BaseScene
 
     public override void Clear()
     {
-        
+        UIManager.Instance.Clear();
     }
 }

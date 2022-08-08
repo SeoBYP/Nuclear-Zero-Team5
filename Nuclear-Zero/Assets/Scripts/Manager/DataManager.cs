@@ -73,6 +73,9 @@ public class PlayerInfo
     public int RaderItem;
     public int ShieldItem;
     public int LifeItem;
+    public bool BadEnding;
+    public bool NormalEnding;
+    public bool HappyEnding;
     public List<PlayerChapter> PlayerChapters;
     public List<PlayerStages> PlayerStages;
     public PlayerInfo(string text)
@@ -90,6 +93,9 @@ public class PlayerInfo
         RaderItem = data["RaderItem"].ToObject<int>();
         ShieldItem = data["ShieldItem"].ToObject<int>();
         LifeItem = data["LifeItem"].ToObject<int>();
+        BadEnding = data["BadEnding"].ToObject<bool>();
+        NormalEnding = data["NormalEnding"].ToObject<bool>();
+        HappyEnding = data["HappyEnding"].ToObject<bool>();
         MatchCollection match = Regex.Matches(text, "ChapterName");
         if (match.Count != 0)
         {
@@ -176,14 +182,17 @@ public class PlayerInfo
         if (PlayerStars < 30)
         {
             UIManager.Instance.ShowPopupUi<BadEndingPopupUI>();
+            BadEnding = true;
         }
         else if (PlayerStars < 48 && PlayerStars >= 30)
         {
             UIManager.Instance.ShowPopupUi<NormalEndingPopupUI>();
+            NormalEnding = true;
         }
         else
         {
             UIManager.Instance.ShowPopupUi<HappyEndingPopupUI>();
+            HappyEnding = true;
         }
     }
 

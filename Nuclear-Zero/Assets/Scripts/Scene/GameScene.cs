@@ -50,7 +50,6 @@ public class GameScene : BaseScene
 
     public override void Clear()
     {
-        
         UIManager.Instance.Clear();
     }
 }

@@ -1,13 +1,13 @@
 {
   "Gold": 1024,
   "DialogueObjectName": "Chapter1",
-  "LookPrologue": false,
+  "LookPrologue": true,
   "PlayerStars": 0,
   "SelectStage": 1,
   "ClearStage": 2,
   "SelectChapter": 1,
-  "BGMSound": 0.5,
-  "EffectSound": 0.5,
+  "BGMSound": 0.187502056,
+  "EffectSound": 0.4613759,
   "RaderItem": 0,
   "ShieldItem": 0,
   "LifeItem": 0,
@@ -22,7 +22,7 @@
       "BunkerItem2": false,
       "BunkerItem3": false,
       "BunkerItem4": false,
-      "ChapterStory": false,
+      "ChapterStory": true,
       "BunkerStory": false
     },
     {

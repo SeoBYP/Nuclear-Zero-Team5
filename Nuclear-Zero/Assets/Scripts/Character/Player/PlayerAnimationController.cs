@@ -36,7 +36,6 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void PlayerJump()
     {
-        GameAudioManager.Instance.Play2DSound("Jump");
         _animator.SetTrigger("DoJump");
     }
 

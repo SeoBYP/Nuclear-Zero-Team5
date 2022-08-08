@@ -51,5 +51,6 @@ public class GameScene : BaseScene
     public override void Clear()
     {
         UIManager.Instance.Clear();
+        GameAudioManager.Instance.DestroyWarning();
     }
 }

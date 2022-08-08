@@ -208,7 +208,7 @@ public class DialogueUI : SubUI
             
         else
         {
-            EndingImages.color = new Color(1, 1, 1, 1);
+            EndingImages.color = new Color(1,1,1,1f);
             EndingImages.sprite = sprite;
         }
 

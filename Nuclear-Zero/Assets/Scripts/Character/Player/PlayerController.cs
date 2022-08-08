@@ -88,9 +88,6 @@ public class PlayerController : MonoBehaviour
         dir.y = _verticalVelocity;
         _rigidbody2D.velocity = dir;
 
-        
-
-        //print("velocity : " + _rigidbody2D.velocity.x);
 
         if (dir.x != 0)
             animationController.PlayerRun(true, _flipX);
@@ -157,6 +154,7 @@ public class PlayerController : MonoBehaviour
                     GameManager.Instance.GameClear();
                     break;
                 case "Button":
+                    GameAudioManager.Instance.Play2DSound("PlayerFallDown");
                     GameManager.Instance.GameOver();
                     break;
             }
@@ -193,6 +191,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         GameAudioManager.Instance.SetVibration();
+        GameAudioManager.Instance.Play2DSound("PlayerHited");
         gameUI.DeleteHeart();
         SetKnownBack();
         Hited = true;

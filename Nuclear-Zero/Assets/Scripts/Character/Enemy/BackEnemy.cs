@@ -12,8 +12,7 @@ public class BackEnemy : EnemyController
         base.Init();
         
         SetDefaultDistance();
-
-        
+        GameAudioManager.Instance.Play2DSoundLoop("BackEnemyWarning");
     }
 
     protected override void Run()
@@ -21,6 +20,7 @@ public class BackEnemy : EnemyController
         base.Run();
         Move();
         SetBackEnemyProgressBar();
+        SetWarningSound();
     }
 
     private void Move()
@@ -34,6 +34,19 @@ public class BackEnemy : EnemyController
         _player.Dead();
     }
 
+    private void SetWarningSound()
+    {
+        if (_player == null)
+            _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        float distance = Vector2.Distance(_player.transform.position, transform.position);
+        float value = 1 - (distance / 70);
+        if (value < 0)
+            value = 0;
+        else if (value > 0.25f)
+            value = 0.3f;
+        print(value);
+        GameAudioManager.Instance.Set2DLoopSound(value);
+    }
 
     private void SetDefaultDistance()
     {

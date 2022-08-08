@@ -87,6 +87,45 @@ class GameAudioManager : Managers<GameAudioManager>, IUpdate
         Play(name, 0, Vector3.zero);
     }
 
+    
+    #region Play2DSoundLoop
+    private float _loopSound;
+    private AudioSource _backEnemyWarning;
+    private void PlayLoop(string name, float spatialBlend, Vector3 position, bool loop = false)
+    {
+        if (name == null || clipDic.ContainsKey(name) == false)
+        {
+            Debug.Log("No Sound In clipDic : " + name);
+            return;
+        }
+        _backEnemyWarning = gameObject.AddComponent<AudioSource>();
+        _backEnemyWarning.clip = clipDic[name];
+        _backEnemyWarning.spatialBlend = spatialBlend;
+        _backEnemyWarning.volume = _loopSound;
+        _backEnemyWarning.loop = loop;
+        _backEnemyWarning.Play();
+        //StartCoroutine(IDeactiveAudio(audioSource));
+    }
+
+    public void Play2DSoundLoop(string name)
+    {
+        PlayLoop(name, 0, Vector3.zero,true);
+    }
+
+    public void Set2DLoopSound(float volum)
+    {
+        _loopSound = volum;
+        if (_backEnemyWarning != null)
+            _backEnemyWarning.volume = _loopSound;
+    }
+
+    public void DestroyWarning()
+    {
+        _backEnemyWarning = null;
+    }
+
+    #endregion
+
     public void LoadSound()
     {
         AudioClip[] audioClips = Resources.LoadAll<AudioClip>("Sound");
@@ -98,7 +137,6 @@ class GameAudioManager : Managers<GameAudioManager>, IUpdate
             }
         }
     }
-
     public void SetBGMSound(float value)
     {
         if (value == 0.14f)

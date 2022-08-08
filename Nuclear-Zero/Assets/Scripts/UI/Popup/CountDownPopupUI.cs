@@ -42,6 +42,7 @@ public class CountDownPopupUI : PopupUI
             yield return new WaitForSecondsRealtime(1);
             _countdown--;
             _fade *= 0.5f;
+            GameAudioManager.Instance.Play2DSound("CountDown");
             GetText((int)Texts.CountDonwTimer).text = _countdown.ToString();
             GetImage((int)Images.BackGround).color = new Color(0, 0, 0, _fade);
             if (_countdown < 1)

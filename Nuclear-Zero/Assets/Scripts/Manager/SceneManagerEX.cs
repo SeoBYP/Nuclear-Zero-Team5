@@ -53,15 +53,14 @@ public abstract class BaseScene : MonoBehaviour
 
     private void Start()
     {
-        //UIManager.Instance.FadeIn();
-        DataManager.Instance.SavePlayerInfo();
+        
         Init();
     }
 
     private void Awake()
     {
-        //Screen.SetResolution(1900,900, false);
         DataManager.Instance.LoadPlayerInfo();
+        
     }
 
     protected virtual void Init()
@@ -69,6 +68,7 @@ public abstract class BaseScene : MonoBehaviour
         Object obj = GameObject.FindObjectOfType(typeof(EventSystem));
         if (obj == null)
             ResourcesManager.Instance.Instantiate("EventSystem").name = "@EventSystem";
+        DataManager.Instance.SavePlayerInfo();
     }
     public abstract void Clear();
 }

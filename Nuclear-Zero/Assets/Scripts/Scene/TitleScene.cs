@@ -13,6 +13,6 @@ public class TitleScene : BaseScene
 
     public override void Clear()
     {
-        UIManager.Instance.Clear();
+        //UIManager.Instance.Clear();
     }
 }

@@ -40,11 +40,7 @@ public class GamePlayPopupUI : PopupUI
 
     private void OnPlay(PointerEventData data)
     {
-        if(GameManager.Instance.IsStart == false)
-        {
-            GameManager.Instance.GameStart();
-            ClosePopupUI();
-        }
-
+        GameManager.Instance.GameStart();
+        ClosePopupUI();
     }
 }

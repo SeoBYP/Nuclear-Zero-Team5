@@ -9,7 +9,8 @@ public class DashEnemy : EnemyController
     public override void Init()
     {
         base.Init();
-
+        if (_player == null)
+            _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         _IsAttack = false;
     }
 
@@ -28,7 +29,9 @@ public class DashEnemy : EnemyController
 
     private void CheckPlayer()
     {
-        if(Vector2.Distance(transform.position, _player.transform.position) < AttackRange)
+        if (_player == null)
+            _player = Utils.FindObjectOfType<PlayerController>();
+        if (Vector2.Distance(transform.position, _player.transform.position) < AttackRange)
         {
             _IsAttack = true;
         }

@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [Header("Grounded")]
     private bool Grounded;
     private float GroundedOffset = 2f;
-    private Vector2 GroundedSize = new Vector2(1.9f, 0.2f);
+    private Vector2 GroundedSize = new Vector2(1.85f, 0.2f);
     public LayerMask GroundLayer;
 
     [Header("PlayerJump")]
@@ -25,11 +25,14 @@ public class PlayerController : MonoBehaviour
 
     private PlayerAnimationController animationController;
     private Rigidbody2D _rigidbody2D;
-    private AnimatorStateInfo _aniStateInfo;
-    private Animator _animator;
     private GameUI gameUI;
     private JoyButton joyButton;
+    private Joystick _joystick;
+
     private bool isJumped = false;
+
+    private static bool _isStart = false;
+    private static bool _isPause = false;
 
     [SerializeField] private SpriteRenderer _radersprite;
 
@@ -37,7 +40,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Init();
+        _isStart = false;
+        _isPause = false;
     }
 
     public void Init()
@@ -47,26 +51,30 @@ public class PlayerController : MonoBehaviour
         _shieldprite.gameObject.SetActive(false);
         animationController = GetComponentInChildren<PlayerAnimationController>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _animator = GetComponentInChildren<Animator>();
         if (animationController != null)
             animationController.Init();
         gameUI = UIManager.Instance.Get<GameUI>();
         joyButton = Utils.FindObjectOfType<JoyButton>();
+        _joystick = Utils.FindObjectOfType<Joystick>(true);
         SetRaderSprite();
     }
 
+    public static void SetStart(bool state) { _isStart = state; }
+    public static void SetPause(bool state) { _isPause = state; }
+
     private void Update()
     {
-        if (GameManager.Instance.IsStart == false)
+        if(_joystick == null)
+            Utils.FindObjectOfType<Joystick>(true);
+        if (_isStart == false)
             return;
-        if (GameManager.Instance.IsClear || GameManager.Instance.IsGameOver)
+        if (_isPause)
         {
             _rigidbody2D.velocity = Vector2.zero;
             return;
         }
-        _aniStateInfo = _animator.GetCurrentAnimatorStateInfo(0);
         CheckGrounded();
-        //CheckFloor();
+        Move(_joystick.Direction);
         Jump();
         SetGoalDistance();
     }
@@ -194,7 +202,7 @@ public class PlayerController : MonoBehaviour
         GameAudioManager.Instance.SetVibration();
         GameAudioManager.Instance.Play2DSound("PlayerHited");
         gameUI.DeleteHeart();
-        SetKnownBack();
+        //SetKnownBack();
         Hited = true;
         animationController.Hited();
         StartCoroutine(DontActive());
@@ -288,7 +296,6 @@ public class PlayerController : MonoBehaviour
         if (_goal == null)
             _goal = GameObject.FindGameObjectWithTag("Goal");
         _defaultDistance = Vector2.Distance(transform.position, _goal.transform.position);
-
     }
 
     private void SetGoalDistance()

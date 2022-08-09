@@ -9,7 +9,8 @@ public class WalkEnemy : EnemyController
     public override void Init()
     {
         base.Init();
-        //_player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        if(_player == null)
+            _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         _IsAttack = false;
     }
 
@@ -28,6 +29,8 @@ public class WalkEnemy : EnemyController
 
     private void CheckPlayer()
     {
+        if (_player == null)
+            _player = Utils.FindObjectOfType<PlayerController>();
         if (Vector2.Distance(transform.position, _player.transform.position) < AttackRange)
         {
             _IsAttack = true;

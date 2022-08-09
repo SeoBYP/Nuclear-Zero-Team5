@@ -19,7 +19,7 @@ public class LobbyScene : BaseScene
         {
             DataManager.Instance.playerInfo.ShowEnding();
         }
-
+        GoogleMobileAdsManager.Instance.RequestBannerAd();
         UIManager.Instance.FadeIn();
         //DataManager.Instance.LoadText(TextType.Chapter1);
     }

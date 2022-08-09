@@ -28,11 +28,11 @@ public class FlyEnemy : EnemyController
     public override void Init()
     {
         base.Init();
-        _player = Utils.FindObjectOfType<PlayerController>();
+        if (_player == null)
+            _player = Utils.FindObjectOfType<PlayerController>();
         _flyanimation = GetComponentInChildren<Animation>();
         if (_flyanimation != null)
             _flyanimation.Play();
-        //_targetPos = _player.transform.position + _Offset;
         StartCoroutine(SetTarget());
         _IsAttack = false;
         IsMoveDown = true;

@@ -9,7 +9,7 @@ public enum UIList
 
 public class UIManager : Managers<UIManager>
 {
-    static int _order = -10;
+    static int _order = -1;
     //Dictionary<UIList, BaseUI> UIDic = new Dictionary<UIList, BaseUI>();
     SceneUI _sceneUI = null;
     Stack<PopupUI> _popupStack = new Stack<PopupUI>();

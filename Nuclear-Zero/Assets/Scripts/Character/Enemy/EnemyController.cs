@@ -19,15 +19,35 @@ public class EnemyController : MonoBehaviour, IUpdate
     protected PlayerController _player;
 
     [SerializeField] protected float speed;
+
+    private static bool _isStart = false;
+    private static bool _isPause = false;
+
     private void Start()
     {
         Init();
     }
 
+    public static void SetStart(bool state) { _isStart = state; }
+    public static void SetPause(bool state) { _isPause = state; }
+
     public virtual void Init()
     {
         UpdateManager.Instance.Listener(this);
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        _isStart = false;
+        _isPause = false;
+    }
+
+    private void Update()
+    {
+        if (_isStart == false)
+            return;
+        if (_isPause)
+        {
+            return;
+        }
+        Run();
     }
 
     protected virtual void Run()
@@ -35,16 +55,7 @@ public class EnemyController : MonoBehaviour, IUpdate
 
     }
 
-    private void Update()
-    {
-        if (GameManager.Instance.IsStart == false)
-            return;
-        if (GameManager.Instance.IsClear || GameManager.Instance.IsGameOver)
-        {
-            return;
-        }
-        Run();
-    }
+    
 
     public void OnUpdate()
     {

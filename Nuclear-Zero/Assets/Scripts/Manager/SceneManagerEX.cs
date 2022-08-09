@@ -15,9 +15,6 @@ class SceneManagerEx : Managers<SceneManagerEx>
 
     public void LoadScene(Scene scene)
     {
-        //SceneManager.LoadScene(GetSceneName(scene));
-        //SceneManager.LoadScene(GetSceneName(scene));
-        GameManager.Instance.GameReset();
         StartCoroutine(GameScene(scene));
     }
 

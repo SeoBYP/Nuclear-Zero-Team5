@@ -72,7 +72,6 @@ public class GameClearPopupUI : PopupUI
 
     private void OnNextStage(PointerEventData data)
     {
-        GameManager.Instance.GameReset();
         ++DataManager.Instance.playerInfo.SelectStage;
         SceneManagerEx.Instance.ReLoadScene(Scene.Game);
     }

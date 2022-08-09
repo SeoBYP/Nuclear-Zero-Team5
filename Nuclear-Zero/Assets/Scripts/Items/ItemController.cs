@@ -15,19 +15,23 @@ public class ItemController : MonoBehaviour
         _sprite = GetComponent<SpriteRenderer>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             ItemDestroy();
         }
     }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+        
+    //}
 
     private void ItemDestroy()
     {
         SetItemInfo();
 
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     protected virtual void SetItemInfo()

@@ -63,6 +63,11 @@ public abstract class BaseScene : MonoBehaviour
         
     }
 
+    private void OnApplicationQuit()
+    {
+        DataManager.Instance.SavePlayerInfo();
+    }
+
     protected virtual void Init()
     {
         Object obj = GameObject.FindObjectOfType(typeof(EventSystem));

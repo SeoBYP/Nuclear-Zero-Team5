@@ -151,4 +151,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider2D: {fileID: 376847990320018459}
   _trriger2D: {fileID: 376847990320018456}
-  speed: 25
+  speed: 45

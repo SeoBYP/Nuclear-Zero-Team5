@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json.Bson;
 using static Define;
 #region PlayerInfomation
+[System.Serializable]
 public class PlayerStages
 {
     public int StageIndex;
@@ -36,6 +37,7 @@ public class PlayerStages
         }
     }
 }
+[System.Serializable]
 public class PlayerChapter
 {
     public int ChapterIndex;
@@ -81,6 +83,7 @@ public class PlayerInfo
     public PlayerInfo(string text)
     {
         var data = JObject.Parse(text);
+
         Gold = data["Gold"].ToObject<int>();
         DialogueObjectName = data["DialogueObjectName"].ToObject<string>();
         LookPrologue = data["LookPrologue"].ToObject<bool>();
@@ -218,6 +221,8 @@ public class DataManager : Managers<DataManager>
     public static Dictionary<TableType, DataContents> TableDic = new Dictionary<TableType, DataContents>();
     public PlayerInfo playerInfo;
 
+    private const string _filePath = "PlayerInfomation.json";
+
     private static bool IsLoadPlayerInfo = false;
 
     public override void Init()
@@ -241,31 +246,43 @@ public class DataManager : Managers<DataManager>
     {
         if (IsLoadPlayerInfo)
             return;
-        var filePath = Application.dataPath + "/Resources/Data/PlayerInfomation";
-        if (File.Exists(filePath) == false)
+        var filePath = Path.Combine(Application.persistentDataPath, _filePath);
+        //Application.dataPath + $"/{_filePath}"; /// Resources/Data/PlayerInfomation.json";
+        if (File.Exists(filePath))
         {
+            Debug.Log("불러오기 성공");
+            string text = File.ReadAllText(filePath);
+            if (text == null)
+            {
+                print("Json Load Is Failed");
+                return;
+            }
+            playerInfo = JsonUtility.FromJson<PlayerInfo>(text); // new PlayerInfo(text);//
+            IsLoadPlayerInfo = true;
+            if(playerInfo != null)
+            {
+                print(playerInfo.GetPlayerStages(1).StageName);
+                print(playerInfo.GetPlayerChapter(1).ChapterStory);
+            }
+        }
+        else
+        {
+            TextAsset text = Resources.Load<TextAsset>("Data/PlayerInfomation");//ResourcesManager.Instance.Load<TextAsset>("Data/" + _filePath);
+            if (text != null)
+            {
+                playerInfo = new PlayerInfo(text.text);
+                IsLoadPlayerInfo = true;
+            }
             return;
         }
-        string text = File.ReadAllText(filePath);
-        if (text == null)
-        {
-            print("Json Load Is Failed");
-            return;
-        }
-        playerInfo = new PlayerInfo(text);
-        IsLoadPlayerInfo = true;
     }
 
     public void SavePlayerInfo()
     {
+        var filePath = Path.Combine(Application.persistentDataPath, _filePath);
+        string JsonData = JsonUtility.ToJson(playerInfo,true);
+        File.WriteAllText(filePath, JsonData);
         print("Save");
-        var filePath = Application.dataPath + "/Resources/Data/PlayerInfomation";
-        print(filePath);
-        string jdata = JsonConvert.SerializeObject(playerInfo);
-        //JArray jsonArray = JArray.Parse(jdata);
-        var data = JObject.Parse(jdata);//jsonArray[0].ToString());
-
-        File.WriteAllText(filePath, data.ToString());
     }
 
     public static int ToInter(TableType tableType, int tableIndex,string subject)

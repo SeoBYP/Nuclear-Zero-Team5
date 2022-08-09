@@ -12,7 +12,6 @@ public class GameScene : BaseScene
         UIManager.Instance.FadeIn();
         UIManager.Instance.ShowPopupUi<GamePlayPopupUI>();
         ShowDialoguePopup();
-
     }
 
     private void SetGameStageBGM()

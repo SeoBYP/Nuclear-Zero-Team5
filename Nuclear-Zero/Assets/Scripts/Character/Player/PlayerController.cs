@@ -171,8 +171,9 @@ public class PlayerController : MonoBehaviour
         if (!_isDead)
         {
             _isDead = true;
-            GameManager.Instance.IsGameOver = true;
-            UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
+            //GameManager.Instance.IsGameOver = true;
+            GameManager.Instance.GameOver();
+            //UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
         }
     }
 

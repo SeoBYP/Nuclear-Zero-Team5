@@ -16,7 +16,8 @@ public class DashEnemy : EnemyController
     protected override void Run()
     {
         base.Run();
-        CheckPlayer();
+        if(_IsAttack == false)
+            CheckPlayer();
         if (_IsAttack)
         {
             Vector2 curPos = transform.position;

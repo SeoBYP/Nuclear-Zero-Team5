@@ -42,8 +42,8 @@ public class BackEnemy : EnemyController
         float value = 1 - (distance / 70);
         if (value < 0)
             value = 0;
-        else if (value > 0.25f)
-            value = 0.3f;
+        //else if (value > 0.25f)
+        //    value = 0.3f;
         print(value);
         GameAudioManager.Instance.Set2DLoopSound(value);
     }

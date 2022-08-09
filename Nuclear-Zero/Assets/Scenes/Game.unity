@@ -565,7 +565,7 @@ MonoBehaviour:
   _radersprite: {fileID: 827386617}
   speed: 20
   _shieldprite: {fileID: 1911482635}
-  fastTime: 2
+  fastTime: 0.6
   slowTime: 2
 --- !u!61 &977957290
 BoxCollider2D:

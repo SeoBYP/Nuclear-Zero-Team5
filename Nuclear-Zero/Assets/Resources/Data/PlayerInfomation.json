@@ -1,10 +1,10 @@
 {
   "Gold": 1024,
   "DialogueObjectName": "Chapter1",
-  "LookPrologue": true,
+  "LookPrologue": false,
   "PlayerStars": 0,
   "SelectStage": 1,
-  "ClearStage": 2,
+  "ClearStage": 1,
   "SelectChapter": 1,
   "BGMSound": 0.187502056,
   "EffectSound": 0.4613759,
@@ -22,7 +22,7 @@
       "BunkerItem2": false,
       "BunkerItem3": false,
       "BunkerItem4": false,
-      "ChapterStory": true,
+      "ChapterStory": false,
       "BunkerStory": false
     },
     {
@@ -58,10 +58,10 @@
   ],
   "PlayerStages": [
     {
-      "StageIndex": 1,
-      "StageName": "Stage1-1",
-      "ResultStar": 0,
-      "Cleared": true
+        "StageIndex": 1,
+        "StageName": "Stage1-1",
+        "ResultStar": 0,
+        "Cleared": false
     },
     {
       "StageIndex": 2,

@@ -49,7 +49,7 @@ public class GameManager : Managers<GameManager>//,IUpdate
     public void GameOver()
     {
         IsGameOver = true;
-        UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
+        UIManager.Instance.ShowPopupUi<GameOverPopupUI>();
         ClearGameObjects();
     }
     
@@ -91,11 +91,11 @@ public class GameManager : Managers<GameManager>//,IUpdate
 
     public void ClearGameObjects()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach(GameObject go in enemies)
-        {
-            go.GetComponent<EnemyController>().Clear();
-        }
+        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //foreach(GameObject go in enemies)
+        //{
+        //    go.GetComponent<EnemyController>().Clear();
+        //}
     }
 
     private void Update()

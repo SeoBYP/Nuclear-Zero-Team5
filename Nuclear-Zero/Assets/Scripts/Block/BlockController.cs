@@ -22,9 +22,11 @@ public class BlockController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
+        {
             if (_player == null)
                 _player = collision.gameObject.GetComponent<PlayerController>();
-        OnSteped();
+            OnSteped();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

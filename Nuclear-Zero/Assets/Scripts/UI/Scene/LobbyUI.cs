@@ -15,8 +15,8 @@ public class LobbyUI : SceneUI
         Shop,
         Information,
         Setting,
-        Character,
         Story,
+        Plus,
     }
 
     enum Texts
@@ -36,6 +36,7 @@ public class LobbyUI : SceneUI
     {
         base.Init();
         Binds();
+        
     }
 
     private void Binds()
@@ -53,13 +54,15 @@ public class LobbyUI : SceneUI
         BindEvent(GetButton((int)Buttons.Shop).gameObject, OnShop, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Setting).gameObject, OnSetting, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Information).gameObject, OnInfomation, UIEvents.Click);
-        BindEvent(GetButton((int)Buttons.Character).gameObject, OnCharacter, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Story).gameObject, OnStory, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.Plus).gameObject, OnPlus, UIEvents.Click);
     }
 
     private void SetPlayerGoldText()
     {
-        GetText((int)Texts.GoldText).text = DataManager.Instance.playerInfo.Gold.ToString();
+        int gold = DataManager.Instance.playerInfo.Gold;
+        string money = string.Format("{0:#,###}", gold);
+        GetText((int)Texts.GoldText).text = money;
     }
 
     private void SetButtons()
@@ -136,16 +139,18 @@ public class LobbyUI : SceneUI
 
     private void OnTutorial(PointerEventData data)
     {
-        print("OnTutorial");
+        UIManager.Instance.ShowPopupUi<TutorialPopupUI>();
     }
     private void OnSns(PointerEventData data)
     {
         print("OnSns");
     }
-    private void OnCharacter(PointerEventData data)
+
+    private void OnPlus(PointerEventData data)
     {
-        print("OnCharacter");
+        print("OnShop");
     }
+
     private void OnStory(PointerEventData data)
     {
         UIManager.Instance.ShowPopupUi<ReplayScenarioPopupUI>();

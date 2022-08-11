@@ -44,6 +44,7 @@ public class StagePopupUI : PopupUI
     {
         base.Init();
         Binds();
+        //GoogleMobileAdsManager.Instance.DestroyBannerAd();
     }
 
     private void Binds()
@@ -84,7 +85,6 @@ public class StagePopupUI : PopupUI
         }
     }
 
-
     private void OnClickStageBtn(string stageText,int stageIndex)
     {
         UIManager.Instance.ShowPopupUi<StageSelectPopupUI>().SetSeleteStageText(stageText, stageIndex);
@@ -97,6 +97,7 @@ public class StagePopupUI : PopupUI
 
     private void OnClose(PointerEventData data)
     {
+        //GoogleMobileAdsManager.Instance.RequestBannerAd();
         ClosePopupUI();
     }
 

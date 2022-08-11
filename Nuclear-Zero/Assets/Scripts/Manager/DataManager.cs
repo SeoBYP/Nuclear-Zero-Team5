@@ -60,7 +60,7 @@ public class PlayerChapter
         BunkerStory = data["PlayerChapters"][index]["BunkerStory"].ToObject<bool>();
     }
 }
-
+[System.Serializable]
 public class PlayerInfo
 {
     public int Gold;
@@ -136,6 +136,11 @@ public class PlayerInfo
         if (clearstage > ClearStage)
             ClearStage = clearstage;
         SetPlayerStars();
+    }
+
+    public void SetCoin(int coincount)
+    {
+        Gold += coincount;
     }
 
     public PlayerStages GetPlayerStages(int stageIndex)
@@ -252,9 +257,9 @@ public class DataManager : Managers<DataManager>
         {
             Debug.Log("불러오기 성공");
             string text = File.ReadAllText(filePath);
-            if (text == null)
+            if (string.IsNullOrEmpty(text))
             {
-                print("Json Load Is Failed");
+                LoadResourcesData();
                 return;
             }
             playerInfo = JsonUtility.FromJson<PlayerInfo>(text); // new PlayerInfo(text);//
@@ -264,16 +269,30 @@ public class DataManager : Managers<DataManager>
                 print(playerInfo.GetPlayerStages(1).StageName);
                 print(playerInfo.GetPlayerChapter(1).ChapterStory);
             }
+            return;
         }
         else
         {
-            TextAsset text = Resources.Load<TextAsset>("Data/PlayerInfomation");//ResourcesManager.Instance.Load<TextAsset>("Data/" + _filePath);
-            if (text != null)
-            {
-                playerInfo = new PlayerInfo(text.text);
-                IsLoadPlayerInfo = true;
-            }
+            LoadResourcesData();
             return;
+        }
+    }
+
+    private void LoadResourcesData()
+    {
+        print("데이터 불러오기 실패 : 디폴트 데이터로 한다");
+        TextAsset text = Resources.Load<TextAsset>("Data/PlayerInfomation");//ResourcesManager.Instance.Load<TextAsset>("Data/" + _filePath);
+        if (text != null)
+        {
+            playerInfo = new PlayerInfo(text.text);
+            IsLoadPlayerInfo = true;
+
+            print(playerInfo.GetPlayerStages(1).StageName);
+            print(playerInfo.GetPlayerChapter(1).ChapterStory);
+        }
+        else
+        {
+            print("불러오기 실패");
         }
     }
 

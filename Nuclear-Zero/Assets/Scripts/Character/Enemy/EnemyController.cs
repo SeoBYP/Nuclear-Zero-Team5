@@ -70,7 +70,7 @@ public class EnemyController : MonoBehaviour, IUpdate
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             if (_player == null)
             {

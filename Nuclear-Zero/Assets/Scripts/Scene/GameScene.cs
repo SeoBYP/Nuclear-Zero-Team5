@@ -7,6 +7,7 @@ public class GameScene : BaseScene
     protected override void Init()
     {
         base.Init();
+        //GoogleMobileAdsManager.Instance.DestroyBannerAd();
         GameManager.Instance.LoadGameMap();
         SetGameStageBGM();
         UIManager.Instance.FadeIn();
@@ -49,7 +50,7 @@ public class GameScene : BaseScene
 
     public override void Clear()
     {
-        UIManager.Instance.Clear();
-        GameAudioManager.Instance.DestroyWarning();
+        //UIManager.Instance.Clear();
+        //GameAudioManager.Instance.DestroyWarning();
     }
 }

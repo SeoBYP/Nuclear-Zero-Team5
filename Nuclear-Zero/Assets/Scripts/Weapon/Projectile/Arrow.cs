@@ -18,7 +18,8 @@ public class Arrow : Projectile<Arrow>
     {
         Vector3 curPos = transform.position;
         Vector3 nextPos = _targetdir * speed * Time.deltaTime;
-
+        //transform.LookAt(_targetdir);
+        //transform.rotation = Quaternion.Euler();
         transform.position = curPos + nextPos;
     }
 }

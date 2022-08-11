@@ -12,7 +12,7 @@ public class BackEnemy : EnemyController
         base.Init();
         
         SetDefaultDistance();
-        GameAudioManager.Instance.Play2DSoundLoop("BackEnemyWarning");
+        //GameAudioManager.Instance.Play2DSoundLoop("BackEnemyWarning");
     }
 
     protected override void Run()
@@ -42,10 +42,8 @@ public class BackEnemy : EnemyController
         float value = 1 - (distance / 70);
         if (value < 0)
             value = 0;
-        //else if (value > 0.25f)
-        //    value = 0.3f;
-        print(value);
-        GameAudioManager.Instance.Set2DLoopSound(value);
+
+        //GameAudioManager.Instance.Set2DLoopSound(value);
     }
 
     private void SetDefaultDistance()

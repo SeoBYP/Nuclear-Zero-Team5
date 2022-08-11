@@ -76,8 +76,6 @@ public class swipe : MonoBehaviour
                 }
             }
         }
-
-
     }
 
     private void GecisiDuzenle(float distance, float[] pos, Button btn)
@@ -97,7 +95,6 @@ public class swipe : MonoBehaviour
         {
             btn.transform.name = ".";
         }
-
     }
     public void WhichBtnClicked(Button btn)
     {

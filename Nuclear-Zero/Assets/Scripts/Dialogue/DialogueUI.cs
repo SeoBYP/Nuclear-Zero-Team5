@@ -92,9 +92,17 @@ public class DialogueUI : SubUI
             }
             string dialogue = dialogueObject.Data[i].Dialogue;
             if(dialogue.Contains("인간을 말살하라"))
+            {
                 textLabel.color = Color.red;
+                typeWriterEffect.typeWriterSpeed = 100f;
+            }
             else
+            {
                 textLabel.color = Color.white;
+                typeWriterEffect.typeWriterSpeed = 50f;
+            }
+
+                
             yield return RunTypingEffect(dialogue);
 
             textLabel.text = dialogue;

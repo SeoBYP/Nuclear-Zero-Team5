@@ -23,21 +23,21 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
     charactername: "\uB51C\uB7F0"
   - dialogues: "\u2026\u2026\uC624\uBE60, \uC798 \uC9C0\uB0B4\uACE0 \uC788\uC5B4?"
-    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    sprite: {fileID: 21300000, guid: 8a2beef6d30fa47d99a07e503a5b4dde, type: 3}
     charactername: "\uB808\uC774\uB098"
   - dialogues: "\uADF8\uB798, \uB808\uC774\uB098, \uBCC4\uC77C \uC5C6\uC9C0?"
     sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
     charactername: "\uB51C\uB7F0"
   - dialogues: "\uBAB8\uC774 \uC880 \uBB34\uAC81\uACE0, \uC548 \uC88B\uC544. \n\uC694\uC998
       \uB108\uBB34 \uC790\uC8FC \uC878\uB824\u2026\u2026."
-    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    sprite: {fileID: 21300000, guid: 8a2beef6d30fa47d99a07e503a5b4dde, type: 3}
     charactername: "\uB808\uC774\uB098"
   - dialogues: "\uC54C\uC558\uC5B4, \uBAB8\uC870\uB9AC \uC798\uD558\uACE0 \uBB34\uC2A8
       \uC77C \uC788\uC73C\uBA74 \uC5F0\uB77D\uD574."
     sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
     charactername: "\uB51C\uB7F0"
   - dialogues: "\uC54C\uACA0\uC5B4, \uC624\uBE60\u2026\u2026."
-    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    sprite: {fileID: 21300000, guid: 8a2beef6d30fa47d99a07e503a5b4dde, type: 3}
     charactername: "\uB808\uC774\uB098"
   - dialogues: "\uB808\uC774\uB098\uC758 \uBAB8 \uC0C1\uD0DC\uAC00 \uC774\uC0C1\uD55C
       \uAC83 \uAC19\uC544.\n\uBC29\uC0AC\uB2A5\uC758 \uC601\uD5A5\uC774 \uC788\uB294

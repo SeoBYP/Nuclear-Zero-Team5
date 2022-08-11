@@ -30,9 +30,10 @@ public class GameUI : SceneUI
     public int StarCount { get { return starcount; } }
 
     public bool GameOver { get; private set; }
-    private PlayerController player;
+    //private PlayerController player;
     private List<PlayerHeart> playerHearts = new List<PlayerHeart>();
     private Joystick joystick;
+
     public override void Init()
     {
         base.Init();
@@ -49,7 +50,7 @@ public class GameUI : SceneUI
         Bind<Slider>(typeof(Sliders));
 
         InitPlayerHearts();
-        player = Utils.FindObjectOfType<PlayerController>();
+        //player = Utils.FindObjectOfType<PlayerController>();
         joystick = GetComponentInChildren<Joystick>();
         if (joystick != null)
             joystick.Init();
@@ -65,6 +66,10 @@ public class GameUI : SceneUI
         for(int i = 0; i < hearts.Length; i++)
         {
             hearts[i].Init();
+            //if (hearts[i].gameObject.name == "PlaerHeart4")
+            //{
+            //    hearts[i].gameObject.SetActive(false);
+            //}
             playerHearts.Add(hearts[i]);
         }
         heartcount = hearts.Length - 1;

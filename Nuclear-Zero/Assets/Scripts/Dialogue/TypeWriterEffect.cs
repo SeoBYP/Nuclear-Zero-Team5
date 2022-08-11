@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TypeWriterEffect : MonoBehaviour
 {
-    [SerializeField] private float typeWriterSpeed = 50f;
+    public float typeWriterSpeed = 50f;
 
     public bool IsRunning { get; private set; }
 

@@ -9,17 +9,20 @@ public class LobbyScene : BaseScene
         base.Init();
         UIManager.Instance.ShowSceneUi<LobbyUI>();
         GameAudioManager.Instance.PlayBackGround("LobbyBGM");
-        //UIManager.Instance.ShowPopupUi<HappyEndingPopupUI>();
-        if (DataManager.Instance.playerInfo.LookPrologue == false)
+        //UIManager.Instance.ShowPopupUi<BadEndingPopupUI>();
+        //if (DataManager.Instance.playerInfo.LookPrologue == false)
+        //{
+        //    UIManager.Instance.ShowPopupUi<ProloguePopupUI>();
+        //    DataManager.Instance.playerInfo.LookPrologue = true;
+        //}
+        //if (DataManager.Instance.playerInfo.GetPlayerStages(5).Cleared)
+        //{
+        //    DataManager.Instance.playerInfo.ShowEnding();
+        //}
+        if (GameManager.Instance.OpenStagePopup)
         {
-            UIManager.Instance.ShowPopupUi<ProloguePopupUI>();
-            DataManager.Instance.playerInfo.LookPrologue = true;
+            UIManager.Instance.ShowPopupUi<StagePopupUI>();
         }
-        if (DataManager.Instance.playerInfo.GetPlayerStages(5).Cleared)
-        {
-            DataManager.Instance.playerInfo.ShowEnding();
-        }
-        GoogleMobileAdsManager.Instance.RequestBannerAd();
         UIManager.Instance.FadeIn();
         //DataManager.Instance.LoadText(TextType.Chapter1);
     }

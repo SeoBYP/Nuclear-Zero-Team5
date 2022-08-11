@@ -23,7 +23,6 @@ public class DropBlock : BlockController
     {
         base.OnExited();
         _collider2D.enabled = true;
-
     }
 
     private void FixedUpdate()

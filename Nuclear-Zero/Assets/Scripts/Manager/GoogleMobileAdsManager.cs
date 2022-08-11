@@ -67,8 +67,9 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
         // the next Update() loop.
         MobileAdsEventExecutor.ExecuteInUpdate(() =>
         {
-            //statusText.text = "Initialization complete.";
-            RequestBannerAd();
+            print("Initialization complete.");
+            //statusText.text = ;
+            //RequestBannerAd();
         });
     }
 
@@ -100,100 +101,86 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
 
     #endregion
 
-    #region BANNER ADS
+//    #region BANNER ADS
 
-    public void OnGUI()
-    {
-        GUI.skin.label.fontSize = 60;
-        Rect textOutPutRect = new Rect(
-            0.15f * Screen.width,
-            0.25f * Screen.height,
-            0.7f * Screen.width,
-            0.3f * Screen.height);
-        //GUI.Label(textOutPutRect, "Adaptive Banner Example");
-    }
+//    public void RequestBannerAd()
+//    {
+//        PrintStatus("Requesting Banner ad.");
 
-    public void RequestBannerAd()
-    {
-        PrintStatus("Requesting Banner ad.");
+//        // These ad units are configured to always serve test ads.
+//#if UNITY_EDITOR
+//        string adUnitId = "unused";
+//#elif UNITY_ANDROID
+//            string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+//#elif UNITY_IPHONE
+//            string adUnitId = "ca-app-pub-3940256099942544/2934735716";
+//#else
+//            string adUnitId = "unexpected_platform";
+//#endif
 
-        // These ad units are configured to always serve test ads.
-#if UNITY_EDITOR
-        string adUnitId = "unused";
-#elif UNITY_ANDROID
-            string adUnitId = "ca-app-pub-3940256099942544/6300978111";
-#elif UNITY_IPHONE
-            string adUnitId = "ca-app-pub-3940256099942544/2934735716";
-#else
-            string adUnitId = "unexpected_platform";
-#endif
+//        // Clean up banner before reusing
+//        if (bannerView != null)
+//        {
+//            bannerView.Destroy();
+//        }
 
-        // Clean up banner before reusing
-        if (bannerView != null)
-        {
-            bannerView.Destroy();
-        }
+//        AdSize adaptiveSize = AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
 
-        AdSize adaptiveSize = AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
+//        // Create a 320x50 banner at top of the screen
+//        this.bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
 
-        // Create a 320x50 banner at top of the screen
-        this.bannerView = new BannerView(adUnitId, adaptiveSize, AdPosition.Bottom);
+//        // Add Event Handlers
+//        this.bannerView.OnAdLoaded += this.HandleAdLoaded;
+//        this.bannerView.OnAdFailedToLoad += this.HandleAdFailedToLoad;
+//        this.bannerView.OnAdOpening += this.HandleAdOpening;
+//        this.bannerView.OnAdClosed += this.HandleAdClosed;
+//        this.bannerView.OnPaidEvent += (sender, args) =>
+//        {
+//            string msg = string.Format("{0} (currency: {1}, value: {2}",
+//                                        "Banner ad received a paid event.",
+//                                        args.AdValue.CurrencyCode,
+//                                        args.AdValue.Value);
+//            PrintStatus(msg);
+//        };
 
-        // Add Event Handlers
-        this.bannerView.OnAdLoaded += this.HandleAdLoaded;
-        this.bannerView.OnAdFailedToLoad += this.HandleAdFailedToLoad;
-        this.bannerView.OnAdOpening += this.HandleAdOpening;
-        this.bannerView.OnAdClosed += this.HandleAdClosed;
-        this.bannerView.OnPaidEvent += (sender, args) =>
-        {
-            string msg = string.Format("{0} (currency: {1}, value: {2}",
-                                        "Banner ad received a paid event.",
-                                        args.AdValue.CurrencyCode,
-                                        args.AdValue.Value);
-            PrintStatus(msg);
-        };
+//        // Load a banner ad
+//        bannerView.LoadAd(CreateAdRequest());
+//    }
 
-        // Load a banner ad
-        bannerView.LoadAd(CreateAdRequest());
-    }
+//    #region Banner callback handlers
 
-    #region Banner callback handlers
+//    public void HandleAdLoaded(object sender, EventArgs args)
+//    {
+        
+//    }
 
-    public void HandleAdLoaded(object sender, EventArgs args)
-    {
-        print("HandleAdLoaded event received");
-        print(String.Format("Ad Height: {0}, width: {1}",
-            this.bannerView.GetHeightInPixels(),
-            this.bannerView.GetWidthInPixels()));
-    }
+//    public void HandleAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+//    {
+//        print("HandleFailedToReceiveAd event received with message: " + args.ToString());
 
-    public void HandleAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
-    {
-        print("HandleFailedToReceiveAd event received with message: " + args.ToString());
+//    }
 
-    }
+//    public void HandleAdOpening(object sender, EventArgs args)
+//    {
+//        print("HandleAdOpening event received");
+//    }
 
-    public void HandleAdOpening(object sender, EventArgs args)
-    {
-        print("HandleAdOpening event received");
-    }
+//    public void HandleAdClosed(object sender, EventArgs args)
+//    {
+//        print("HandleAdClosed event received");
+//    }
 
-    public void HandleAdClosed(object sender, EventArgs args)
-    {
-        print("HandleAdClosed event received");
-    }
+//    #endregion
 
-    #endregion
+//    public void DestroyBannerAd()
+//    {
+//        if (bannerView != null)
+//        {
+//            bannerView.Destroy();
+//        }
+//    }
 
-    public void DestroyBannerAd()
-    {
-        if (bannerView != null)
-        {
-            bannerView.Destroy();
-        }
-    }
-
-    #endregion
+//    #endregion
 
     #region INTERSTITIAL ADS
 
@@ -427,7 +414,10 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
             rewardedInterstitialAd.Show((reward) =>
             {
                 reward.Amount = 2;
-                PrintStatus("Rewarded Interstitial ad Rewarded : " + reward.Amount);
+
+                GameClearPopupUI popupUI = UIManager.Instance.Get<GameClearPopupUI>();
+                if(popupUI != null)
+                    popupUI.SetPlayerStageClear((int)reward.Amount);
             });
         }
         else

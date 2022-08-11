@@ -57,7 +57,6 @@ public abstract class BaseScene : MonoBehaviour
     private void Awake()
     {
         DataManager.Instance.LoadPlayerInfo();
-        
     }
 
     private void OnApplicationQuit()

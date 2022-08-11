@@ -112,8 +112,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1517134023893415343}
   - component: {fileID: 1517134023893415341}
-  - component: {fileID: 1517134023893415342}
   - component: {fileID: 3356436071170896196}
+  - component: {fileID: 1517134023893415342}
   m_Layer: 0
   m_Name: FlyEnemy
   m_TagString: Enemy
@@ -162,24 +162,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1517134023893415342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1517134023893415344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16f587d1905594cb38783e26ae5cff5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 50
-  _TargetOffset: {x: 15, y: 12, z: 0}
-  _ReturnOffset: {x: 20, y: 40, z: 0}
-  DeActiveTime: 3
-  _shotTime: 1
-  AttackRange: 50
 --- !u!50 &3356436071170896196
 Rigidbody2D:
   serializedVersion: 4
@@ -200,4 +182,22 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &1517134023893415342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517134023893415344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f587d1905594cb38783e26ae5cff5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
+  _TargetOffset: {x: 15, y: 12, z: 0}
+  _ReturnOffset: {x: 20, y: 40, z: 0}
+  DeActiveTime: 3
+  _shotTime: 1
+  AttackRange: 50

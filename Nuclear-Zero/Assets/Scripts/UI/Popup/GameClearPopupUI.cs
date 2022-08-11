@@ -20,6 +20,10 @@ public class GameClearPopupUI : PopupUI
 
     private ResultStar[] resultStars;
 
+    private int stageIndex;
+    private int star;
+    private int coin;
+
     public override void Init()
     {
         base.Init();
@@ -31,14 +35,14 @@ public class GameClearPopupUI : PopupUI
     {
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
+        FindResultStars();
+
         SetPlayerStageClear();
 
         BindEvent(GetButton((int)Buttons.NextStage).gameObject, OnNextStage, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Exit).gameObject, OnExit, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.ADButton).gameObject, OnADButtons, UIEvents.Click);
-        FindResultStars();
-        // ???? ?????????? ?????? ???????? ???? ?????? ????????????,
-        // ???? ?????????? ?????? ???????? ???? ?????? ????????????????.
+        
         if (DataManager.Instance.playerInfo.SelectStage < DataManager.Instance.playerInfo.PlayerStages.Count)
             GetButton((int)Buttons.NextStage).gameObject.SetActive(true);
         else
@@ -47,12 +51,35 @@ public class GameClearPopupUI : PopupUI
 
     private void SetPlayerStageClear()
     {
-        int stageIndex = DataManager.Instance.playerInfo.SelectStage;
+        stageIndex = DataManager.Instance.playerInfo.SelectStage;
         GameUI gameUI = UIManager.Instance.Get<GameUI>();
-        int star = gameUI.StarCount;
-        int coin = gameUI.CoinCount;
-        GetText((int)Texts.RewardCoinText).text = coin.ToString();
-        DataManager.Instance.playerInfo.SetClearStage(stageIndex,star,coin);
+        star = gameUI.StarCount;
+        SetResultStars(star);
+        coin = gameUI.CoinCount * 10;
+        GetText((int)Texts.RewardCoinText).text = $"+ {coin}";
+    }
+
+    public void SetPlayerStageClear(int reward)
+    {
+        stageIndex = DataManager.Instance.playerInfo.SelectStage;
+        GameUI gameUI = UIManager.Instance.Get<GameUI>();
+        star = gameUI.StarCount;
+        SetResultStars(star);
+        coin = gameUI.CoinCount * 10 * reward;
+        GetText((int)Texts.RewardCoinText).text = $"+ {coin}";
+        print("GetReward");
+    }
+
+    private void SetResultStars(int index)
+    {
+        for(int i = 0; i < resultStars.Length; i++)
+        {
+            resultStars[i].SetDeShineStar();
+        }
+        for(int i = 0; i < index; i++)
+        {
+            resultStars[i].SetShineStar();
+        }
     }
 
     private void FindResultStars()
@@ -61,7 +88,6 @@ public class GameClearPopupUI : PopupUI
         for (int i = 0; i < resultStars.Length; i++)
         {
             resultStars[i].Init();
-            resultStars[i].SetShineStar();
         }
     }
 
@@ -72,12 +98,16 @@ public class GameClearPopupUI : PopupUI
 
     private void OnNextStage(PointerEventData data)
     {
+        DataManager.Instance.playerInfo.SetClearStage(stageIndex, star, coin);
         ++DataManager.Instance.playerInfo.SelectStage;
+        GameManager.Instance.OpenStagePopup = false;
         SceneManagerEx.Instance.ReLoadScene(Scene.Game);
     }
 
     private void OnExit(PointerEventData data)
     {
+        DataManager.Instance.playerInfo.SetClearStage(stageIndex, star, coin);
+        GameManager.Instance.OpenStagePopup = true;
         SceneManagerEx.Instance.LoadScene(Scene.Lobby);
     }
 }

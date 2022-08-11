@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  AttackRange: 0
+  AttackRange: 100
 --- !u!70 &1018999881060210230
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -143,8 +143,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1013359, y: -0.041456096}
-  m_Size: {x: 3.4606335, y: 0.6829148}
+  m_Offset: {x: -0.1, y: -0.05}
+  m_Size: {x: 3.5, y: 0.7}
   m_Direction: 1
 --- !u!50 &1440582008787801621
 Rigidbody2D:
@@ -166,4 +166,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Grounded")]
     private bool Grounded;
-    private float GroundedOffset = 2f;
+    private float GroundedOffset = 1.95f;
     private Vector2 GroundedSize = new Vector2(1.85f, 0.2f);
     public LayerMask GroundLayer;
 
@@ -18,30 +18,42 @@ public class PlayerController : MonoBehaviour
     private float _verticalVelocity;
     private float _terminalVelocity = 53.0f;
 
-    private bool Hited = false;
-    private bool _flipX = false;
-
-    public float Timer = 3;
-
+    
+    [Header("PlayerComponent")]
     private PlayerAnimationController animationController;
     private Rigidbody2D _rigidbody2D;
     private GameUI gameUI;
     private JoyButton joyButton;
     private Joystick _joystick;
 
-    private bool isJumped = false;
+    [Header("PlayerMovement")]
+    private bool _flipX = false;
+    public float speed;
 
+    [Header("PlayerState")]
+    private bool Hited = false;
+    
+    [SerializeField] private float Timer = 1;
+
+    [Header("GameState")]
     private static bool _isStart = false;
     private static bool _isPause = false;
+    private bool _isKnockBack = false;
 
-    [SerializeField] private SpriteRenderer _radersprite;
+    [Header("PlayerItems")]
+    [SerializeField] private SpriteRenderer _magnetsprite;
+    private static bool _haveMagnet = false;
+    [SerializeField] private SpriteRenderer _shieldprite;
+    private static bool _isShield = false;
 
-    public float speed;
 
     private void Start()
     {
         _isStart = false;
         _isPause = false;
+        _haveMagnet = true;
+        _isKnockBack = false;
+        //targetPos = Vector3.zero;
     }
 
     public void Init()
@@ -61,10 +73,12 @@ public class PlayerController : MonoBehaviour
 
     public static void SetStart(bool state) { _isStart = state; }
     public static void SetPause(bool state) { _isPause = state; }
+    public static void SetShield(bool state) { _isShield = state; }
+    public static void SetMagnet(bool state) { _haveMagnet = state; }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if(_joystick == null)
+        if (_joystick == null)
             Utils.FindObjectOfType<Joystick>(true);
         if (_isStart == false)
             return;
@@ -74,10 +88,12 @@ public class PlayerController : MonoBehaviour
             return;
         }
         CheckGrounded();
+
         Move(_joystick.Direction);
         Jump();
         SetGoalDistance();
     }
+
     #region PlayerMovement
     public void Move(Vector2 dir)
     {
@@ -124,9 +140,12 @@ public class PlayerController : MonoBehaviour
                 _jumpTimeoutDelta -= Time.deltaTime;
             }
         }
-        if (_verticalVelocity < _terminalVelocity)
+        else
         {
-            _verticalVelocity += Gravity * Time.deltaTime;
+            if (_verticalVelocity < _terminalVelocity)
+            {
+                _verticalVelocity += Gravity * Time.deltaTime;
+            }
         }
     }
 
@@ -135,15 +154,14 @@ public class PlayerController : MonoBehaviour
         Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
         Grounded = Physics2D.OverlapBox(boxPosition, GroundedSize,LayerMask.NameToLayer("Floor") >> 1);
         animationController.IsGrounded(Grounded);
-        //print(Grounded);
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
-    //    Gizmos.DrawWireCube(boxPosition, GroundedSize);
-    //    Gizmos.color = Color.red;
-    //}
+    private void OnDrawGizmos()
+    {
+        Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
+        Gizmos.DrawWireCube(boxPosition, GroundedSize);
+        Gizmos.color = Color.red;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -172,8 +190,6 @@ public class PlayerController : MonoBehaviour
 
     #region PlayerDamaged
     private bool _isDead;
-    private bool _isShield = false;
-    [SerializeField] private SpriteRenderer _shieldprite;
     public void Dead()
     {
         if (!_isDead)
@@ -202,17 +218,9 @@ public class PlayerController : MonoBehaviour
         GameAudioManager.Instance.SetVibration();
         GameAudioManager.Instance.Play2DSound("PlayerHited");
         gameUI.DeleteHeart();
-        //SetKnownBack();
         Hited = true;
         animationController.Hited();
         StartCoroutine(DontActive());
-    }
-
-    private void SetKnownBack()
-    {
-        Vector3 targetPos = transform.position - Vector3.left;
-        _rigidbody2D.AddForce(targetPos * 5);
-        print("SetKnownBack");
     }
 
     IEnumerator DontActive()
@@ -220,6 +228,7 @@ public class PlayerController : MonoBehaviour
         yield return YieldInstructionCache.WaitForSeconds(Timer);
         Hited = false;
         animationController.Return();
+        StopCoroutine(DontActive());
     }
     #endregion
 
@@ -232,7 +241,6 @@ public class PlayerController : MonoBehaviour
             GameAudioManager.Instance.Play2DSound("Shield");
             _shieldprite.gameObject.SetActive(true);
         }
-        print("SHiled");
     }
     private bool _isfast = false;
     public void SetFast(float value)
@@ -279,6 +287,7 @@ public class PlayerController : MonoBehaviour
         yield break;
     }
 
+    private bool isJumped = false;
     public void Jump(float jumpPower)
     {
         if(isJumped == false)
@@ -289,6 +298,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
+
     private GameObject _goal;
     private float _defaultDistance;
     public void SetDefaultGoalDistance()
@@ -315,11 +325,12 @@ public class PlayerController : MonoBehaviour
 
     private void SetRaderSprite()
     {
-        _radersprite.gameObject.SetActive(true);
-        if (_radersprite)
-        {
-            
-        }
+        _magnetsprite.gameObject.SetActive(false);
+        //if (_haveMagnet)
+        //{
+        //    _magnetsprite.gameObject.SetActive(false);
+        //    //ItemController.SetPlayerHasMagnet(true);
+        //}
     }
 
 }

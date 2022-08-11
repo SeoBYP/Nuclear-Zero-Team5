@@ -7,9 +7,12 @@ public class GameManager : Managers<GameManager>//,IUpdate
     private PlayerController _player;
 
     private bool IsPause;
+    public bool OpenStagePopup;
+
     public override void Init()
     {
         base.Init();
+        OpenStagePopup = false;
     }
 
     public void GameStart()

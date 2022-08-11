@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 827386617}
   - component: {fileID: 827386618}
   m_Layer: 0
-  m_Name: Rader
+  m_Name: Magnet
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,8 +357,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827386615}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.8, y: 3.8, z: 1}
+  m_LocalPosition: {x: 0, y: 3.7, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 977957288}
   m_RootOrder: 2
@@ -403,12 +403,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: 738f41dda44de487b8b4e48d74e45f1c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5aa2dda829933479b801bcf5883819b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.69, y: 2.9}
+  m_Size: {x: 1.9061539, y: 1.7749199}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -583,9 +583,9 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
-  Timer: 1
-  _radersprite: {fileID: 827386617}
   speed: 20
+  Timer: 1
+  _magnetsprite: {fileID: 827386617}
   _shieldprite: {fileID: 1911482635}
   fastTime: 0.6
   slowTime: 2

@@ -28,7 +28,7 @@ public class Projectile<T> : MonoBehaviour,IUpdate where T : Component
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             if (_player == null)
                 _player = collision.gameObject.GetComponent<PlayerController>();

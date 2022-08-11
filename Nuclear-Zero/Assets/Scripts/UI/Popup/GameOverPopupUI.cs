@@ -42,7 +42,7 @@ public class GameOverPopupUI : PopupUI
         //int stageIndex = DataManager.Instance.playerInfo.SelectStage;
         GameUI gameUI = UIManager.Instance.Get<GameUI>();
         int coin = gameUI.CoinCount;
-        GetText((int)Texts.CoinText).text = coin.ToString();
+        GetText((int)Texts.CoinText).text = $"+ {coin}";
         DataManager.Instance.playerInfo.SetCoin(coin);
     }
 

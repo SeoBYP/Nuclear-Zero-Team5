@@ -26,6 +26,10 @@ public class TutorialPopupUI : PopupUI
 
     private void OnClose(PointerEventData data)
     {
+        //if(UIManager.Instance.Get<ProloguePopupUI>() != null)
+        //{
+        //    UIManager.Instance.Get<ProloguePopupUI>().ClosePopupUI();
+        //}
         ClosePopupUI();
     }
 }

@@ -16,7 +16,7 @@ public class ProloguePopupUI : PopupUI
 
     public override void ClosePopupUI()
     {
-        UIManager.Instance.FadeIn();
+        //UIManager.Instance.FadeIn();
         base.ClosePopupUI();
     }
 }

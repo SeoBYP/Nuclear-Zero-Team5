@@ -120627,6 +120627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpBlock (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 845292659435132775, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
 --- !u!4 &845292659495613875 stripped
@@ -121023,6 +121027,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5964767287601850707}
     m_Modifications:
+    - target: {fileID: 845292659435132760, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
       value: 14
@@ -121235,6 +121243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpBlock (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 845292659435132775, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
 --- !u!4 &845292658579658918 stripped
@@ -121312,6 +121324,10 @@ PrefabInstance:
     - target: {fileID: 845292659435132775, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_Name
       value: JumpBlock (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 845292659435132775, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
+      propertyPath: m_TagString
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}

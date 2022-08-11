@@ -66,6 +66,7 @@ public class PlayerInfo
     public int Gold;
     public string DialogueObjectName;
     public bool LookPrologue;
+    public bool LookTutorial;
     public int PlayerStars;
     public int SelectStage;
     public int ClearStage;
@@ -87,6 +88,7 @@ public class PlayerInfo
         Gold = data["Gold"].ToObject<int>();
         DialogueObjectName = data["DialogueObjectName"].ToObject<string>();
         LookPrologue = data["LookPrologue"].ToObject<bool>();
+        LookTutorial = data["LookTutorial"].ToObject<bool>();
         PlayerStars = data["PlayerStars"].ToObject<int>();
         SelectStage = data["SelectStage"].ToObject<int>();
         ClearStage = data["ClearStage"].ToObject<int>();
@@ -299,9 +301,10 @@ public class DataManager : Managers<DataManager>
     public void SavePlayerInfo()
     {
         var filePath = Path.Combine(Application.persistentDataPath, _filePath);
+        //print(filePath);
         string JsonData = JsonUtility.ToJson(playerInfo,true);
         File.WriteAllText(filePath, JsonData);
-        print("Save");
+        //print("Save");
     }
 
     public static int ToInter(TableType tableType, int tableIndex,string subject)

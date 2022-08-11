@@ -1,157 +1,158 @@
 {
-  "Gold": 1024,
-  "DialogueObjectName": "Chapter1",
-  "LookPrologue": false,
-  "PlayerStars": 0,
-  "SelectStage": 1,
-  "ClearStage": 16,
-  "SelectChapter": 1,
-  "BGMSound": 0.187502056,
-  "EffectSound": 0.4613759,
-  "RaderItem": 0,
-  "ShieldItem": 0,
-  "LifeItem": 0,
-  "BadEnding": false,
-  "NormalEnding": false,
-  "HappyEnding": false,
-  "PlayerChapters": [
-    {
-      "ChapterIndex": 1,
-      "ChapterName": "Chapter1",
-      "BunkerItem1": false,
-      "BunkerItem2": false,
-      "BunkerItem3": false,
-      "BunkerItem4": false,
-      "ChapterStory": false,
-      "BunkerStory": false
-    },
-    {
-      "ChapterIndex": 2,
-      "ChapterName": "Chapter2",
-      "BunkerItem1": false,
-      "BunkerItem2": false,
-      "BunkerItem3": false,
-      "BunkerItem4": false,
-      "ChapterStory": false,
-      "BunkerStory": false
-    },
-    {
-      "ChapterIndex": 3,
-      "ChapterName": "Chapter3",
-      "BunkerItem1": false,
-      "BunkerItem2": false,
-      "BunkerItem3": false,
-      "BunkerItem4": false,
-      "ChapterStory": false,
-      "BunkerStory": false
-    },
-    {
-      "ChapterIndex": 4,
-      "ChapterName": "Chapter4",
-      "BunkerItem1": false,
-      "BunkerItem2": false,
-      "BunkerItem3": false,
-      "BunkerItem4": false,
-      "ChapterStory": false,
-      "BunkerStory": false
-    }
-  ],
-  "PlayerStages": [
-    {
-        "StageIndex": 1,
-        "StageName": "Stage1-1",
-        "ResultStar": 0,
-        "Cleared": false
-    },
-    {
-      "StageIndex": 2,
-      "StageName": "Stage1-2",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 3,
-      "StageName": "Stage1-3",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 4,
-      "StageName": "Stage1-4",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 5,
-      "StageName": "Stage2-1",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 6,
-      "StageName": "Stage2-2",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 7,
-      "StageName": "Stage2-3",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 8,
-      "StageName": "Stage2-4",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 9,
-      "StageName": "Stage3-1",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 10,
-      "StageName": "Stage3-2",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 11,
-      "StageName": "Stage3-3",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 12,
-      "StageName": "Stage3-4",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 13,
-      "StageName": "Stage4-1",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 14,
-      "StageName": "Stage4-2",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 15,
-      "StageName": "Stage4-3",
-      "ResultStar": 0,
-      "Cleared": false
-    },
-    {
-      "StageIndex": 16,
-      "StageName": "Stage4-4",
-      "ResultStar": 0,
-      "Cleared": false
-    }
-  ]
+    "Gold": 1024,
+    "DialogueObjectName": "Chapter1",
+    "LookPrologue": false,
+    "LookTutorial": false,
+    "PlayerStars": 0,
+    "SelectStage": 1,
+    "ClearStage": 16,
+    "SelectChapter": 1,
+    "BGMSound": 0.187502056,
+    "EffectSound": 0.4613759,
+    "RaderItem": 0,
+    "ShieldItem": 0,
+    "LifeItem": 0,
+    "BadEnding": false,
+    "NormalEnding": false,
+    "HappyEnding": false,
+    "PlayerChapters": [
+        {
+            "ChapterIndex": 1,
+            "ChapterName": "Chapter1",
+            "BunkerItem1": false,
+            "BunkerItem2": false,
+            "BunkerItem3": false,
+            "BunkerItem4": false,
+            "ChapterStory": false,
+            "BunkerStory": false
+        },
+        {
+            "ChapterIndex": 2,
+            "ChapterName": "Chapter2",
+            "BunkerItem1": false,
+            "BunkerItem2": false,
+            "BunkerItem3": false,
+            "BunkerItem4": false,
+            "ChapterStory": false,
+            "BunkerStory": false
+        },
+        {
+            "ChapterIndex": 3,
+            "ChapterName": "Chapter3",
+            "BunkerItem1": false,
+            "BunkerItem2": false,
+            "BunkerItem3": false,
+            "BunkerItem4": false,
+            "ChapterStory": false,
+            "BunkerStory": false
+        },
+        {
+            "ChapterIndex": 4,
+            "ChapterName": "Chapter4",
+            "BunkerItem1": false,
+            "BunkerItem2": false,
+            "BunkerItem3": false,
+            "BunkerItem4": false,
+            "ChapterStory": false,
+            "BunkerStory": false
+        }
+    ],
+    "PlayerStages": [
+        {
+            "StageIndex": 1,
+            "StageName": "Stage1-1",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 2,
+            "StageName": "Stage1-2",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 3,
+            "StageName": "Stage1-3",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 4,
+            "StageName": "Stage1-4",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 5,
+            "StageName": "Stage2-1",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 6,
+            "StageName": "Stage2-2",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 7,
+            "StageName": "Stage2-3",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 8,
+            "StageName": "Stage2-4",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 9,
+            "StageName": "Stage3-1",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 10,
+            "StageName": "Stage3-2",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 11,
+            "StageName": "Stage3-3",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 12,
+            "StageName": "Stage3-4",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 13,
+            "StageName": "Stage4-1",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 14,
+            "StageName": "Stage4-2",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 15,
+            "StageName": "Stage4-3",
+            "ResultStar": 0,
+            "Cleared": false
+        },
+        {
+            "StageIndex": 16,
+            "StageName": "Stage4-4",
+            "ResultStar": 0,
+            "Cleared": false
+        }
+    ]
 }

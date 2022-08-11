@@ -9,12 +9,17 @@ public class LobbyScene : BaseScene
         base.Init();
         UIManager.Instance.ShowSceneUi<LobbyUI>();
         GameAudioManager.Instance.PlayBackGround("LobbyBGM");
+        if (DataManager.Instance.playerInfo.LookTutorial == false)
+        {
+            UIManager.Instance.ShowPopupUi<TutorialPopupUI>();
+            DataManager.Instance.playerInfo.LookTutorial = true;
+        }
+        if (DataManager.Instance.playerInfo.LookPrologue == false)
+        {
+            UIManager.Instance.ShowPopupUi<ProloguePopupUI>();
+            DataManager.Instance.playerInfo.LookPrologue = true;
+        }
         //UIManager.Instance.ShowPopupUi<HappyEndingPopupUI>();
-        //if (DataManager.Instance.playerInfo.LookPrologue == false)
-        //{
-        //    UIManager.Instance.ShowPopupUi<ProloguePopupUI>();
-        //    DataManager.Instance.playerInfo.LookPrologue = true;
-        //}
         //if (DataManager.Instance.playerInfo.GetPlayerStages(5).Cleared)
         //{
         //    DataManager.Instance.playerInfo.ShowEnding();
@@ -22,6 +27,7 @@ public class LobbyScene : BaseScene
         if (GameManager.Instance.OpenStagePopup)
         {
             UIManager.Instance.ShowPopupUi<StagePopupUI>();
+            GameManager.Instance.OpenStagePopup = false;
         }
         UIManager.Instance.FadeIn();
         //DataManager.Instance.LoadText(TextType.Chapter1);

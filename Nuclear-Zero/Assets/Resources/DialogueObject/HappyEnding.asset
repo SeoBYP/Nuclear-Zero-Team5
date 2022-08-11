@@ -153,7 +153,7 @@ MonoBehaviour:
     charactername: "\uB51C\uB7F0"
   - dialogues: "\uC624\uBE60, \uC61B\uB0A0 \uC774\uC57C\uAE30 \uADF8\uB9CC\uD558\uACE0
       \uC640\uC11C \uBC25\uC774\uB098 \uBA39\uC5B4!"
-    sprite: {fileID: 21300000, guid: 8a2beef6d30fa47d99a07e503a5b4dde, type: 3}
+    sprite: {fileID: 21300000, guid: ea8156c6db0914cc9afcc17b000c6774, type: 3}
     charactername: "\uB808\uC774\uB098"
   - dialogues: "\uC544\uB2C8, \uC7A0\uC2DC\uB9CC \uAE30\uB2E4\uB824\uBD10~\n\uADF8\uB7EC\uB2C8\uAE4C
       \uC598\uB4E4\uC544, \uB108\uD76C \uADF8\uB807\uAC8C \uB9E8\uB0A0 \uC6B8\uACE0
@@ -161,7 +161,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
     charactername: "\uB51C\uB7F0"
   - dialogues: "\uC624\uBE60!"
-    sprite: {fileID: 21300000, guid: 8a2beef6d30fa47d99a07e503a5b4dde, type: 3}
+    sprite: {fileID: 21300000, guid: ea8156c6db0914cc9afcc17b000c6774, type: 3}
     charactername: "\uB808\uC774\uB098"
   - dialogues: "\uC54C\uACA0\uC5B4, \uAC04\uB2E4\uB2C8\uAE4C."
     sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}

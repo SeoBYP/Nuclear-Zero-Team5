@@ -85,7 +85,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     charactername: Ending
   - dialogues: "\uC624\uBE60, \uC5B4\uB514 \uC788\uC5B4? \uB098 \uB108\uBB34 \uBB34\uC11C\uC6CC\u2026\u2026."
-    sprite: {fileID: 21300000, guid: 8a2beef6d30fa47d99a07e503a5b4dde, type: 3}
+    sprite: {fileID: 21300000, guid: ea8156c6db0914cc9afcc17b000c6774, type: 3}
     charactername: "\uB808\uC774\uB098"
   - dialogues: "\uB51C\uB7F0\uC740 \uC808\uB9DD\uC5D0 \uBE60\uC84C\uACE0,\n\n\uB9C8\uC9C0\uB9C9
       \uB0A8\uC740 \uD798\uC73C\uB85C\n\n\uC790\uC2E0\uC758 \uB3D9\uB825\uAE30\uAD00\uC744

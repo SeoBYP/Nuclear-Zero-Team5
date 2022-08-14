@@ -134,7 +134,7 @@ public class UIManager : Managers<UIManager>
         {
             Debug.Log("Close Popup Failed");
             //Destroy(_popupStack.Pop().gameObject);
-            //return;
+            return;
         }
         ClosePopupUI();
     }

@@ -7,7 +7,7 @@ public class TitleScene : BaseScene
     protected override void Init()
     {
         base.Init();
-
+        GameAudioManager.Instance.PlayBackGround("LobbyBGM");
         UIManager.Instance.ShowSceneUi<TitleUI>();
     }
 

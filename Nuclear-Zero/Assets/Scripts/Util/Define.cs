@@ -13,4 +13,11 @@ public class Define
         Click,
         Drag,
     }
+
+    public enum Items
+    {
+        Shield,
+        Magnet,
+        Life,
+    }
 }

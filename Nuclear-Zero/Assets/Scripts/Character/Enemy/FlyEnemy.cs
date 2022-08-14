@@ -33,7 +33,6 @@ public class FlyEnemy : EnemyController
         _flyanimation = GetComponentInChildren<Animation>();
         if (_flyanimation != null)
             _flyanimation.Play();
-        StartCoroutine(SetTarget());
         _IsAttack = false;
         IsMoveDown = true;
     }
@@ -46,6 +45,7 @@ public class FlyEnemy : EnemyController
         {
             Move();
             FollowPlayer();
+            isUpdate = true;
             Shot();
         }
     }
@@ -58,22 +58,12 @@ public class FlyEnemy : EnemyController
         }
     }
 
-    IEnumerator SetTarget()
-    {
-        while (true)
-        {
-            yield return YieldInstructionCache.WaitForSeconds(_shotTime);
-            dir = _player.transform.position - transform.position;
-            isUpdate = true;
-            Shot();
-        }
-    }
-
     IEnumerator DeActiveTimer()
     {
         yield return YieldInstructionCache.WaitForSeconds(DeActiveTime);
         IsMoveUp = true;
         IsFollow = false;
+        isUpdate = false;
     }
 
     private void Shot()
@@ -85,14 +75,15 @@ public class FlyEnemy : EnemyController
 
         elapsed += Time.deltaTime / _speed;
         elapsed = Mathf.Clamp01(elapsed);
-        if(elapsed >= 0)
+        if(elapsed >= _shotTime)
         {
+            dir = _player.transform.position - transform.position;
             GameObject go = ResourcesManager.Instance.Instantiate("Weapon/Arrow");
             go.transform.position = this.transform.position;
             Arrow arrow = go.GetComponent<Arrow>();
             arrow.Init();
             arrow.SetTargetDir(dir);
-            isUpdate = false;
+            
             elapsed = 0;
         }
         

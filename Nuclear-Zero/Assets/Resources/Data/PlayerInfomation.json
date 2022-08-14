@@ -9,7 +9,7 @@
     "SelectChapter": 1,
     "BGMSound": 0.187502056,
     "EffectSound": 0.4613759,
-    "RaderItem": 0,
+    "MagnetItem": 0,
     "ShieldItem": 0,
     "LifeItem": 0,
     "BadEnding": false,

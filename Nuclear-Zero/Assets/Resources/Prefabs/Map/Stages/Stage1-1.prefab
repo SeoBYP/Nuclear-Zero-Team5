@@ -90627,12 +90627,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 39291024943595805, guid: 39f0bb2766b374af2a2b871612732598, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 39291024943595805, guid: 39f0bb2766b374af2a2b871612732598, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 39291024943595805, guid: 39f0bb2766b374af2a2b871612732598, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 39291024943595805, guid: 39f0bb2766b374af2a2b871612732598, type: 3}
       propertyPath: m_LocalPosition.z
@@ -91991,6 +91995,10 @@ PrefabInstance:
     - target: {fileID: 2266948946913906407, guid: a9d2ec02c8d9742a7ae1acb7c9e9d056, type: 3}
       propertyPath: m_Name
       value: BackEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266948946913906407, guid: a9d2ec02c8d9742a7ae1acb7c9e9d056, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9d2ec02c8d9742a7ae1acb7c9e9d056, type: 3}

@@ -73,7 +73,7 @@ public class PlayerInfo
     public int SelectChapter;
     public float BGMSound;
     public float EffectSound;
-    public int RaderItem;
+    public int MagnetItem;
     public int ShieldItem;
     public int LifeItem;
     public bool BadEnding;
@@ -95,7 +95,7 @@ public class PlayerInfo
         SelectChapter = data["SelectChapter"].ToObject<int>();
         BGMSound = data["BGMSound"].ToObject<float>();
         EffectSound = data["EffectSound"].ToObject<float>();
-        RaderItem = data["RaderItem"].ToObject<int>();
+        MagnetItem = data["MagnetItem"].ToObject<int>();
         ShieldItem = data["ShieldItem"].ToObject<int>();
         LifeItem = data["LifeItem"].ToObject<int>();
         BadEnding = data["BadEnding"].ToObject<bool>();
@@ -212,15 +212,51 @@ public class PlayerInfo
         EffectSound = effect;
     }
 
-    public void SetRaderItemCount(int _raderitem) { RaderItem = _raderitem; }
-    public void SetShieldItemCount(int _shielditem) { ShieldItem = _shielditem; }
-    public void SetLifeItemCount(int _lifeItem) { LifeItem = _lifeItem; }
+    private bool CheckGold(int price)
+    {
+        if((Gold - price) > 0)
+        {
+            return true;
+        }
+        return false;
+    }
 
-    public int GetRaderItemCount() { return RaderItem; }
-    public int GetShieldItemCount() { return ShieldItem; }
-    public int GetLifeItemCount() { return LifeItem; }
-
-
+    public void SetMagnetItemCount(int price,int _magnetitem)
+    {
+        if (CheckGold(price))
+        {
+            Gold -= price;
+            MagnetItem += _magnetitem;
+        }
+        else
+        {
+            UIManager.Instance.ShowPopupUi<FailToBuyPopup>();
+        }
+    }
+    public void SetShieldItemCount(int price,int _shielditem)
+    {
+        if (CheckGold(price))
+        {
+            Gold -= price;
+            ShieldItem += _shielditem;
+        }
+        else
+        {
+            UIManager.Instance.ShowPopupUi<FailToBuyPopup>();
+        }
+    }
+    public void SetLifeItemCount(int price,int _lifeItem)
+    {
+        if (CheckGold(price))
+        {
+            Gold -= price;
+            LifeItem += _lifeItem;
+        }
+        else
+        {
+            UIManager.Instance.ShowPopupUi<FailToBuyPopup>();
+        }
+    }
 }
 #endregion
 public class DataManager : Managers<DataManager>

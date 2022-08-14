@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Grounded")]
     private bool Grounded;
-    private float GroundedOffset = 1.95f;
+    private float GroundedOffset = 2f;
     private Vector2 GroundedSize = new Vector2(1.85f, 0.2f);
     public LayerMask GroundLayer;
 
@@ -87,11 +87,12 @@ public class PlayerController : MonoBehaviour
             _rigidbody2D.velocity = Vector2.zero;
             return;
         }
-        CheckGrounded();
-
+        
         Move(_joystick.Direction);
         Jump();
+        CheckGrounded();
         SetGoalDistance();
+        
     }
 
     #region PlayerMovement
@@ -140,12 +141,9 @@ public class PlayerController : MonoBehaviour
                 _jumpTimeoutDelta -= Time.deltaTime;
             }
         }
-        else
+        if (_verticalVelocity < _terminalVelocity)
         {
-            if (_verticalVelocity < _terminalVelocity)
-            {
-                _verticalVelocity += Gravity * Time.deltaTime;
-            }
+            _verticalVelocity += Gravity * Time.deltaTime;
         }
     }
 
@@ -292,6 +290,7 @@ public class PlayerController : MonoBehaviour
     {
         if(isJumped == false)
         {
+            print("Jump : " + Grounded);
             JumpHeight = jumpPower;
             isJumped = true;
             Jump();

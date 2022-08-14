@@ -97,12 +97,11 @@ public class StagePopupUI : PopupUI
 
     private void OnClose(PointerEventData data)
     {
-        //GoogleMobileAdsManager.Instance.RequestBannerAd();
         ClosePopupUI();
     }
 
     private void OnTutorial(PointerEventData data)
     {
-        print("OnTutorial");
+        UIManager.Instance.ShowPopupUi<TutorialPopupUI>();
     }
 }

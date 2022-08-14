@@ -123,8 +123,7 @@ public class LobbyUI : SceneUI
 
     private void OnShop(PointerEventData data)
     {
-        print("OnShop");
-        //UIManager.Instance.ShowPopupUi<ShopPopupUI>();
+        UIManager.Instance.ShowPopupUi<ShopPopupUI>();
     }
 
     private void OnInfomation(PointerEventData data)

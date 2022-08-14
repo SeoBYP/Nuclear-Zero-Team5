@@ -8,7 +8,6 @@ public class LobbyScene : BaseScene
     {
         base.Init();
         UIManager.Instance.ShowSceneUi<LobbyUI>();
-        GameAudioManager.Instance.PlayBackGround("LobbyBGM");
         if (DataManager.Instance.playerInfo.LookTutorial == false)
         {
             UIManager.Instance.ShowPopupUi<TutorialPopupUI>();

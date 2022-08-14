@@ -24,6 +24,7 @@ public class swipe : MonoBehaviour
     {
         pos = new float[transform.childCount];
         float distance = 1f / (pos.Length - 1f);
+        print(distance);
 
         if (runIt)
         {
@@ -52,11 +53,12 @@ public class swipe : MonoBehaviour
             {
                 if (scroll_pos < pos[i] + (distance / 2) && scroll_pos > pos[i] - (distance / 2))
                 {
+                    
                     scrollbar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollbar.GetComponent<Scrollbar>().value, pos[i], 0.1f);
+                    //print(transform.GetChild(j).localScale);
                 }
             }
         }
-
 
         for (int i = 0; i < pos.Length; i++)
         {
@@ -72,6 +74,7 @@ public class swipe : MonoBehaviour
                         imageContent.transform.GetChild(j).GetComponent<Image>().color = colors[0];
                         imageContent.transform.GetChild(j).localScale = Vector2.Lerp(imageContent.transform.GetChild(j).localScale, new Vector2(0.8f, 0.8f), 0.1f);
                         transform.GetChild(j).localScale = Vector2.Lerp(transform.GetChild(j).localScale, new Vector2(0.8f, 0.8f), 0.1f);
+                        
                     }
                 }
             }
@@ -87,7 +90,7 @@ public class swipe : MonoBehaviour
             if (scroll_pos < pos[i] + (distance / 2) && scroll_pos > pos[i] - (distance / 2))
             {
                 scrollbar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollbar.GetComponent<Scrollbar>().value, pos[btnNumber], 1f * Time.deltaTime);
-
+                
             }
         }
 

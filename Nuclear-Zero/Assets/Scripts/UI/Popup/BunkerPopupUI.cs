@@ -13,6 +13,7 @@ public class BunkerPopupUI : PopupUI
         BunkerItem2,
         BunkerItem3,
         BunkerItem4,
+        BunkerItem5,
         Close,
     }
 
@@ -40,6 +41,7 @@ public class BunkerPopupUI : PopupUI
         BindEvent(GetButton((int)Buttons.BunkerItem2).gameObject, OnBunkerItem2, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.BunkerItem3).gameObject, OnBunkerItem3, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.BunkerItem4).gameObject, OnBunkerItem4, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.BunkerItem5).gameObject, OnBunkerItem5, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Close).gameObject, OnClose, UIEvents.Click);
     }
 
@@ -110,6 +112,16 @@ public class BunkerPopupUI : PopupUI
         {
             UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
             DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem4 = true;
+        }
+    }
+
+    private void OnBunkerItem5(PointerEventData data)
+    {
+        int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
+        if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem5 == false)
+        {
+            UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
+            DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem5 = true;
         }
     }
 

@@ -17,6 +17,11 @@ public class GetItemPopupUI : PopupUI
         BackGround,
     }
 
+    enum Texts
+    {
+        CoinCount,
+    }
+    private int coin;
     public override void Init()
     {
         base.Init();
@@ -28,14 +33,31 @@ public class GetItemPopupUI : PopupUI
     {
         Bind<Button>(typeof(Buttons));
         Bind<GameObject>(typeof(GameObjects));
+        Bind<Text>(typeof(Texts));
 
         BindEvent(GetButton((int)Buttons.ADButton).gameObject, OnADButton, UIEvents.Click);
         BindEvent(GetGameObject((int)GameObjects.BackGround), OnClose, UIEvents.Click);
+        SetReward();
+    }
+
+    private void SetReward()
+    {
+        coin = Random.Range(150, 250);
+        GetText((int)Texts.CoinCount).text = $"+ {coin}";
+        DataManager.Instance.playerInfo.SetCoin(coin);
+    }
+
+    public void SetPlayerStageClear(int reward)
+    {
+        coin *= reward;
+        GetText((int)Texts.CoinCount).text = $"+ {coin}";
+        print("GetReward");
     }
 
     private void OnADButton(PointerEventData data)
     {
         GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
+
     }
     private void OnClose(PointerEventData data)
     {

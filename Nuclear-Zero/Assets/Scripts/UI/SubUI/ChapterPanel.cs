@@ -33,12 +33,14 @@ public class ChapterPanel : SubUI
 
     private void OnBunker(PointerEventData data)
     {
+        //print(DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex));
         switch (curChapterIndex)
         {
             case 1:
                 {
-                    if (DataManager.Instance.playerInfo.PlayerStars >= 12)
+                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
                     {
+                        
                         StartCoroutine(ShowBunkerPopupUI());
                         DataManager.Instance.playerInfo.SelectChapter = curChapterIndex;
                         DataManager.Instance.playerInfo.DialogueObjectName = "Bunker1";
@@ -49,7 +51,7 @@ public class ChapterPanel : SubUI
                 break;
             case 2:
                 {
-                    if (DataManager.Instance.playerInfo.PlayerStars >= 24)
+                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
                     {
                         StartCoroutine(ShowBunkerPopupUI());
                         DataManager.Instance.playerInfo.SelectChapter = curChapterIndex;
@@ -61,7 +63,7 @@ public class ChapterPanel : SubUI
                 break;
             case 3:
                 {
-                    if (DataManager.Instance.playerInfo.PlayerStars >= 36)
+                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
                     {
                         StartCoroutine(ShowBunkerPopupUI());
                         DataManager.Instance.playerInfo.SelectChapter = curChapterIndex;
@@ -73,7 +75,7 @@ public class ChapterPanel : SubUI
                 break;
             case 4:
                 {
-                    if (DataManager.Instance.playerInfo.PlayerStars >= 48)
+                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
                     {
                         StartCoroutine(ShowBunkerPopupUI());
                         DataManager.Instance.playerInfo.SelectChapter = curChapterIndex;

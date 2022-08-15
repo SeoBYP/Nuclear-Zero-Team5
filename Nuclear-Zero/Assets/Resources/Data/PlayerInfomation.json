@@ -23,6 +23,7 @@
             "BunkerItem2": false,
             "BunkerItem3": false,
             "BunkerItem4": false,
+            "BunkerItem5": false,
             "ChapterStory": false,
             "BunkerStory": false
         },
@@ -33,6 +34,7 @@
             "BunkerItem2": false,
             "BunkerItem3": false,
             "BunkerItem4": false,
+            "BunkerItem5": false,
             "ChapterStory": false,
             "BunkerStory": false
         },
@@ -43,6 +45,7 @@
             "BunkerItem2": false,
             "BunkerItem3": false,
             "BunkerItem4": false,
+            "BunkerItem5": false,
             "ChapterStory": false,
             "BunkerStory": false
         },
@@ -53,6 +56,7 @@
             "BunkerItem2": false,
             "BunkerItem3": false,
             "BunkerItem4": false,
+            "BunkerItem5": false,
             "ChapterStory": false,
             "BunkerStory": false
         }

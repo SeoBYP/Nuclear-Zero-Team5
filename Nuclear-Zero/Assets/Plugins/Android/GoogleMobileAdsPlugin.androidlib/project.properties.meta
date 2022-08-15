@@ -1,12 +1,10 @@
 fileFormatVersion: 2
-guid: 1d06ef613dfec4baa88b56aeef69cd9c
+guid: 6156f0fc2bafa4f0c86d61673c0068d0
 labels:
 - gvh
-- gvh_version-7.1.0
-- gvhp_exportpath-Plugins/Android/GoogleMobileAdsPlugin.androidlib/project.properties
-timeCreated: 1427838343
-licenseType: Free
+- gvh_version-0.10.14
 DefaultImporter:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

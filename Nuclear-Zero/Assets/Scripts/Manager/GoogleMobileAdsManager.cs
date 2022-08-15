@@ -418,6 +418,10 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
                 GameClearPopupUI popupUI = UIManager.Instance.Get<GameClearPopupUI>();
                 if(popupUI != null)
                     popupUI.SetPlayerStageClear((int)reward.Amount);
+
+                GetItemPopupUI getItemPopup = UIManager.Instance.Get<GetItemPopupUI>();
+                if(getItemPopup != null)
+                    getItemPopup.SetPlayerStageClear((int)reward.Amount);
             });
         }
         else

@@ -46,6 +46,7 @@ public class PlayerChapter
     public bool BunkerItem2;
     public bool BunkerItem3;
     public bool BunkerItem4;
+    public bool BunkerItem5;
     public bool ChapterStory;
     public bool BunkerStory;
     public PlayerChapter(JObject data,int index)
@@ -56,6 +57,7 @@ public class PlayerChapter
         BunkerItem2 = data["PlayerChapters"][index]["BunkerItem2"].ToObject<bool>();
         BunkerItem3 = data["PlayerChapters"][index]["BunkerItem3"].ToObject<bool>();
         BunkerItem4 = data["PlayerChapters"][index]["BunkerItem4"].ToObject<bool>();
+        BunkerItem5 = data["PlayerChapters"][index]["BunkerItem5"].ToObject<bool>();
         ChapterStory = data["PlayerChapters"][index]["ChapterStory"].ToObject<bool>();
         BunkerStory = data["PlayerChapters"][index]["BunkerStory"].ToObject<bool>();
     }
@@ -210,6 +212,43 @@ public class PlayerInfo
     {
         BGMSound = bgm;
         EffectSound = effect;
+    }
+
+    public bool CheckChapterStageStart(int chapterindex)
+    {
+        if (GetPlayerChapter(chapterindex) != null)
+        {
+            int stars = 0;
+            switch (chapterindex)
+            {
+                case 1:
+                    stars += GetPlayerStages(1).ResultStar;
+                    stars += GetPlayerStages(2).ResultStar;
+                    stars += GetPlayerStages(3).ResultStar;
+                    stars += GetPlayerStages(4).ResultStar;
+                    return stars >= 12;
+                case 2:
+                    stars += GetPlayerStages(5).ResultStar;
+                    stars += GetPlayerStages(6).ResultStar;
+                    stars += GetPlayerStages(7).ResultStar;
+                    stars += GetPlayerStages(8).ResultStar;
+                    return stars >= 12;
+                case 3:
+                    stars += GetPlayerStages(9).ResultStar;
+                    stars += GetPlayerStages(10).ResultStar;
+                    stars += GetPlayerStages(11).ResultStar;
+                    stars += GetPlayerStages(12).ResultStar;
+                    return stars >= 12;
+                case 4:
+                    stars += GetPlayerStages(13).ResultStar;
+                    stars += GetPlayerStages(14).ResultStar;
+                    stars += GetPlayerStages(15).ResultStar;
+                    stars += GetPlayerStages(16).ResultStar;
+                    return stars >= 12;
+                    //break;
+            }
+        }
+        return false;
     }
 
     private bool CheckGold(int price)

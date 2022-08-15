@@ -45,7 +45,8 @@ public class swipe : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            scroll_pos = scrollbar.GetComponent<Scrollbar>().value;
+            scroll_pos = scrollbar.GetComponent<Scrollbar>().value * 1.5f;
+            
         }
         else
         {
@@ -53,7 +54,7 @@ public class swipe : MonoBehaviour
             {
                 if (scroll_pos < pos[i] + (distance / 2) && scroll_pos > pos[i] - (distance / 2))
                 {
-                    
+                    //print(scroll_pos);
                     scrollbar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollbar.GetComponent<Scrollbar>().value, pos[i], 0.1f);
                     //print(transform.GetChild(j).localScale);
                 }
@@ -90,7 +91,6 @@ public class swipe : MonoBehaviour
             if (scroll_pos < pos[i] + (distance / 2) && scroll_pos > pos[i] - (distance / 2))
             {
                 scrollbar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollbar.GetComponent<Scrollbar>().value, pos[btnNumber], 1f * Time.deltaTime);
-                
             }
         }
 

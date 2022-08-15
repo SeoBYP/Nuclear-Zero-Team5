@@ -66,13 +66,14 @@ public class GameUI : SceneUI
         for(int i = 0; i < hearts.Length; i++)
         {
             hearts[i].Init();
-            //if (hearts[i].gameObject.name == "PlaerHeart4")
-            //{
-            //    hearts[i].gameObject.SetActive(false);
-            //}
-            playerHearts.Add(hearts[i]);
+            if (hearts[i].gameObject.name == "PlaerHeart1")
+            {
+                hearts[i].gameObject.SetActive(false);
+            }
+            else
+                playerHearts.Add(hearts[i]);
         }
-        heartcount = hearts.Length - 1;
+        heartcount = playerHearts.Count - 1;
     }
 
     private void OnPause(PointerEventData data)

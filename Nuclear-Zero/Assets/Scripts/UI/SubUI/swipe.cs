@@ -23,8 +23,8 @@ public class swipe : MonoBehaviour
     void Update()
     {
         pos = new float[transform.childCount];
-        float distance = 1f / (pos.Length - 1f);
-        print(distance);
+        float distance = 1f / (pos.Length - 1);
+        //print(distance);
 
         if (runIt)
         {
@@ -45,7 +45,7 @@ public class swipe : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            scroll_pos = scrollbar.GetComponent<Scrollbar>().value * 1.5f;
+            scroll_pos = scrollbar.GetComponent<Scrollbar>().value;
             
         }
         else
@@ -54,7 +54,7 @@ public class swipe : MonoBehaviour
             {
                 if (scroll_pos < pos[i] + (distance / 2) && scroll_pos > pos[i] - (distance / 2))
                 {
-                    //print(scroll_pos);
+                    print(pos[i] + (distance / 2));
                     scrollbar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollbar.GetComponent<Scrollbar>().value, pos[i], 0.1f);
                     //print(transform.GetChild(j).localScale);
                 }

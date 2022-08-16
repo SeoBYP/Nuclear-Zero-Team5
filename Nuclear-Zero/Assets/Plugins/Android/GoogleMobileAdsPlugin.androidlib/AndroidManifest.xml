@@ -1,11 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.google.example.games.mainlibproj" android:versionCode="1" android:versionName="1.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.google.unity.ads" android:versionName="1.0" android:versionCode="1">
   <application>
-    <!-- The space in these forces it to be interpreted as a string vs. int -->
-    <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="\u00316998804113" />
-    <!-- Keep track of which plugin is being used -->
-    <meta-data android:name="com.google.android.gms.games.unityVersion" android:value="\u0030.10.14" />
-    <activity android:name="com.google.games.bridge.NativeBridgeActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+    <uses-library android:required="false" android:name="org.apache.http.legacy" />
     <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-3991132572776978~1613416997" />
   </application>
 </manifest>

@@ -78393,7 +78393,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1517134023893415342, guid: 2cd41443bc56a424eba2c24acc140a46, type: 3}
       propertyPath: _shotTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1517134023893415342, guid: 2cd41443bc56a424eba2c24acc140a46, type: 3}
       propertyPath: AttackRange
@@ -84948,12 +84948,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6256199645605335282, guid: de8c8b8b58bfb415dbd969dfe48f8775, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256199645605335282, guid: de8c8b8b58bfb415dbd969dfe48f8775, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 6256199645605335282, guid: de8c8b8b58bfb415dbd969dfe48f8775, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6256199645605335282, guid: de8c8b8b58bfb415dbd969dfe48f8775, type: 3}
       propertyPath: m_LocalPosition.z

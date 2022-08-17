@@ -8,12 +8,10 @@ using GooglePlayGames.BasicApi.SavedGame;
 using GooglePlayGames.BasicApi.Events;
 
 
-public class GPGSBinder
+public class GPGSBinder : Managers<GPGSBinder>
 {
-    static GPGSBinder inst = new GPGSBinder();
-    public static GPGSBinder Inst => inst;
-
-
+    //static GPGSBinder inst = new GPGSBinder();
+    //public static GPGSBinder Inst => inst;
 
     ISavedGameClient SavedGame =>
         PlayGamesPlatform.Instance.SavedGame;
@@ -21,9 +19,7 @@ public class GPGSBinder
     IEventsClient Events =>
         PlayGamesPlatform.Instance.Events;
 
-
-
-    void Init()
+    public override void Init()
     {
         var config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
         PlayGamesPlatform.InitializeInstance(config);
@@ -34,7 +30,8 @@ public class GPGSBinder
 
     public void Login(Action<bool, UnityEngine.SocialPlatforms.ILocalUser> onLoginSuccess = null)
     {
-        Init();
+        //Init();
+        print("Login");
         PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptAlways, (success) =>
         {
             onLoginSuccess?.Invoke(success == SignInStatus.Success, Social.localUser);

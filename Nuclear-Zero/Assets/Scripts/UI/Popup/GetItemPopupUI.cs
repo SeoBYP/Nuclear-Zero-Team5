@@ -21,12 +21,14 @@ public class GetItemPopupUI : PopupUI
     {
         CoinCount,
     }
+
     private int coin;
+
     public override void Init()
     {
         base.Init();
         Binds();
-        GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
+        GoogleMobileAdsManager.Instance.RequestAndLoadRewardedInterstitialAd();
     }
 
     private void Binds()

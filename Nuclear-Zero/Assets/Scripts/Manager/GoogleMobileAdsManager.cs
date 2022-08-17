@@ -35,12 +35,12 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
 
         List<String> deviceIds = new List<String>() { AdRequest.TestDeviceSimulator };
 
-        //        // Add some test device IDs (replace with your own device IDs).
-        //#if UNITY_IPHONE
-        //        deviceIds.Add("96e23e80653bb28980d3f40beb58915c");
-        //#elif UNITY_ANDROID
-        //        deviceIds.Add("75EF8D155528C04DACBBA6F36F433035");
-        //#endif
+        // Add some test device IDs (replace with your own device IDs).
+#if UNITY_IPHONE
+                deviceIds.Add("96e23e80653bb28980d3f40beb58915c");
+#elif UNITY_ANDROID
+        deviceIds.Add("75EF8D155528C04DACBBA6F36F433035");
+#endif
 
         // Configure TagForChildDirectedTreatment and test device IDs.
         RequestConfiguration requestConfiguration =
@@ -101,7 +101,7 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
 
     #endregion
 
-//    #region BANNER ADS
+    #region BANNER ADS
 
 //    public void RequestBannerAd()
 //    {
@@ -180,7 +180,7 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
 //        }
 //    }
 
-//    #endregion
+    #endregion
 
     #region INTERSTITIAL ADS
 

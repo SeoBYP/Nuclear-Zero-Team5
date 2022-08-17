@@ -25,6 +25,15 @@ public class BunkerPopupUI : PopupUI
         Bunker4,
     }
 
+    enum Images
+    {
+        Apb1,
+        Apb2,
+        Apb3,
+        Apb4,
+        Apb5,
+    }
+
     public override void Init()
     {
         base.Init();
@@ -36,6 +45,9 @@ public class BunkerPopupUI : PopupUI
         Bind<GameObject>(typeof(GameObjects));
         SetChapterBunker();
         Bind<Button>(typeof(Buttons));
+        Bind<Image>(typeof(Images));
+
+        SetItemAlphabet();
 
         BindEvent(GetButton((int)Buttons.BunkerItem1).gameObject, OnBunkerItem1, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.BunkerItem2).gameObject, OnBunkerItem2, UIEvents.Click);
@@ -69,8 +81,82 @@ public class BunkerPopupUI : PopupUI
         }
     }
 
+    private void SetItemAlphabet()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            CheckGetBunkerItem(i);
+        }
+    }
+
+    private void CheckGetBunkerItem(int alphabet)
+    {
+        int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
+        switch (alphabet)
+        {
+            case (int)Images.Apb1:
+                if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem1)
+                    GetImage(alphabet).color = Color.white;
+                else
+                    GetImage(alphabet).color = Color.black;
+                break;
+            case (int)Images.Apb2:
+                if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem2)
+                    GetImage(alphabet).color = Color.white;
+                else
+                    GetImage(alphabet).color = Color.black;
+                break;
+            case (int)Images.Apb3:
+                if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem3)
+                    GetImage(alphabet).color = Color.white;
+                else
+                    GetImage(alphabet).color = Color.black;
+                break;
+            case (int)Images.Apb4:
+                if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem4)
+                    GetImage(alphabet).color = Color.white;
+                else
+                    GetImage(alphabet).color = Color.black;
+                break;
+            case (int)Images.Apb5:
+                if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem5)
+                    GetImage(alphabet).color = Color.white;
+                else
+                    GetImage(alphabet).color = Color.black;
+                break;
+        }
+        return;
+    }
+
+    private void CheckGetBunkerItem(Images alphabet)
+    {
+        switch (alphabet)
+        {
+            case Images.Apb1:
+                GetImage(alphabet.GetHashCode()).color = Color.white;
+                break;
+            case Images.Apb2:
+                GetImage(alphabet.GetHashCode()).color = Color.white;
+                break;
+            case Images.Apb3:
+                GetImage(alphabet.GetHashCode()).color = Color.white;
+                break;
+            case Images.Apb4:
+                GetImage(alphabet.GetHashCode()).color = Color.white;
+                break;
+            case Images.Apb5:
+                GetImage(alphabet.GetHashCode()).color = Color.white;
+                break;
+        }
+    }
+
     public void ShowDialoguePopup(int chapterIndex)
     {
+        if (chapterIndex == 4)
+        {
+            DataManager.Instance.playerInfo.GetPlayerChapter(chapterIndex).BunkerStory = true;
+            return;
+        }
         if (DataManager.Instance.playerInfo.GetPlayerChapter(chapterIndex).BunkerStory == false)
         {
             UIManager.Instance.ShowPopupUi<DialoguePopupUI>();
@@ -85,7 +171,10 @@ public class BunkerPopupUI : PopupUI
         {
             UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
             DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem1 = true;
+            CheckGetBunkerItem(Images.Apb1);
         }
+        else
+            return;
     }
     private void OnBunkerItem2(PointerEventData data)
     {
@@ -94,7 +183,10 @@ public class BunkerPopupUI : PopupUI
         {
             UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
             DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem2 = true;
+            CheckGetBunkerItem(Images.Apb2);
         }
+        else
+            return;
     }
     private void OnBunkerItem3(PointerEventData data)
     {
@@ -103,7 +195,10 @@ public class BunkerPopupUI : PopupUI
         {
             UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
             DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem3 = true;
+            CheckGetBunkerItem(Images.Apb3);
         }
+        else
+            return;
     }
     private void OnBunkerItem4(PointerEventData data)
     {
@@ -112,7 +207,10 @@ public class BunkerPopupUI : PopupUI
         {
             UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
             DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem4 = true;
+            CheckGetBunkerItem(Images.Apb4);
         }
+        else
+            return;
     }
 
     private void OnBunkerItem5(PointerEventData data)
@@ -122,7 +220,10 @@ public class BunkerPopupUI : PopupUI
         {
             UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
             DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem5 = true;
+            CheckGetBunkerItem(Images.Apb5);
         }
+        else
+            return;
     }
 
     public void OnExit()

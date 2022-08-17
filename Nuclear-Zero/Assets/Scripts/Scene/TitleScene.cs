@@ -9,6 +9,7 @@ public class TitleScene : BaseScene
         base.Init();
         GameAudioManager.Instance.PlayBackGround("LobbyBGM");
         UIManager.Instance.ShowSceneUi<TitleUI>();
+        GPGSBinder.Instance.Login();
     }
 
     public override void Clear()

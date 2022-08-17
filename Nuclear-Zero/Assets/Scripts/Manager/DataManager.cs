@@ -329,6 +329,7 @@ public class DataManager : Managers<DataManager>
         if (IsLoadPlayerInfo)
             return;
         var filePath = Path.Combine(Application.persistentDataPath, _filePath);
+        print(filePath);
         //Application.dataPath + $"/{_filePath}"; /// Resources/Data/PlayerInfomation.json";
         if (File.Exists(filePath))
         {

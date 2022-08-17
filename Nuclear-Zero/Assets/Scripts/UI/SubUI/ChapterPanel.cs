@@ -38,51 +38,51 @@ public class ChapterPanel : SubUI
         {
             case 1:
                 {
-                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
+                    //if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
                     {
-                        
+
                         StartCoroutine(ShowBunkerPopupUI());
                         DataManager.Instance.playerInfo.SelectChapter = curChapterIndex;
                         DataManager.Instance.playerInfo.DialogueObjectName = "Bunker1";
                     }
-                    else
-                        UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
+                    //else
+                    //    UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
                 }
                 break;
             case 2:
                 {
-                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
+                    //if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
                     {
                         StartCoroutine(ShowBunkerPopupUI());
                         DataManager.Instance.playerInfo.SelectChapter = curChapterIndex;
                         DataManager.Instance.playerInfo.DialogueObjectName = "Bunker2";
                     }
-                    else
-                        UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
+                    //else
+                    //    UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
                 }
                 break;
             case 3:
                 {
-                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
+                    //if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
                     {
                         StartCoroutine(ShowBunkerPopupUI());
                         DataManager.Instance.playerInfo.SelectChapter = curChapterIndex;
                         DataManager.Instance.playerInfo.DialogueObjectName = "Bunker3";
                     }
-                    else
-                        UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
+                    //else
+                    //    UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
                 }
                 break;
             case 4:
                 {
-                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
+                    //if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
                     {
                         StartCoroutine(ShowBunkerPopupUI());
                         DataManager.Instance.playerInfo.SelectChapter = curChapterIndex;
                         DataManager.Instance.playerInfo.DialogueObjectName = "Bunker4";
                     }
-                    else
-                        UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
+                    //else
+                    //    UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
                 }
                 break;
             default:

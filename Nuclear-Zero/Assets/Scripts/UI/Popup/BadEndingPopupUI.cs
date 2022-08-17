@@ -17,11 +17,12 @@ public class BadEndingPopupUI : PopupUI
         dialogueUI = GetComponent<DialogueUI>();
         if (dialogueUI != null)
             dialogueUI.Init();
+        GameAudioManager.Instance.PlayBackGround("BadEnding");
     }
 
     public override void ClosePopupUI()
     {
-        //UIManager.Instance.FadeIn();
+        GameAudioManager.Instance.PlayBackGround("LobbyBGM");
         base.ClosePopupUI();
     }
 }

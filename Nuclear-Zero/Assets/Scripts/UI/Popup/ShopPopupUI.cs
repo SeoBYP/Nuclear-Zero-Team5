@@ -15,26 +15,19 @@ public class ShopPopupUI : PopupUI
         Exit,
     }
 
-    enum GameObjects
-    {
-        CoinContents,
-        ItemContents,
-        PackageContents,
-    }
-
-    enum ItemPackages
-    {
-        ItemPackage1,
-        ItemPackage2,
-        ItemPackage3,
-    }
-
     enum Texts
     {
         CoinCountText,
         LifeCountText,
         ShieldCountText,
         MagnetCountText,
+    }
+
+    enum SubUIs
+    {
+        PackageContents,
+        CoinContents,
+        ItemContents,
     }
 
     public override void Init()
@@ -45,20 +38,19 @@ public class ShopPopupUI : PopupUI
 
     private void Binds()
     {
-        Bind<Button>(typeof(Buttons));
-        Bind<GameObject>(typeof(GameObjects));
-        Bind<ItemPackage>(typeof(ItemPackages));
+        Bind<Button>(typeof(Buttons));;
+        Bind<SubUI>(typeof(SubUIs));
         Bind<Text>(typeof(Texts));
+
+        InitContents();
 
         BindEvent(GetButton((int)Buttons.CoinMenu).gameObject, OnCoinMenuBtn, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.ItemMenu).gameObject, OnItemMenuBtn, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.PackageMenu).gameObject, OnPackageMenuBtn, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Exit).gameObject, OnClose, UIEvents.Click);
 
-        FindItemPackages();
-
-        SetShopMenuBtn(Buttons.CoinMenu);
-        SetShopContents(GameObjects.CoinContents);
+        SetShopMenuBtn(Buttons.PackageMenu);
+        SetShopContents(SubUIs.PackageContents);
         SetTexts();
     }
 
@@ -74,34 +66,34 @@ public class ShopPopupUI : PopupUI
             cumfumBuyPopupUI.ClosePopupUI();
 
         SetShopMenuBtn(Buttons.CoinMenu);
-        SetShopContents(GameObjects.CoinContents);
+        SetShopContents(SubUIs.CoinContents);
         SetTexts();
     }
 
-    private void FindItemPackages()
+    private void InitContents()
     {
-        for(int i = 0; i <= (int)ItemPackages.ItemPackage3; i++)
+        for(int i = 0;i < 3; i++)
         {
-            Get<ItemPackage>(i).Init();
+            Get<SubUI>(i).Init();
         }
     }
 
     private void OnCoinMenuBtn(PointerEventData data)
     {
         SetShopMenuBtn(Buttons.CoinMenu);
-        SetShopContents(GameObjects.CoinContents);
+        SetShopContents(SubUIs.CoinContents);
     }
 
     private void OnItemMenuBtn(PointerEventData data)
     {
         SetShopMenuBtn(Buttons.ItemMenu);
-        SetShopContents(GameObjects.ItemContents);
+        SetShopContents(SubUIs.ItemContents);
     }
 
     private void OnPackageMenuBtn(PointerEventData data)
     {
         SetShopMenuBtn(Buttons.PackageMenu);
-        SetShopContents(GameObjects.PackageContents);
+        SetShopContents(SubUIs.PackageContents);
     }
 
     private void SetShopMenuBtn(Buttons menu)
@@ -113,13 +105,13 @@ public class ShopPopupUI : PopupUI
         GetButton(menu.GetHashCode()).image.color = new Color(1, 1, 1, 1);
     }
 
-    private void SetShopContents(GameObjects contents)
+    private void SetShopContents(SubUIs contents)
     {
-        for (int i = 0; i <= GameObjects.PackageContents.GetHashCode(); i++)
+        for (int i = 0; i <= 2; i++)
         {
-            GetGameObject(i).gameObject.SetActive(false);
+            Get<SubUI>(i).SetActive(false);
         }
-        GetGameObject(contents.GetHashCode()).gameObject.SetActive(true);
+        Get<SubUI>(contents.GetHashCode()).SetActive(true);
     }
 
     private void SetTexts()
@@ -136,6 +128,8 @@ public class ShopPopupUI : PopupUI
 
         int magnetCount = DataManager.Instance.playerInfo.MagnetItem;
         GetText((int)Texts.MagnetCountText).text = magnetCount.ToString();
+
+        UIManager.Instance.Get<LobbyUI>().SetPlayerGoldText();
     }
 
     private void OnClose(PointerEventData data)

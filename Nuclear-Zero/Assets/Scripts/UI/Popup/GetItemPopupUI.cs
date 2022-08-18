@@ -63,6 +63,7 @@ public class GetItemPopupUI : PopupUI
     }
     private void OnClose(PointerEventData data)
     {
+        UIManager.Instance.Get<LobbyUI>().SetPlayerGoldText();
         ClosePopupUI();
     }
 }

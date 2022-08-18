@@ -21,6 +21,7 @@ public class FastBlock : BlockController
     {
         if(_player != null)
         {
+            GameAudioManager.Instance.Play2DSound("Fast");
             _player.SetFast(speed);
         }
     }

@@ -7,7 +7,6 @@ public class GameScene : BaseScene
     protected override void Init()
     {
         base.Init();
-        //GoogleMobileAdsManager.Instance.DestroyBannerAd();
         GameManager.Instance.LoadGameMap();
         SetGameStageBGM();
         UIManager.Instance.FadeIn();
@@ -17,19 +16,31 @@ public class GameScene : BaseScene
 
     private void SetGameStageBGM()
     {
-        int chapterindex = DataManager.Instance.playerInfo.SelectChapter;
-        switch (chapterindex)
+        int stageindex = DataManager.Instance.playerInfo.SelectStage;
+        switch (stageindex)
         {
             case 1:
+            case 2:
+            case 3:
+            case 4:
                 GameAudioManager.Instance.PlayBackGround("Chapter1BGM");
                 break;
-            case 2:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
                 GameAudioManager.Instance.PlayBackGround("Chapter2BGM");
                 break;
-            case 3:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
                 GameAudioManager.Instance.PlayBackGround("Chapter3BGM");
                 break;
-            case 4:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
                 GameAudioManager.Instance.PlayBackGround("Chapter4BGM");
                 break;
         }
@@ -50,7 +61,8 @@ public class GameScene : BaseScene
 
     public override void Clear()
     {
-        //UIManager.Instance.Clear();
+        GameAudioManager.Instance.PlayBackGround("LobbyBGM");
+        UIManager.Instance.Clear();
         //GameAudioManager.Instance.DestroyWarning();
     }
 }

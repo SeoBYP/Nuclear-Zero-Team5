@@ -93,6 +93,7 @@ public class ChapterPanel : SubUI
 
     IEnumerator ShowBunkerPopupUI()
     {
+        GameAudioManager.Instance.Play2DSound("OpenBunker");
         UIManager.Instance.FadeOut();
         yield return YieldInstructionCache.WaitForSeconds(1.1f);
         UIManager.Instance.Get<FadePopupUI>().ClosePopupUI();

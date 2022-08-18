@@ -58,7 +58,7 @@ public class LobbyUI : SceneUI
         BindEvent(GetButton((int)Buttons.Plus).gameObject, OnPlus, UIEvents.Click);
     }
 
-    private void SetPlayerGoldText()
+    public void SetPlayerGoldText()
     {
         int gold = DataManager.Instance.playerInfo.Gold;
         string money = string.Format("{0:#,###}", gold);

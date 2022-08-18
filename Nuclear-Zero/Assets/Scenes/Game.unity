@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e119827a25c413da0155d380417846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isJumpSound: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827386615}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.7, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 977957288}
@@ -434,7 +435,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,6 +584,9 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
+  TopLayer:
+    serializedVersion: 2
+    m_Bits: 64
   speed: 20
   Timer: 1
   _magnetsprite: {fileID: 827386617}
@@ -629,8 +633,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -728,7 +732,7 @@ Transform:
   m_GameObject: {fileID: 1911482633}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 977957288}
   m_RootOrder: 1

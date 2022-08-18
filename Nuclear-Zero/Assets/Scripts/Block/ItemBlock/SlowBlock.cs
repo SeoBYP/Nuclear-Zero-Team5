@@ -21,6 +21,7 @@ public class SlowBlock : BlockController
     {
         if (_player != null)
         {
+            GameAudioManager.Instance.Play2DSound("Slow");
             _player.SetFast(speed);
             print("Player Slow");
         }

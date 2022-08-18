@@ -18,6 +18,7 @@ public class LifeBlock : BlockController
     public override void OnSteped()
     {
         base.OnSteped();
+        
         AddLife();
     }
 
@@ -25,6 +26,7 @@ public class LifeBlock : BlockController
     {
         if (_isEffected == false)
         {
+            GameAudioManager.Instance.Play2DSound("Heal");
             if (_gameUI == null)
                 _gameUI = UIManager.Instance.Get<GameUI>();
             _gameUI.AddHeart();

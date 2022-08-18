@@ -33,6 +33,7 @@ public class WalkEnemy : EnemyController
             _player = Utils.FindObjectOfType<PlayerController>();
         if (Vector2.Distance(transform.position, _player.transform.position) < AttackRange)
         {
+            GameAudioManager.Instance.Play2DSound("Missile");
             _IsAttack = true;
         }
     }

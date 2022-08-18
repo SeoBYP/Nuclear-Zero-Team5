@@ -79,6 +79,7 @@ public class EventHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IPoi
     {
         if (OnClickHandler != null)
         {
+            GameAudioManager.Instance.Play2DSound("Touch");
             //GameAudioManager.Instance.Play2DSound("ButtonClicked");
             OnClickHandler.Invoke(eventData);
         }

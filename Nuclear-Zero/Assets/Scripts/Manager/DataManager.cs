@@ -272,6 +272,12 @@ public class PlayerInfo
             UIManager.Instance.ShowPopupUi<FailToBuyPopup>();
         }
     }
+
+    public void SetMagnetItemCount(int _magnetitem)
+    {
+        MagnetItem += _magnetitem;
+    }
+
     public void SetShieldItemCount(int price,int _shielditem)
     {
         if (CheckGold(price))
@@ -284,6 +290,11 @@ public class PlayerInfo
             UIManager.Instance.ShowPopupUi<FailToBuyPopup>();
         }
     }
+
+    public void SetShieldItemCount(int _shielditem)
+    {
+        ShieldItem += _shielditem;
+    }
     public void SetLifeItemCount(int price,int _lifeItem)
     {
         if (CheckGold(price))
@@ -295,6 +306,10 @@ public class PlayerInfo
         {
             UIManager.Instance.ShowPopupUi<FailToBuyPopup>();
         }
+    }
+    public void SetLifeItemCount(int _lifeItem)
+    {
+        LifeItem += _lifeItem;
     }
 }
 #endregion

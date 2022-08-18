@@ -34,6 +34,8 @@ public class BunkerPopupUI : PopupUI
         Apb5,
     }
 
+    [SerializeField] private ParticleSystem _effect;
+    private RectTransform _rectTransform;
     public override void Init()
     {
         base.Init();
@@ -48,6 +50,8 @@ public class BunkerPopupUI : PopupUI
         Bind<Image>(typeof(Images));
 
         SetItemAlphabet();
+        _rectTransform = _effect.GetComponent<RectTransform>();
+        PlayDefaultParticle(new Vector2(2000, 2000));
 
         BindEvent(GetButton((int)Buttons.BunkerItem1).gameObject, OnBunkerItem1, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.BunkerItem2).gameObject, OnBunkerItem2, UIEvents.Click);
@@ -55,6 +59,12 @@ public class BunkerPopupUI : PopupUI
         BindEvent(GetButton((int)Buttons.BunkerItem4).gameObject, OnBunkerItem4, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.BunkerItem5).gameObject, OnBunkerItem5, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Close).gameObject, OnClose, UIEvents.Click);
+    }
+
+    private void PlayDefaultParticle(Vector2 position)
+    {
+        _rectTransform.position = position;
+        _effect.gameObject.SetActive(false);
     }
 
     private void SetChapterBunker()
@@ -164,50 +174,68 @@ public class BunkerPopupUI : PopupUI
         }
     }
 
+
+    IEnumerator PlayParticle(Vector2 position,int curChapterIndex)
+    {
+        if (_effect.gameObject.activeSelf)
+            yield break;
+        GameAudioManager.Instance.Play2DSound("BunkerGetItem");
+        _rectTransform.position = position;
+        _effect.gameObject.SetActive(true);
+        yield return YieldInstructionCache.WaitForSeconds(1.1f);
+        _effect.gameObject.SetActive(false);
+        UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
+    }
+
     private void OnBunkerItem1(PointerEventData data)
     {
+        
+        Vector2 pos = GetButton((int)Buttons.BunkerItem1).transform.position;
         int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
         if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem1 == false)
         {
-            UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
             DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem1 = true;
             CheckGetBunkerItem(Images.Apb1);
+            StartCoroutine(PlayParticle(pos, curChapterIndex));
         }
         else
             return;
     }
     private void OnBunkerItem2(PointerEventData data)
     {
+        Vector2 pos = GetButton((int)Buttons.BunkerItem2).transform.position;
         int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
         if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem2 == false)
         {
-            UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
             DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem2 = true;
             CheckGetBunkerItem(Images.Apb2);
+            StartCoroutine(PlayParticle(pos, curChapterIndex));
         }
         else
             return;
     }
     private void OnBunkerItem3(PointerEventData data)
     {
+        Vector2 pos = GetButton((int)Buttons.BunkerItem3).transform.position;
         int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
         if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem3 == false)
         {
-            UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
             DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem3 = true;
             CheckGetBunkerItem(Images.Apb3);
+            StartCoroutine(PlayParticle(pos, curChapterIndex));
         }
         else
             return;
     }
     private void OnBunkerItem4(PointerEventData data)
     {
+        Vector2 pos = GetButton((int)Buttons.BunkerItem4).transform.position;
         int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
         if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem4 == false)
         {
-            UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
             DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem4 = true;
             CheckGetBunkerItem(Images.Apb4);
+            StartCoroutine(PlayParticle(pos, curChapterIndex));
         }
         else
             return;
@@ -215,12 +243,13 @@ public class BunkerPopupUI : PopupUI
 
     private void OnBunkerItem5(PointerEventData data)
     {
+        Vector2 pos = GetButton((int)Buttons.BunkerItem5).transform.position;
         int curChapterIndex = DataManager.Instance.playerInfo.SelectChapter;
         if (DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem5 == false)
         {
-            UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
             DataManager.Instance.playerInfo.GetPlayerChapter(curChapterIndex).BunkerItem5 = true;
             CheckGetBunkerItem(Images.Apb5);
+            StartCoroutine(PlayParticle(pos, curChapterIndex));
         }
         else
             return;

@@ -67,18 +67,18 @@ public class SettingPopupUI : PopupUI
 
     private void OnBGMSliderChanged(float value)
     {
-        if(value <= 0.14f)
+        if(value <= 0.1f)
         {
-            _bgmSlider.value = 0.14f;
+            _bgmSlider.value = 0.1f;
         }
         GameAudioManager.Instance.SetBGMSound(_bgmSlider.value);
     }
 
     private void OnEffectSliderChanged(float value)
     {
-        if (value <= 0.14f)
+        if (value <= 0.1f)
         {
-            _effectSlider.value = 0.14f;
+            _effectSlider.value = 0.1f;
         }
         GameAudioManager.Instance.SetEffectSound(_effectSlider.value);
     }

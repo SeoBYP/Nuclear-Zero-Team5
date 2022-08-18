@@ -33,10 +33,20 @@ public class PlayerAnimationController : MonoBehaviour
     {
         _animator.SetBool("IsGrounded", state);
     }
-
+    public bool _isJumpSound = false;
     public void PlayerJump()
     {
+        if(_isJumpSound == false)
+        {
+            GameAudioManager.Instance.Play2DSound("Jump");
+            _isJumpSound = true;
+        }
         _animator.SetTrigger("DoJump");
+    }
+
+    private void RunSound()
+    {
+        GameAudioManager.Instance.Play2DSound("Run");
     }
 
 }

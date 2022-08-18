@@ -8,7 +8,6 @@ public class JoyButton : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        GameAudioManager.Instance.Play2DSound("Jump");
         Pressed = true;
     }
 

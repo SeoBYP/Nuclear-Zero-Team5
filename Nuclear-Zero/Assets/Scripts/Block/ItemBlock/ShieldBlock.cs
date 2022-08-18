@@ -24,6 +24,7 @@ public class ShieldBlock : BlockController
     {
         if(_isEffected == false)
         {
+            GameAudioManager.Instance.Play2DSound("Shield");
             _player.Shieded();
             _isEffected = true;
             _sprite.color = Color.gray;

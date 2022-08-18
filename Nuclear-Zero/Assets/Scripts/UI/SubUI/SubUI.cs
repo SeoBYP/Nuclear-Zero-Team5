@@ -8,4 +8,9 @@ public class SubUI : BaseUI
     {
         
     }
+
+    public void SetActive(bool state)
+    {
+        this.gameObject.SetActive(state);
+    }
 }

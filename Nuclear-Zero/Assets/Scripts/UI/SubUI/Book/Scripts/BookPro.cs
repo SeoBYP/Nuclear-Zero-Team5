@@ -363,6 +363,7 @@ namespace BookCurlPro
         {
             if (pageDragging)
             {
+                GameAudioManager.Instance.Play2DSound("Scenario");
                 pageDragging = false;
                 float distanceToLeft = Vector2.Distance(c, ebl);
                 float distanceToRight = Vector2.Distance(c, ebr);

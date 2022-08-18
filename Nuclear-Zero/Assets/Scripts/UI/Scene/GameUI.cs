@@ -23,6 +23,7 @@ public class GameUI : SceneUI
     }
 
     private int heartcount;
+    private int defaultheartcount;
     private int starcount = 0;
     private int coincount = 0;
 
@@ -45,6 +46,8 @@ public class GameUI : SceneUI
         starcount = 0;
         coincount = 0;
 
+
+
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
         Bind<Slider>(typeof(Sliders));
@@ -66,14 +69,23 @@ public class GameUI : SceneUI
         for(int i = 0; i < hearts.Length; i++)
         {
             hearts[i].Init();
-            if (hearts[i].gameObject.name == "PlaerHeart1")
+            if (GameManager.Instance._life)
             {
-                hearts[i].gameObject.SetActive(false);
+                playerHearts.Add(hearts[i]);
             }
             else
-                playerHearts.Add(hearts[i]);
+            {
+                if (hearts[i].gameObject.name == "PlaerHeart1")
+                {
+                    hearts[i].gameObject.SetActive(false);
+                }
+                else
+                    playerHearts.Add(hearts[i]);
+            }
         }
+        
         heartcount = playerHearts.Count - 1;
+        defaultheartcount = heartcount;
     }
 
     private void OnPause(PointerEventData data)
@@ -93,15 +105,14 @@ public class GameUI : SceneUI
         {
             playerHearts[heartcount].SetGrayHeart();
             Utils.FindObjectOfType<PlayerController>().Dead();
-            //UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
         }
     }
     public void AddHeart()
     {
         heartcount++;
-        if (heartcount > 2)
+        if (heartcount > defaultheartcount)
         {
-            heartcount = 2;
+            heartcount = defaultheartcount;
             return;
         }
         playerHearts[heartcount].SetLifeHeart();

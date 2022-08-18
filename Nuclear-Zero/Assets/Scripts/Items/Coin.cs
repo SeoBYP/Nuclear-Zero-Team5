@@ -11,6 +11,7 @@ public class Coin : ItemController
 
     protected override void SetItemInfo()
     {
+        GameAudioManager.Instance.Play2DSound("Coin");
         UIManager.Instance.Get<GameUI>().SetCoin();
     }
 }

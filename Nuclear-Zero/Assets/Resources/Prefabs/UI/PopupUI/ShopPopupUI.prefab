@@ -815,8 +815,6 @@ GameObject:
   - component: {fileID: 6590288782158924077}
   - component: {fileID: 6590288782158924076}
   - component: {fileID: 8706183646061722870}
-  - component: {fileID: 8451003298201807282}
-  - component: {fileID: 9051007856665007060}
   m_Layer: 5
   m_Name: CoinPackage3
   m_TagString: Untagged
@@ -925,66 +923,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8451003298201807282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6590288782158924066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: test
-  buttonType: 0
-  consumePurchase: 1
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9051007856665007060}
-        m_TargetAssemblyTypeName: TestPurching, Assembly-CSharp
-        m_MethodName: Reward
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9051007856665007060}
-        m_TargetAssemblyTypeName: TestPurching, Assembly-CSharp
-        m_MethodName: Failed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 0}
---- !u!114 &9051007856665007060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6590288782158924066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4575529bd3445461781924778972280a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6590288782177500874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6590288782207324602}
+  - component: {fileID: 1269844254207593878}
   m_Layer: 5
   m_Name: ItemContents
   m_TagString: Untagged
@@ -1187,13 +1126,25 @@ RectTransform:
   m_Children:
   - {fileID: 6590288782654833521}
   m_Father: {fileID: 6590288784082792405}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1269844254207593878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288782207324601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7affcc230aa104f92916d3beb56f49a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6590288782269248448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,7 +1296,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6590288783373546860}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1443,6 +1394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6590288782391980621}
+  - component: {fileID: 5411755607286905681}
   m_Layer: 5
   m_Name: CoinContents
   m_TagString: Untagged
@@ -1463,13 +1415,25 @@ RectTransform:
   m_Children:
   - {fileID: 6590288782771540881}
   m_Father: {fileID: 6590288784082792405}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5411755607286905681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288782391980620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc46909a08b614b2d8c5a9dbe8c54abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6590288782456140342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,7 +1576,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6590288783373546860}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2144,6 +2108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6590288782819922956}
+  - component: {fileID: 6990208577521291154}
   m_Layer: 5
   m_Name: PackageContents
   m_TagString: Untagged
@@ -2164,13 +2129,25 @@ RectTransform:
   m_Children:
   - {fileID: 6590288782887744456}
   m_Father: {fileID: 6590288784082792405}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -4.9997563, y: 0}
   m_SizeDelta: {x: -10.000487, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6990208577521291154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288782819922947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e527465d12b4b48838b80c7929220657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6590288782829786437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,8 +2274,6 @@ GameObject:
   - component: {fileID: 6590288782838656906}
   - component: {fileID: 6590288782838656905}
   - component: {fileID: 2042604429817848793}
-  - component: {fileID: 6131128263530717954}
-  - component: {fileID: 7575513046422015234}
   m_Layer: 5
   m_Name: CoinPackage4
   m_TagString: Untagged
@@ -2407,66 +2382,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6131128263530717954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6590288782838656911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: test
-  buttonType: 0
-  consumePurchase: 1
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7575513046422015234}
-        m_TargetAssemblyTypeName: TestPurching, Assembly-CSharp
-        m_MethodName: Reward
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7575513046422015234}
-        m_TargetAssemblyTypeName: TestPurching, Assembly-CSharp
-        m_MethodName: Failed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 0}
---- !u!114 &7575513046422015234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6590288782838656911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4575529bd3445461781924778972280a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6590288782887744463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2640,7 +2555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195.00015, y: 0}
+  m_AnchoredPosition: {x: 195.00021, y: 0}
   m_SizeDelta: {x: 1600, y: 420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6590288783079822380
@@ -2655,8 +2570,6 @@ GameObject:
   - component: {fileID: 6590288783079822383}
   - component: {fileID: 6590288783079822382}
   - component: {fileID: 1225231054538554374}
-  - component: {fileID: 5626680529994476225}
-  - component: {fileID: 7209944700018006317}
   m_Layer: 5
   m_Name: CoinPackage2
   m_TagString: Untagged
@@ -2765,66 +2678,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5626680529994476225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6590288783079822380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: test
-  buttonType: 0
-  consumePurchase: 1
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7209944700018006317}
-        m_TargetAssemblyTypeName: TestPurching, Assembly-CSharp
-        m_MethodName: Reward
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7209944700018006317}
-        m_TargetAssemblyTypeName: TestPurching, Assembly-CSharp
-        m_MethodName: Failed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 0}
---- !u!114 &7209944700018006317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6590288783079822380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4575529bd3445461781924778972280a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6590288783104419708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,8 +2798,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6590288782456140336}
   m_HandleRect: {fileID: 6590288782456140343}
   m_Direction: 0
-  m_Value: 1.0000006
-  m_Size: 0.7562501
+  m_Value: -0.000000782502
+  m_Size: 0.75625
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3058,9 +2911,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6590288782620386174}
   - {fileID: 6590288783614535000}
   - {fileID: 6590288782294938012}
-  - {fileID: 6590288782620386174}
   m_Father: {fileID: 6590288783138068165}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3126,7 +2979,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6590288783373546860}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3227,8 +3080,6 @@ GameObject:
   - component: {fileID: 6590288783696968578}
   - component: {fileID: 6590288783696968577}
   - component: {fileID: 7461818079585639242}
-  - component: {fileID: 6107711284439384053}
-  - component: {fileID: 3945053081897081772}
   m_Layer: 5
   m_Name: CoinPackage1
   m_TagString: Untagged
@@ -3337,66 +3188,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6107711284439384053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6590288783696968583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: test
-  buttonType: 0
-  consumePurchase: 1
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3945053081897081772}
-        m_TargetAssemblyTypeName: TestPurching, Assembly-CSharp
-        m_MethodName: Reward
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3945053081897081772}
-        m_TargetAssemblyTypeName: TestPurching, Assembly-CSharp
-        m_MethodName: Failed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 0}
---- !u!114 &3945053081897081772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6590288783696968583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4575529bd3445461781924778972280a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6590288783724026459
 GameObject:
   m_ObjectHideFlags: 0
@@ -3649,9 +3440,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6590288782819922956}
   - {fileID: 6590288782391980621}
   - {fileID: 6590288782207324602}
-  - {fileID: 6590288782819922956}
   m_Father: {fileID: 6590288783138068165}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

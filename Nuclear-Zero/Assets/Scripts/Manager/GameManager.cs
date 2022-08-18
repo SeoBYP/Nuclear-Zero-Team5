@@ -9,10 +9,24 @@ public class GameManager : Managers<GameManager>//,IUpdate
     private bool IsPause;
     public bool OpenStagePopup;
 
+    public bool _shield = false;
+    public bool _magnet = false;
+    public bool _life = false;
+
     public override void Init()
     {
         base.Init();
         OpenStagePopup = false;
+        _shield = false;
+        _magnet = false;
+        _life = false;
+    }
+
+    public void SetDefaultItem()
+    {
+        _shield = false;
+        _magnet = false;
+        _life = false;
     }
 
     public void GameStart()
@@ -54,6 +68,21 @@ public class GameManager : Managers<GameManager>//,IUpdate
             Time.timeScale = 1;
             IsPause = false;
         }
+    }
+
+    public void SetPlayerShieldItem()
+    {
+
+    }
+
+    public void SetPlayerMagnetItem()
+    {
+
+    }
+
+    public void SetPlayerLifeItem()
+    {
+
     }
 
     public void LoadGameMap()

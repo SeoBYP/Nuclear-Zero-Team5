@@ -10,10 +10,17 @@ public class PlayerController : MonoBehaviour
     private Vector2 GroundedSize = new Vector2(1.85f, 0.2f);
     public LayerMask GroundLayer;
 
+    [Header("Toped")]
+    private bool Toped;
+    private float TopedOffset = 2f;
+    private Vector2 TopedSize = new Vector2(0.3f, 0.1f);
+    public LayerMask TopLayer;
+    
+
     [Header("PlayerJump")]
     private float JumpHeight = 8f;
-    private float Gravity = -100;
-    private float JumpTimeout = 0.5f;
+    private float Gravity = -100f;
+    private float JumpTimeout = 0.4f;
     private float _jumpTimeoutDelta;
     private float _verticalVelocity;
     private float _terminalVelocity = 53.0f;
@@ -42,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("PlayerItems")]
     [SerializeField] private SpriteRenderer _magnetsprite;
-    private static bool _haveMagnet = false;
+    private static bool _isMagnet = false;
     [SerializeField] private SpriteRenderer _shieldprite;
     private static bool _isShield = false;
 
@@ -51,16 +58,20 @@ public class PlayerController : MonoBehaviour
     {
         _isStart = false;
         _isPause = false;
-        _haveMagnet = true;
         _isKnockBack = false;
-        //targetPos = Vector3.zero;
+        _shieldprite.gameObject.SetActive(false);
+        _magnetsprite.gameObject.SetActive(false);
+
+        SetSheildSprite(GameManager.Instance._shield);
+        SetMagnetSprite(GameManager.Instance._magnet);
+        Init();
     }
 
     public void Init()
     {
         Hited = false;
         _jumpTimeoutDelta = JumpTimeout;
-        _shieldprite.gameObject.SetActive(false);
+        
         animationController = GetComponentInChildren<PlayerAnimationController>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         if (animationController != null)
@@ -68,13 +79,10 @@ public class PlayerController : MonoBehaviour
         gameUI = UIManager.Instance.Get<GameUI>();
         joyButton = Utils.FindObjectOfType<JoyButton>();
         _joystick = Utils.FindObjectOfType<Joystick>(true);
-        SetRaderSprite();
     }
 
     public static void SetStart(bool state) { _isStart = state; }
     public static void SetPause(bool state) { _isPause = state; }
-    public static void SetShield(bool state) { _isShield = state; }
-    public static void SetMagnet(bool state) { _haveMagnet = state; }
 
     private void FixedUpdate()
     {
@@ -87,11 +95,14 @@ public class PlayerController : MonoBehaviour
             _rigidbody2D.velocity = Vector2.zero;
             return;
         }
-        
-        Move(_joystick.Direction);
-        Jump();
         CheckGrounded();
+        Jump();
+        Move(_joystick.Direction);
         SetGoalDistance();
+    }
+
+    private void Update()
+    {
         
     }
 
@@ -110,9 +121,8 @@ public class PlayerController : MonoBehaviour
         }
 
         dir.x *= speed;
-        dir.y = _verticalVelocity;
-        _rigidbody2D.velocity = dir;
-
+        //dir.y = _verticalVelocity;
+        _rigidbody2D.velocity = new Vector2(dir.x,_rigidbody2D.velocity.y);
 
         if (dir.x != 0)
             animationController.PlayerRun(true, _flipX);
@@ -131,10 +141,9 @@ public class PlayerController : MonoBehaviour
             if ((joyButton.Pressed || isJumped) && _jumpTimeoutDelta <= 0.0f)
             {
                 _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
-                animationController.PlayerJump();
                 JumpHeight = 8f;
                 isJumped = false;
+                animationController.PlayerJump();
             }
             if (_jumpTimeoutDelta >= 0.0f)
             {
@@ -144,7 +153,10 @@ public class PlayerController : MonoBehaviour
         if (_verticalVelocity < _terminalVelocity)
         {
             _verticalVelocity += Gravity * Time.deltaTime;
+            if (animationController._isJumpSound)
+                animationController._isJumpSound = false;
         }
+        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x,_verticalVelocity);
     }
 
     private void CheckGrounded()
@@ -153,23 +165,29 @@ public class PlayerController : MonoBehaviour
         Grounded = Physics2D.OverlapBox(boxPosition, GroundedSize,LayerMask.NameToLayer("Floor") >> 1);
         animationController.IsGrounded(Grounded);
     }
+    private void CheckTop()
+    {
+        Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y + TopedOffset);
+        Toped = Physics2D.OverlapBox(boxPosition, TopedSize, LayerMask.NameToLayer("Floor") >> 1);
+        if (Toped)
+        {
+            if (_verticalVelocity > 0)
+            {
+                _verticalVelocity = transform.position.y;
+            }
+        }
+    }
 
     private void OnDrawGizmos()
     {
-        Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset);
-        Gizmos.DrawWireCube(boxPosition, GroundedSize);
+        Vector2 boxPosition = new Vector3(transform.position.x, transform.position.y + TopedOffset);
+        Gizmos.DrawWireCube(boxPosition, TopedSize);
         Gizmos.color = Color.red;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
-        {
-            if(_verticalVelocity > 0)
-            {
-                _verticalVelocity = transform.position.y;
-            }
-        }
+        CheckTop();
         if (collision.gameObject.CompareTag("Border"))
         {
             switch (collision.gameObject.name)
@@ -236,7 +254,6 @@ public class PlayerController : MonoBehaviour
         if (_isShield == false)
         {
             _isShield = true;
-            GameAudioManager.Instance.Play2DSound("Shield");
             _shieldprite.gameObject.SetActive(true);
         }
     }
@@ -322,14 +339,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SetRaderSprite()
+    private void SetSheildSprite(bool state)
     {
-        _magnetsprite.gameObject.SetActive(false);
-        //if (_haveMagnet)
-        //{
-        //    _magnetsprite.gameObject.SetActive(false);
-        //    //ItemController.SetPlayerHasMagnet(true);
-        //}
+        if (state)
+        {
+            _isShield = state;
+            _shieldprite.gameObject.SetActive(state);
+        }
+        else
+        {
+            _isShield = state;
+            _shieldprite.gameObject.SetActive(state);
+        }
+    }
+
+    private void SetMagnetSprite(bool state)
+    {
+        if (state)
+        {
+            _isMagnet = state;
+            _magnetsprite.gameObject.SetActive(state);
+        }
+        else
+        {
+            _isMagnet = state;
+            _magnetsprite.gameObject.SetActive(state);
+        }
     }
 
 }

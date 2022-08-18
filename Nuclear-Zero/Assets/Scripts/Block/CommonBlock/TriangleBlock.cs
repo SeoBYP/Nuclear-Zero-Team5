@@ -9,16 +9,15 @@ public class TriangleBlock : BlockController
         base.Init();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    PlayerTakeDamage();
+    //}
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
         PlayerTakeDamage();
     }
-
-    //public override void OnSteped()
-    //{
-    //    base.OnSteped();
-        
-    //}
 
     private void PlayerTakeDamage()
     {

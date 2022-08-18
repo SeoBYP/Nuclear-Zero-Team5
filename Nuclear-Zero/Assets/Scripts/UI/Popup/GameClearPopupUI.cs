@@ -8,7 +8,6 @@ public class GameClearPopupUI : PopupUI
 {
     enum Buttons
     {
-        NextStage,
         Exit,
         ADButton,
     }
@@ -39,14 +38,14 @@ public class GameClearPopupUI : PopupUI
 
         SetPlayerStageClear();
 
-        BindEvent(GetButton((int)Buttons.NextStage).gameObject, OnNextStage, UIEvents.Click);
+        //BindEvent(GetButton((int)Buttons.NextStage).gameObject, OnNextStage, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Exit).gameObject, OnExit, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.ADButton).gameObject, OnADButtons, UIEvents.Click);
         
-        if (DataManager.Instance.playerInfo.SelectStage < DataManager.Instance.playerInfo.PlayerStages.Count)
-            GetButton((int)Buttons.NextStage).gameObject.SetActive(true);
-        else
-            GetButton((int)Buttons.NextStage).gameObject.SetActive(false);
+        //if (DataManager.Instance.playerInfo.SelectStage < DataManager.Instance.playerInfo.PlayerStages.Count)
+        //    GetButton((int)Buttons.NextStage).gameObject.SetActive(true);
+        //else
+        //    GetButton((int)Buttons.NextStage).gameObject.SetActive(false);
     }
 
     private void SetPlayerStageClear()
@@ -67,7 +66,6 @@ public class GameClearPopupUI : PopupUI
         SetResultStars(star);
         coin = gameUI.CoinCount * 10 * reward;
         GetText((int)Texts.RewardCoinText).text = $"+ {coin}";
-        print("GetReward");
     }
 
     private void SetResultStars(int index)
@@ -96,13 +94,13 @@ public class GameClearPopupUI : PopupUI
         GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
     }
 
-    private void OnNextStage(PointerEventData data)
-    {
-        DataManager.Instance.playerInfo.SetClearStage(stageIndex, star, coin);
-        ++DataManager.Instance.playerInfo.SelectStage;
-        GameManager.Instance.OpenStagePopup = false;
-        SceneManagerEx.Instance.ReLoadScene(Scene.Game);
-    }
+    //private void OnNextStage(PointerEventData data)
+    //{
+    //    DataManager.Instance.playerInfo.SetClearStage(stageIndex, star, coin);
+    //    ++DataManager.Instance.playerInfo.SelectStage;
+    //    GameManager.Instance.OpenStagePopup = false;
+    //    SceneManagerEx.Instance.ReLoadScene(Scene.Game);
+    //}
 
     private void OnExit(PointerEventData data)
     {

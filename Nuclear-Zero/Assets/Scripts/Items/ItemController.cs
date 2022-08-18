@@ -15,6 +15,7 @@ public class ItemController : MonoBehaviour
     {
         Init();
         _isMove = false;
+        _playerHasMagnet = GameManager.Instance._magnet;
     }
 
     public virtual void Init()
@@ -42,7 +43,7 @@ public class ItemController : MonoBehaviour
         
     }
 
-    public static void SetPlayerHasMagnet(bool state) { _playerHasMagnet = state; }
+    //public static void SetPlayerHasMagnet(bool state) { _playerHasMagnet = state; }
 
     private void MoveToPlayer()
     {
@@ -63,11 +64,6 @@ public class ItemController : MonoBehaviour
 
     private void Update()
     {
-        //if (!_playerHasMagnet)
-        //{
-        //    print("_playerHasMagnet Is False");
-        //    _playerHasMagnet = true;
-        //}
         if (_playerHasMagnet)
         {
             MoveToPlayer();

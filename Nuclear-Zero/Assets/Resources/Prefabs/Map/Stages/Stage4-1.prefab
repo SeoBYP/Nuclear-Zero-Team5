@@ -4195,7 +4195,7 @@ GameObject:
   - component: {fileID: 6071362331690319855}
   - component: {fileID: 8819900407348426151}
   - component: {fileID: 1456462054761257003}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndustrialTile_25 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4304,7 +4304,7 @@ GameObject:
   - component: {fileID: 3442406684662534363}
   - component: {fileID: 1530741256599137709}
   - component: {fileID: 788269158255828050}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndustrialTile_25 (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4517,7 +4517,7 @@ GameObject:
   - component: {fileID: 5417250609889315325}
   - component: {fileID: 4109988152165878499}
   - component: {fileID: 8133302876574593059}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndustrialTile_25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7306,7 +7306,7 @@ GameObject:
   - component: {fileID: 2383395086529173431}
   - component: {fileID: 2377193998793312919}
   - component: {fileID: 1663399862343817720}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndustrialTile_25 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7497,7 +7497,7 @@ GameObject:
   - component: {fileID: 5756694270868299012}
   - component: {fileID: 5089252649675986558}
   - component: {fileID: 8359670918211006033}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndustrialTile_25 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15076,7 +15076,7 @@ GameObject:
   - component: {fileID: 7651918144357601469}
   - component: {fileID: 5564302114794658150}
   - component: {fileID: 6191719016365961391}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndustrialTile_25 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15867,7 +15867,7 @@ GameObject:
   - component: {fileID: 5606449705013138698}
   - component: {fileID: 6935266442327183032}
   - component: {fileID: 1155176818922113724}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndustrialTile_25 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16316,7 +16316,7 @@ GameObject:
   - component: {fileID: 4250348967768262523}
   - component: {fileID: 8552655040610533573}
   - component: {fileID: 6233543135727965824}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndustrialTile_25 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16688,7 +16688,7 @@ GameObject:
   - component: {fileID: 1257675520068256376}
   - component: {fileID: 6988774761760670591}
   - component: {fileID: 1294806402963873685}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndustrialTile_25 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17099,7 +17099,7 @@ GameObject:
   - component: {fileID: 2249596093654095778}
   - component: {fileID: 7256139307043957947}
   - component: {fileID: 1378448217601677400}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IndustrialTile_25 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21043,7 +21043,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder
@@ -22123,7 +22123,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder
@@ -23799,7 +23799,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder
@@ -24313,7 +24313,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder
@@ -24379,7 +24379,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder

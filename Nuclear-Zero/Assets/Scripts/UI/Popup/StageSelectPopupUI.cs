@@ -64,19 +64,30 @@ public class StageSelectPopupUI : PopupUI
         if (DataManager.Instance.playerInfo.ShieldItem == 0)
             Get<Toggle>((int)Toggles.ShieldToggle).enabled = false;
         else
+        {
+            Get<Toggle>((int)Toggles.ShieldToggle).enabled = true;
             Get<Toggle>((int)Toggles.ShieldToggle).onValueChanged.AddListener(OnSheildToggle);
+        }
 
 
         if (DataManager.Instance.playerInfo.MagnetItem == 0)
             Get<Toggle>((int)Toggles.MagnetToggle).enabled = false;
         else
+        {
+            Get<Toggle>((int)Toggles.MagnetToggle).enabled = true;
             Get<Toggle>((int)Toggles.MagnetToggle).onValueChanged.AddListener(OnMagnetToggle);
+        }
+           
 
 
         if (DataManager.Instance.playerInfo.LifeItem == 0)
             Get<Toggle>((int)Toggles.LifeToggle).enabled = false;
         else
+        {
+            Get<Toggle>((int)Toggles.LifeToggle).enabled = true;
             Get<Toggle>((int)Toggles.LifeToggle).onValueChanged.AddListener(OnLifeToggle);
+        }
+            
     }
 
     private void SetDefualtToggle()
@@ -88,7 +99,7 @@ public class StageSelectPopupUI : PopupUI
 
     public void SetSeleteStageText(string texts,int stageindex)
     {
-        texts = texts.Insert(5,"   ");
+        texts = texts.Insert(5,"  ");
         GetText((int)Texts.SelectStageText).text = texts;
         SetPlayerSelectStage(stageindex);
     }
@@ -96,7 +107,7 @@ public class StageSelectPopupUI : PopupUI
     public void SetSeleteStageText(int stageindex)
     {
         string text = DataManager.Instance.playerInfo.GetPlayerStages(stageindex).StageName;
-        text = text.Insert(5,"   ");
+        text = text.Insert(5,"  ");
         GetText((int)Texts.SelectStageText).text = text;
         SetPlayerSelectStage(stageindex);
     }
@@ -104,6 +115,7 @@ public class StageSelectPopupUI : PopupUI
     public void SetDefault()
     {
         CheckPlayerItemsCount();
+        SetDefualtToggle();
         GetText((int)Texts.ShieldCount).text = DataManager.Instance.playerInfo.ShieldItem.ToString();
         GetText((int)Texts.MagnetCount).text = DataManager.Instance.playerInfo.MagnetItem.ToString();
         GetText((int)Texts.LifeCount).text = DataManager.Instance.playerInfo.LifeItem.ToString();

@@ -126,14 +126,14 @@ public class ReplayScenarioPopupUI : PopupUI
             GetGameObject((int)GameObjects.Chapter3_2).SetActive(false);
         }
 
-        //if (DataManager.Instance.playerInfo.GetPlayerChapter(4).ChapterStory)
+        if (DataManager.Instance.playerInfo.GetPlayerChapter(4).ChapterStory)
         {
             GetGameObject((int)GameObjects.Chapter4).SetActive(true);
         }
-        //else
-        //{
-        //    GetGameObject((int)GameObjects.Chapter4).SetActive(false);
-        //}
+        else
+        {
+            GetGameObject((int)GameObjects.Chapter4).SetActive(false);
+        }
     }
 
     private void SetBunkers()
@@ -166,21 +166,21 @@ public class ReplayScenarioPopupUI : PopupUI
         {
             GetGameObject((int)GameObjects.Bunker3).SetActive(false);
         }
-        //if (DataManager.Instance.playerInfo.GetPlayerChapter(4).BunkerStory)
+        if (DataManager.Instance.playerInfo.GetPlayerChapter(4).BunkerStory)
         {
             GetGameObject((int)GameObjects.Bunker4).SetActive(true);
             GetGameObject((int)GameObjects.Bunker4_2).SetActive(true);
         }
-        //else
-        //{
-        //    GetGameObject((int)GameObjects.Bunker4).SetActive(false);
-        //    GetGameObject((int)GameObjects.Bunker4_2).SetActive(false);
-        //}
+        else
+        {
+            GetGameObject((int)GameObjects.Bunker4).SetActive(false);
+            GetGameObject((int)GameObjects.Bunker4_2).SetActive(false);
+        }
     }
 
     private void SetEnding()
     {
-        //if (DataManager.Instance.playerInfo.BadEnding)
+        if (DataManager.Instance.playerInfo.BadEnding)
         {
             GetGameObject((int)GameObjects.BadEnding1).SetActive(true);
             GetGameObject((int)GameObjects.BadEnding2).SetActive(true);
@@ -188,16 +188,16 @@ public class ReplayScenarioPopupUI : PopupUI
             GetGameObject((int)GameObjects.BadEnding4).SetActive(true);
             GetGameObject((int)GameObjects.BadEnding5).SetActive(true);
         }
-        //else
-        //{
-        //    GetGameObject((int)GameObjects.BadEnding1).SetActive(false);
-        //    GetGameObject((int)GameObjects.BadEnding2).SetActive(false);
-        //    GetGameObject((int)GameObjects.BadEnding3).SetActive(false);
-        //    GetGameObject((int)GameObjects.BadEnding4).SetActive(false);
-        //    GetGameObject((int)GameObjects.BadEnding5).SetActive(false);
-        //}
+        else
+        {
+            GetGameObject((int)GameObjects.BadEnding1).SetActive(false);
+            GetGameObject((int)GameObjects.BadEnding2).SetActive(false);
+            GetGameObject((int)GameObjects.BadEnding3).SetActive(false);
+            GetGameObject((int)GameObjects.BadEnding4).SetActive(false);
+            GetGameObject((int)GameObjects.BadEnding5).SetActive(false);
+        }
 
-        //if (DataManager.Instance.playerInfo.NormalEnding)
+        if (DataManager.Instance.playerInfo.NormalEnding)
         {
             GetGameObject((int)GameObjects.NormalEnding1).SetActive(true);
             GetGameObject((int)GameObjects.NormalEnding2).SetActive(true);
@@ -207,18 +207,18 @@ public class ReplayScenarioPopupUI : PopupUI
             GetGameObject((int)GameObjects.NormalEnding6).SetActive(true);
             GetGameObject((int)GameObjects.NormalEnding7).SetActive(true);
         }
-        //else
-        //{
-        //    GetGameObject((int)GameObjects.NormalEnding1).SetActive(false);
-        //    GetGameObject((int)GameObjects.NormalEnding2).SetActive(false);
-        //    GetGameObject((int)GameObjects.NormalEnding3).SetActive(false);
-        //    GetGameObject((int)GameObjects.NormalEnding4).SetActive(false);
-        //    GetGameObject((int)GameObjects.NormalEnding5).SetActive(false);
-        //    GetGameObject((int)GameObjects.NormalEnding6).SetActive(false);
-        //    GetGameObject((int)GameObjects.NormalEnding7).SetActive(false);
-        //}
+        else
+        {
+            GetGameObject((int)GameObjects.NormalEnding1).SetActive(false);
+            GetGameObject((int)GameObjects.NormalEnding2).SetActive(false);
+            GetGameObject((int)GameObjects.NormalEnding3).SetActive(false);
+            GetGameObject((int)GameObjects.NormalEnding4).SetActive(false);
+            GetGameObject((int)GameObjects.NormalEnding5).SetActive(false);
+            GetGameObject((int)GameObjects.NormalEnding6).SetActive(false);
+            GetGameObject((int)GameObjects.NormalEnding7).SetActive(false);
+        }
 
-        //if (DataManager.Instance.playerInfo.HappyEnding)
+        if (DataManager.Instance.playerInfo.HappyEnding)
         {
             GetGameObject((int)GameObjects.HappyEnding1).SetActive(true);
             GetGameObject((int)GameObjects.HappyEnding2).SetActive(true);
@@ -227,15 +227,15 @@ public class ReplayScenarioPopupUI : PopupUI
             GetGameObject((int)GameObjects.HappyEnding5).SetActive(true);
             GetGameObject((int)GameObjects.HappyEnding6).SetActive(true);
         }
-        //else
-        //{
-        //    GetGameObject((int)GameObjects.HappyEnding1).SetActive(false);
-        //    GetGameObject((int)GameObjects.HappyEnding2).SetActive(false);
-        //    GetGameObject((int)GameObjects.HappyEnding3).SetActive(false);
-        //    GetGameObject((int)GameObjects.HappyEnding4).SetActive(false);
-        //    GetGameObject((int)GameObjects.HappyEnding5).SetActive(false);
-        //    GetGameObject((int)GameObjects.HappyEnding6).SetActive(false);
-        //}
+        else
+        {
+            GetGameObject((int)GameObjects.HappyEnding1).SetActive(false);
+            GetGameObject((int)GameObjects.HappyEnding2).SetActive(false);
+            GetGameObject((int)GameObjects.HappyEnding3).SetActive(false);
+            GetGameObject((int)GameObjects.HappyEnding4).SetActive(false);
+            GetGameObject((int)GameObjects.HappyEnding5).SetActive(false);
+            GetGameObject((int)GameObjects.HappyEnding6).SetActive(false);
+        }
     }
 
     private void OnExit(PointerEventData data)

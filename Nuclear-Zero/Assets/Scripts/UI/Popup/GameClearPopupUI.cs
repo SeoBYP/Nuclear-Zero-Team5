@@ -10,6 +10,7 @@ public class GameClearPopupUI : PopupUI
     {
         Exit,
         ADButton,
+        GetReward,
     }
 
     enum Texts
@@ -42,7 +43,7 @@ public class GameClearPopupUI : PopupUI
         //BindEvent(GetButton((int)Buttons.NextStage).gameObject, OnNextStage, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Exit).gameObject, OnExit, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.ADButton).gameObject, OnADButtons, UIEvents.Click);
-        
+        BindEvent(GetButton((int)Buttons.GetReward).gameObject, OnExit, UIEvents.Click);
         //if (DataManager.Instance.playerInfo.SelectStage < DataManager.Instance.playerInfo.PlayerStages.Count)
         //    GetButton((int)Buttons.NextStage).gameObject.SetActive(true);
         //else
@@ -55,17 +56,18 @@ public class GameClearPopupUI : PopupUI
         GameUI gameUI = UIManager.Instance.Get<GameUI>();
         star = gameUI.StarCount;
         SetResultStars(star);
-        coin = gameUI.CoinCount * 10;
+        coin = gameUI.CoinCount * 5;
         GetText((int)Texts.RewardCoinText).text = $"+ {coin}";
     }
 
     public void SetPlayerStageClear(int reward)
     {
+        GetButton((int)Buttons.ADButton).gameObject.SetActive(false);
         stageIndex = DataManager.Instance.playerInfo.SelectStage;
         GameUI gameUI = UIManager.Instance.Get<GameUI>();
         star = gameUI.StarCount;
         SetResultStars(star);
-        coin = gameUI.CoinCount * 10 * reward;
+        coin = gameUI.CoinCount * 5 * reward;
         GetText((int)Texts.RewardCoinText).text = $"+ {coin}";
     }
 
@@ -93,6 +95,7 @@ public class GameClearPopupUI : PopupUI
     private void OnADButtons(PointerEventData data)
     {
         GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
+        
     }
 
     //private void OnNextStage(PointerEventData data)

@@ -28,9 +28,7 @@ public static class YieldInstructionCache
 
 		return wfs; 
 
-	}//	public static WaitForSeconds WaitForSeconds(float seconds)
-	 //----------------------------------------------------
-
+	}
 }//	internal static class YieldInstructionCache
  //==========================================================================
 /*

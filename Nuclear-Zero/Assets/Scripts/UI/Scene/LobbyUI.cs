@@ -17,6 +17,7 @@ public class LobbyUI : SceneUI
         Setting,
         Story,
         Plus,
+        ExitGame,
     }
 
     enum Texts
@@ -56,6 +57,7 @@ public class LobbyUI : SceneUI
         BindEvent(GetButton((int)Buttons.Information).gameObject, OnInfomation, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Story).gameObject, OnStory, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Plus).gameObject, OnPlus, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.ExitGame).gameObject, OnExitGame, UIEvents.Click);
     }
 
     public void SetPlayerGoldText()
@@ -129,7 +131,7 @@ public class LobbyUI : SceneUI
 
     private void OnInfomation(PointerEventData data)
     {
-        print("OnInfomation");
+        UIManager.Instance.ShowPopupUi<InfomationPopupUI>();
     }
 
     private void OnSetting(PointerEventData data)
@@ -154,5 +156,11 @@ public class LobbyUI : SceneUI
     private void OnStory(PointerEventData data)
     {
         UIManager.Instance.ShowPopupUi<ReplayScenarioPopupUI>();
+    }
+
+    private void OnExitGame(PointerEventData data)
+    {
+        DataManager.Instance.SavePlayerInfo();
+        Application.Quit();
     }
 }

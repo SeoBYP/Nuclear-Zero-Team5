@@ -53,6 +53,7 @@ public class GetItemPopupUI : PopupUI
 
     public void SetPlayerStageClear(int reward)
     {
+        GetButton((int)Buttons.ADButton).gameObject.SetActive(false);
         coin *= reward;
         GetText((int)Texts.CoinCount).text = $"+ {coin}";
         print("GetReward");
@@ -61,7 +62,6 @@ public class GetItemPopupUI : PopupUI
     private void OnADButton(PointerEventData data)
     {
         GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
-        GetButton((int)Buttons.ADButton).gameObject.SetActive(false);
     }
     private void OnClose(PointerEventData data)
     {

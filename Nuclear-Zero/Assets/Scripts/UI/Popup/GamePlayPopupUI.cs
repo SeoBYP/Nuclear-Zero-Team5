@@ -35,6 +35,7 @@ public class GamePlayPopupUI : PopupUI
     {
         int selectStage = DataManager.Instance.playerInfo.SelectStage;
         string stageName = DataManager.Instance.playerInfo.GetPlayerStages(selectStage).StageName;
+        stageName = stageName.Insert(5, "  ");
         GetText((int)Texts.StageText).text = stageName;
     }
 

@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
     public void Init()
     {
         Hited = false;
-        JumpHeight = 30f;
+        JumpHeight = 35f;
         vecGrabity = new Vector2(0, -Physics2D.gravity.y);
         animationController = GetComponentInChildren<PlayerAnimationController>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -102,17 +102,13 @@ public class PlayerController : MonoBehaviour
         if (_isPause)
         {
             _rigidbody2D.velocity = Vector2.zero;
+            animationController.PlayerRun(false, _flipX);
             return;
         }
         CheckGrounded();
         Jump();
         Move(_joystick.Direction);
         SetGoalDistance();
-    }
-
-    private void Update()
-    {
-        
     }
 
     #region PlayerMovement
@@ -131,15 +127,12 @@ public class PlayerController : MonoBehaviour
 
         dir.x *= speed;
         Vector2 movepos = new Vector2(dir.x, _rigidbody2D.velocity.y);
-        //if(_rigidbody2D.velocity.x == 0 )
-        //{
-        //    if (dir.x != 0)
-        //        return;
-        //    
-        //}
-        if (CheckCollider())
+        if (CheckRightCollider())
         {
-            //if(dir.x != 0)
+            movepos = new Vector2(_rigidbody2D.velocity.x, _rigidbody2D.velocity.y);
+        }
+        if (CheckLeftCollider())
+        {
             movepos = new Vector2(_rigidbody2D.velocity.x, _rigidbody2D.velocity.y);
         }
         _rigidbody2D.velocity = movepos;
@@ -155,58 +148,66 @@ public class PlayerController : MonoBehaviour
         {
             if (joyButton.Pressed || isJumped)
             {
-                Vector2 jumpPos = new Vector2(_rigidbody2D.velocity.x, JumpHeight);
+                Vector2 jumpPos = new Vector2(0, JumpHeight);
                 _rigidbody2D.velocity = jumpPos;
+                animationController.PlayerJump();
                 isJumping = true;
                 isJumped = false;
                 jumpCounter = 0;
-                JumpHeight = 30f;
+                JumpHeight = 35f;
             }
         }
-
         if (_rigidbody2D.velocity.y > 0 && isJumping)
         {
             jumpCounter += Time.deltaTime;
             if (jumpCounter > jumpTime) isJumping = false;
             _rigidbody2D.velocity += vecGrabity * jumpMultiplier * Time.deltaTime;
         }
-
         if(joyButton.Pressed == false)
         {
             isJumping = false;
         }
-
         if(_rigidbody2D.velocity.y < 0)
         {
             _rigidbody2D.velocity -= vecGrabity * fallMultiplier * Time.deltaTime;
         }
     }
 
-    private bool CheckCollider()
+    private bool CheckRightCollider()
     {
-        if(CheckRight() != null || CheckLeft() != null)
+        if(CheckRight() != null)
         {
-            if (Grounded)
+            if(CheckLeft() != null)
                 return false;
-            else
-                return true;
+            return true;
+        }
+        return false;
+    }
+
+    private bool CheckLeftCollider()
+    {
+        if (CheckLeft() != null)
+        {
+            if (CheckRight() != null)
+                return false;
+            return true;
         }
         return false;
     }
 
     private Collider2D CheckRight()
     {
-        return Physics2D.OverlapCapsule(rightCheck.position, new Vector2(0.1f, 3.45f), CapsuleDirection2D.Vertical, 0, GroundLayer);
+        return Physics2D.OverlapCapsule(rightCheck.position, new Vector2(0.15f, 3.5f), CapsuleDirection2D.Vertical, 0, GroundLayer);
     }
 
     private Collider2D CheckLeft()
     {
-        return Physics2D.OverlapCapsule(leftCheck.position, new Vector2(0.2f, 3.45f), CapsuleDirection2D.Vertical, 0, GroundLayer);
+        return Physics2D.OverlapCapsule(leftCheck.position, new Vector2(0.15f, 3.5f), CapsuleDirection2D.Vertical, 0, GroundLayer);
     }
 
     private void CheckGrounded()
     {
-        Grounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.9f, 0.2f), CapsuleDirection2D.Horizontal,0, GroundLayer);
+        Grounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.85f, 0.25f), CapsuleDirection2D.Horizontal,0, GroundLayer);
         animationController.IsGrounded(Grounded);
     }
     private void CheckTop()

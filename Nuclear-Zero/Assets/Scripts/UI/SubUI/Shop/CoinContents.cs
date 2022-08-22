@@ -13,7 +13,6 @@ public class CoinContents : SubUI
         CoinPackage2,
         CoinPackage3,
         CoinPackage4,
-        ADButton,
     }
 
     enum Texts
@@ -28,6 +27,7 @@ public class CoinContents : SubUI
     }
 
     private ShopPopupUI _shop;
+    private TimeProject time;
 
     public override void Init()
     {
@@ -45,9 +45,19 @@ public class CoinContents : SubUI
         BindEvent(GetButton((int)Buttons.CoinPackage2).gameObject, OnCoinPackage2, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.CoinPackage3).gameObject, OnCoinPackage3, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.CoinPackage4).gameObject, OnCoinPackage4, UIEvents.Click);
-        BindEvent(GetButton((int)Buttons.ADButton).gameObject, OnRequestAd, UIEvents.Click);
+
+        GetTimeProject();
 
         _shop = UIManager.Instance.Get<ShopPopupUI>();
+    }
+
+    private void GetTimeProject()
+    {
+        time = GetComponentInChildren<TimeProject>();
+        if(time != null)
+        {
+            time.Init();
+        }
     }
 
     private void OnCoinPackage1(PointerEventData data)
@@ -73,9 +83,5 @@ public class CoinContents : SubUI
         int coin = 28500;
         DataManager.Instance.playerInfo.SetCoin(coin);
         _shop.DefaultSet();
-    }
-    private void OnRequestAd(PointerEventData data)
-    {
-        GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
     }
 }

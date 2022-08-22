@@ -135,7 +135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.1, y: 0.3}
+  m_Size: {x: 2.1, y: 0.2}
   m_EdgeRadius: 0
 --- !u!114 &845292659435132762
 MonoBehaviour:
@@ -151,4 +151,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider2D: {fileID: 845292659435132763}
   _trriger2D: {fileID: 845292659435132760}
-  jumpPower: 45
+  jumpPower: 50

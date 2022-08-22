@@ -19,12 +19,11 @@ public class GameOverPopupUI : PopupUI
         CoinText,
     }
 
-    private bool IsExit = false;
-
     public override void Init()
     {
         base.Init();
         Binds();
+        GameAudioManager.Instance.Play2DSound("Defeate");
     }
 
     private void Binds()
@@ -55,6 +54,11 @@ public class GameOverPopupUI : PopupUI
     private void OnReplay(PointerEventData data)
     {
         GameManager.Instance.OpenStagePopup = false;
-        SceneManagerEx.Instance.ReLoadScene(Scene.Game);
+        StageSelectPopupUI popupUI = UIManager.Instance.ShowPopupUi<StageSelectPopupUI>();
+        if (popupUI != null)
+        {
+            popupUI.SetSeleteStageText(DataManager.Instance.playerInfo.SelectStage);
+        }
+        //SceneManagerEx.Instance.ReLoadScene(Scene.Game);
     }
 }

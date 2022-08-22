@@ -16,7 +16,7 @@ public class TitleUI : SceneUI
     {
         PlayButton,
     }
-
+    [SerializeField] private LoginManager login;
     public override void Init()
     {
         base.Init();
@@ -26,6 +26,8 @@ public class TitleUI : SceneUI
 
         BindEvent(GetButton(0).gameObject, OnPlayButton, UIEvents.Click);
         BindEvent(GetGameObject(0).gameObject, OnPlayButton, UIEvents.Click);
+
+        login.PlayLogin();
     }
 
     private void OnPlayButton(PointerEventData data)

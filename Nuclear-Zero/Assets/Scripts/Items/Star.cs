@@ -11,6 +11,7 @@ public class Star : ItemController
 
     protected override void SetItemInfo()
     {
+        GameAudioManager.Instance.Play2DSound("Coin");
         UIManager.Instance.Get<GameUI>().SetStar();
     }
 }

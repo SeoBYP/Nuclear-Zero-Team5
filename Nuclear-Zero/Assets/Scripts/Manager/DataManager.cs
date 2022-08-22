@@ -175,7 +175,7 @@ public class PlayerInfo
     {
         PlayerChapter curchapter = GetPlayerChapter(chapterIndex);
         if (curchapter.BunkerItem1 && curchapter.BunkerItem2
-            && curchapter.BunkerItem3 && curchapter.BunkerItem4)
+            && curchapter.BunkerItem3 && curchapter.BunkerItem4 && curchapter.BunkerItem5)
             return true;
         return false;
     }
@@ -348,7 +348,7 @@ public class DataManager : Managers<DataManager>
         //Application.dataPath + $"/{_filePath}"; /// Resources/Data/PlayerInfomation.json";
         if (File.Exists(filePath))
         {
-            Debug.Log("불러오기 성공");
+            //Debug.Log("불러오기 성공");
             string text = File.ReadAllText(filePath);
             if (string.IsNullOrEmpty(text))
             {
@@ -357,11 +357,11 @@ public class DataManager : Managers<DataManager>
             }
             playerInfo = JsonUtility.FromJson<PlayerInfo>(text); // new PlayerInfo(text);//
             IsLoadPlayerInfo = true;
-            if(playerInfo != null)
-            {
-                print(playerInfo.GetPlayerStages(1).StageName);
-                print(playerInfo.GetPlayerChapter(1).ChapterStory);
-            }
+            //if(playerInfo != null)
+            //{
+            //    print(playerInfo.GetPlayerStages(1).StageName);
+            //    print(playerInfo.GetPlayerChapter(1).ChapterStory);
+            //}
             return;
         }
         else

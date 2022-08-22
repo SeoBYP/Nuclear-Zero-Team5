@@ -17,7 +17,7 @@ public class CountDownPopupUI : PopupUI
     }
 
     private int _countdown = 3;
-    private float _fade = 1;
+    private float _fade = 0.7f;
     public override void Init()
     {
         base.Init();
@@ -29,13 +29,14 @@ public class CountDownPopupUI : PopupUI
         Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
         _countdown = 3;
-        _fade = 1;
+        _fade = 0.7f;
         StartCoroutine(CountDown());
     }
 
     IEnumerator CountDown()
     {
         GetText((int)Texts.CountDonwTimer).text = _countdown.ToString();
+        GameAudioManager.Instance.Play2DSound("CountDown");
         GetImage((int)Images.BackGround).color = new Color(0, 0, 0, _fade);
         while (true)
         {

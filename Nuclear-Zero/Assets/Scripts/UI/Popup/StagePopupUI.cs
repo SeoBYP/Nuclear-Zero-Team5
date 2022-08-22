@@ -40,10 +40,20 @@ public class StagePopupUI : PopupUI
         Tutorial,
     }
 
+    private swipe _swipe;
+
     public override void Init()
     {
         base.Init();
         Binds();
+        _swipe = GetComponentInChildren<swipe>();
+        if(_swipe != null)
+        {
+            if (GameManager.Instance.OpenStagePopup)
+                _swipe.SetBtnPage(DataManager.Instance.playerInfo.SelectChapter);
+            else
+                _swipe.Init();
+        }
         //GoogleMobileAdsManager.Instance.DestroyBannerAd();
     }
 
@@ -68,12 +78,22 @@ public class StagePopupUI : PopupUI
             stage.Init();
             // ???????? ?????????????? ?????????? ?? ???????? ???????? ??????????.
             if (stage.StageIndex < DataManager.Instance.playerInfo.ClearStage)
+            {
                 stage.SetButtonInfo(stages, OnClickStageBtn);
+                stage.SetColor(Color.white);
+            }
             // ???? ???????? ???????????? ?????? ?????? ????????????.
             else if (stage.StageIndex == DataManager.Instance.playerInfo.ClearStage)
+            {
                 stage.SetButtonInfo(stages, OnClickStageBtn);
+                stage.SetColor(Color.white);
+            }
             else
+            {
                 stage.SetButtonInfo(stages, OnErrorStageBtn);
+                stage.SetColor(Color.gray);
+            }
+                
         }
     }
 

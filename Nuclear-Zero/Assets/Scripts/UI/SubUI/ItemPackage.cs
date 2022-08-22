@@ -19,6 +19,13 @@ public class ItemPackage : SubUI
     private void OnItemPachage()
     {
         GameAudioManager.Instance.Play2DSound("Touch");
+        CumfumBuyPopupUI popupUI = UIManager.Instance.Get<CumfumBuyPopupUI>();
+        if (popupUI != null)
+        {
+            popupUI.SetDefaultCount();
+            popupUI.SetItemIcon(sprite, item);
+            return;
+        }
         UIManager.Instance.ShowPopupUi<CumfumBuyPopupUI>().SetItemIcon(sprite,item);
     }
 }

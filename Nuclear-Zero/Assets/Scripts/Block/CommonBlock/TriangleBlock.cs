@@ -4,19 +4,36 @@ using UnityEngine;
 
 public class TriangleBlock : BlockController
 {
+    private bool _isEffect;
     protected override void Init()
     {
         base.Init();
+        _isEffect = false;
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    PlayerTakeDamage();
-    //}
 
-    private void OnCollisionStay2D(Collision2D collision)
+    public override void OnSteped()
     {
-        PlayerTakeDamage();
+        base.OnSteped();
+        _isEffect = true;
+        StartCoroutine(TimeTakeDamages());
+    }
+
+    public override void OnExited()
+    {
+        base.OnExited();
+        _isEffect = false;
+        StopCoroutine(TimeTakeDamages());
+    }
+    IEnumerator TimeTakeDamages()
+    {
+        while (_isEffect)
+        {
+            if (_isEffect == false)
+                yield break;
+            PlayerTakeDamage();
+            yield return YieldInstructionCache.WaitForSeconds(1f);
+        }
     }
 
     private void PlayerTakeDamage()

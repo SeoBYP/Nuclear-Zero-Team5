@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5675953678551809923}
   m_Layer: 6
   m_Name: MoveBlock1
-  m_TagString: Floor
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

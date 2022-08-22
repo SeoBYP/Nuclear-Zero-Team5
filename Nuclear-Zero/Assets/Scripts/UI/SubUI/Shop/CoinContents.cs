@@ -13,6 +13,18 @@ public class CoinContents : SubUI
         CoinPackage2,
         CoinPackage3,
         CoinPackage4,
+        ADButton,
+    }
+
+    enum Texts
+    {
+        TimeCount,
+    }
+
+    enum GameObjects
+    {
+        NonRecItem,
+        RecItem,
     }
 
     private ShopPopupUI _shop;
@@ -21,42 +33,49 @@ public class CoinContents : SubUI
     {
         base.Init();
         Binds();
+        GoogleMobileAdsManager.Instance.RequestAndLoadRewardedInterstitialAd();
     }
 
     private void Binds()
     {
         Bind<Button>(typeof(Buttons));
+        Bind<Text>(typeof(Texts));
 
         BindEvent(GetButton((int)Buttons.CoinPackage1).gameObject, OnCoinPackage1, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.CoinPackage2).gameObject, OnCoinPackage2, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.CoinPackage3).gameObject, OnCoinPackage3, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.CoinPackage4).gameObject, OnCoinPackage4, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.ADButton).gameObject, OnRequestAd, UIEvents.Click);
 
         _shop = UIManager.Instance.Get<ShopPopupUI>();
     }
 
     private void OnCoinPackage1(PointerEventData data)
     {
-        int coin = 3000;
+        int coin = 8000;
         DataManager.Instance.playerInfo.SetCoin(coin);
         _shop.DefaultSet();
     }
     private void OnCoinPackage2(PointerEventData data)
     {
-        int coin = 5550;
+        int coin = 13400;
         DataManager.Instance.playerInfo.SetCoin(coin);
         _shop.DefaultSet();
     }
     private void OnCoinPackage3(PointerEventData data)
     {
-        int coin = 10000;
+        int coin = 20000;
         DataManager.Instance.playerInfo.SetCoin(coin);
         _shop.DefaultSet();
     }
     private void OnCoinPackage4(PointerEventData data)
     {
-        int coin = 15000;
+        int coin = 28500;
         DataManager.Instance.playerInfo.SetCoin(coin);
         _shop.DefaultSet();
+    }
+    private void OnRequestAd(PointerEventData data)
+    {
+        GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
     }
 }

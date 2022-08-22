@@ -11,6 +11,8 @@ public class TutorialPopupUI : PopupUI
         Close,
     }
 
+    private swipe _swipe;
+
     public override void Init()
     {
         base.Init();
@@ -20,16 +22,14 @@ public class TutorialPopupUI : PopupUI
     private void Binds()
     {
         Bind<Button>(typeof(Buttons));
-
+        _swipe = GetComponentInChildren<swipe>();
+        if (_swipe != null)
+            _swipe.Init();
         BindEvent(GetButton((int)Buttons.Close).gameObject, OnClose, UIEvents.Click);
     }
 
     private void OnClose(PointerEventData data)
     {
-        //if(UIManager.Instance.Get<ProloguePopupUI>() != null)
-        //{
-        //    UIManager.Instance.Get<ProloguePopupUI>().ClosePopupUI();
-        //}
         ClosePopupUI();
     }
 }

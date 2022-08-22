@@ -43,6 +43,7 @@ public class StageBtn : SubUI
         if (onClick != null)
         {
             DataManager.Instance.playerInfo.SelectStage = _curentStatge.StageIndex;
+            //DataManager.Instance.playerInfo.SelectStage = _chapterIndex;
             onClick(_curentStatge.StageName,_stageIndex);
         }
     }
@@ -56,7 +57,16 @@ public class StageBtn : SubUI
             SetActiveStar();
         }
     }
-    
+
+    public void SetColor(Color color)
+    {
+        _button.image.color = color;
+        for(int i = 0; i < stars.Count; i++)
+        {
+            stars[i].SetColor(color);
+        }
+    }
+
     private void SetActiveStar()
     {
         foreach(ResultStar star in stars)

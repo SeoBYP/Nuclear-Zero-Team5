@@ -139,7 +139,7 @@ class GameAudioManager : Managers<GameAudioManager>, IUpdate
     }
     public void SetBGMSound(float value)
     {
-        if (value == 0.14f)
+        if (value <= 0.1f)
             value = 0;
         BGMSound = value;
         if (_backGround != null)
@@ -147,7 +147,7 @@ class GameAudioManager : Managers<GameAudioManager>, IUpdate
     }
     public void SetEffectSound(float value)
     {
-        if (value == 0.14f)
+        if (value <= 0.1f)
             value = 0;
         EffectSound = value;
     }

@@ -10,6 +10,7 @@ public class StageSelectPopupUI : PopupUI
     enum Buttons
     { 
         StartStage,
+        Shop,
     }
 
     enum Texts
@@ -55,6 +56,7 @@ public class StageSelectPopupUI : PopupUI
 
         BindEvent(GetButton((int)Buttons.StartStage).gameObject, OnStartStage, UIEvents.Click);
         BindEvent(GetGameObject((int)GameObjects.BackGround), OnClosePopup, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.Shop).gameObject, OnShop, UIEvents.Click);
     }
 
     private void CheckPlayerItemsCount()
@@ -86,8 +88,25 @@ public class StageSelectPopupUI : PopupUI
 
     public void SetSeleteStageText(string texts,int stageindex)
     {
+        texts = texts.Insert(5,"   ");
         GetText((int)Texts.SelectStageText).text = texts;
         SetPlayerSelectStage(stageindex);
+    }
+
+    public void SetSeleteStageText(int stageindex)
+    {
+        string text = DataManager.Instance.playerInfo.GetPlayerStages(stageindex).StageName;
+        text = text.Insert(5,"   ");
+        GetText((int)Texts.SelectStageText).text = text;
+        SetPlayerSelectStage(stageindex);
+    }
+
+    public void SetDefault()
+    {
+        CheckPlayerItemsCount();
+        GetText((int)Texts.ShieldCount).text = DataManager.Instance.playerInfo.ShieldItem.ToString();
+        GetText((int)Texts.MagnetCount).text = DataManager.Instance.playerInfo.MagnetItem.ToString();
+        GetText((int)Texts.LifeCount).text = DataManager.Instance.playerInfo.LifeItem.ToString();
     }
 
     private void SetPlayerSelectStage(int stageIndex)
@@ -130,7 +149,15 @@ public class StageSelectPopupUI : PopupUI
     private void OnStartStage(PointerEventData data)
     {
         SetItemCount();
+        GameManager.Instance.DontGamePause();
+        PlayerController.SetStart(false);
+        EnemyController.SetStart(false);
         SceneManagerEx.Instance.LoadScene(Scene.Game);
+    }
+
+    private void OnShop(PointerEventData data)
+    {
+        UIManager.Instance.ShowPopupUi<ShopPopupUI>();
     }
 
     private void OnSheildToggle(bool state)

@@ -40,9 +40,14 @@ public class PausePopupUI : PopupUI
 
     private void OnReStart(PointerEventData data)
     {
-        GameManager.Instance.GamePause();
+        
         GameManager.Instance.OpenStagePopup = false;
-        SceneManagerEx.Instance.ReLoadScene(Scene.Game);
+        StageSelectPopupUI popupUI = UIManager.Instance.ShowPopupUi<StageSelectPopupUI>();
+        if(popupUI != null)
+        {
+            popupUI.SetSeleteStageText(DataManager.Instance.playerInfo.SelectStage);
+        }
+        //SceneManagerEx.Instance.ReLoadScene(Scene.Game);
     }
 
     private void OnReplay(PointerEventData data)

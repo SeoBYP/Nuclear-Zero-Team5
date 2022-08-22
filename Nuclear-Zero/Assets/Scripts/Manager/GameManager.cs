@@ -7,7 +7,7 @@ public class GameManager : Managers<GameManager>//,IUpdate
     private PlayerController _player;
 
     private bool IsPause;
-    public bool OpenStagePopup;
+    public bool OpenStagePopup = false;
 
     public bool _shield = false;
     public bool _magnet = false;
@@ -68,6 +68,12 @@ public class GameManager : Managers<GameManager>//,IUpdate
             Time.timeScale = 1;
             IsPause = false;
         }
+    }
+
+    public void DontGamePause()
+    {
+        Time.timeScale = 1;
+        IsPause = false;
     }
 
     public void SetPlayerShieldItem()

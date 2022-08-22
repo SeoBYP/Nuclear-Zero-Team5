@@ -31,7 +31,7 @@ class SceneManagerEx : Managers<SceneManagerEx>
         //1.1초 동안 대기(화면이 검해지는 시간)
         yield return YieldInstructionCache.WaitForSeconds(1.1f);
         //현재 씬의 Claer 함수를 호출한다.
-        CurrentScene.Clear();
+        CurrentScene.Clear();            
         SceneManager.LoadScene(GetSceneName(scene));
         //로딩 화면을 호출하고 씬을 변환한다.
         //UIManager.Instance.ShowPopupUi<LoadingScenePopupUI>().StartLoadSceneAsync(GetSceneName(scene));

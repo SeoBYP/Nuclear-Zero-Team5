@@ -41,11 +41,9 @@ public class PackageContents : SubUI
     }
     private void OnPackage2(PointerEventData data)
     {
-        int coin = 5500;
-        int shield = 1;
-        int magnet = 1;
-        int life = 1;
-        DataManager.Instance.playerInfo.SetCoin(coin);
+        int shield = 2;
+        int magnet = 2;
+        int life = 5;
         DataManager.Instance.playerInfo.SetLifeItemCount(life);
         DataManager.Instance.playerInfo.SetShieldItemCount(shield);
         DataManager.Instance.playerInfo.SetMagnetItemCount(magnet);
@@ -54,11 +52,9 @@ public class PackageContents : SubUI
     }
     private void OnPackage3(PointerEventData data)
     {
-        int coin = 5000;
         int shield = 1;
-        int magnet = 2;
+        int magnet = 1;
         int life = 2;
-        DataManager.Instance.playerInfo.SetCoin(coin);
         DataManager.Instance.playerInfo.SetLifeItemCount(life);
         DataManager.Instance.playerInfo.SetShieldItemCount(shield);
         DataManager.Instance.playerInfo.SetMagnetItemCount(magnet);

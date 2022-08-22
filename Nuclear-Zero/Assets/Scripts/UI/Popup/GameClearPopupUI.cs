@@ -27,6 +27,7 @@ public class GameClearPopupUI : PopupUI
     {
         base.Init();
         Binds();
+        GameAudioManager.Instance.Play2DSound("Victory");
         GoogleMobileAdsManager.Instance.RequestAndLoadRewardedInterstitialAd();
     }
 

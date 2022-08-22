@@ -83,6 +83,7 @@ public class LobbyUI : SceneUI
     private void OnPlay(PointerEventData data)
     {
         UIManager.Instance.ShowPopupUi<StagePopupUI>();
+
         //SceneManagerEx.Instance.LoadScene(Scene.Stage);
     }
     private void OnMenu(PointerEventData data)
@@ -142,12 +143,12 @@ public class LobbyUI : SceneUI
     }
     private void OnSns(PointerEventData data)
     {
-        print("OnSns");
+        Application.OpenURL("https://google.com/");
     }
 
     private void OnPlus(PointerEventData data)
     {
-        print("OnShop");
+        UIManager.Instance.ShowPopupUi<ShopPopupUI>().OpenCoinPackage();
     }
 
     private void OnStory(PointerEventData data)

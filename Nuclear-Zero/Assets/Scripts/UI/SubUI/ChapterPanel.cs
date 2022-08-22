@@ -12,8 +12,6 @@ public class ChapterPanel : SubUI
         Bunker,
     }
 
-
-
     public override void Init()
     {
         base.Init();
@@ -28,7 +26,47 @@ public class ChapterPanel : SubUI
         Bind<Button>(typeof(Buttons));
         //InitStageButtons();
         BindEvent(GetButton((int)Buttons.Bunker).gameObject, OnBunker, UIEvents.Click);
+        CheckBunkerColor();
         //curChapterIndex = curentChapter.ChapterIndex;
+    }
+
+    private void CheckBunkerColor()
+    {
+        switch (curChapterIndex)
+        {
+            case 1:
+                {
+                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
+                        GetButton((int)Buttons.Bunker).image.color = Color.white;
+                    else
+                        GetButton((int)Buttons.Bunker).image.color = Color.gray;
+                }
+                break;
+            case 2:
+                {
+                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
+                        GetButton((int)Buttons.Bunker).image.color = Color.white;
+                    else
+                        GetButton((int)Buttons.Bunker).image.color = Color.gray;
+                }
+                break;
+            case 3:
+                {
+                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
+                        GetButton((int)Buttons.Bunker).image.color = Color.white;
+                    else
+                        GetButton((int)Buttons.Bunker).image.color = Color.gray;
+                }
+                break;
+            case 4:
+                {
+                    if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
+                        GetButton((int)Buttons.Bunker).image.color = Color.white;
+                    else
+                        GetButton((int)Buttons.Bunker).image.color = Color.gray;
+                }
+                break;
+        }
     }
 
     private void OnBunker(PointerEventData data)
@@ -40,13 +78,15 @@ public class ChapterPanel : SubUI
                 {
                     //if (DataManager.Instance.playerInfo.CheckChapterStageStart(curChapterIndex))
                     {
-
                         StartCoroutine(ShowBunkerPopupUI());
                         DataManager.Instance.playerInfo.SelectChapter = curChapterIndex;
                         DataManager.Instance.playerInfo.DialogueObjectName = "Bunker1";
                     }
                     //else
+                    //{
                     //    UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
+                    //}
+                        
                 }
                 break;
             case 2:
@@ -58,7 +98,9 @@ public class ChapterPanel : SubUI
                         DataManager.Instance.playerInfo.DialogueObjectName = "Bunker2";
                     }
                     //else
+                    //{
                     //    UIManager.Instance.ShowPopupUi<BunkerErrorPopupUI>();
+                    //}  
                 }
                 break;
             case 3:

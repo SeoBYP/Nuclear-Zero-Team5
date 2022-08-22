@@ -36,10 +36,12 @@ public class BunkerPopupUI : PopupUI
 
     [SerializeField] private ParticleSystem _effect;
     private RectTransform _rectTransform;
+    private bool _isParticle;
     public override void Init()
     {
         base.Init();
         Binds();
+        _isParticle = false;
     }
 
     private void Binds()
@@ -77,12 +79,15 @@ public class BunkerPopupUI : PopupUI
         switch(chapterIndex)
         {
             case (int)GameObjects.Bunker1:
+                GameAudioManager.Instance.PlayBackGround("Bunker1");
                 GetGameObject(chapterIndex).SetActive(true);
                 break;
             case (int)GameObjects.Bunker2:
+                GameAudioManager.Instance.PlayBackGround("Bunker2");
                 GetGameObject(chapterIndex).SetActive(true);
                 break;
             case (int)GameObjects.Bunker3:
+                GameAudioManager.Instance.PlayBackGround("Bunker3");
                 GetGameObject(chapterIndex).SetActive(true);
                 break;
             case (int)GameObjects.Bunker4:
@@ -179,10 +184,12 @@ public class BunkerPopupUI : PopupUI
     {
         if (_effect.gameObject.activeSelf)
             yield break;
+        _isParticle = true;
         GameAudioManager.Instance.Play2DSound("BunkerGetItem");
         _rectTransform.position = position;
         _effect.gameObject.SetActive(true);
         yield return YieldInstructionCache.WaitForSeconds(1.1f);
+        _isParticle = false;
         _effect.gameObject.SetActive(false);
         UIManager.Instance.ShowPopupUi<GetItemPopupUI>();
     }
@@ -255,10 +262,7 @@ public class BunkerPopupUI : PopupUI
             return;
     }
 
-    public void OnExit()
-    {
-        StartCoroutine(CloseBunkerPopupUI());
-    }
+    
 
     private void OnClose(PointerEventData data)
     {
@@ -270,10 +274,21 @@ public class BunkerPopupUI : PopupUI
         }
         OnExit();
     }
+
+    public void OnExit()
+    {
+        if (_isParticle == false)
+        {
+            StartCoroutine(CloseBunkerPopupUI());
+        }
+    }
+
     IEnumerator CloseBunkerPopupUI()
     {
+        GameAudioManager.Instance.Play2DSound("OpenBunker");
         UIManager.Instance.FadeOut();
         yield return YieldInstructionCache.WaitForSeconds(1.1f);
+        GameAudioManager.Instance.PlayBackGround("LobbyBGM");
         UIManager.Instance.Get<FadePopupUI>().ClosePopupUI();
         ClosePopupUI();
         UIManager.Instance.FadeIn();

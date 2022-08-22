@@ -24,6 +24,7 @@ public class CumfumBuyPopupUI : PopupUI
     enum Images
     {
         Icon,
+        BackGround,
     }
 
     private int itemCount = 1;
@@ -48,8 +49,11 @@ public class CumfumBuyPopupUI : PopupUI
         BindEvent(GetButton((int)Buttons.No).gameObject, OnNo, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Minuse).gameObject, OnMinuse, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Plus).gameObject, OnPlus, UIEvents.Click);
+    }
 
-        
+    public void SetDefaultCount()
+    {
+        itemCount = 1;
     }
 
     private void OnYes(PointerEventData data)
@@ -100,13 +104,13 @@ public class CumfumBuyPopupUI : PopupUI
         switch (items)
         {
             case Items.Shield:
-                price = 100 * itemCount;
+                price = 1200 * itemCount;
                 break;
             case Items.Magnet:
-                price = 500 * itemCount;
+                price = 2800 * itemCount;
                 break;
             case Items.Life:
-                price = 700 * itemCount;
+                price = 4000 * itemCount;
                 break;
         }
         string Gold = string.Format("{0:#,###}", price);

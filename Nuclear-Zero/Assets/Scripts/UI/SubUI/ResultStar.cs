@@ -17,6 +17,12 @@ public class ResultStar : SubUI
         Bind<Image>(typeof(Images));
     }
 
+    public void SetColor(Color color)
+    {
+        GetImage((int)Images.ShineStar).color = color;
+        GetImage((int)Images.DeShineStar).color = color;
+    }
+
     public void SetShineStar()
     {
         GetImage((int)Images.ShineStar).gameObject.SetActive(true);

@@ -18,14 +18,11 @@ public class LobbyScene : BaseScene
             UIManager.Instance.ShowPopupUi<ProloguePopupUI>();
             DataManager.Instance.playerInfo.LookPrologue = true;
         }
-        //UIManager.Instance.ShowPopupUi<HappyEndingPopupUI>();
-        //if (DataManager.Instance.playerInfo.GetPlayerStages(5).Cleared)
-        //{
-        //    DataManager.Instance.playerInfo.ShowEnding();
-        //}
         if (GameManager.Instance.OpenStagePopup)
         {
-            UIManager.Instance.ShowPopupUi<StagePopupUI>();
+            UIManager.Instance.ShowPopupUi<StagePopupUI>();//StagePopupUI popupUI = 
+            //print(DataManager.Instance.playerInfo.SelectChapter);
+            //popupUI.GetComponentInChildren<swipe>().SetBtnPage(DataManager.Instance.playerInfo.SelectChapter);
             GameManager.Instance.OpenStagePopup = false;
         }
         UIManager.Instance.FadeIn();

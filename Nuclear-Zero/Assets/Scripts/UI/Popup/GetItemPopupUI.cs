@@ -10,6 +10,7 @@ public class GetItemPopupUI : PopupUI
     enum Buttons
     {
         ADButton,
+        GetReward,
     }
 
     enum GameObjects
@@ -39,6 +40,7 @@ public class GetItemPopupUI : PopupUI
 
         BindEvent(GetButton((int)Buttons.ADButton).gameObject, OnADButton, UIEvents.Click);
         BindEvent(GetGameObject((int)GameObjects.BackGround), OnClose, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.GetReward).gameObject, OnClose, UIEvents.Click);
         SetReward();
     }
 
@@ -59,7 +61,7 @@ public class GetItemPopupUI : PopupUI
     private void OnADButton(PointerEventData data)
     {
         GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
-
+        GetButton((int)Buttons.ADButton).gameObject.SetActive(false);
     }
     private void OnClose(PointerEventData data)
     {

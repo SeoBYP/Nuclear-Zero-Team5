@@ -54,6 +54,13 @@ public class ShopPopupUI : PopupUI
         SetTexts();
     }
 
+    public void OpenCoinPackage()
+    {
+        SetShopMenuBtn(Buttons.CoinMenu);
+        SetShopContents(SubUIs.CoinContents);
+        SetTexts();
+    }
+
     public void DefaultSet()
     {
         SetTexts();
@@ -129,11 +136,18 @@ public class ShopPopupUI : PopupUI
         int magnetCount = DataManager.Instance.playerInfo.MagnetItem;
         GetText((int)Texts.MagnetCountText).text = magnetCount.ToString();
 
-        UIManager.Instance.Get<LobbyUI>().SetPlayerGoldText();
+        LobbyUI lobby = UIManager.Instance.Get<LobbyUI>();
+        if(lobby != null)
+            lobby.SetPlayerGoldText();
     }
 
     private void OnClose(PointerEventData data)
     {
+        StageSelectPopupUI popupUI = UIManager.Instance.Get<StageSelectPopupUI>();
+        if(popupUI != null)
+        {
+            popupUI.SetDefault();
+        }
         ClosePopupUI();
     }
 

@@ -31,8 +31,13 @@ public class PausePopupUI : PopupUI
     private void OnExit(PointerEventData data)
     {
         //print("OnExit");
+        UIManager.Instance.ShowPopupUi<PauseAndRePlayerPopupUI>().SetYesBtn(Exit);
+    }
+
+    private void Exit()
+    {
         GameManager.Instance.GamePause();
-        ClosePopupUI();
+        this.ClosePopupUI();
         GameManager.Instance.OpenStagePopup = true;
         EnemyController.SetPause(true);
         SceneManagerEx.Instance.LoadScene(Scene.Lobby);
@@ -40,14 +45,17 @@ public class PausePopupUI : PopupUI
 
     private void OnReStart(PointerEventData data)
     {
-        
+        UIManager.Instance.ShowPopupUi<PauseAndRePlayerPopupUI>().SetYesBtn(Restart);
+    }
+
+    private void Restart()
+    {
         GameManager.Instance.OpenStagePopup = false;
         StageSelectPopupUI popupUI = UIManager.Instance.ShowPopupUi<StageSelectPopupUI>();
-        if(popupUI != null)
+        if (popupUI != null)
         {
             popupUI.SetSeleteStageText(DataManager.Instance.playerInfo.SelectStage);
         }
-        //SceneManagerEx.Instance.ReLoadScene(Scene.Game);
     }
 
     private void OnReplay(PointerEventData data)

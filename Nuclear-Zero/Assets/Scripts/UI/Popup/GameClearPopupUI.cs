@@ -28,6 +28,7 @@ public class GameClearPopupUI : PopupUI
     {
         base.Init();
         Binds();
+        GameAudioManager.Instance.StopBackGround();
         GameAudioManager.Instance.Play2DSound("Victory");
         GoogleMobileAdsManager.Instance.RequestAndLoadRewardedInterstitialAd();
     }
@@ -108,6 +109,7 @@ public class GameClearPopupUI : PopupUI
 
     private void OnExit(PointerEventData data)
     {
+        //GameAudioManager.Instance.PlayBackGround("LobbyBGM");
         DataManager.Instance.playerInfo.SetClearStage(stageIndex, star, coin);
         GameManager.Instance.OpenStagePopup = true;
         SceneManagerEx.Instance.LoadScene(Scene.Lobby);

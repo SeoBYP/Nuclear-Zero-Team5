@@ -97,7 +97,6 @@ public class swipe : MonoBehaviour
             if (scroll_pos < pos[i] + (distance / 2) && scroll_pos > pos[i] - (distance / 2f))
             {
                 scrollbar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollbar.GetComponent<Scrollbar>().value, pos[btnNumber], 1f * Time.deltaTime);
-                print(pos[btnNumber]);
             }
         }
 

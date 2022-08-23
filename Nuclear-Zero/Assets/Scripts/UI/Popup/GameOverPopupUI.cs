@@ -23,6 +23,7 @@ public class GameOverPopupUI : PopupUI
     {
         base.Init();
         Binds();
+        GameAudioManager.Instance.StopBackGround();
         GameAudioManager.Instance.Play2DSound("Defeate");
     }
 
@@ -47,6 +48,7 @@ public class GameOverPopupUI : PopupUI
 
     private void OnExit(PointerEventData data)
     {
+        //GameAudioManager.Instance.PlayBackGround("LobbyBGM");
         GameManager.Instance.OpenStagePopup = true;
         SceneManagerEx.Instance.LoadScene(Scene.Lobby);
     }

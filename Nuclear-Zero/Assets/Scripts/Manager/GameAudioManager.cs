@@ -41,6 +41,11 @@ class GameAudioManager : Managers<GameAudioManager>, IUpdate
         }
     }
 
+    public void StopBackGround()
+    {
+        _backGround.Stop();
+    }
+
     AudioSource Pooling()
     {
         AudioSource audioSource = null;
@@ -159,7 +164,6 @@ class GameAudioManager : Managers<GameAudioManager>, IUpdate
     {
         if (_IsVibration)
         {
-            print("SetVibration");
             Handheld.Vibrate();
         }
     }

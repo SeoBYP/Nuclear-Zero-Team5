@@ -30,6 +30,11 @@ public class ShopPopupUI : PopupUI
         ItemContents,
     }
 
+    enum GameObjects
+    {
+        BackGround,
+    }
+
     public override void Init()
     {
         base.Init();
@@ -41,13 +46,14 @@ public class ShopPopupUI : PopupUI
         Bind<Button>(typeof(Buttons));;
         Bind<SubUI>(typeof(SubUIs));
         Bind<Text>(typeof(Texts));
-
+        Bind<GameObject>(typeof(GameObjects));
         InitContents();
 
         BindEvent(GetButton((int)Buttons.CoinMenu).gameObject, OnCoinMenuBtn, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.ItemMenu).gameObject, OnItemMenuBtn, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.PackageMenu).gameObject, OnPackageMenuBtn, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Exit).gameObject, OnClose, UIEvents.Click);
+        BindEvent(GetGameObject((int)GameObjects.BackGround), OnClose, UIEvents.Click);
 
         SetShopMenuBtn(Buttons.PackageMenu);
         SetShopContents(SubUIs.PackageContents);

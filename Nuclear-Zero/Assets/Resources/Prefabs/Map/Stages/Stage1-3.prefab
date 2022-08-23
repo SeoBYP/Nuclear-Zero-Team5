@@ -56643,7 +56643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 50
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder
@@ -60449,7 +60449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 50
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder

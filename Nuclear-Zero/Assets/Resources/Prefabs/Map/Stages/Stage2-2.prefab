@@ -59991,7 +59991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 50
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132763, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_Size.y
@@ -61421,7 +61421,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 50
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder
@@ -62355,7 +62355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 50
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder
@@ -64393,7 +64393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 50
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder
@@ -65249,7 +65249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 50
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder
@@ -65389,7 +65389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132762, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: jumpPower
-      value: 50
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 845292659435132773, guid: 15185185b5c684e24b907d8af0ba28e1, type: 3}
       propertyPath: m_RootOrder
@@ -67456,12 +67456,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6256199645605335282, guid: de8c8b8b58bfb415dbd969dfe48f8775, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256199645605335282, guid: de8c8b8b58bfb415dbd969dfe48f8775, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6256199645605335282, guid: de8c8b8b58bfb415dbd969dfe48f8775, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6256199645605335282, guid: de8c8b8b58bfb415dbd969dfe48f8775, type: 3}
       propertyPath: m_LocalPosition.z

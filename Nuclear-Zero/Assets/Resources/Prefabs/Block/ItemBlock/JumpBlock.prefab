@@ -151,4 +151,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider2D: {fileID: 845292659435132763}
   _trriger2D: {fileID: 845292659435132760}
-  jumpPower: 50
+  jumpPower: 47

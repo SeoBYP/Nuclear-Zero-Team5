@@ -5,31 +5,32 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     [Header("Grounded")]
+    [SerializeField] Transform groundCheck;
+    [SerializeField] private LayerMask GroundLayer;
     private bool Grounded;
-    //private float GroundedOffset = 1.95f;
-    [SerializeField] Transform groundCheck;//private Vector2 GroundedSize = new Vector2(1.9f, 0.05f);
-    public LayerMask GroundLayer;
 
     [Header("Toped")]
-    private bool Toped;
     [SerializeField] Transform topCheck;
+    private bool Toped;
+
 
     [Header("RightAndLeft")]
-    private bool Right;
     [SerializeField] Transform rightCheck;
-    private bool Left;
     [SerializeField] Transform leftCheck;
+    private bool Right;
+    private bool Left;
+
 
     [Header("PlayerJump")]
     [SerializeField] private float jumpTime;
     [SerializeField] private float JumpHeight;
+    [SerializeField] private float fallMultiplier;
+    [SerializeField] private float jumpMultiplier;
     //private float Gravity = -100f;
     //private float JumpTimeout = 0.4f;
     //private float _jumpTimeoutDelta;
     //private float _verticalVelocity;
     //private float _terminalVelocity = 53.0f;
-    [SerializeField] private float fallMultiplier;
-    [SerializeField] private float jumpMultiplier;
 
     private Vector2 vecGrabity;
     private bool isJumping;
@@ -79,7 +80,6 @@ public class PlayerController : MonoBehaviour
     public void Init()
     {
         Hited = false;
-        JumpHeight = 35f;
         vecGrabity = new Vector2(0, -Physics2D.gravity.y);
         animationController = GetComponentInChildren<PlayerAnimationController>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -127,13 +127,15 @@ public class PlayerController : MonoBehaviour
 
         dir.x *= speed;
         Vector2 movepos = new Vector2(dir.x, _rigidbody2D.velocity.y);
-        if (CheckRightCollider())
+        if(CheckRightCollider() && CheckLeftCollider() == false)
         {
-            movepos = new Vector2(_rigidbody2D.velocity.x, _rigidbody2D.velocity.y);
+            if (dir.x > 0)
+                movepos = new Vector2(_rigidbody2D.velocity.x, _rigidbody2D.velocity.y);
         }
-        if (CheckLeftCollider())
+        if (CheckRightCollider() == false && CheckLeftCollider())
         {
-            movepos = new Vector2(_rigidbody2D.velocity.x, _rigidbody2D.velocity.y);
+            if (dir.x < 0)
+                movepos = new Vector2(_rigidbody2D.velocity.x, _rigidbody2D.velocity.y);
         }
         _rigidbody2D.velocity = movepos;
         if (dir.x != 0)
@@ -154,7 +156,7 @@ public class PlayerController : MonoBehaviour
                 isJumping = true;
                 isJumped = false;
                 jumpCounter = 0;
-                JumpHeight = 35f;
+                JumpHeight = 37f;
             }
         }
         if (_rigidbody2D.velocity.y > 0 && isJumping)
@@ -166,6 +168,7 @@ public class PlayerController : MonoBehaviour
         if(joyButton.Pressed == false)
         {
             isJumping = false;
+            animationController._isJumpSound = false;
         }
         if(_rigidbody2D.velocity.y < 0)
         {
@@ -175,10 +178,12 @@ public class PlayerController : MonoBehaviour
 
     private bool CheckRightCollider()
     {
-        if(CheckRight() != null)
+        Collider2D collider = CheckRight();
+        if (collider != null)
         {
-            if(CheckLeft() != null)
-                return false;
+            //if (collider.CompareTag("Block"))
+            //    return false;
+            //else
             return true;
         }
         return false;
@@ -186,10 +191,13 @@ public class PlayerController : MonoBehaviour
 
     private bool CheckLeftCollider()
     {
-        if (CheckLeft() != null)
+        Collider2D collider = CheckLeft();
+        if (collider != null)
         {
-            if (CheckRight() != null)
-                return false;
+            //collider.
+            //if (collider.CompareTag("Block"))
+            //    return false;
+            //else
             return true;
         }
         return false;
@@ -197,12 +205,12 @@ public class PlayerController : MonoBehaviour
 
     private Collider2D CheckRight()
     {
-        return Physics2D.OverlapCapsule(rightCheck.position, new Vector2(0.15f, 3.5f), CapsuleDirection2D.Vertical, 0, GroundLayer);
+        return Physics2D.OverlapCapsule(rightCheck.position, new Vector2(0.05f, 3.4f), CapsuleDirection2D.Vertical, 0, GroundLayer);
     }
 
     private Collider2D CheckLeft()
     {
-        return Physics2D.OverlapCapsule(leftCheck.position, new Vector2(0.15f, 3.5f), CapsuleDirection2D.Vertical, 0, GroundLayer);
+        return Physics2D.OverlapCapsule(leftCheck.position, new Vector2(0.05f, 3.4f), CapsuleDirection2D.Vertical, 0, GroundLayer);
     }
 
     private void CheckGrounded()

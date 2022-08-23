@@ -27,7 +27,6 @@ public class CoinContents : SubUI
     }
 
     private ShopPopupUI _shop;
-    private TimeProject time;
 
     public override void Init()
     {
@@ -46,19 +45,9 @@ public class CoinContents : SubUI
         BindEvent(GetButton((int)Buttons.CoinPackage3).gameObject, OnCoinPackage3, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.CoinPackage4).gameObject, OnCoinPackage4, UIEvents.Click);
 
-        GetTimeProject();
-
         _shop = UIManager.Instance.Get<ShopPopupUI>();
     }
 
-    private void GetTimeProject()
-    {
-        time = GetComponentInChildren<TimeProject>();
-        if(time != null)
-        {
-            time.Init();
-        }
-    }
 
     private void OnCoinPackage1(PointerEventData data)
     {

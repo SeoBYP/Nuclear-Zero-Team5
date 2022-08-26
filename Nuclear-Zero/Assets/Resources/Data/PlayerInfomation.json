@@ -1,11 +1,11 @@
 {
-    "Gold": 1024,
+    "Gold": 0,
     "DialogueObjectName": "Chapter1",
     "LookPrologue": false,
     "LookTutorial": false,
     "PlayerStars": 0,
     "SelectStage": 1,
-    "ClearStage": 16,
+    "ClearStage": 1,
     "SelectChapter": 1,
     "BGMSound": 0.5,
     "EffectSound": 0.5,
@@ -15,6 +15,8 @@
     "BadEnding": false,
     "NormalEnding": false,
     "HappyEnding": false,
+    "DailyGift": false,
+    "ADRemove": false,
     "PlayerChapters": [
         {
             "ChapterIndex": 1,

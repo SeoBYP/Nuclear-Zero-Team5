@@ -25,39 +25,39 @@ public class PackageContents : SubUI
     {
         Bind<Button>(typeof(Buttons));
 
-        BindEvent(GetButton((int)Buttons.Package1).gameObject, OnPackage1, UIEvents.Click);
-        BindEvent(GetButton((int)Buttons.Package2).gameObject, OnPackage2, UIEvents.Click);
-        BindEvent(GetButton((int)Buttons.Package3).gameObject, OnPackage3, UIEvents.Click);
+        //BindEvent(GetButton((int)Buttons.Package1).gameObject, OnPackage1, UIEvents.Click);
+        //BindEvent(GetButton((int)Buttons.Package2).gameObject, OnPackage2, UIEvents.Click);
+        //BindEvent(GetButton((int)Buttons.Package3).gameObject, OnPackage3, UIEvents.Click);
 
         _shop = UIManager.Instance.Get<ShopPopupUI>();
     }
 
-    private void OnPackage1(PointerEventData data)
-    {
-        //print("OnCoinPackage1");
-        //int coin = 3000;
-        //DataManager.Instance.playerInfo.SetCoin(coin);
-        //_shop.DefaultSet();
-    }
-    private void OnPackage2(PointerEventData data)
-    {
-        int shield = 2;
-        int magnet = 2;
-        int life = 5;
-        DataManager.Instance.playerInfo.SetLifeItemCount(life);
-        DataManager.Instance.playerInfo.SetShieldItemCount(shield);
-        DataManager.Instance.playerInfo.SetMagnetItemCount(magnet);
+    //private void OnPackage1(PointerEventData data)
+    //{
+    //    //print("OnCoinPackage1");
+    //    //int coin = 3000;
+    //    //DataManager.Instance.playerInfo.SetCoin(coin);
+    //    //_shop.DefaultSet();
+    //}
+    //private void OnPackage2(PointerEventData data)
+    //{
+    //    int shield = 2;
+    //    int magnet = 2;
+    //    int life = 5;
+    //    DataManager.Instance.playerInfo.SetLifeItemCount(life);
+    //    DataManager.Instance.playerInfo.SetShieldItemCount(shield);
+    //    DataManager.Instance.playerInfo.SetMagnetItemCount(magnet);
 
-        _shop.DefaultSet();
-    }
-    private void OnPackage3(PointerEventData data)
-    {
-        int shield = 1;
-        int magnet = 1;
-        int life = 2;
-        DataManager.Instance.playerInfo.SetLifeItemCount(life);
-        DataManager.Instance.playerInfo.SetShieldItemCount(shield);
-        DataManager.Instance.playerInfo.SetMagnetItemCount(magnet);
-        _shop.DefaultSet();
-    }
+    //    _shop.DefaultSet();
+    //}
+    //private void OnPackage3(PointerEventData data)
+    //{
+    //    int shield = 1;
+    //    int magnet = 1;
+    //    int life = 2;
+    //    DataManager.Instance.playerInfo.SetLifeItemCount(life);
+    //    DataManager.Instance.playerInfo.SetShieldItemCount(shield);
+    //    DataManager.Instance.playerInfo.SetMagnetItemCount(magnet);
+    //    _shop.DefaultSet();
+    //}
 }

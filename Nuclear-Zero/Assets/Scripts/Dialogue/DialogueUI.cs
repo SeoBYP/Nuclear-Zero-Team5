@@ -11,6 +11,8 @@ public class DialogueUI : SubUI
     [SerializeField] private Text _characterName2;
     [SerializeField] private Image _characterIcon1;
     [SerializeField] private Image _characterIcon2;
+    [SerializeField] private GameObject _chatacterName1BG;
+    [SerializeField] private GameObject _chatacterName2BG;
 
     [SerializeField] private Image EndingImages;
     [SerializeField] private Text EndingText;
@@ -27,7 +29,19 @@ public class DialogueUI : SubUI
         typeWriterEffect = GetComponent<TypeWriterEffect>();
         responseHandler = GetComponent<ResponseHandler>();
         popupUI = GetComponent<PopupUI>();
+        SetDefaultSetting();
 
+        CloseDialogueBox();
+        if(dialogueObjectName == string.Empty)
+        {
+            dialogueObjectName = DataManager.Instance.playerInfo.DialogueObjectName;
+        }
+        dialogueObject = ResourcesManager.Instance.Load<DialogueObject>("DialogueObject/" + dialogueObjectName);
+        ShowDialogue(dialogueObject);
+    }
+
+    private void SetDefaultSetting()
+    {
         if (_characterName1 != null)
             _characterName1.gameObject.SetActive(false);
 
@@ -39,18 +53,18 @@ public class DialogueUI : SubUI
 
         if (_characterIcon2 != null)
             _characterIcon2.gameObject.SetActive(false);
+
+        if (_chatacterName1BG != null)
+            _chatacterName1BG.SetActive(false);
+
+        if (_chatacterName2BG != null)
+            _chatacterName2BG.SetActive(false);
+
         if (EndingImages != null || EndingText != null)
         {
             EndingImages.gameObject.SetActive(false);
             EndingText.gameObject.SetActive(false);
         }
-        CloseDialogueBox();
-        if(dialogueObjectName == string.Empty)
-        {
-            dialogueObjectName = DataManager.Instance.playerInfo.DialogueObjectName;
-        }
-        dialogueObject = ResourcesManager.Instance.Load<DialogueObject>("DialogueObject/" + dialogueObjectName);
-        ShowDialogue(dialogueObject);
     }
 
     public void ShowDialogue(DialogueObject dialogueObject)
@@ -137,18 +151,25 @@ public class DialogueUI : SubUI
         }
         if (charactername == string.Empty)
         {
+            _chatacterName1BG.SetActive(false);
+            _chatacterName2BG.SetActive(false);
             _characterName1.gameObject.SetActive(false);
             _characterName2.gameObject.SetActive(false);
         }
         else if(charactername == "딜런")
         {
+            
+            _chatacterName2BG.SetActive(false);
             _characterName2.gameObject.SetActive(false);
+            _chatacterName1BG.SetActive(true);
             _characterName1.gameObject.SetActive(true);
             _characterName1.text = charactername;
         }
         else
         {
+            _chatacterName1BG.SetActive(false);
             _characterName1.gameObject.SetActive(false);
+            _chatacterName2BG.SetActive(true);
             _characterName2.gameObject.SetActive(true);
             _characterName2.text = charactername;
         }

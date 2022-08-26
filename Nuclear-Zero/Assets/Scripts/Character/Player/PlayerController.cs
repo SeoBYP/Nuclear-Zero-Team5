@@ -26,11 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float JumpHeight;
     [SerializeField] private float fallMultiplier;
     [SerializeField] private float jumpMultiplier;
-    //private float Gravity = -100f;
-    //private float JumpTimeout = 0.4f;
-    //private float _jumpTimeoutDelta;
-    //private float _verticalVelocity;
-    //private float _terminalVelocity = 53.0f;
+    private float defaultJumpHeight;
 
     private Vector2 vecGrabity;
     private bool isJumping;
@@ -75,11 +71,13 @@ public class PlayerController : MonoBehaviour
         SetSheildSprite(GameManager.Instance._shield);
         SetMagnetSprite(GameManager.Instance._magnet);
         Init();
+        isJumped = false;
+        
     }
 
     public void Init()
     {
-        Hited = false;
+        defaultJumpHeight = JumpHeight;
         vecGrabity = new Vector2(0, -Physics2D.gravity.y);
         animationController = GetComponentInChildren<PlayerAnimationController>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -127,12 +125,12 @@ public class PlayerController : MonoBehaviour
 
         dir.x *= speed;
         Vector2 movepos = new Vector2(dir.x, _rigidbody2D.velocity.y);
-        if(CheckRightCollider() && CheckLeftCollider() == false)
+        if(CheckRight() && CheckLeft() == false)
         {
             if (dir.x > 0)
                 movepos = new Vector2(_rigidbody2D.velocity.x, _rigidbody2D.velocity.y);
         }
-        if (CheckRightCollider() == false && CheckLeftCollider())
+        if (CheckRight() == false && CheckLeft())
         {
             if (dir.x < 0)
                 movepos = new Vector2(_rigidbody2D.velocity.x, _rigidbody2D.velocity.y);
@@ -146,76 +144,58 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        if (isJumped == true)
+            JumpHeight = jumpBlockPower;
         if (Grounded)
         {
             if (joyButton.Pressed || isJumped)
             {
                 Vector2 jumpPos = new Vector2(0, JumpHeight);
+                print(jumpPos);
                 _rigidbody2D.velocity = jumpPos;
                 animationController.PlayerJump();
                 isJumping = true;
-                isJumped = false;
                 jumpCounter = 0;
-                JumpHeight = 37f;
             }
         }
-        if (_rigidbody2D.velocity.y > 0 && isJumping)
+        if (_rigidbody2D.velocity.y > 0)
         {
             jumpCounter += Time.deltaTime;
-            if (jumpCounter > jumpTime) isJumping = false;
+            if (jumpCounter > jumpTime)
+            {
+                isJumping = false;
+                isJumped = false;
+                JumpHeight = defaultJumpHeight;
+            }
             _rigidbody2D.velocity += vecGrabity * jumpMultiplier * Time.deltaTime;
         }
         if(joyButton.Pressed == false)
         {
             isJumping = false;
-            animationController._isJumpSound = false;
         }
         if(_rigidbody2D.velocity.y < 0)
         {
             _rigidbody2D.velocity -= vecGrabity * fallMultiplier * Time.deltaTime;
+            isJumping = false;
+            isJumped = false;
+            JumpHeight = defaultJumpHeight;
+            animationController._isJumpSound = false;
         }
     }
 
-    private bool CheckRightCollider()
+    private bool CheckRight()
     {
-        Collider2D collider = CheckRight();
-        if (collider != null)
-        {
-            //if (collider.CompareTag("Block"))
-            //    return false;
-            //else
-            return true;
-        }
-        return false;
+        return Physics2D.OverlapCapsule(rightCheck.position, new Vector2(0.05f, 3.35f), CapsuleDirection2D.Vertical, 0, GroundLayer);
     }
 
-    private bool CheckLeftCollider()
+    private bool CheckLeft()
     {
-        Collider2D collider = CheckLeft();
-        if (collider != null)
-        {
-            //collider.
-            //if (collider.CompareTag("Block"))
-            //    return false;
-            //else
-            return true;
-        }
-        return false;
-    }
-
-    private Collider2D CheckRight()
-    {
-        return Physics2D.OverlapCapsule(rightCheck.position, new Vector2(0.05f, 3.4f), CapsuleDirection2D.Vertical, 0, GroundLayer);
-    }
-
-    private Collider2D CheckLeft()
-    {
-        return Physics2D.OverlapCapsule(leftCheck.position, new Vector2(0.05f, 3.4f), CapsuleDirection2D.Vertical, 0, GroundLayer);
+        return Physics2D.OverlapCapsule(leftCheck.position, new Vector2(0.05f, 3.35f), CapsuleDirection2D.Vertical, 0, GroundLayer);
     }
 
     private void CheckGrounded()
     {
-        Grounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.85f, 0.25f), CapsuleDirection2D.Horizontal,0, GroundLayer);
+        Grounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.85f, 0.2f), CapsuleDirection2D.Horizontal,0, GroundLayer);
         animationController.IsGrounded(Grounded);
     }
     private void CheckTop()
@@ -227,6 +207,9 @@ public class PlayerController : MonoBehaviour
             {
                 Vector2 jumpPos = new Vector2(_rigidbody2D.velocity.x, transform.position.y);
                 _rigidbody2D.velocity = jumpPos;
+                isJumping = false;
+                //isJumped = false;
+                JumpHeight = 37f;
             }
         }
     }
@@ -257,9 +240,7 @@ public class PlayerController : MonoBehaviour
         if (!_isDead)
         {
             _isDead = true;
-            //GameManager.Instance.IsGameOver = true;
             GameManager.Instance.GameOver();
-            //UIManager.Instance.ShowPopupUi<ResurrectionPopupUI>();
         }
     }
 
@@ -271,20 +252,21 @@ public class PlayerController : MonoBehaviour
         {
             gameUI = UIManager.Instance.Get<GameUI>();
         }
-        if (Hited == true)
-            return;
         if (_isShield)
         {
             _isShield = false;
             _shieldprite.gameObject.SetActive(false);
             return;
         }
+        if (Hited == true)
+            return;
+        StartCoroutine(DontActive());
         GameAudioManager.Instance.SetVibration();
         GameAudioManager.Instance.Play2DSound("PlayerHited");
         gameUI.DeleteHeart();
         Hited = true;
         animationController.Hited();
-        StartCoroutine(DontActive());
+        
     }
 
     IEnumerator DontActive()
@@ -350,16 +332,20 @@ public class PlayerController : MonoBehaviour
         yield break;
     }
 
-    private bool isJumped = false;
+    private bool isJumped;
+    private float jumpBlockPower;
     public void Jump(float jumpPower)
     {
-        if(isJumped == false)
-        {
-            //print("Jump : " + Grounded);
-            JumpHeight = jumpPower;
-            isJumped = true;
-            //Jump();
-        }
+        jumpBlockPower = jumpPower;
+        JumpHeight = jumpPower;
+        isJumped = true;
+        Grounded = true;
+        Jump();
+        //_rigidbody2D.velocity = Vector2.zero;
+        //Vector2 jumpPos = new Vector2(0, jumpPower);
+        //_rigidbody2D.velocity = jumpPos;
+        //animationController.PlayerJump();
+        //isJumping = true;
     }
     #endregion
 
@@ -389,30 +375,14 @@ public class PlayerController : MonoBehaviour
 
     private void SetSheildSprite(bool state)
     {
-        if (state)
-        {
-            _isShield = state;
-            _shieldprite.gameObject.SetActive(state);
-        }
-        else
-        {
-            _isShield = state;
-            _shieldprite.gameObject.SetActive(state);
-        }
+        _isShield = state;
+        _shieldprite.gameObject.SetActive(state);
     }
 
     private void SetMagnetSprite(bool state)
     {
-        if (state)
-        {
-            _isMagnet = state;
-            _magnetsprite.gameObject.SetActive(state);
-        }
-        else
-        {
-            _isMagnet = state;
-            _magnetsprite.gameObject.SetActive(state);
-        }
+        _isMagnet = state;
+        _magnetsprite.gameObject.SetActive(state);
     }
 
 }

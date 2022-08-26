@@ -167,11 +167,6 @@ public class BunkerPopupUI : PopupUI
 
     public void ShowDialoguePopup(int chapterIndex)
     {
-        if (chapterIndex == 4)
-        {
-            DataManager.Instance.playerInfo.GetPlayerChapter(chapterIndex).BunkerStory = true;
-            return;
-        }
         if (DataManager.Instance.playerInfo.GetPlayerChapter(chapterIndex).BunkerStory == false)
         {
             UIManager.Instance.ShowPopupUi<DialoguePopupUI>();
@@ -286,6 +281,7 @@ public class BunkerPopupUI : PopupUI
     IEnumerator CloseBunkerPopupUI()
     {
         GameAudioManager.Instance.Play2DSound("OpenBunker");
+        UIManager.Instance.Get<StagePopupUI>().ReSetChapterPanel();
         UIManager.Instance.FadeOut();
         yield return YieldInstructionCache.WaitForSeconds(1.1f);
         GameAudioManager.Instance.PlayBackGround("LobbyBGM");

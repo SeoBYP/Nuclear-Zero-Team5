@@ -54,7 +54,6 @@ public class StagePopupUI : PopupUI
             else
                 _swipe.Init();
         }
-        //GoogleMobileAdsManager.Instance.DestroyBannerAd();
     }
 
     private void Binds()
@@ -105,13 +104,23 @@ public class StagePopupUI : PopupUI
         }
     }
 
+    public void ReSetChapterPanel()
+    {
+        for(int i = 0; i <= (int)Chapters.Chapter4; i++)
+        {
+            Get<ChapterPanel>(i).ReSetting();
+        }
+    }
+
     private void OnClickStageBtn(string stageText,int stageIndex)
     {
+        GameAudioManager.Instance.Play2DSound("Touch");
         UIManager.Instance.ShowPopupUi<StageSelectPopupUI>().SetSeleteStageText(stageText, stageIndex);
     }
 
     private void OnErrorStageBtn(string stageError, int stageIndex)
     {
+        GameAudioManager.Instance.Play2DSound("Touch");
         UIManager.Instance.ShowPopupUi<StageErrorPopupUI>();
     }
 

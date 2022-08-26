@@ -12,6 +12,7 @@ public class GameManager : Managers<GameManager>//,IUpdate
     public bool _shield = false;
     public bool _magnet = false;
     public bool _life = false;
+    public bool _ShowEndding;
 
     public override void Init()
     {
@@ -20,6 +21,7 @@ public class GameManager : Managers<GameManager>//,IUpdate
         _shield = false;
         _magnet = false;
         _life = false;
+        _ShowEndding = false;
     }
 
     public void SetDefaultItem()

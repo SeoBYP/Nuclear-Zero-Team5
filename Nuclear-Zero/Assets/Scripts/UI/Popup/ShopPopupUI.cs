@@ -130,7 +130,11 @@ public class ShopPopupUI : PopupUI
     private void SetTexts()
     {
         int coin = DataManager.Instance.playerInfo.Gold;
-        string coinCount = string.Format("{0:#,###}", coin);
+        string coinCount = string.Empty;
+        if (coin == 0)
+            coinCount = "0";
+        else
+            coinCount = string.Format("{0:#,###}", coin);
         GetText((int)Texts.CoinCountText).text = coinCount;
 
         int lifeCount = DataManager.Instance.playerInfo.LifeItem;

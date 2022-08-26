@@ -59,15 +59,13 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
 
     private void HandleInitCompleteAction(InitializationStatus initstatus)
     {
-        Debug.Log("Initialization complete.");
-
         // Callbacks from GoogleMobileAds are not guaranteed to be called on
         // the main thread.
         // In this example we use MobileAdsEventExecutor to schedule these calls on
         // the next Update() loop.
         MobileAdsEventExecutor.ExecuteInUpdate(() =>
         {
-            print("Initialization complete.");
+            //print("Initialization complete.");
             //statusText.text = ;
             //RequestBannerAd();
         });
@@ -182,93 +180,93 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
 
     #endregion
 
-    #region INTERSTITIAL ADS
+    //#region INTERSTITIAL ADS
 
-    public void RequestAndLoadInterstitialAd()
-    {
-        PrintStatus("Requesting Interstitial ad.");
+//    public void RequestAndLoadInterstitialAd()
+//    {
+//        PrintStatus("Requesting Interstitial ad.");
 
-#if UNITY_EDITOR
-        string adUnitId = "unused";
-#elif UNITY_ANDROID
-            string adUnitId = "ca-app-pub-3940256099942544/1033173712";
-#elif UNITY_IPHONE
-            string adUnitId = "ca-app-pub-3940256099942544/4411468910";
-#else
-            string adUnitId = "unexpected_platform";
-#endif
+//#if UNITY_EDITOR
+//        string adUnitId = "unused";
+//#elif UNITY_ANDROID
+//            string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+//#elif UNITY_IPHONE
+//            string adUnitId = "ca-app-pub-3940256099942544/4411468910";
+//#else
+//            string adUnitId = "unexpected_platform";
+//#endif
 
-        // Clean up interstitial before using it
-        if (interstitialAd != null)
-            {
-                interstitialAd.Destroy();
-            }
+//        // Clean up interstitial before using it
+//        if (interstitialAd != null)
+//            {
+//                interstitialAd.Destroy();
+//            }
 
-        interstitialAd = new InterstitialAd(adUnitId);
+//        interstitialAd = new InterstitialAd(adUnitId);
 
-        // Add Event Handlers
-        interstitialAd.OnAdLoaded += (sender, args) =>
-        {
-            PrintStatus("Interstitial ad loaded.");
-            //OnAdLoadedEvent.Invoke();
-        };
-        interstitialAd.OnAdFailedToLoad += (sender, args) =>
-        {
-            PrintStatus("Interstitial ad failed to load with error: " + args.LoadAdError.GetMessage());
-            //OnAdFailedToLoadEvent.Invoke();
-        };
-        interstitialAd.OnAdOpening += (sender, args) =>
-        {
-            PrintStatus("Interstitial ad opening.");
-            //OnAdOpeningEvent.Invoke();
-        };
-        interstitialAd.OnAdClosed += (sender, args) =>
-        {
-            PrintStatus("Interstitial ad closed.");
-            //OnAdClosedEvent.Invoke();
-        };
-        interstitialAd.OnAdDidRecordImpression += (sender, args) =>
-        {
-            PrintStatus("Interstitial ad recorded an impression.");
-        };
-        interstitialAd.OnAdFailedToShow += (sender, args) =>
-                {
-                    PrintStatus("Interstitial ad failed to show.");
-                };
-        interstitialAd.OnPaidEvent += (sender, args) =>
-        {
-            string msg = string.Format("{0} (currency: {1}, value: {2}",
-                                        "Interstitial ad received a paid event.",
-                                        args.AdValue.CurrencyCode,
-                                        args.AdValue.Value);
-            PrintStatus(msg);
-        };
+//        // Add Event Handlers
+//        interstitialAd.OnAdLoaded += (sender, args) =>
+//        {
+//            PrintStatus("Interstitial ad loaded.");
+//            //OnAdLoadedEvent.Invoke();
+//        };
+//        interstitialAd.OnAdFailedToLoad += (sender, args) =>
+//        {
+//            PrintStatus("Interstitial ad failed to load with error: " + args.LoadAdError.GetMessage());
+//            //OnAdFailedToLoadEvent.Invoke();
+//        };
+//        interstitialAd.OnAdOpening += (sender, args) =>
+//        {
+//            PrintStatus("Interstitial ad opening.");
+//            //OnAdOpeningEvent.Invoke();
+//        };
+//        interstitialAd.OnAdClosed += (sender, args) =>
+//        {
+//            PrintStatus("Interstitial ad closed.");
+//            //OnAdClosedEvent.Invoke();
+//        };
+//        interstitialAd.OnAdDidRecordImpression += (sender, args) =>
+//        {
+//            PrintStatus("Interstitial ad recorded an impression.");
+//        };
+//        interstitialAd.OnAdFailedToShow += (sender, args) =>
+//                {
+//                    PrintStatus("Interstitial ad failed to show.");
+//                };
+//        interstitialAd.OnPaidEvent += (sender, args) =>
+//        {
+//            string msg = string.Format("{0} (currency: {1}, value: {2}",
+//                                        "Interstitial ad received a paid event.",
+//                                        args.AdValue.CurrencyCode,
+//                                        args.AdValue.Value);
+//            PrintStatus(msg);
+//        };
 
-        // Load an interstitial ad
-        interstitialAd.LoadAd(CreateAdRequest());
-    }
+//        // Load an interstitial ad
+//        interstitialAd.LoadAd(CreateAdRequest());
+//    }
 
-    public void ShowInterstitialAd()
-    {
-        if (interstitialAd != null && interstitialAd.IsLoaded())
-        {
-            interstitialAd.Show();
-        }
-        else
-        {
-            PrintStatus("Interstitial ad is not ready yet.");
-        }
-    }
+    //public void ShowInterstitialAd()
+    //{
+    //    if (interstitialAd != null && interstitialAd.IsLoaded())
+    //    {
+    //        interstitialAd.Show();
+    //    }
+    //    else
+    //    {
+    //        PrintStatus("Interstitial ad is not ready yet.");
+    //    }
+    //}
 
-    public void DestroyInterstitialAd()
-    {
-        if (interstitialAd != null)
-        {
-            interstitialAd.Destroy();
-        }
-    }
+    //public void DestroyInterstitialAd()
+    //{
+    //    if (interstitialAd != null)
+    //    {
+    //        interstitialAd.Destroy();
+    //    }
+    //}
 
-#endregion
+//#endregion
 
     #region REWARDED ADS
 
@@ -344,13 +342,13 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
         }
         else
         {
-            PrintStatus("Rewarded ad is not ready yet.");
+            //PrintStatus("Rewarded ad is not ready yet.");
         }
     }
 
     public void RequestAndLoadRewardedInterstitialAd()
     {
-        PrintStatus("Requesting Rewarded Interstitial ad.");
+        //PrintStatus("Requesting Rewarded Interstitial ad.");ㄴ
 
         // These ad units are configured to always serve test ads.
 #if UNITY_EDITOR
@@ -368,27 +366,27 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
         {
             if (error != null)
             {
-                PrintStatus("Rewarded Interstitial ad load failed with error: " + error);
+                //PrintStatus("Rewarded Interstitial ad load failed with error: " + error);
                 return;
             }
 
             this.rewardedInterstitialAd = rewardedInterstitialAd;
-            PrintStatus("Rewarded Interstitial ad loaded.");
+            //PrintStatus("Rewarded Interstitial ad loaded.");
 
                 // Register for ad events.
                 this.rewardedInterstitialAd.OnAdDidPresentFullScreenContent += (sender, args) =>
             {
-                PrintStatus("Rewarded Interstitial ad presented.");
+                //PrintStatus("Rewarded Interstitial ad presented.");
             };
             this.rewardedInterstitialAd.OnAdDidDismissFullScreenContent += (sender, args) =>
             {
-                PrintStatus("Rewarded Interstitial ad dismissed.");
+                //PrintStatus("Rewarded Interstitial ad dismissed.");
                 this.rewardedInterstitialAd = null;
             };
             this.rewardedInterstitialAd.OnAdFailedToPresentFullScreenContent += (sender, args) =>
             {
-                PrintStatus("Rewarded Interstitial ad failed to present with error: " +
-                                                                        args.AdError.GetMessage());
+                //PrintStatus("Rewarded Interstitial ad failed to present with error: " +
+                //                                                        args.AdError.GetMessage());
                 this.rewardedInterstitialAd = null;
             };
             this.rewardedInterstitialAd.OnPaidEvent += (sender, args) =>
@@ -401,16 +399,20 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
             };
             this.rewardedInterstitialAd.OnAdDidRecordImpression += (sender, args) =>
             {
-                PrintStatus("Rewarded Interstitial ad recorded an impression.");
+                
             };
         });
     }
 
     public void ShowRewardedInterstitialAd()
     {
+        if (DataManager.Instance.playerInfo.ADRemove)
+        {
+            ADRemoverUser();
+            return;
+        }
         if (rewardedInterstitialAd != null)
         {
-            //UIManager.Instance.SetUIActive(false);
             rewardedInterstitialAd.Show((reward) =>
             {
                 reward.Amount = 2;
@@ -422,12 +424,29 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
                 GetItemPopupUI getItemPopup = UIManager.Instance.Get<GetItemPopupUI>();
                 if(getItemPopup != null)
                     getItemPopup.SetPlayerStageClear((int)reward.Amount);
+
+                DailyGiftPopupUI dailyGiftPopupUI = UIManager.Instance.Get<DailyGiftPopupUI>();
+                if (dailyGiftPopupUI != null)
+                    dailyGiftPopupUI.OnReward((int)reward.Amount);
+
             });
         }
-        else
-        {
-            PrintStatus("Rewarded Interstitial ad is not ready yet.");
-        }
+    }
+
+    public void ADRemoverUser()
+    {
+        int reward = 2;
+        GameClearPopupUI popupUI = UIManager.Instance.Get<GameClearPopupUI>();
+        if (popupUI != null)
+            popupUI.SetPlayerStageClear(reward);
+
+        GetItemPopupUI getItemPopup = UIManager.Instance.Get<GetItemPopupUI>();
+        if (getItemPopup != null)
+            getItemPopup.SetPlayerStageClear(reward);
+
+        DailyGiftPopupUI dailyGiftPopupUI = UIManager.Instance.Get<DailyGiftPopupUI>();
+        if (dailyGiftPopupUI != null)
+            dailyGiftPopupUI.OnReward(reward);
     }
 
     #endregion

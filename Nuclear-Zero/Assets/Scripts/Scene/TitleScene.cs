@@ -11,7 +11,7 @@ public class TitleScene : BaseScene
         base.Init();
         GameAudioManager.Instance.PlayBackGround("LobbyBGM");
         UIManager.Instance.ShowSceneUi<TitleUI>();
-        //GPGSBinder.Instance.Login((success, localUser) => Debug.Log($"{success}, {localUser.userName}, {localUser.id}, {localUser.state}, {localUser.underage}"));
+        GPGSBinder.Instance.LogIn();
     }
 
     public override void Clear()

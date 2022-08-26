@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Define;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi.Events;
+
 public class LobbyScene : BaseScene
 {
     protected override void Init()
@@ -20,13 +23,17 @@ public class LobbyScene : BaseScene
         }
         if (GameManager.Instance.OpenStagePopup)
         {
-            UIManager.Instance.ShowPopupUi<StagePopupUI>();//StagePopupUI popupUI = 
-            //print(DataManager.Instance.playerInfo.SelectChapter);
-            //popupUI.GetComponentInChildren<swipe>().SetBtnPage(DataManager.Instance.playerInfo.SelectChapter);
+            UIManager.Instance.ShowPopupUi<StagePopupUI>();
             GameManager.Instance.OpenStagePopup = false;
         }
         UIManager.Instance.FadeIn();
-        //DataManager.Instance.LoadText(TextType.Chapter1);
+        //GPGSBinder.Instance.IncrementEvent(GPGSIds.event_test, 0);
+        //GPGSBinder.Instance.LoadEvent(GPGSIds.event_test, Onevnet);
+    }
+
+    private void Onevnet(bool state,IEvent _event)
+    {
+        Debug.Log($"{_event.Name}");
     }
 
     public override void Clear()

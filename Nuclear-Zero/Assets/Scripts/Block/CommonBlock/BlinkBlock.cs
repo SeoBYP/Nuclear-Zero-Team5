@@ -54,12 +54,13 @@ public class BlinkBlock : BlockController
         start = curColorAlpha;
         end = curColor;
         elapsed = 0;
+        IsActive = true;
     }
 
     private void SetDeActiveColor()
     {
-        _collider2D.enabled = false;
-        _trriger2D.enabled = false;
+        IsActive = false;
+
         isUpdate = true;
         start = curColor;
         end = curColorAlpha;
@@ -78,6 +79,11 @@ public class BlinkBlock : BlockController
         if (elapsed >= 1f)
         {
             isUpdate = false;
+            if(IsActive == false)
+            {
+                _collider2D.enabled = false;
+                _trriger2D.enabled = false;
+            }
         }
     }
 }

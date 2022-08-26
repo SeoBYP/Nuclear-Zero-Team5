@@ -25,8 +25,8 @@ public class ResultStar : SubUI
 
     public void SetShineStar()
     {
-        GetImage((int)Images.ShineStar).gameObject.SetActive(true);
         GetImage((int)Images.DeShineStar).gameObject.SetActive(false);
+        GetImage((int)Images.ShineStar).gameObject.SetActive(true);
     }
 
     public void SetDeShineStar()
@@ -34,4 +34,5 @@ public class ResultStar : SubUI
         GetImage((int)Images.ShineStar).gameObject.SetActive(false);
         GetImage((int)Images.DeShineStar).gameObject.SetActive(true);
     }
+
 }

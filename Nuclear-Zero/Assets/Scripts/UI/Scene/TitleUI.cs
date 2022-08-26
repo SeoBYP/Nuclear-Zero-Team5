@@ -16,7 +16,7 @@ public class TitleUI : SceneUI
     {
         PlayButton,
     }
-    [SerializeField] private LoginManager login;
+    //[SerializeField] private LoginManager login;
     public override void Init()
     {
         base.Init();

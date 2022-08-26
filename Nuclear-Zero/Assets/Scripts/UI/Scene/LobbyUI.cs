@@ -18,11 +18,17 @@ public class LobbyUI : SceneUI
         Story,
         Plus,
         ExitGame,
+        DailyGift,
     }
 
     enum Texts
     {
         GoldText,
+    }
+
+    enum Images
+    {
+        GetDailyGift,
     }
 
     private bool _isOpenMenu;
@@ -44,6 +50,7 @@ public class LobbyUI : SceneUI
     {
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
+        Bind<Image>(typeof(Images));
         SetButtons();
 
         _isOpenMenu = false;
@@ -58,12 +65,17 @@ public class LobbyUI : SceneUI
         BindEvent(GetButton((int)Buttons.Story).gameObject, OnStory, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Plus).gameObject, OnPlus, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.ExitGame).gameObject, OnExitGame, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.DailyGift).gameObject, OnDailyGift, UIEvents.Click);
     }
 
     public void SetPlayerGoldText()
     {
         int gold = DataManager.Instance.playerInfo.Gold;
-        string money = string.Format("{0:#,###}", gold);
+        string money = string.Empty;
+        if (gold == 0)
+            money = "0";
+        else
+            money = string.Format("{0:#,###}", gold);
         GetText((int)Texts.GoldText).text = money;
     }
 
@@ -145,7 +157,7 @@ public class LobbyUI : SceneUI
     }
     private void OnSns(PointerEventData data)
     {
-        Application.OpenURL("https://google.com/");
+        Application.OpenURL("https://www.facebook.com/profile.php?id=100084511273164");
     }
 
     private void OnPlus(PointerEventData data)
@@ -158,9 +170,42 @@ public class LobbyUI : SceneUI
         UIManager.Instance.ShowPopupUi<ReplayScenarioPopupUI>();
     }
 
+    public void SetGiftBtn(bool _onTime)
+    {
+        if (_onTime)
+        {
+            if(DataManager.Instance.playerInfo.DailyGift == false)
+                DontGetDailyGift();
+            else
+                GetDailyGift();
+        }
+        else
+        {
+            GetDailyGift();
+        }
+    }
+
+    private void OnDailyGift(PointerEventData data)
+    {
+        UIManager.Instance.ShowPopupUi<DailyGiftPopupUI>();
+    }
+
+    public void DontGetDailyGift()
+    {
+        GetButton((int)Buttons.DailyGift).gameObject.SetActive(true);
+        GetImage((int)Images.GetDailyGift).gameObject.SetActive(false);
+    }
+
+    public void GetDailyGift()
+    {
+        GetButton((int)Buttons.DailyGift).gameObject.SetActive(false);
+        GetImage((int)Images.GetDailyGift).gameObject.SetActive(true);
+    }
+
     private void OnExitGame(PointerEventData data)
     {
         DataManager.Instance.SavePlayerInfo();
+        GPGSBinder.Instance.Logout();
         Application.Quit();
     }
 }

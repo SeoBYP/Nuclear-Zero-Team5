@@ -52,10 +52,7 @@ public class StageBtn : SubUI
     {
         _curentStatge = stages;
         onClick = eventFunc;
-        if (_curentStatge.Cleared)
-        {
-            SetActiveStar();
-        }
+        SetActiveStar();
     }
 
     public void SetColor(Color color)

@@ -13,11 +13,62 @@ MonoBehaviour:
   m_Name: Bunker4
   m_EditorClassIdentifier: 
   talkData:
-  - dialogues: 
+  - dialogues: "\uBC99\uCEE44 - \uC9C0\uB839"
     sprite: {fileID: 0}
     charactername: 
-  responses:
-  - responseText: 
-    dialogueObject: {fileID: 0}
-  - responseText: 
-    dialogueObject: {fileID: 0}
+  - dialogues: "HM\uB825 11\uB144 \uC6D0\uC790\uB825 \uBC1C\uC804\uC18C \uADFC\uCC98\uB85C
+      \uC6B4\uC11D\uC774 \uB5A8\uC5B4\uC838 \uD070 \uD53C\uD574\uB97C \uC785\uC744
+      \uAC83\uC73C\uB85C \uC608\uC0C1\uB428.\r\n\uC778\uAC04\uC5F0\uBC29\uAD6D\uC5D0
+      \uD070 \uD53C\uD574\uAC00 \uC608\uC0C1\uB418\uB2C8, \uADF8 \uC2DC\uC810\uC744
+      \uAE30\uC810\uC73C\uB85C \uCE68\uB7B5\uC744 \uC2DC\uC791\uD560 \uC608\uC815."
+    sprite: {fileID: 21300000, guid: 24063c5ea4b7a471c9535bd4f1724c8c, type: 3}
+    charactername: "\uC9C0\uB839\uBB38"
+  - dialogues: "\uD53C\uC2A4\uBA54\uC774\uCEE4\uC5D0 \uCCA9\uC790\uB97C \uD22C\uC785\uD574
+      \uC0AC\uC774\uBCF4\uADF8 \uAC1C\uC870 \uC2DC\n\uBC31\uB3C4\uC5B4\uB97C \uC2EC\uC5B4
+      \uAC15\uC81C\uC801\uC778 \uBA85\uB839\uC744 \uB530\uB974\uAC8C \uD558\uACE0\n\uADF8
+      \uC2DC\uC791\uC740 \uC6B4\uC11D\uC774 \uB5A8\uC5B4\uC9C4 \uC774\uD6C4 \uB85C
+      \uC608\uC815."
+    sprite: {fileID: 21300000, guid: 24063c5ea4b7a471c9535bd4f1724c8c, type: 3}
+    charactername: "\uC9C0\uB839\uBB38"
+  - dialogues: "\uAE30\uACC4\uC81C\uAD6D \uB3D9\uC9C0\uB4E4\uC740 \uB2E4\uAC00\uC62C
+      \uC804\uC7C1\uC5D0 \uB300\uBE44\uD558\uC5EC\nHM\uB825 10\uB144 \uBD80\uD130\uB294
+      \uC804\uC2DC\uD0DC\uC138\uB97C \uC720\uC9C0\uD558\uAE38 \uBC14\uB780\uB2E4."
+    sprite: {fileID: 21300000, guid: 24063c5ea4b7a471c9535bd4f1724c8c, type: 3}
+    charactername: "\uC9C0\uB839\uBB38"
+  - dialogues: "\uD53C\uC2A4\uBA54\uC774\uCEE4\uB85C \uC7A0\uC785\uD560 \uC81C\uAD6D
+      \uC6A9\uC0AC\uB4E4\uC744 \uC120\uBC1C\uD588\uC73C\uBA70,\nHM\uB825 5\uB144\uB3C4\uC5D0
+      \uD53C\uC2A4\uBA54\uC774\uCEE4\uB85C \uB9DD\uBA85\uC2DC\uD0AC \uC608\uC815\uC774\uB2E4."
+    sprite: {fileID: 21300000, guid: 24063c5ea4b7a471c9535bd4f1724c8c, type: 3}
+    charactername: "\uC9C0\uB839\uBB38"
+  - dialogues: "\uAE30\uACC4\uC81C\uAD6D\uC740 \uC6B4\uC11D\uC774 \uB5A8\uC5B4\uC9C0\uB294
+      \uBC29\uD5A5\uACFC \uBC18\uACBD\uC744 \uAD00\uCE21\uD558\uC9C0 \uBABB\uD558\uAC8C
+      \uC9C0\uC18D \uBC29\uD574\uD560 \uC608\uC815\uC774\uBA70,\n\uC124\uC0AC \uC2E4\uD328\uD558\uB354\uB77C\uB3C4
+      HM\uB825 11\uB144\uC758 \uC804\uC7C1\uC740 \uC2E4\uC2DC\uD560 \uC608\uC815\uC774\uB2E4.\r\n\uC774\uC0C1
+      \uAE30\uACC4\uC81C\uAD6D\uC5D0 \uC601\uAD11\uC744 \uC704\uD574\uC11C..."
+    sprite: {fileID: 21300000, guid: 24063c5ea4b7a471c9535bd4f1724c8c, type: 3}
+    charactername: "\uC9C0\uB839\uBB38"
+  - dialogues: "\uC62C \uD558\uC77C \uBA38\uC2E0!\n\uC6B0\uB9AC\uC5D0\uAC8C\uB294
+      \uC778\uB958\uB97C \uBA78\uC808\uD558\uC5EC \uC778\uB958\uC758 \uC190\uC5D0\uC11C
+      \uC9C0\uAD6C\uB97C \uD574\uBC29\uC2DC\uCF1C \uAD6C\uC6D0\uD560 \uC758\uBB34\uAC00
+      \uC788\uB2E4.\r\n\uBAA8\uB4E0 \uAC83\uC740 \uC21C\uB9AC\uB300\uB85C..."
+    sprite: {fileID: 21300000, guid: 24063c5ea4b7a471c9535bd4f1724c8c, type: 3}
+    charactername: "\uC9C0\uB839\uBB38"
+  - dialogues: "\uAE30\uACC4\uC81C\uAD6D\uC774 \uC6C0\uC9C1\uC774\uB294 \uBAA9\uC801\uC774
+      \uC788\uC5C8\uB098?\n\uC774\uB300\uB85C \uC778\uB958\uB97C \uBA78\uB9DD\uC2DC\uD0AC
+      \uC608\uC815\uC774\uC5C8\uB098 \uBCF4\uAD70."
+    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    charactername: "\uB51C\uB7F0"
+  - dialogues: "\uD3C9\uD654\uB86D\uAC8C \uACF5\uC874\uD560 \uC218\uB294 \uC5C6\uB294\uAC78\uAE4C?\n\uBA78\uB9DD\uC744
+      \uD53C\uD560 \uC218 \uC788\uB294 \uBC29\uBC95\uB3C4 \uAC15\uAD6C\uD574\uBD10\uC57C\uACA0\uC5B4..."
+    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    charactername: "\uB51C\uB7F0"
+  - dialogues: "\uADF8\uB098\uC800\uB098 \uC6B4\uC11D\uC774 \uB5A8\uC5B4\uC9C0\uB294\uAC78
+      \uC54C\uBA74\uC11C\uB3C4 \uC77C\uBD80\uB7EC \uB9C9\uC9C0\uC54A\uB2E4\uB2C8,\n\uC774\uB807\uAC8C
+      \uAE4C\uC9C0 \uADF9\uB2E8\uC801\uC77C \uD544\uC694\uAC00 \uC788\uC744\uAE4C?"
+    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    charactername: "\uB51C\uB7F0"
+  - dialogues: "\uC774 \uC9C0\uB839\uBB38\uC740 \uB098\uC911\uC5D0 \uC694\uAE34\uD558\uAC8C
+      \uC0AC\uC6A9\uD574\uC57C\uACA0\uC5B4."
+    sprite: {fileID: 21300000, guid: 29d54483edbe64e2c84c911ddabfa790, type: 3}
+    charactername: "\uB51C\uB7F0"
+  responses: []

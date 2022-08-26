@@ -100,26 +100,7 @@ public class swipe : MonoBehaviour
             }
         }
 
-        //for (int i = 0; i < btn.transform.parent.transform.childCount; i++)
-        //{
-        //    btn.transform.name = ".";
-        //}
     }
-    //public void WhichBtnClicked(Button btn)
-    //{
-    //    btn.transform.name = "clicked";
-    //    for (int i = 0; i < btn.transform.parent.transform.childCount; i++)
-    //    {
-    //        if (btn.transform.parent.transform.GetChild(i).transform.name == "clicked")
-    //        {
-    //            btnNumber = i;
-    //            takeTheBtn = btn;
-    //            time = 0;
-    //            scroll_pos = (pos[btnNumber]);
-    //            runIt = true;
-    //        }
-    //    }
-    //}
 
     private void SetBtn()
     {

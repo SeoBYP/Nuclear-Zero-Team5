@@ -13,6 +13,11 @@ public class FailToBuyPopup : PopupUI
         Close,
     }
 
+    enum GameObjects
+    {
+        BackGround,
+    }
+
     public override void Init()
     {
         base.Init();
@@ -22,8 +27,10 @@ public class FailToBuyPopup : PopupUI
     private void Bind()
     {
         Bind<Button>(typeof(Buttons));
+        Bind<GameObject>(typeof(GameObjects));
 
         BindEvent(GetButton((int)Buttons.Close).gameObject, OnClose, UIEvents.Click);
+        BindEvent(GetGameObject((int)GameObjects.BackGround), OnClose, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.Charge).gameObject, OnCharge, UIEvents.Click);
     }
 

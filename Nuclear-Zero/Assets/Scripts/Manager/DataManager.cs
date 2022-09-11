@@ -67,6 +67,7 @@ public class PlayerInfo
 {
     public int Gold;
     public string DialogueObjectName;
+    public string Daily;
     public bool LookPrologue;
     public bool LookTutorial;
     public int PlayerStars;
@@ -83,6 +84,8 @@ public class PlayerInfo
     public bool HappyEnding;
     public bool DailyGift;
     public bool ADRemove;
+    public bool Share;
+    public bool Review;
     public List<PlayerChapter> PlayerChapters;
     public List<PlayerStages> PlayerStages;
     public PlayerInfo(string text)
@@ -91,6 +94,7 @@ public class PlayerInfo
 
         Gold = data["Gold"].ToObject<int>();
         DialogueObjectName = data["DialogueObjectName"].ToObject<string>();
+        Daily = data["Daily"].ToObject<string>();
         LookPrologue = data["LookPrologue"].ToObject<bool>();
         LookTutorial = data["LookTutorial"].ToObject<bool>();
         PlayerStars = data["PlayerStars"].ToObject<int>();
@@ -107,6 +111,8 @@ public class PlayerInfo
         HappyEnding = data["HappyEnding"].ToObject<bool>();
         DailyGift = data["DailyGift"].ToObject<bool>();
         ADRemove = data["ADRemove"].ToObject<bool>();
+        Share = data["Share"].ToObject<bool>();
+        Review = data["Review"].ToObject<bool>();
         MatchCollection match = Regex.Matches(text, "ChapterName");
         if (match.Count != 0)
         {
@@ -193,6 +199,18 @@ public class PlayerInfo
         }
     }
 
+    public void ShowSharePopup()
+    {
+        if (GetPlayerStages(4).Cleared)
+        {
+            if(Share == false)
+            {
+                Share = true;
+                UIManager.Instance.ShowPopupUi<SharePopupUI>();
+            }
+        }
+    }
+
     public void ShowEnding()
     {
         if (GameManager.Instance._ShowEndding)
@@ -216,6 +234,7 @@ public class PlayerInfo
                 }
                 GameManager.Instance._ShowEndding = false;
             }
+            GPGSManager.Instance.SetStageAchiv();
         }
     }
 
@@ -322,6 +341,18 @@ public class PlayerInfo
     {
         LifeItem += _lifeItem;
     }
+
+    public void SetReview()
+    {
+        if(Review == false)
+        {
+            if (GetPlayerStages(2).Cleared)
+            {
+                UIManager.Instance.ShowPopupUi<ReviewPopupUI>();
+                Review = true;
+            }
+        }
+    }
 }
 #endregion
 public class DataManager : Managers<DataManager>
@@ -331,23 +362,11 @@ public class DataManager : Managers<DataManager>
 
     private const string _filePath = "PlayerInfomation.json";
 
-    private static bool IsLoadPlayerInfo = false;
+    public bool IsLoadPlayerInfo = false;
 
     public override void Init()
     {
-        //Load(TableType.Chapter1);
-    }
-
-    private void Load(TableType tableType)
-    {
-        string path = Application.persistentDataPath + "/Data/" + tableType.ToString();
-        if (!TableDic.ContainsKey(tableType))
-        {
-            DataContents lowBase = new DataContents();
-            lowBase.LoadData("Data/" + tableType.ToString());
-
-            TableDic.Add(tableType, lowBase);
-        }
+        
     }
 
     public void LoadPlayerInfo()
@@ -355,7 +374,6 @@ public class DataManager : Managers<DataManager>
         if (IsLoadPlayerInfo)
             return;
         var filePath = Path.Combine(Application.persistentDataPath, _filePath);
-        print(filePath);
         if (File.Exists(filePath))
         {
             string text = File.ReadAllText(filePath);
@@ -394,6 +412,8 @@ public class DataManager : Managers<DataManager>
 
     public void SavePlayerInfo()
     {
+        if (IsLoadPlayerInfo == false)
+            return;
         var filePath = Path.Combine(Application.persistentDataPath, _filePath);
 
         string JsonData = JsonUtility.ToJson(playerInfo,true);
@@ -401,6 +421,24 @@ public class DataManager : Managers<DataManager>
         string code = System.Convert.ToBase64String(bytes);
 
         File.WriteAllText(filePath, code);
+    }
+
+    public void StringToGameInfo(string localData)
+    {
+        print(localData);
+        byte[] bytes = System.Convert.FromBase64String(localData);
+        string jdata = System.Text.Encoding.UTF8.GetString(bytes);
+
+        playerInfo = JsonUtility.FromJson<PlayerInfo>(jdata); // new PlayerInfo(text);//
+        IsLoadPlayerInfo = true;
+    }
+
+    public string GameInfoToString()
+    {
+        string JsonData = JsonUtility.ToJson(playerInfo, true);
+        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(JsonData);
+        string code = System.Convert.ToBase64String(bytes);
+        return code;
     }
 
     public static int ToInter(TableType tableType, int tableIndex,string subject)

@@ -44,6 +44,7 @@ public class CumfumBuyPopupUI : PopupUI
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
+        //Bind<InputField>(typeof(InputFields));
 
         BindEvent(GetButton((int)Buttons.Yes).gameObject, OnYes, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.No).gameObject, OnNo, UIEvents.Click);

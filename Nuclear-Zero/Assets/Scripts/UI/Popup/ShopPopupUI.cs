@@ -70,6 +70,7 @@ public class ShopPopupUI : PopupUI
     public void DefaultSet()
     {
         SetTexts();
+        UIManager.Instance.Get<LobbyUI>().SetPlayerGoldText();
     }
 
     public void SetCoinMenu()

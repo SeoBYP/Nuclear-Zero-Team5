@@ -91,6 +91,7 @@ public class BunkerPopupUI : PopupUI
                 GetGameObject(chapterIndex).SetActive(true);
                 break;
             case (int)GameObjects.Bunker4:
+                GameAudioManager.Instance.PlayBackGround("Bunker4");
                 GetGameObject(chapterIndex).SetActive(true);
                 break;
         }

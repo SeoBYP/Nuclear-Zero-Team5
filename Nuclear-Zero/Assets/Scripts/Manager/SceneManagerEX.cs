@@ -50,18 +50,7 @@ public abstract class BaseScene : MonoBehaviour
 
     private void Start()
     {
-        
         Init();
-    }
-
-    private void Awake()
-    {
-        DataManager.Instance.LoadPlayerInfo();
-    }
-
-    private void OnApplicationQuit()
-    {
-        DataManager.Instance.SavePlayerInfo();
     }
 
     protected virtual void Init()
@@ -69,7 +58,17 @@ public abstract class BaseScene : MonoBehaviour
         Object obj = GameObject.FindObjectOfType(typeof(EventSystem));
         if (obj == null)
             ResourcesManager.Instance.Instantiate("EventSystem").name = "@EventSystem";
-        DataManager.Instance.SavePlayerInfo();
+        Save();
     }
+
+    public void Save()
+    {
+        if(DataManager.Instance.IsLoadPlayerInfo)
+        {
+            GPGSManager.Instance.SaveData();
+        }
+            
+    }
+
     public abstract void Clear();
 }

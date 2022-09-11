@@ -695,6 +695,7 @@ GameObject:
   - component: {fileID: 6590288782149910868}
   - component: {fileID: 6590288782149910955}
   - component: {fileID: 6590288782149910869}
+  - component: {fileID: 4204780314648525182}
   m_Layer: 5
   m_Name: Package3
   m_TagString: Untagged
@@ -802,19 +803,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6590288782149910955}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1666441242756459728}
-        m_TargetAssemblyTypeName: PackagePurching, Assembly-CSharp
-        m_MethodName: OnBtnPurchaseClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &4204780314648525182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288782149910953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: starterpack
+  buttonType: 0
+  consumePurchase: 1
+  onPurchaseComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  priceText: {fileID: 0}
 --- !u!1 &6590288782158924066
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,6 +840,7 @@ GameObject:
   - component: {fileID: 6590288782158924077}
   - component: {fileID: 6590288782158924076}
   - component: {fileID: 8706183646061722870}
+  - component: {fileID: 8677669482977810822}
   m_Layer: 5
   m_Name: CoinPackage3
   m_TagString: Untagged
@@ -934,19 +948,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6590288782158924076}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1666441242756459728}
-        m_TargetAssemblyTypeName: PackagePurching, Assembly-CSharp
-        m_MethodName: OnBtnPurchaseClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &8677669482977810822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288782158924066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: coin_step3
+  buttonType: 0
+  consumePurchase: 1
+  onPurchaseComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  priceText: {fileID: 0}
 --- !u!1 &6590288782177500874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,6 +1207,7 @@ GameObject:
   - component: {fileID: 6590288782269248451}
   - component: {fileID: 6590288782269248450}
   - component: {fileID: 6590288782269248460}
+  - component: {fileID: 7324050216862695165}
   m_Layer: 5
   m_Name: Package1
   m_TagString: Untagged
@@ -1288,19 +1315,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6590288782269248450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1666441242756459728}
-        m_TargetAssemblyTypeName: PackagePurching, Assembly-CSharp
-        m_MethodName: OnBtnPurchaseClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &7324050216862695165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288782269248448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: adremoval
+  buttonType: 0
+  consumePurchase: 1
+  onPurchaseComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  priceText: {fileID: 0}
 --- !u!1 &6590288782294938003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,6 +1470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6590288782391980621}
   - component: {fileID: 5411755607286905681}
+  - component: {fileID: 6075836915650565820}
   m_Layer: 5
   m_Name: CoinContents
   m_TagString: Untagged
@@ -1470,6 +1510,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc46909a08b614b2d8c5a9dbe8c54abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6075836915650565820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288782391980620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d4ecf89383741ff87028f79bccf491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Coinstep1: {fileID: 2003819981488963061}
+  Coinstep2: {fileID: 7289318123871852794}
+  Coinstep3: {fileID: 8677669482977810822}
+  Coinstep4: {fileID: 56709202025809235}
 --- !u!1 &6590288782456140342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,6 +1807,7 @@ GameObject:
   - component: {fileID: 6590288782723219995}
   - component: {fileID: 6590288782723219994}
   - component: {fileID: 6590288782723219972}
+  - component: {fileID: 3140683123798975620}
   m_Layer: 5
   m_Name: Package2
   m_TagString: Untagged
@@ -1858,19 +1915,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6590288782723219994}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1666441242756459728}
-        m_TargetAssemblyTypeName: PackagePurching, Assembly-CSharp
-        m_MethodName: OnBtnPurchaseClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &3140683123798975620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288782723219992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: premierpack
+  buttonType: 0
+  consumePurchase: 1
+  onPurchaseComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  priceText: {fileID: 0}
 --- !u!1 &6590288782770615823
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,6 +2172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6590288782819922956}
   - component: {fileID: 6990208577521291154}
+  - component: {fileID: 5854637076665346885}
   m_Layer: 5
   m_Name: PackageContents
   m_TagString: Untagged
@@ -2142,6 +2212,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e527465d12b4b48838b80c7929220657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5854637076665346885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288782819922947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa301f935afe742d9b3a3b42e09b8833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Adremoval: {fileID: 7324050216862695165}
+  Premierpack: {fileID: 3140683123798975620}
+  Starterpack: {fileID: 4204780314648525182}
 --- !u!1 &6590288782829786437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,6 +2240,7 @@ GameObject:
   - component: {fileID: 6590288782829786439}
   - component: {fileID: 6590288782829786438}
   - component: {fileID: 6590288782829786434}
+  - component: {fileID: 3822323442658955421}
   m_Layer: 5
   m_Name: ShopPopupUI
   m_TagString: Untagged
@@ -2175,7 +2261,6 @@ RectTransform:
   m_Children:
   - {fileID: 6590288782890985176}
   - {fileID: 6590288783138068165}
-  - {fileID: 6790345433977395042}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2257,6 +2342,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810644949eeb842a6bcb3d0b7f6f5d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3822323442658955421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288782829786437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa301f935afe742d9b3a3b42e09b8833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Adremoval: {fileID: 0}
+  Premierpack: {fileID: 0}
+  Starterpack: {fileID: 0}
 --- !u!1 &6590288782838656911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,6 +2369,7 @@ GameObject:
   - component: {fileID: 6590288782838656906}
   - component: {fileID: 6590288782838656905}
   - component: {fileID: 2042604429817848793}
+  - component: {fileID: 56709202025809235}
   m_Layer: 5
   m_Name: CoinPackage4
   m_TagString: Untagged
@@ -2376,19 +2477,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6590288782838656905}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1666441242756459728}
-        m_TargetAssemblyTypeName: PackagePurching, Assembly-CSharp
-        m_MethodName: OnBtnPurchaseClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &56709202025809235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288782838656911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: coin_step4
+  buttonType: 0
+  consumePurchase: 1
+  onPurchaseComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  priceText: {fileID: 0}
 --- !u!1 &6590288782887744463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2535,7 +2648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 183.99995, y: 18}
+  m_AnchoredPosition: {x: 184.00063, y: 18}
   m_SizeDelta: {x: 1518, y: 545.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6590288783079822380
@@ -2550,6 +2663,7 @@ GameObject:
   - component: {fileID: 6590288783079822383}
   - component: {fileID: 6590288783079822382}
   - component: {fileID: 1225231054538554374}
+  - component: {fileID: 7289318123871852794}
   m_Layer: 5
   m_Name: CoinPackage2
   m_TagString: Untagged
@@ -2657,19 +2771,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6590288783079822382}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1666441242756459728}
-        m_TargetAssemblyTypeName: PackagePurching, Assembly-CSharp
-        m_MethodName: OnBtnPurchaseClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &7289318123871852794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288783079822380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: coin_step2
+  buttonType: 0
+  consumePurchase: 1
+  onPurchaseComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  priceText: {fileID: 0}
 --- !u!1 &6590288783104419708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,7 +2916,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6590288782456140336}
   m_HandleRect: {fileID: 6590288782456140343}
   m_Direction: 0
-  m_Value: -0.0000001658564
+  m_Value: -0.000001658564
   m_Size: 0.75757575
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3072,6 +3198,7 @@ GameObject:
   - component: {fileID: 6590288783696968578}
   - component: {fileID: 6590288783696968577}
   - component: {fileID: 7461818079585639242}
+  - component: {fileID: 2003819981488963061}
   m_Layer: 5
   m_Name: CoinPackage1
   m_TagString: Untagged
@@ -3179,19 +3306,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6590288783696968577}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1666441242756459728}
-        m_TargetAssemblyTypeName: PackagePurching, Assembly-CSharp
-        m_MethodName: OnBtnPurchaseClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &2003819981488963061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590288783696968583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: coin_step1
+  buttonType: 0
+  consumePurchase: 1
+  onPurchaseComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onPurchaseFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  priceText: {fileID: 0}
 --- !u!1 &6590288783724026459
 GameObject:
   m_ObjectHideFlags: 0
@@ -3686,54 +3825,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &9119573986659402543
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6790345433977395042}
-  - component: {fileID: 1666441242756459728}
-  m_Layer: 5
-  m_Name: Purchase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6790345433977395042
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9119573986659402543}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6590288782829786433}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1666441242756459728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9119573986659402543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa301f935afe742d9b3a3b42e09b8833, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9157374302153598208
 GameObject:
   m_ObjectHideFlags: 0

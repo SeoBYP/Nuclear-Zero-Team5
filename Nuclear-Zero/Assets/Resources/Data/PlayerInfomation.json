@@ -1,6 +1,7 @@
 {
     "Gold": 0,
     "DialogueObjectName": "Chapter1",
+    "Daily": "2022-08-26 09:00:00",
     "LookPrologue": false,
     "LookTutorial": false,
     "PlayerStars": 0,
@@ -17,6 +18,8 @@
     "HappyEnding": false,
     "DailyGift": false,
     "ADRemove": false,
+    "Share": false,
+    "Review" : false,
     "PlayerChapters": [
         {
             "ChapterIndex": 1,

@@ -151,7 +151,6 @@ public class PlayerController : MonoBehaviour
             if (joyButton.Pressed || isJumped)
             {
                 Vector2 jumpPos = new Vector2(0, JumpHeight);
-                print(jumpPos);
                 _rigidbody2D.velocity = jumpPos;
                 animationController.PlayerJump();
                 isJumping = true;
@@ -246,7 +245,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (_isPause)
+        if (_isPause || _isDead)
             return;
         if (gameUI == null)
         {
@@ -256,6 +255,9 @@ public class PlayerController : MonoBehaviour
         {
             _isShield = false;
             _shieldprite.gameObject.SetActive(false);
+            GameAudioManager.Instance.Play2DSound("ShieldBreak");
+            Hited = true;
+            StartCoroutine(DontActive());
             return;
         }
         if (Hited == true)

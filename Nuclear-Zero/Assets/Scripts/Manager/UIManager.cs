@@ -107,7 +107,6 @@ public class UIManager : Managers<UIManager>
 
         go.transform.SetParent(Root.transform);
         _sceneUI.Init();
-
         return sceneUI;
     }
 
@@ -115,13 +114,17 @@ public class UIManager : Managers<UIManager>
     {
         if (string.IsNullOrEmpty(name))
             name = typeof(T).Name;
+        if(Get<T>() != null)
+        {
+            return null;
+        }
         GameObject go = ResourcesManager.Instance.Instantiate($"UI/PopupUI/{name}");
         T popup = Utils.GetOrAddComponent<T>(go);
         _popupStack.Push(popup);
 
         go.transform.SetParent(Root.transform);
         popup.Init();
-
+        GPGSManager.Instance.SaveData();
         return popup;
     }
 
@@ -150,6 +153,7 @@ public class UIManager : Managers<UIManager>
             ResourcesManager.Instance.Destroy(popup.gameObject);
             popup = null;
         }
+        GPGSManager.Instance.SaveData();
     }
 
     public void CloseAllPopupUI()

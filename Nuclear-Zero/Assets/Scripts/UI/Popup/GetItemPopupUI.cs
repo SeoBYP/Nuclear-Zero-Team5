@@ -11,6 +11,7 @@ public class GetItemPopupUI : PopupUI
     {
         ADButton,
         GetReward,
+        GetGift,
     }
 
     enum GameObjects
@@ -41,7 +42,9 @@ public class GetItemPopupUI : PopupUI
         BindEvent(GetButton((int)Buttons.ADButton).gameObject, OnADButton, UIEvents.Click);
         BindEvent(GetGameObject((int)GameObjects.BackGround), OnClose, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.GetReward).gameObject, OnClose, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.GetGift).gameObject, OnGetGift, UIEvents.Click);
         SetReward();
+        CheckPlayerADRemover();
     }
 
     private void SetReward()
@@ -57,6 +60,36 @@ public class GetItemPopupUI : PopupUI
         coin *= reward;
         GetText((int)Texts.CoinCount).text = $"+ {coin}";
         print("GetReward");
+    }
+
+    private void CheckPlayerADRemover()
+    {
+        if (DataManager.Instance.playerInfo.ADRemove)
+        {
+            GetButton((int)Buttons.ADButton).gameObject.SetActive(false);
+            GetButton((int)Buttons.GetReward).gameObject.SetActive(false);
+        }
+        else
+        {
+            GetButton((int)Buttons.GetGift).gameObject.SetActive(false);
+        }
+    }
+    private bool _isStart = false;
+    private IEnumerator GetReward()
+    {
+        _isStart = true;
+        yield return YieldInstructionCache.WaitForSeconds(0.5f);
+        UIManager.Instance.Get<LobbyUI>().SetPlayerGoldText();
+        ClosePopupUI();
+        _isStart = false;
+    }
+
+    private void OnGetGift(PointerEventData data)
+    {
+        if (_isStart)
+            return;
+        SetPlayerStageClear(2);
+        StartCoroutine(GetReward());
     }
 
     private void OnADButton(PointerEventData data)

@@ -354,7 +354,7 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
 #if UNITY_EDITOR
         string adUnitId = "unused";
 #elif UNITY_ANDROID
-                string adUnitId = "ca-app-pub-3940256099942544/5354046379";
+                string adUnitId = "ca-app-pub-3991132572776978/3903577958";
 #elif UNITY_IPHONE
                 string adUnitId = "ca-app-pub-3940256099942544/6978759866";
 #else
@@ -410,6 +410,10 @@ public class GoogleMobileAdsManager : Managers<GoogleMobileAdsManager>
         {
             ADRemoverUser();
             return;
+        }
+        if(rewardedInterstitialAd == null)
+        {
+            RequestAndLoadRewardedInterstitialAd();
         }
         if (rewardedInterstitialAd != null)
         {

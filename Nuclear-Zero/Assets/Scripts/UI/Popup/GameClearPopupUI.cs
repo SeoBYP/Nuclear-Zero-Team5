@@ -11,6 +11,7 @@ public class GameClearPopupUI : PopupUI
         Exit,
         ADButton,
         GetReward,
+        GetGift,
     }
 
     enum Texts
@@ -45,6 +46,8 @@ public class GameClearPopupUI : PopupUI
         BindEvent(GetButton((int)Buttons.Exit).gameObject, OnExit, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.ADButton).gameObject, OnADButtons, UIEvents.Click);
         BindEvent(GetButton((int)Buttons.GetReward).gameObject, OnExit, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.GetGift).gameObject, OnGetGift, UIEvents.Click);
+        CheckPlayerADRemover();
     }
 
     private void SetPlayerStageClear()
@@ -93,6 +96,36 @@ public class GameClearPopupUI : PopupUI
         {
             resultStars[i].Init();
         }
+    }
+
+    private void CheckPlayerADRemover()
+    {
+        if (DataManager.Instance.playerInfo.ADRemove)
+        {
+            GetButton((int)Buttons.ADButton).gameObject.SetActive(false);
+            GetButton((int)Buttons.GetReward).gameObject.SetActive(false);
+        }
+        else
+        {
+            GetButton((int)Buttons.GetGift).gameObject.SetActive(false);
+        }
+    }
+
+    private bool _isStart = false;
+    private IEnumerator GetReward()
+    {
+        _isStart = true;
+        yield return YieldInstructionCache.WaitForSeconds(0.5f);
+        UIManager.Instance.Get<LobbyUI>().SetPlayerGoldText();
+        _isStart = false;
+    }
+
+    private void OnGetGift(PointerEventData data)
+    {
+        if (_isStart == true)
+            return;
+        SetPlayerStageClear(2);
+        StartCoroutine(GetReward());
     }
 
     private void OnADButtons(PointerEventData data)

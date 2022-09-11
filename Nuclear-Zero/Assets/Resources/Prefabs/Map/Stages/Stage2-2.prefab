@@ -13161,7 +13161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340001858758476061
 Transform:
   m_ObjectHideFlags: 0
@@ -13896,7 +13896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340001858793856722
 Transform:
   m_ObjectHideFlags: 0
@@ -19309,7 +19309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340001859036476356
 Transform:
   m_ObjectHideFlags: 0
@@ -25195,7 +25195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340001859299738775
 Transform:
   m_ObjectHideFlags: 0
@@ -27762,7 +27762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340001859415355290
 Transform:
   m_ObjectHideFlags: 0
@@ -34992,7 +34992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340001859729045603
 Transform:
   m_ObjectHideFlags: 0
@@ -39734,7 +39734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340001859998618912
 Transform:
   m_ObjectHideFlags: 0
@@ -43696,7 +43696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340001860128454394
 Transform:
   m_ObjectHideFlags: 0
@@ -45897,7 +45897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340001860204621179
 Transform:
   m_ObjectHideFlags: 0
@@ -46389,7 +46389,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &340001860239960156
 Transform:
   m_ObjectHideFlags: 0
@@ -60867,11 +60867,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 376847990320018456, guid: 25bae2661a570429a8793e5b4f04fb60, type: 3}
       propertyPath: m_Size.y
-      value: 0.41793907
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 376847990320018456, guid: 25bae2661a570429a8793e5b4f04fb60, type: 3}
       propertyPath: m_Offset.y
-      value: 1.2089694
+      value: 1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bae2661a570429a8793e5b4f04fb60, type: 3}
@@ -63945,6 +63945,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FastBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 376847990320018456, guid: 25bae2661a570429a8793e5b4f04fb60, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 376847990320018456, guid: 25bae2661a570429a8793e5b4f04fb60, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bae2661a570429a8793e5b4f04fb60, type: 3}
 --- !u!4 &4199608832392094866 stripped
@@ -64239,7 +64247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3425864551112837943, guid: 32f9607a2fc024351afb31eea8de0c14, type: 3}
       propertyPath: m_Size.y
-      value: 0.26330316
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3425864551112837943, guid: 32f9607a2fc024351afb31eea8de0c14, type: 3}
       propertyPath: m_Offset.y
@@ -66081,7 +66089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3425864551112837943, guid: 32f9607a2fc024351afb31eea8de0c14, type: 3}
       propertyPath: m_Size.y
-      value: 0.28591204
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3425864551112837943, guid: 32f9607a2fc024351afb31eea8de0c14, type: 3}
       propertyPath: m_Offset.y
@@ -67431,11 +67439,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 376847990320018456, guid: 25bae2661a570429a8793e5b4f04fb60, type: 3}
       propertyPath: m_Size.y
-      value: 0.40590894
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 376847990320018456, guid: 25bae2661a570429a8793e5b4f04fb60, type: 3}
       propertyPath: m_Offset.y
-      value: 1.2029545
+      value: 1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bae2661a570429a8793e5b4f04fb60, type: 3}

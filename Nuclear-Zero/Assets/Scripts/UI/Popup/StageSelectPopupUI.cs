@@ -99,7 +99,7 @@ public class StageSelectPopupUI : PopupUI
 
     public void SetSeleteStageText(string texts,int stageindex)
     {
-        texts = texts.Insert(5,"  ");
+        texts = texts.Insert(5,"    ");
         GetText((int)Texts.SelectStageText).text = texts;
         SetPlayerSelectStage(stageindex);
     }
@@ -107,7 +107,7 @@ public class StageSelectPopupUI : PopupUI
     public void SetSeleteStageText(int stageindex)
     {
         string text = DataManager.Instance.playerInfo.GetPlayerStages(stageindex).StageName;
-        text = text.Insert(5,"  ");
+        text = text.Insert(5,"    ");
         GetText((int)Texts.SelectStageText).text = text;
         SetPlayerSelectStage(stageindex);
     }

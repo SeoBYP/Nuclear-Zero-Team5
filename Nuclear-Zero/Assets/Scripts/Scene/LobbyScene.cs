@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Define;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi.Events;
 
 public class LobbyScene : BaseScene
 {
@@ -26,14 +24,9 @@ public class LobbyScene : BaseScene
             UIManager.Instance.ShowPopupUi<StagePopupUI>();
             GameManager.Instance.OpenStagePopup = false;
         }
+        DataManager.Instance.playerInfo.ShowSharePopup();
         UIManager.Instance.FadeIn();
-        //GPGSBinder.Instance.IncrementEvent(GPGSIds.event_test, 0);
-        //GPGSBinder.Instance.LoadEvent(GPGSIds.event_test, Onevnet);
-    }
-
-    private void Onevnet(bool state,IEvent _event)
-    {
-        Debug.Log($"{_event.Name}");
+        GPGSManager.Instance.SetLogin();
     }
 
     public override void Clear()

@@ -101289,7 +101289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3425864551112837943, guid: 32f9607a2fc024351afb31eea8de0c14, type: 3}
       propertyPath: m_Size.y
-      value: 0.28335088
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3425864551112837943, guid: 32f9607a2fc024351afb31eea8de0c14, type: 3}
       propertyPath: m_Offset.y
@@ -103591,6 +103591,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.007613376
       objectReference: {fileID: 0}
+    - target: {fileID: 3425864551112837943, guid: 32f9607a2fc024351afb31eea8de0c14, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32f9607a2fc024351afb31eea8de0c14, type: 3}
 --- !u!4 &7845541099934207894 stripped
@@ -104909,7 +104913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212859477909429120, guid: ca6e7ba00e8864990bbde7504197b9fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 354.8
+      value: 364.8
       objectReference: {fileID: 0}
     - target: {fileID: 7212859477909429120, guid: ca6e7ba00e8864990bbde7504197b9fd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -104953,7 +104957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212859477909429135, guid: ca6e7ba00e8864990bbde7504197b9fd, type: 3}
       propertyPath: AttackRange
-      value: 50
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca6e7ba00e8864990bbde7504197b9fd, type: 3}
@@ -105477,7 +105481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3425864551112837943, guid: 32f9607a2fc024351afb31eea8de0c14, type: 3}
       propertyPath: m_Size.y
-      value: 0.29241765
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3425864551112837943, guid: 32f9607a2fc024351afb31eea8de0c14, type: 3}
       propertyPath: m_Offset.y

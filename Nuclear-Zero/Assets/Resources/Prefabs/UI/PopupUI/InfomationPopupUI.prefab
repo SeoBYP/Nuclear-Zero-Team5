@@ -542,7 +542,37 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC00\uB098\uB2E4\uB77C\uB9C8\uBC14\uC0AC"
+  m_Text: "\uB3C4\uD2B8\uCC55\uD1301 : <a href='https://kr.freepik.com/vectors/car'>Car
+    \uBCA1\uD130\uB294 upklyak - kr.freepik.com\uAC00 \uC81C\uC791\uD568</a>\n\uB3C4\uD2B8\uCC55\uD1302
+    : <a href='https://kr.freepik.com/vectors/background'>Background \uBCA1\uD130\uB294
+    upklyak - kr.freepik.com\uAC00 \uC81C\uC791\uD568</a>\n\uB3C4\uD2B8\uCC55\uD1303
+    : <a href='https://kr.freepik.com/vectors/city'>City \uBCA1\uD130\uB294 upklyak
+    - kr.freepik.com\uAC00 \uC81C\uC791\uD568</a>\n\uB3C4\uD2B8\uCC55\uD1304 : <a
+    href='https://kr.freepik.com/vectors/technology'>Technology \uBCA1\uD130\uB294
+    vectorpocket - kr.freepik.com\uAC00 \uC81C\uC791\uD568</a>\n\uBC99\uCEE4 \uB0B4\uBD801
+    : <a href='https://www.freepik.com/vectors/bunker'>Bunker vector created by upklyak
+    - www.freepik.com</a>\n\uBC99\uCEE4 \uB0B4\uBD802 : <a href='https://www.freepik.com/vectors/computer-room'>Computer
+    room vector created by upklyak - www.freepik.com</a>\n\uBC99\uCEE4 \uB0B4\uBD803
+    : <a href='https://www.freepik.com/vectors/bunker'>Bunker vector created by upklyak
+    - www.freepik.com</a>\u3134\n\uBC99\uCEE4 \uB0B4\uBD804 : <a href='https://www.freepik.com/vectors/bunker'>Bunker
+    vector created by vectorpocket - www.freepik.com</a>\n\uCCB4\uD06C \uD45C\uC2DC
+    : <a href=\"https://www.flaticon.com/free-icons/tools-and-utensils\" title=\"Tools
+    and utensils icons\">Tools and utensils icons created by Freepik - Flaticon</a>\n\uB77C\uC774\uD504
+    \uBE14\uB85D : <a href=\"https://www.flaticon.com/free-icons/energy\" title=\"energy
+    icons\">Energy icons created by Pixel perfect - Flaticon</a>\n\uC0DD\uBA85\uB825_\uC544\uC774\uD15C
+    : <a href=\"https://www.flaticon.com/free-icons/energy\" title=\"energy icons\">Energy
+    icons created by Pixel perfect - Flaticon</a>\n\uBC30\uD130\uB9AC_\uC544\uC774\uD15C
+    : <a href=\"https://www.flaticon.com/free-icons/energy\" title=\"energy icons\">Energy
+    icons created by Pixel perfect - Flaticon</a>\n\uB2EB\uD78C \uC120\uBB3C\uC0C1\uC790
+    : <a href=\"https://www.flaticon.com/kr/free-icons/\" title=\"\uC120\uBB3C \uC544\uC774\uCF58\">\uC120\uBB3C
+    \uC544\uC774\uCF58  \uC81C\uC791\uC790: Freepik - Flaticon</a>\n\uC5F4\uB9B0
+    \uC120\uBB3C\uC0C1\uC790 : <a href=\"https://www.flaticon.com/kr/free-icons/\"
+    title=\"\uC120\uBB3C \uC544\uC774\uCF58\">\uC120\uBB3C \uC544\uC774\uCF58  \uC81C\uC791\uC790:
+    Freepik - Flaticon</a>\n\uACF5\uC720\uCC3D \uC544\uC774\uD15C \uC8FC\uBA38\uB2C8(\uBC18\uC9DD\uC774)
+    : <a href=\"https://www.flaticon.com/free-icons/shine\" title=\"shine icons\">Shine
+    icons created by Freepik - Flaticon</a>\n\uACF5\uC720\uCC3D \uC544\uC774\uD15C
+    \uC8FC\uBA38\uB2C8(\uC8FC\uBA38\uB2C8) : <a href=\"https://www.flaticon.com/free-icons/money\"
+    title=\"money icons\">Money icons created by lapiyee - Flaticon</a>"
 --- !u!1 &3794257648013781472
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,8 +837,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -10, y: 500}
+  m_AnchoredPosition: {x: 0, y: 0.00012207031}
+  m_SizeDelta: {x: -10, y: 1400}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &3794257648450751826
 GameObject:
@@ -931,7 +961,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3794257648198490955}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.44000003
+  m_Size: 0.15714286
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

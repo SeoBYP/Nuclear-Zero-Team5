@@ -26,8 +26,6 @@ public class TitleUI : SceneUI
 
         BindEvent(GetButton(0).gameObject, OnPlayButton, UIEvents.Click);
         BindEvent(GetGameObject(0).gameObject, OnPlayButton, UIEvents.Click);
-
-        //login.PlayLogin();
     }
 
     private void OnPlayButton(PointerEventData data)

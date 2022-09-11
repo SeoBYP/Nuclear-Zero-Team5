@@ -10,7 +10,7 @@ public class DailyGiftPopupUI : PopupUI
     enum Buttons
     {
         GetReward,
-        GetGift,
+        Daily,
     }
 
     enum GameObjects
@@ -30,9 +30,24 @@ public class DailyGiftPopupUI : PopupUI
         Bind<Button>(typeof(Buttons));
         Bind<GameObject>(typeof(GameObjects));
 
-        BindEvent(GetButton((int)Buttons.GetReward).gameObject, OnClose, UIEvents.Click);
+        CheckPlayerADRemover();
+        
         BindEvent(GetGameObject((int)GameObjects.BackGround), OnClose, UIEvents.Click);
-        BindEvent(GetButton((int)Buttons.GetGift).gameObject, OnGetGift, UIEvents.Click);
+        BindEvent(GetButton((int)Buttons.Daily).gameObject, OnGetGift, UIEvents.Click);
+    }
+
+    private void CheckPlayerADRemover()
+    {
+        if (DataManager.Instance.playerInfo.ADRemove)
+        {
+            BindEvent(GetButton((int)Buttons.GetReward).gameObject, OnGift, UIEvents.Click);
+            GetButton((int)Buttons.Daily).gameObject.SetActive(false);
+        }
+        else
+        {
+            BindEvent(GetButton((int)Buttons.GetReward).gameObject, OnClose, UIEvents.Click);
+            GetButton((int)Buttons.Daily).gameObject.SetActive(true);
+        }
     }
 
     private void OnClose(PointerEventData data)
@@ -40,16 +55,22 @@ public class DailyGiftPopupUI : PopupUI
         ClosePopupUI();
     }
 
+    private void OnGift(PointerEventData data)
+    {
+        OnReward(2);
+    }
+
     private void OnGetGift(PointerEventData data)
     {
-        UIManager.Instance.Get<LobbyUI>().GetDailyGift();
-        GetButton((int)Buttons.GetGift).gameObject.SetActive(false);
+        GetButton((int)Buttons.Daily).gameObject.SetActive(false);
         GoogleMobileAdsManager.Instance.ShowRewardedInterstitialAd();
-        
     }
 
     public void OnReward(int reward)
     {
         DataManager.Instance.playerInfo.DailyGift = true;
+        ClosePopupUI();
+        UIManager.Instance.ShowPopupUi<GetDailyGiftPopupUI>();
+        UIManager.Instance.Get<LobbyUI>().GetDailyGift();
     }
 }

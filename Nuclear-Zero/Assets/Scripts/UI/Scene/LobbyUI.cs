@@ -204,8 +204,8 @@ public class LobbyUI : SceneUI
 
     private void OnExitGame(PointerEventData data)
     {
-        DataManager.Instance.SavePlayerInfo();
-        GPGSBinder.Instance.Logout();
+        GPGSManager.Instance.SaveData();
+        //GPGSBinder.Inst.Logout();
         Application.Quit();
     }
 }

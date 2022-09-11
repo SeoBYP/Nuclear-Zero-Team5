@@ -11,13 +11,44 @@ public class TimeProject : SubUI
     [SerializeField] private string url = "";
     [SerializeField] private LobbyUI lobbyUI;
     private UnityWebRequest request;
-    private DateTime startTime = Convert.ToDateTime("2022-08-26 09:00:00");
+    private DateTime startTime;
     private bool onTime;
 
     [Obsolete]
     private void Awake()
     {
+        string today = DataManager.Instance.playerInfo.Daily;
+        startTime = Convert.ToDateTime(today);
         StartCoroutine(WebChk());
+    }
+
+    [Obsolete]
+    public void SetToday()
+    {
+        StartCoroutine(SetTimeToday());
+    }
+
+    [Obsolete]
+    IEnumerator SetTimeToday()
+    {
+        request = new UnityWebRequest();
+        using (request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+            if (request.isNetworkError)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                string date = request.GetResponseHeader("date");
+
+                DateTime dateTime = Convert.ToDateTime(date);
+                string time = $"{dateTime.Year}-{dateTime.Month}-{dateTime.Day} 09:00:00";
+                DataManager.Instance.playerInfo.Daily = time;
+            }
+        }
+
     }
 
     [Obsolete]
@@ -35,7 +66,7 @@ public class TimeProject : SubUI
             {
                 string date = request.GetResponseHeader("date");
 
-                DateTime dateTime = Convert.ToDateTime(date);//DateTime.Parse(date).ToUniversalTime();
+                DateTime dateTime = Convert.ToDateTime(date);
                 TimeSpan timedif = dateTime - startTime;
                 if(timedif.Days > 0)
                 {
